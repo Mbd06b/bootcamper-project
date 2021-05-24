@@ -18,3 +18,5 @@ As bootcampers progress through the bootcamp they:
 * TBD
 
 It's important to note that bootcampers are going to have wide experiences with the project. Those learning Java, HTML/CSS, and JavaScript from scratch should spend more time drilling the languages, and use this as an aspirational example to guide their learning, while experienced bootcampers could completely reform the project to demonstrate what they are ready to do.  
+
+Visit the Bootcamp Companion Project Page - https://mbd06b.github.io/bootcamper-project/ 
