@@ -15,7 +15,7 @@ As bootcampers progress through the bootcamp they:
 * Fork the Project
 * Clean the code of non-conforming Java
 * Implement a DAO by moving the static list out of the Service, and finishing CRUD methods either with loops or streams to interact with the list. 
-* TBD
+* Use HTML, JS, and Java, connected to the Java Service in the prior task to complete the basic CRUD feature of the games list. 
 
 It's important to note that bootcampers are going to have wide experiences with the project. Those learning Java, HTML/CSS, and JavaScript from scratch should spend more time drilling the languages, and use this as an aspirational example to guide their learning, while experienced bootcampers could completely reform the project to demonstrate what they are ready to do.  
 
