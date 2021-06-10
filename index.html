@@ -62,8 +62,23 @@
 		  <a href="https://www.oracle.com/java/technologies/javase/codeconventions-contents.html" target="_blank">Java Conventions Reference</a>
 		  <a href="https://www.oracle.com/java/technologies/javase/codeconventions-namingconventions.html" target="_blank">Java Naming Conventions</a>
 		  <p>Success Criteria: Java project should still successfully compile, and the server launches.</p>
+		  
+		   <h3>Task 2.0 - Create a MockDAO, Separate Concerns, and Repair Web Components</h3>
+		   <p>The Service of our application, also contains our data, tightly couples our business-logic layer with our data, this isn't good.</p>
+		   <p>The web application at the moment can only Read and Create games.</p>
+		   <p>Uh Oh! By refactoring the objects and variables in our Java application, we changed the key names of the properties of our Javascript objects (JSON).</p>
+	
+		   <p>Create a MockDAO Class, and lift the static List declaration of our data from the Service into the MockDAO.</p>	   
+		   <p>Since we need to Update and Delete games, add update and delete methods to the Service and connect those to corresponding methods in the MockDAO. Use loops and access properties to update the list. If you are skillful with loops and lists, consider using the Java streams API.</p>\
+		   <p>Repair what we broke in our webapp by updating the Javascript variables in our views.</p>P
+		   
+		   <p>Success Criteria: The  project should compile, launch, AND you should be able to add a game (again) to the list in the UI of the running application</p>
 
 
+		   <h3>Task 2.1 - Discover Interfaces as an introduction to APIs</h3>
+		   <p>Application Programming Interfaces, or API's are software intermediaries that allows two applications to talk to each other. Within Java itself, Interface objects, function similarly to an API by exploiting Object's inheritance of interface methods.</p>
+		   <p>Create Interfaces for the Model, DAO, and Service objects in the Java Application. 
+		   
 	  </div>
 	  </div><!-- end content -->
   </body>
