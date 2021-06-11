@@ -86,6 +86,77 @@
 		   <p>If you have time, add an select control that allows you to filter the records list by genre.</p>
 		   <strong>Acceptance Criteria:</strong> Successfully demo the CRUD feature of the running application.
 		   
+		   
+		   
+		   <section>
+		   	<h2> Concepts Expedited from Setup </h2>
+		   		<table> 
+		   			<tr><td><strong>Eclipse for Java Developers</strong></td><td>2:17:23</td></tr>
+		  		   	<tr><td>Setting up a Java Maven Development Environment with Eclipse</td><td>0:41:17</td></tr>
+		  		   	<tr><td>Setting up a Java SE Development Environment with Eclipse</td><td>0:52:46</td></tr>
+		  		   	<tr><td>Using Git for a Java Project in Eclipse</td><td>0:43:20</td></tr>
+		  		   	<tr><td><strong>Getting Started With Git<strong></td><td>0:42:22</td></tr>
+		  		   	<tr><td>Course Overview</td><td>0:01:54</td></tr>
+		  		   	<tr><td>Get Up and Running with Git</td><td>0:40:28</td></tr>
+		  		   	<tr><td><strong>Java Fundamentals: The Java Language</strong></td><td>0:51:38</td></tr>
+		  		   	<tr><td>Course Overview	</td><td>0:01:24</td></tr>
+		  		   	<tr><td>Creating a Simple App</td><td>0:35:27</td></tr>
+		  		   	<tr><td>Introduction and Setting up Your Environment</td><td>0:14:47</td></tr>
+		  		   	<tr><td><strong>Lean Software Development Fundamentals</strong></td><td>0:23:54</td></tr>
+		  		   	<tr><td>Waterfall and Agile</td><td>0:23:54</td></tr>
+		  		   	<tr><td><strong>Maven Fundamentals</strong></td><td>0:24:17</td></tr>
+		  		   	<tr><td>IDE Integration</td><td>0:24:17</td></tr>
+		  		   	<tr><td><strong>Setting up a Java Development Environment</strong></td><td>0:31:40</td></tr>
+		  		   	<tr><td>Course Overview</td><td>0:01:29</td></tr>	
+		  		   	<tr><td>Installing and Running Java</td><td>0:18:56</td></tr>	
+		  		   	<tr><td>Packaging Java Applications</td><td>0:11:15</td></tr>	
+		  		   	<tr><td><strong>Spring Framework: Spring Fundamentals</strong></td><td>0:26:23</td></tr>	
+		  		   	<tr><td>Architecture and Project Setup</td><td>0:26:23</td></tr>	
+		   		</table>
+
+			</section>
+
+			<section>
+				<h2>Technology Stack</h2>
+				<p>Additional Reading  Spring MVC4, Maven, AngularJS</p>
+				<table>
+					<tr>
+						<th>Quick Info</th>
+						<th>Helpful Link</th>
+						<th>Notes</th>
+					</tr>
+					<tr>
+						<td>1.2 Trouble Getting Launched?</td>
+						<td>
+							<a href="https://www.pegaxchange.com/2018/02/12/spring-web-mvc-project-maven-archetype/" target="_blank">
+							https://www.pegaxchange.com/2018/02/12/spring-web-mvc-project-maven-archetype/</a>
+						</td>
+						<td>
+							Follow this guide to get a legacy Spring MVC boilerplate with @annotated configuration booted and running on a maven Tomcat plugin in Eclipse.
+						</td>
+					</tr>
+					<tr>
+						<td>1.5 Angualr JS + SpringMVC Tutorial</td>
+						<td><a href="http://websystique.com/springmvc/spring-mvc-4-angularjs-example/" target="_blank">
+						http://websystique.com/springmvc/spring-mvc-4-angularjs-example/</a></td>
+						<td> Use @RestController and ResponseEntity type controllers  for your AngularJS dataservice to “consume” (GET,POST,PUT,DELETE)  resources  on asynchronous submits. 
+							User normal Spring “ModelAndView” or “String” type controllers to handle classic spring <pre><form:form></pre> synchronous submits.
+						 </td>
+					</tr>
+				</table>
+				
+				<h2>Project Structure - The "Stack"</h2>
+				<ol>
+					<li>*.jsp (html) - The view that contains the structured HTML markup for the UI. </li>
+					<li>*.module.js - The AngularJS App declaration</li>
+					<li>*.controller.js - An AngularJS controller, which provides two-way model binding for displaying and interacting with JavaScript models.</li>
+					<li>*.service.js -  An AngularJS, which “consumes” the Java Server endpoints for RESTful data.</li>
+					<li>*Controller.java - contains the entry-point definitions URLs serving RESTful Objects or java pages containing syncronous Java Model and View pages.</li>
+					<li>*Service.java - The business logic layer, communicates with other services, and prepares and processes objects to be persisted and returned</li>
+					<li>*DAO.java - An object that implements the persistence layer, handling access, and queries to the data.  
+				</ol>   	
+		   </section>
+		   
 	  </div>
 	  </div><!-- end content -->
   </body>
