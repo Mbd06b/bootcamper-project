@@ -8,6 +8,20 @@
 		     width: 7.5in;
 		     padding: 0.5in;
 		 }
+		 table {
+		  border-collapse: collapse;
+		  width: 100%;
+		}
+		
+		td, th {
+		  border: 1px solid #dddddd;
+		  text-align: left;
+		  padding: 8px;
+		}
+		
+		tr:nth-child(even) {
+		  background-color: #dddddd;
+		}
     </style>
   </head>
   <body>	
@@ -126,19 +140,34 @@
 						<th>Notes</th>
 					</tr>
 					<tr>
-						<td>1.2 Trouble Getting Launched?</td>
+						<td>1.0 Just need a console fast?</td>
+						<td><a href="https://www.tutorialspoint.com/compile_java_online.php" target="_blank">
+							https://www.tutorialspoint.com/compile_java_online.php</a>
+						</td>
+						<td>Compile and Execute Java Online (JDK 1.8.0), use a browser page to quickly compile and run Java console, for syntax testing.</td>
+					</tr>
+					<tr>
+						<td>1.1 W3Schools, a foundational reference for HTML/CSS/JavaScript and more.</td>
+						<td><a href="https://www.w3schools.com/" target="_blank">https://www.w3schools.com/</a>
+						</td>
+						<td>W3Schools is the best no-frills interactive references for learning HTML tag/attribute libraries. 
+						    They have a wide range of tutorials on other languages that are great introductions, particularly to JavasScript frameworks.
+						</td>
+					</tr>
+					<tr>
+						<td>1.2 Trouble Getting a Spring MVC Project Launched?</td>
 						<td>
 							<a href="https://www.pegaxchange.com/2018/02/12/spring-web-mvc-project-maven-archetype/" target="_blank">
 							https://www.pegaxchange.com/2018/02/12/spring-web-mvc-project-maven-archetype/</a>
 						</td>
 						<td>
-							Follow this guide to get a legacy Spring MVC boilerplate with @annotated configuration booted and running on a maven Tomcat plugin in Eclipse.
+							Follow this guide to get a legacy Spring MVC boilerplate with @annotated configuration booted and running using a working maven archetype project. 
 						</td>
 					</tr>
 					<tr>
 						<td>1.5 Angualr JS + SpringMVC Tutorial</td>
-						<td><a href="http://websystique.com/springmvc/spring-mvc-4-angularjs-example/" target="_blank">
-						http://websystique.com/springmvc/spring-mvc-4-angularjs-example/</a></td>
+						<td><a href="https://websystique.com/springmvc/spring-mvc-4-angularjs-example/" target="_blank">
+						https://websystique.com/springmvc/spring-mvc-4-angularjs-example/</a></td>
 						<td> Use @RestController and ResponseEntity type controllers  for your AngularJS dataservice to “consume” (GET,POST,PUT,DELETE)  resources  on asynchronous submits. 
 							User normal Spring “ModelAndView” or “String” type controllers to handle classic spring <pre><form:form></pre> synchronous submits.
 						 </td>
@@ -151,7 +180,7 @@
 					<li>*.module.js - The AngularJS App declaration</li>
 					<li>*.controller.js - An AngularJS controller, which provides two-way model binding for displaying and interacting with JavaScript models.</li>
 					<li>*.service.js -  An AngularJS, which “consumes” the Java Server endpoints for RESTful data.</li>
-					<li>*Controller.java - contains the entry-point definitions URLs serving RESTful Objects or java pages containing syncronous Java Model and View pages.</li>
+					<li>*Controller.java - contains the entry-point definitions URLs serving RESTful Objects and/or java pages containing syncronous Java Model and View pages.</li>
 					<li>*Service.java - The business logic layer, communicates with other services, and prepares and processes objects to be persisted and returned</li>
 					<li>*DAO.java - An object that implements the persistence layer, handling access, and queries to the data.  
 				</ol>   	
