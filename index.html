@@ -27,8 +27,9 @@
   <body>	
   	<div class="content">
 	  <div><h1>Java Bootcamp Companion Project </h1></div>
+	  
+	  <section>
 	  <div><h2>Introduction - Read Me</h2></div>
-	  <div>
 		  <p>The bootcamp project is a basic java webapp, Using SpringMVC, AngularJS, managed by Maven, and run with a Jetty plugin. Persistence mocked by a static collection.</p>
 		  <p>A full introduction on standing up a project like this can be found here: <a href="http://websystique.com/springmvc/spring-mvc-4-restful-web-services-crud-example-resttemplate/">Spring MVC 4 RESTFul Web Services CRUD Example</a></p>
 		  <p>This architecture was chosen for its simplicity to introduce those new to Java web applications to a very simple web app and was built by someone completely new to Java.</p>
@@ -66,8 +67,10 @@
 		  		</td>
 		  	</tr>
 		  </table>
-		  
-		   <h2>Project Tasks</h2>
+		  </section>
+		 
+		  <section>
+		   <h2 id="Project_Tasks">Project Tasks</h2>
 		  <p>With the Environment that we setup together on your local machine you are going to perform “Project Tasks” alongside select Pluralsight modules which provide opportunities to demonstrate your current skill and progression throughout of the bootcamp.</p>
 
 		  <h3>Task 1.0 - Learning Naming Conventions</h3>
@@ -75,7 +78,10 @@
 		  <p></p>
 		  <a href="https://www.oracle.com/java/technologies/javase/codeconventions-contents.html" target="_blank">Java Conventions Reference</a>
 		  <a href="https://www.oracle.com/java/technologies/javase/codeconventions-namingconventions.html" target="_blank">Java Naming Conventions</a>
-		  <p><strong>Acceptance Criteria:</strong> Java project should still successfully compile, and the server launches.</p>
+		  <h4>Acceptance Criteria:</h4>
+		  <ul>
+		  	<li>Java project should still successfully compile, and the server launches, after refactoring all name references to match Java conventions.</li>
+		  </ul>
 		  
 		   <h3>Task 2.0 - Create a MockDAO, Separate Concerns, and Repair Web Components</h3>
 		   <p>The Service of our application, also contains our data, tightly couples our business-logic layer with our data, this isn't good.</p>
@@ -84,10 +90,15 @@
 			
 		   <ol>
 			   <li>Create a MockDAO Class, and lift the static List declaration of our data from the Service into the MockDAO.</li>	   
-			   <li>Since we need to Update and Delete games, add update and delete methods to the Service and connect those to corresponding methods in the MockDAO. Use loops and access properties to update the list. If you are skillful with loops and lists, consider using the Java streams API.</li>
+			   <li>Since we need to Update and Delete games, add update and delete methods to the Service and connect those to corresponding methods in the MockDAO: <br />
+			    Use loops, accessor methods, and boolean "if" statements to perform the CRUD updates to the static list. If you're familiar with Java already, implement CRUD methods using the the Java Streams API.</li>
 			   <li>Repair what we broke in our webapp by updating the JavaScript variables in our views.</li>
 		   </ol>
-		   <p><strong>Acceptance Criteria:</strong> The  project should compile, launch, AND you should be able to add a game (again) to the list in the UI of the running application</p>
+		   <h4>Acceptance Criteria:</h4> 
+		   	<ul>
+		   		<li>The  project should compile, launch, AND you should be able to add a game (again) to the list in the UI of the running application</li>
+		   		<li>Pass a code review of methods implemented in your DAO</li>
+		   	</ul>
 
 
 		   <h3>Task 2.1 - Discover Interfaces as an introduction to APIs</h3>
@@ -98,9 +109,11 @@
 		   <p>Now that we have prepared the service and DAO with our CRUD methods, we need to complete the feature.</p>
 		   <p>Add to the view to update an existing record, and delete an existing record.</p>
 		   <p>If you have time, add an select control that allows you to filter the records list by genre.</p>
-		   <strong>Acceptance Criteria:</strong> Successfully demo the CRUD feature of the running application.
-		   
-		   
+		   <h4>Acceptance Criteria:</h4> 
+		   <ul>
+		   		<li> Successfully demo the CRUD feature of the running application.</li>
+		   </ul>
+		   </section>
 		   
 		   <section>
 		   	<h2> Concepts Expedited from Setup </h2>
@@ -131,8 +144,8 @@
 			</section>
 
 			<section>
-				<h2>Technology Stack</h2>
-				<p>Additional Reading  Spring MVC4, Maven, AngularJS</p>
+				<h2>Technology Stack Reference</h2>
+				<p>Helful Links on Java, HTML, JavasScript, Spring MVC4, Maven, AngularJS</p>
 				<table>
 					<tr>
 						<th>Quick Info</th>
@@ -187,6 +200,5 @@
 		   </section>
 		   
 	  </div>
-	  </div><!-- end content -->
   </body>
 </html>
