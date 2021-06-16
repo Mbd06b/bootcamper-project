@@ -39,16 +39,16 @@
                 <div class="panel-heading text-light"><span class="lead">Game Registration Form </span></div>
                 <div class="formcontainer">
                     <form ng-submit="MGL_T1_ctrl.addGame()" name="gameForm" class="form-horizontal">
-                        <input type="hidden" ng-model="MGL_T1_ctrl.game.gameId" />
+                        <input type="hidden" ng-model="MGL_T1_ctrl.game.id" />
                         <div class="row">
                             <div class="form-group col-md-12">
-                                <label class="col-md-2 control-lable text-light" for="gameName">Name*</label>
+                                <label class="col-md-2 control-lable text-light" for="name">Name*</label>
                                 <div class="col-md-7">
-                                    <input type="text" ng-model="MGL_T1_ctrl.game.gameName" id="gameName" class="gameName form-control input-sm" placeholder="Enter the name of the new game [required]" required ng-minlength="3" />
+                                    <input type="text" ng-model="MGL_T1_ctrl.game.name" id="name" class="name form-control input-sm" placeholder="Enter the name of the new game [required]" required ng-minlength="3" />
                                     <div class="has-error" ng-show="gameForm.$dirty">
-                                        <span ng-show="gameForm.gameName.$error.required">This is a required field</span>
-                                        <span ng-show="gameForm.gameName.$error.minlength">Minimum length required is 3</span>
-                                        <span ng-show="gameForm.gameName.$invalid">This field is invalid </span>
+                                        <span ng-show="gameForm.name.$error.required">This is a required field</span>
+                                        <span ng-show="gameForm.name.$error.minlength">Minimum length required is 3</span>
+                                        <span ng-show="gameForm.name.$invalid">This field is invalid </span>
                                     </div>
                                 </div>
                             </div>
@@ -57,9 +57,9 @@
 
                         <div class="row">
                             <div class="form-group col-md-12">
-                                <label class="col-md-2 control-lable text-light" for="gameGenre">Game Genre</label>
+                                <label class="col-md-2 control-lable text-light" for="genre">Game Genre</label>
                                 <div class="col-md-7">
-                                    <input type="text" ng-model="MGL_T1_ctrl.game.gameGenre" id="gameGenre" class="form-control input-sm" placeholder="Enter the genre of the new game" />
+                                    <input type="text" ng-model="MGL_T1_ctrl.game.genre" id="genre" class="form-control input-sm" placeholder="Enter the genre of the new game" />
                                 </div>
                             </div>
                         </div>
@@ -86,8 +86,8 @@
                         </thead>
                         <tbody>
                             <tr ng-repeat="currentGame in MGL_T1_ctrl.games">
-                                <td><span ng-bind="currentGame.gameName"></span></td>
-                                <td><span ng-bind="currentGame.gameGenre"></span></td>
+                                <td><span ng-bind="currentGame.name"></span></td>
+                                <td><span ng-bind="currentGame.genre"></span></td>
                                 <td>
                                 </td>
                             </tr>
