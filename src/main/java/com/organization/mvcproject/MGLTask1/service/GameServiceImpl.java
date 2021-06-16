@@ -24,6 +24,18 @@ public class GameServiceImpl implements GameService {
 
 		return mockGameDao.saveGame(game);
 	}
+	
+	@Override
+	public List<Game> updateGame(Game game)
+	{
+		return mockGameDao.updateGame(game);
+	}
+	
+	@Override
+	public List<Game> deleteGame(Game game)
+	{
+		return mockGameDao.deleteGame(game);
+	}
 
 
 }

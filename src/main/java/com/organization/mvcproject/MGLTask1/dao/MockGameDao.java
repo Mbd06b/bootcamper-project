@@ -12,9 +12,7 @@ public class MockGameDao {
 	private static Long companyId = new Long(0);
 	private static List<Game> games = new ArrayList<Game>();
 
-	static {
-		games = populateGames();
-	}
+	static {games = populateGames();}
 
 	private static List<Game> populateGames() {
 
@@ -50,9 +48,25 @@ public class MockGameDao {
 		games.add(game);
 		return game;
 	}
-
-	public static List<Game> getGames() {
+	
+	public List<Game> updateGame(Game newGame)
+	{
+		for (Game game : games)
+		{
+			if (newGame.getId() == game.getId())
+			{
+				game.setName(newGame.getName());
+				game.setGenre(newGame.getGenre());
+			}
+		}
 		return games;
 	}
+	
+	public List<Game> deleteGame(Game deleteGame)
+	{
+		games.remove(deleteGame);
+		return games;
+	}
+
 
 }
