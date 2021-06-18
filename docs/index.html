@@ -3,25 +3,15 @@
   <head>
   	<meta charset="utf-8">
     <title>Java Bootcamp</title>
+     
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+      <script src="js/angularjs/docs.module.js" ></script>
+      <script src="js/angularjs/docs.service.js" ></script>
+      <script src="js/angularjs/docs.controller.js" ></script>
+       
+      <link rel="stylesheet" href="styles/style.css">
     <style>
-    	.content {
-		     width: 7.5in;
-		     padding: 0.5in;
-		 }
-		 table {
-		  border-collapse: collapse;
-		  width: 100%;
-		}
 		
-		td, th {
-		  border: 1px solid #dddddd;
-		  text-align: left;
-		  padding: 8px;
-		}
-		
-		tr:nth-child(even) {
-		  background-color: #dddddd;
-		}
     </style>
   </head>
   <body>	
@@ -115,6 +105,9 @@
 		   </ul>
 		   </section>
 		   
+<div data-ng-app="app">
+	<div data-ng-controller="DocsController as ctrl">
+			
 		   <section>
 		   	<h2> Concepts Expedited from Setup </h2>
 		   		<table> 
@@ -142,10 +135,15 @@
 		   		</table>
 
 			</section>
-
+			
 			<section>
 				<h2>Technology Stack Reference</h2>
 				<p>Helful Links on Java, HTML, JavasScript, Spring MVC4, Maven, AngularJS</p>
+				<div>
+					<h3>AngularJs App</h3>
+					<div>{{ctrl.controllerMessage}}</div>
+					<div>{{ctrl.serviceMessage}}</div>
+				</div>
 				<table>
 					<tr>
 						<th>Quick Info</th>
@@ -198,7 +196,9 @@
 					<li>*DAO.java - An object that implements the persistence layer, handling access, and queries to the data.  
 				</ol>   	
 		   </section>
-		   
+	</div>	   
+</div>
+
 	  </div>
   </body>
 </html>
