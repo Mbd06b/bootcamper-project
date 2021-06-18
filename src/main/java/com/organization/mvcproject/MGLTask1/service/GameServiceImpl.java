@@ -5,34 +5,28 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.organization.mvcproject.MGLTask1.dao.MockGameDao;
-import com.organization.mvcproject.MGLTask1.model.Game;
+import com.organization.mvcproject.MGLTask1.dao.MockGameDaoImpl;
+import com.organization.mvcproject.MGLTask1.model.GameImpl;
+import com.organization.mvcproject.api.service.GameService;
 
 @Service("javaGameService")
 public class GameServiceImpl implements GameService {
 
 	@Autowired
-	private MockGameDao mockGameDao;
+	private MockGameDaoImpl mockGameDao;
 	
 	@Override
-	public List<Game> retrieveAllGames() {
+	public List<GameImpl> retrieveAllGames() {
 		return mockGameDao.retrieveAllGames();
 	}
 
 	@Override
-	public Game saveGame(Game game) {
-
+	public GameImpl saveGame(GameImpl game) {
 		return mockGameDao.saveGame(game);
 	}
 	
 	@Override
-	public List<Game> updateGame(Game game)
-	{
-		return mockGameDao.updateGame(game);
-	}
-	
-	@Override
-	public List<Game> deleteGame(Game game)
+	public boolean deleteGame(GameImpl game)
 	{
 		return mockGameDao.deleteGame(game);
 	}

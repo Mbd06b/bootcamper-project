@@ -4,7 +4,7 @@
 
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
-        <script src="resources/static/js/app.js" /></script>
+        <script src="resources/static/js/app.js" ></script>
         <script src="resources/static/js/service/MGL_Task1.service.js"></script>
         <script src="resources/static/js/controller/MGL_Task1.controller.js"></script>
 
