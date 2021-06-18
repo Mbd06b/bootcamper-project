@@ -20,7 +20,7 @@ function DocsController(DocsService, $log) {
 	vm.getServiceMessage = function (){
 		DocsService.getServiceMessage()
 		.then( function(data){
-			vm.serviceMessage = data; 
+			vm.serviceMessage = data.message; 
 		});
 	}
 		
