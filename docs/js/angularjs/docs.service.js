@@ -12,7 +12,7 @@ function DocsService($log, $http) {
 	
 	return {
         getServiceMessage: function() {
-          return $http.get('docs/data/message.json');
+          return $http.get('data/message.json');
         }
    };	
 }
