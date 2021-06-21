@@ -11,6 +11,6 @@ public interface MockGameDao {
 
 	GameImpl saveGame(GameImpl game);
 	
-	boolean deleteGame(GameImpl game);
+	boolean deleteGame(Long id);
 
 }

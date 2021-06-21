@@ -55,8 +55,18 @@ public class MockGameDaoImpl implements MockGameDao{
 	{
 		if (game.getId() != null)
 		{
-			int index = games.indexOf(game);
-			return games.set(index, game);
+			int index = 0;
+			for (GameImpl testGame : games)
+			{
+				if (testGame.getId() == game.getId())
+				{
+					 index = games.indexOf(testGame);
+					
+				}
+			}
+			games.set(index, game);
+			return game;	
+			
 		}
 		
 		
@@ -66,11 +76,19 @@ public class MockGameDaoImpl implements MockGameDao{
 	}
 	
 	@Override
-	public boolean deleteGame(GameImpl game)
+	public boolean deleteGame(Long id)
 	{
-		if (game != null)
+		if (id != null)
 		{
-			games.remove(game);
+			GameImpl removeGame = null;
+			for (GameImpl game : games)
+			{
+				if (game.getId() == id)
+				{
+					removeGame = game;
+				}
+			}
+			games.remove(removeGame);
 			return true;
 		} 
 		

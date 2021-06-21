@@ -25,7 +25,7 @@
     	<link rel="icon" type="image/png" sizes="16x16" href="resources/static/images/favicon-16x16.png">
     </head>
 
-    <body ng-app="MGL_Task1_app" class="ng-cloak">
+    <body data-ng-app="MGL_Task1_app" class="ng-cloak">
         <nav id="MistLibrary-navbar" class="navbar navbar-expand-md navbar-dark bg-dark">
             <a class="navbar-brand" href="${pageContext.request.contextPath}">
 			<img src="resources/static/images/MGLlogo.png" width="90" height="60" alt="">
@@ -34,21 +34,21 @@
             <a class="nav-item nav-link" href="review">Review</a>
         </nav>
         <br>
-        <div class="container" ng-controller="MGL_Task1_Controller as MGL_T1_ctrl">
+        <div class="container" data-ng-controller="MGL_Task1_Controller as MGL_T1_ctrl">
             <div class="panel panel-default">
                 <div class="panel-heading text-light"><span class="lead">Game Registration Form </span></div>
                 <div class="formcontainer">
-                    <form ng-submit="MGL_T1_ctrl.addGame()" name="gameForm" class="form-horizontal">
-                        <input type="hidden" ng-model="MGL_T1_ctrl.game.id" />
+                    <form data-ng-submit="MGL_T1_ctrl.addGame()" name="gameForm" class="form-horizontal">
+                        <input type="hidden" data-ng-model="MGL_T1_ctrl.game.id" />
                         <div class="row">
                             <div class="form-group col-md-12">
                                 <label class="col-md-2 control-lable text-light" for="name">Name*</label>
                                 <div class="col-md-7">
-                                    <input type="text" ng-model="MGL_T1_ctrl.game.name" id="name" class="name form-control input-sm" placeholder="Enter the name of the new game [required]" required ng-minlength="3" />
-                                    <div class="has-error" ng-show="gameForm.$dirty">
-                                        <span ng-show="gameForm.name.$error.required">This is a required field</span>
-                                        <span ng-show="gameForm.name.$error.minlength">Minimum length required is 3</span>
-                                        <span ng-show="gameForm.name.$invalid">This field is invalid </span>
+                                    <input type="text" data-ng-model="MGL_T1_ctrl.game.name" id="name" class="name form-control input-sm" placeholder="Enter the name of the new game [required]" required data-ng-minlength="3" />
+                                    <div class="has-error" data-ng-show="gameForm.$dirty">
+                                        <span data-ng-show="gameForm.name.$error.required">This is a required field</span>
+                                        <span data-ng-show="gameForm.name.$error.minlength">Minimum length required is 3</span>
+                                        <span data-ng-show="gameForm.name.$invalid">This field is invalid </span>
                                     </div>
                                 </div>
                             </div>
@@ -59,14 +59,16 @@
                             <div class="form-group col-md-12">
                                 <label class="col-md-2 control-lable text-light" for="genre">Game Genre</label>
                                 <div class="col-md-7">
-                                    <input type="text" ng-model="MGL_T1_ctrl.game.genre" id="genre" class="form-control input-sm" placeholder="Enter the genre of the new game" />
+                                    <input type="text" data-ng-model="MGL_T1_ctrl.game.genre" id="genre" class="form-control input-sm" placeholder="Enter the genre of the new game" />
                                 </div>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="form-actions floatRight">
-                                <input type="submit" value="Add" class="btn btn-primary btn-sm">
+                                <input data-ng-if="!MGL_T1_ctrl.game || !MGL_T1_ctrl.game.id" type="submit" value="Add" class="btn btn-primary btn-sm">
+                                <button data-ng-if="MGL_T1_ctrl.game.id" type="submit" class="btn btn-primary btn-sm" type="reset">Update</button>
+                                <button data-ng-click="MGL_T1_ctrl.game.id = null" type="reset" class="btn btn-secondary btn-sm">Clear</button>
                             </div>
                         </div>
                     </form>
@@ -81,14 +83,15 @@
                             <tr>
                                 <th>Game Name</th>
                                 <th>Game Genre</th>
-                                <th width="20%"></th>
+                                <th width="20%">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="currentGame in MGL_T1_ctrl.games">
-                                <td><span ng-bind="currentGame.name"></span></td>
-                                <td><span ng-bind="currentGame.genre"></span></td>
-                                <td>
+                            <tr data-ng-repeat="currentGame in MGL_T1_ctrl.games">
+                                <td><span data-ng-bind="currentGame.name"></span></td>
+                                <td><span data-ng-bind="currentGame.genre"></span></td>
+                                <td><button data-ng-click="MGL_T1_ctrl.updateGame(currentGame)" class="btn btn-secondary btn-sm">Update</button></td>
+                                <td><button data-ng-click="MGL_T1_ctrl.deleteGame(currentGame)" class="btn btn-secondary btn-sm">Delete</button>
                                 </td>
                             </tr>
                         </tbody>

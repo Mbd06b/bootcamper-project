@@ -8,6 +8,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,8 +17,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.organization.mvcproject.MGLTask1.model.GameImpl;
 import com.organization.mvcproject.MGLTask1.model.ReviewImpl;
-import com.organization.mvcproject.api.model.Game;
-import com.organization.mvcproject.api.model.Review;
 import com.organization.mvcproject.api.service.GameService;
 
 
@@ -58,5 +58,11 @@ public class MGLTask1Controller {
 	public ResponseEntity<Void> createGame(@RequestBody GameImpl game) {
 		javaGameService.saveGame(game);
 		return new ResponseEntity<Void>(HttpStatus.CREATED);
+	}
+	
+	
+	@DeleteMapping(value="/{id}")
+	public ResponseEntity<?> deleteGame(@PathVariable String id){
+		return new ResponseEntity<>(javaGameService.deleteGame(Long.valueOf(id)), HttpStatus.OK);
 	}
 }

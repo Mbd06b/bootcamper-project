@@ -1,12 +1,13 @@
 'use strict';
 
-angular.module('MGL_Task1_app').factory('MGL_Task1_Service', ['$http', function($http) {
+angular.module('MGL_Task1_app').factory('MGL_Task1_Service', ['$http', '$log', function($http, $log) {
 
 		var REST_SERVICE_URI = 'http://localhost:8080/';
 
 		var factory = {
 			fetchAllGames : fetchAllGames,
-			createGame : createGame
+			createGame : createGame,
+			deleteGame : deleteGame
 		};
 
 		return factory;
@@ -24,5 +25,16 @@ angular.module('MGL_Task1_app').factory('MGL_Task1_Service', ['$http', function(
 				}
 			);
 		}
+		
+		
+		
+		function deleteGame(gameId) {
+			return $http.delete( REST_SERVICE_URI + gameId).then(function(response) {
+				    (response.data) ? $log.debug('Game{}, Deleted', gameId): $log.debug('Game{} delete failed', gameId);
+					return response.data;
+				}
+			);
+		}
+		
 
 }]);
