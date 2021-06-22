@@ -74,7 +74,7 @@
 		  <p>With the Environment that we setup together on your local machine you are going to perform “Project Tasks” alongside select Pluralsight modules which provide opportunities to demonstrate your current skill and progression throughout of the bootcamp.</p>
 
 		  <h3>Task 1.0 - Learning Naming Conventions</h3>
-		  <p>As an easy first task, and as an exploration of the the codebase of the project, refactor the Object, Package, and Variable names in the project to match standard Java conventions.</p>
+		  <p>As an easy first task, and as an exploration of the the codebase of the project, refactor the Object, Package, and Variable names in the project to match standard Java conventions. For an introduction to the different types of files in the project, go to <a href="#projectStructure">the project structure section.</a></p>
 		  <p></p>
 		  <a href="https://www.oracle.com/java/technologies/javase/codeconventions-contents.html" target="_blank">Java Conventions Reference</a>
 		  <a href="https://www.oracle.com/java/technologies/javase/codeconventions-namingconventions.html" target="_blank">Java Naming Conventions</a>
@@ -84,12 +84,12 @@
 		  </ul>
 		  
 		   <h3>Task 2.0 - Create a MockDAO, Separate Concerns, and Repair Web Components</h3>
-		   <p>The Service of our application, also contains our data, tightly couples our business-logic layer with our data, this isn't good.</p>
-		   <p>The web application at the moment can only Read and Create games.</p>
+		   <p>The Service layer of our application also contains our data, making our business-logic layer tightly coupled with our data. This isn't good as it reduces flexibility and creates unnessicary complications.</p>
+		   <p>The web application at the moment can only Read and Create games, but we want it to be able to update and delete as well.</p>
 		   <p>Uh Oh! By refactoring the objects and variables in our Java application, we changed the key names of the properties of our Javascript objects (JSON).</p>
 			
 		   <ol>
-			   <li>Create a MockDAO Class, and lift the static List declaration of our data from the Service into the MockDAO.</li>	   
+			   <li>Create a new Class called MockDAO, and lift the static List declaration of our data from the Service(GameServiceImpl or Game_Service_Impl) into the MockDAO. The main functionality for our create, read, update, and delete (CRUD) methods should also be in the MockDAO.</li>	   
 			   <li>Since we need to Update and Delete games, add update and delete methods to the Service and connect those to corresponding methods in the MockDAO: <br />
 			    Use loops, accessor methods, and boolean "if" statements to perform the CRUD updates to the static list. If you're familiar with Java already, implement CRUD methods using the the Java Streams API.</li>
 			   <li>Repair what we broke in our webapp by updating the JavaScript variables in our views.</li>
@@ -102,12 +102,12 @@
 
 
 		   <h3>Task 2.1 - Discover Interfaces as an introduction to APIs</h3>
-		   <p>Application Programming Interfaces, or API's are software intermediaries that allows two applications to talk to each other. Within Java itself, Interface objects, function similarly to an API by exploiting Object's inheritance of interface methods.</p>
+		   <p>Application Programming Interfaces, or API's are software intermediaries that allows two applications to talk to each other. Within Java itself, Interface objects, function similarly to an API by exploiting Object's inheritance of interface methods. For an example of this concept look at the GameService and GameServiceImpl files in your project.</p>
 		   <p>Create Interfaces for the Model, DAO, and Service objects in the Java Application.</p> 
 		   
 		   <h3>Task 3.0 - Complete the Feature</h3>
 		   <p>Now that we have prepared the service and DAO with our CRUD methods, we need to complete the feature.</p>
-		   <p>Add to the view to update an existing record, and delete an existing record.</p>
+		   <p>Add to the view the ability to update and delete an existing record.</p>
 		   <p>If you have time, add an select control that allows you to filter the records list by genre.</p>
 		   <h4>Acceptance Criteria:</h4> 
 		   <ul>
@@ -187,7 +187,7 @@
 					</tr>
 				</table>
 				
-				<h2>Project Structure - The "Stack"</h2>
+				<h2 id="projectStructure">Project Structure - The "Stack"</h2>
 				<ol>
 					<li>*.jsp (html) - The view that contains the structured HTML markup for the UI. </li>
 					<li>*.module.js - The AngularJS App declaration</li>
