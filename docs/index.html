@@ -2,6 +2,23 @@
 <html lang="en">
   <head>
   	<meta charset="utf-8">
+	  
+     <ul class="nav nav-tabs sticky" role="tablist">
+	<li class="active"><a href="#intro">Introduction</a></li>
+    	<li><a href="#day1">Day 1</a></li>
+    	<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#projectTasks">Project Tasks <span class="caret"></span></a>
+		<ul class="dropdown-menu" role="menu">
+			<li><a href="#task1"></a></li>
+			<li><a href="#task2"></a></li>
+			<li><a href="#task2_1"></a></li>
+			<li><a href="#task3"></a></li>
+		</ul>  
+	</li>
+    	<li><a href="#conceptsFromSetup">Concepts from Setup</a></li>      
+	<li><a href="#techStackRef">Tech Stack Reference</a></li>    
+	<li><a href="#projectStructure">Project Structure</a></li>  
+    </ul>
+		
     <title>Java Bootcamp</title>
      
       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
@@ -10,16 +27,24 @@
       <script src="js/angularjs/docs.controller.js" ></script>
        
       <link rel="stylesheet" href="styles/style.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" integrity="undefined" crossorigin="anonymous">
     <style>
-		
+	.sticky {
+  		position: -webkit-sticky;
+  		position: sticky;
+  		top: 0;
+  		padding: 5px;
+  		border: 2px solid;
+	}
     </style>
   </head>
   <body>	
   	<div class="content">
+	  
 	  <div><h1>Java Bootcamp Companion Project </h1></div>
 	  
 	  <section>
-	  <div><h2>Introduction - Read Me</h2></div>
+	  <div><h2 id="intro">Introduction - Read Me</h2></div>
 		  <p>The bootcamp project is a basic java webapp, Using SpringMVC, AngularJS, managed by Maven, and run with a Jetty plugin. Persistence mocked by a static collection.</p>
 		  <p>A full introduction on standing up a project like this can be found here: <a href="http://websystique.com/springmvc/spring-mvc-4-restful-web-services-crud-example-resttemplate/">Spring MVC 4 RESTFul Web Services CRUD Example</a></p>
 		  <p>This architecture was chosen for its simplicity to introduce those new to Java web applications to a very simple web app and was built by someone completely new to Java.</p>
@@ -35,7 +60,7 @@
 		  </div>
 		  <p>It's important to note that bootcampers are going to have wide experiences with the project. Those learning Java, HTML/CSS, and JavaScript from scratch should spend more time drilling the languages, and use this as an aspirational example to guide their learning, while experienced bootcampers could completely reform the project to demonstrate what they are ready to do.</p>
 		  
-		  <h2>Day 1 - Project Group Workspace Setup</h2>
+		  <h2 id="day1">Day 1 - Project Group Workspace Setup</h2>
 		  <p>In order to help troubleshoot and collaborate as a team during the bootcamp, after our first meeting, we standup a common Java web application local developer environment together.  Walking through a common setup using the Eclipse IDE will allow us to expedite introductory modules common to many online Java courses, and introduce some common environment technologies like Maven.</p>
 		  <p>Wait To Install</p>
 		  <table>
@@ -63,7 +88,7 @@
 		   <h2 id="Project_Tasks">Project Tasks</h2>
 		  <p>With the Environment that we setup together on your local machine you are going to perform “Project Tasks” alongside select Pluralsight modules which provide opportunities to demonstrate your current skill and progression throughout of the bootcamp.</p>
 
-		  <h3>Task 1.0 - Learning Naming Conventions</h3>
+		  <h3 id="task1">Task 1.0 - Learning Naming Conventions</h3>
 		  <p>As an easy first task, and as an exploration of the the codebase of the project, refactor the Object, Package, and Variable names in the project to match standard Java conventions.For an introduction to the different types of files in the project, go to the <a href="#projectStructure">project structure section.</a></p>
 		  <p></p>
 		  <a href="https://www.oracle.com/java/technologies/javase/codeconventions-contents.html" target="_blank">Java Conventions Reference</a>
@@ -73,7 +98,7 @@
 		  	<li>Java project should still successfully compile, and the server launches, after refactoring all name references to match Java conventions.</li>
 		  </ul>
 		  
-		   <h3>Task 2.0 - Create a MockDAO, Separate Concerns, and Repair Web Components</h3>
+		   <h3 id="task2">Task 2.0 - Create a MockDAO, Separate Concerns, and Repair Web Components</h3>
 		   <p>The Service layer of our application also contains our data, making our business-logic layer tightly coupled with our data. This isn't good as it reduces flexibility and creates unnessicary complications.</p>
 		   <p>The web application at the moment can only Read and Create games, but we want it to be able to update and delete as well.</p>
 		   <p>Uh Oh! By refactoring the objects and variables in our Java application, we changed the key names of the properties of our Javascript objects (JSON).</p>
@@ -91,11 +116,11 @@
 		   	</ul>
 
 
-		   <h3>Task 2.1 - Discover Interfaces as an introduction to APIs</h3>
+		   <h3 id="task2_1">Task 2.1 - Discover Interfaces as an introduction to APIs</h3>
 		   <p>Application Programming Interfaces, or API's are software intermediaries that allows two applications to talk to each other. Within Java itself, Interface objects, function similarly to an API by exploiting Object's inheritance of interface methods. For an example of this concept look at the GameService and GameServiceImpl files in your project.</p>
 		   <p>Create Interfaces for the Model, DAO, and Service objects in the Java Application.</p> 
 		   
-		   <h3>Task 3.0 - Complete the Feature</h3>
+		   <h3 id-"task3">Task 3.0 - Complete the Feature</h3>
 		   <p>Now that we have prepared the service and DAO with our CRUD methods, we need to complete the feature.</p>
 		   <p>Add to the view the ability to update and delete an existing record.</p>
 		   <p>If you have time, add an select control that allows you to filter the records list by genre.</p>
@@ -109,7 +134,7 @@
 	<div data-ng-controller="DocsController as ctrl">
 			
 		   <section>
-		   	<h2> Concepts Expedited from Setup </h2>
+		   	<h2 id="conceptsFromSetup"> Concepts Expedited from Setup </h2>
 		   		<table> 
 		   			<tr><td><strong>Eclipse for Java Developers</strong></td><td>2:17:23</td></tr>
 		  		   	<tr><td>Setting up a Java Maven Development Environment with Eclipse</td><td>0:41:17</td></tr>
@@ -137,7 +162,7 @@
 			</section>
 			
 			<section>
-				<h2>Technology Stack Reference</h2>
+				<h2 id="techStackRef">Technology Stack Reference</h2>
 				<p>Helful Links on Java, HTML, JavasScript, Spring MVC4, Maven, AngularJS</p>
 				<div>
 					<h3>AngularJs App</h3>
