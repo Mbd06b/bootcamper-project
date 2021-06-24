@@ -15,15 +15,38 @@
     <style type="text/css">
 	    .fixed {
   		    position: fixed;
-            top: 0;
-            width: 100%;
+  		    top: 0;
   		    padding: 5px;
   		    border: 2px solid;
 	    }
 	    
 	    body, h2 {
-	        padding-top: 65px; 
+	        padding-top: 65px;
 	    }
+	    
+	    table {
+	        border: 2px solid;
+	    }
+	    
+	    .column {
+            float: left;
+            width: 50%;
+            padding:10px;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Responsive layout - makes the three columns stack on top of each other instead of next to each other on smaller screens (600px wide or less) */
+        @media screen and (max-width: 600px) {
+            .column {
+                width: 100%;
+            }
+        }
 	    
     </style>
   </head>
@@ -31,7 +54,6 @@
   <body>
       
 	<nav class="navbar navbar-expand-lg navbar-light bg-light fixed" aria-label="Main">
-	   
 	   <ul  class="navbar-nav mr-auto">
 		<li class="nav-item active"><a class="nav-link" href="#intro">Introduction </a></li> 
     	<li class="nav-item"><a class="nav-link" href="#day1">Day 1</a></li>
@@ -41,12 +63,12 @@
 		<li class="nav-item"><a class="nav-link" href="#projectStructure">Project Structure</a></li>  
        </ul>
   	</nav>
-  	<div class="content">
-	  
+  	<div class="content row">
 	  <div><h1>Java Bootcamp Companion Project </h1></div>
 	  
-	  <section>
-	  <div><h2 id="intro">Introduction - Read Me</h2></div>
+	  <section>  
+	    <div class="column">
+          <div><h2 id="intro">Introduction - Read Me</h2></div>
 		  <p>The bootcamp project is a basic java webapp, Using SpringMVC, AngularJS, managed by Maven, and run with a Jetty plugin. Persistence mocked by a static collection.</p>
 		  <p>A full introduction on standing up a project like this can be found here: <a href="http://websystique.com/springmvc/spring-mvc-4-restful-web-services-crud-example-resttemplate/">Spring MVC 4 RESTFul Web Services CRUD Example</a></p>
 		  <p>This architecture was chosen for its simplicity to introduce those new to Java web applications to a very simple web app and was built by someone completely new to Java.</p>
@@ -61,7 +83,9 @@
 		  	</ul>	
 		  </div>
 		  <p>It's important to note that bootcampers are going to have wide experiences with the project. Those learning Java, HTML/CSS, and JavaScript from scratch should spend more time drilling the languages, and use this as an aspirational example to guide their learning, while experienced bootcampers could completely reform the project to demonstrate what they are ready to do.</p>
-		  
+		</div>
+		
+		<div class="column">  
 		  <h2 id="day1">Day 1 - Project Group Workspace Setup</h2>
 		  <p>In order to help troubleshoot and collaborate as a team during the bootcamp, after our first meeting, we standup a common Java web application local developer environment together.  Walking through a common setup using the Eclipse IDE will allow us to expedite introductory modules common to many online Java courses, and introduce some common environment technologies like Maven.</p>
 		  <p>Wait To Install</p>
@@ -84,86 +108,91 @@
 		  		</td>
 		  	</tr>
 		  </table>
-		  </section>
+		 </div>
+	  </section>
 		 
 		  <section>
-		   <h2 id="projectTasks">Project Tasks</h2>
-		  <p>With the Environment that we setup together on your local machine you are going to perform “Project Tasks” alongside select Pluralsight modules which provide opportunities to demonstrate your current skill and progression throughout of the bootcamp.</p>
-
-		  <h3 id="task1">Task 1.0 - Learning Naming Conventions</h3>
-		  <p>As an easy first task, and as an exploration of the the codebase of the project, refactor the Object, Package, and Variable names in the project to match standard Java conventions.For an introduction to the different types of files in the project, go to the <a href="#projectStructure">project structure section.</a></p>
-		  <p></p>
-		  <a href="https://www.oracle.com/java/technologies/javase/codeconventions-contents.html" target="_blank">Java Conventions Reference</a>
-		  <a href="https://www.oracle.com/java/technologies/javase/codeconventions-namingconventions.html" target="_blank">Java Naming Conventions</a>
-		  <h4>Acceptance Criteria:</h4>
-		  <ul>
-		  	<li>Java project should still successfully compile, and the server launches, after refactoring all name references to match Java conventions.</li>
-		  </ul>
-		  
-		   <h3 id="task2">Task 2.0 - Create a MockDAO, Separate Concerns, and Repair Web Components</h3>
-		   <p>The Service layer of our application also contains our data, making our business-logic layer tightly coupled with our data. This isn't good as it reduces flexibility and creates unnessicary complications.</p>
-		   <p>The web application at the moment can only Read and Create games, but we want it to be able to update and delete as well.</p>
-		   <p>Uh Oh! By refactoring the objects and variables in our Java application, we changed the key names of the properties of our Javascript objects (JSON).</p>
-			
-		   <ol>
-			   <li>Create a new Class called MockDAO, and lift the static List declaration of our data from the Service(GameServiceImpl or Game_Service_Impl) into the MockDAO. The main functionality for our create, read, update, and delete (CRUD) methods should also be in the MockDAO.</li>	   
-			   <li>Since we need to Update and Delete games, add update and delete methods to the Service and connect those to corresponding methods in the MockDAO: <br />
-			    Use loops, accessor methods, and boolean "if" statements to perform the CRUD updates to the static list. If you're familiar with Java already, implement CRUD methods using the the Java Streams API.</li>
-			   <li>Repair what we broke in our webapp by updating the JavaScript variables in our views.</li>
-		   </ol>
-		   <h4>Acceptance Criteria:</h4> 
-		   	<ul>
-		   		<li>The  project should compile, launch, AND you should be able to add a game (again) to the list in the UI of the running application</li>
-		   		<li>Pass a code review of methods implemented in your DAO</li>
-		   	</ul>
-
-
-		   <h3 id="task2_1">Task 2.1 - Discover Interfaces as an introduction to APIs</h3>
-		   <p>Application Programming Interfaces, or API's are software intermediaries that allows two applications to talk to each other. Within Java itself, Interface objects, function similarly to an API by exploiting Object's inheritance of interface methods. For an example of this concept look at the GameService and GameServiceImpl files in your project.</p>
-		   <p>Create Interfaces for the Model, DAO, and Service objects in the Java Application.</p> 
-		   
-		   <h3 id="task3">Task 3.0 - Complete the Feature</h3>
-		   <p>Now that we have prepared the service and DAO with our CRUD methods, we need to complete the feature.</p>
-		   <p>Add to the view the ability to update and delete an existing record.</p>
-		   <p>If you have time, add an select control that allows you to filter the records list by genre.</p>
-		   <h4>Acceptance Criteria:</h4> 
-		   <ul>
-		   		<li> Successfully demo the CRUD feature of the running application.</li>
-		   </ul>
+		     <div class="column">
+    		   <h2 id="projectTasks">Project Tasks</h2>
+    		  <p>With the Environment that we setup together on your local machine you are going to perform “Project Tasks” alongside select Pluralsight modules which provide opportunities to demonstrate your current skill and progression throughout of the bootcamp.</p>
+    
+    		  <h3 id="task1">Task 1.0 - Learning Naming Conventions</h3>
+    		  <p>As an easy first task, and as an exploration of the the codebase of the project, refactor the Object, Package, and Variable names in the project to match standard Java conventions.For an introduction to the different types of files in the project, go to the <a href="#projectStructure" >project structure section.</a></p>
+    	
+    		  <a href="https://www.oracle.com/java/technologies/javase/codeconventions-contents.html" target="_blank">Java Conventions Reference</a>
+    		  <a href="https://www.oracle.com/java/technologies/javase/codeconventions-namingconventions.html" target="_blank">Java Naming Conventions</a>
+    		  <h4>Acceptance Criteria:</h4>
+    		  <ul>
+    		  	<li>Java project should still successfully compile, and the server launches, after refactoring all name references to match Java conventions.</li>
+    		  </ul>
+    		  
+    		   <h3 id="task2">Task 2.0 - Create a MockDAO, Separate Concerns, and Repair Web Components</h3>
+    		   <p>The Service layer of our application also contains our data, making our business-logic layer tightly coupled with our data. This isn't good as it reduces flexibility and creates unnessicary complications.</p>
+    		   <p>The web application at the moment can only Read and Create games, but we want it to be able to update and delete as well.</p>
+    		   <p>Uh Oh! By refactoring the objects and variables in our Java application, we changed the key names of the properties of our Javascript objects (JSON).</p>
+    			
+    		   <ol>
+    			   <li>Create a new Class called MockDAO, and lift the static List declaration of our data from the Service(GameServiceImpl or Game_Service_Impl) into the MockDAO. The main functionality for our create, read, update, and delete (CRUD) methods should also be in the MockDAO.</li>	   
+    			   <li>Since we need to Update and Delete games, add update and delete methods to the Service and connect those to corresponding methods in the MockDAO: <br />
+    			    Use loops, accessor methods, and boolean "if" statements to perform the CRUD updates to the static list. If you're familiar with Java already, implement CRUD methods using the the Java Streams API.</li>
+    			   <li>Repair what we broke in our webapp by updating the JavaScript variables in our views.</li>
+    		   </ol>
+    		   <h4>Acceptance Criteria:</h4> 
+    		   	<ul>
+    		   		<li>The  project should compile, launch, AND you should be able to add a game (again) to the list in the UI of the running application</li>
+    		   		<li>Pass a code review of methods implemented in your DAO</li>
+    		   	</ul>
+    
+    
+    		   <h3 id="task2_1">Task 2.1 - Discover Interfaces as an introduction to APIs</h3>
+    		   <p>Application Programming Interfaces, or API's are software intermediaries that allows two applications to talk to each other. Within Java itself, Interface objects, function similarly to an API by exploiting Object's inheritance of interface methods. For an example of this concept look at the GameService and GameServiceImpl files in your project.</p>
+    		   <p>Create Interfaces for the Model, DAO, and Service objects in the Java Application.</p> 
+    		   
+    		   <h3 id="task3">Task 3.0 - Complete the Feature</h3>
+    		   <p>Now that we have prepared the service and DAO with our CRUD methods, we need to complete the feature.</p>
+    		   <p>Add to the view the ability to update and delete an existing record.</p>
+    		   <p>If you have time, add an select control that allows you to filter the records list by genre.</p>
+    		   <h4>Acceptance Criteria:</h4> 
+    		   <ul>
+    		   		<li> Successfully demo the CRUD feature of the running application.</li>
+    		   </ul>
+    		 </div>
 		   </section>
 		   
 <div data-ng-app="app">
 	<div data-ng-controller="DocsController as ctrl">
 			
 		   <section>
-		   	<h2 id="conceptsFromSetup"> Concepts Expedited from Setup </h2>
-		   		<table> 
-		   			<tr><td><strong>Eclipse for Java Developers</strong></td><td>2:17:23</td></tr>
-		  		   	<tr><td>Setting up a Java Maven Development Environment with Eclipse</td><td>0:41:17</td></tr>
-		  		   	<tr><td>Setting up a Java SE Development Environment with Eclipse</td><td>0:52:46</td></tr>
-		  		   	<tr><td>Using Git for a Java Project in Eclipse</td><td>0:43:20</td></tr>
-		  		   	<tr><td><strong>Getting Started With Git</strong></td><td>0:42:22</td></tr>
-		  		   	<tr><td>Course Overview</td><td>0:01:54</td></tr>
-		  		   	<tr><td>Get Up and Running with Git</td><td>0:40:28</td></tr>
-		  		   	<tr><td><strong>Java Fundamentals: The Java Language</strong></td><td>0:51:38</td></tr>
-		  		   	<tr><td>Course Overview	</td><td>0:01:24</td></tr>
-		  		   	<tr><td>Creating a Simple App</td><td>0:35:27</td></tr>
-		  		   	<tr><td>Introduction and Setting up Your Environment</td><td>0:14:47</td></tr>
-		  		   	<tr><td><strong>Lean Software Development Fundamentals</strong></td><td>0:23:54</td></tr>
-		  		   	<tr><td>Waterfall and Agile</td><td>0:23:54</td></tr>
-		  		   	<tr><td><strong>Maven Fundamentals</strong></td><td>0:24:17</td></tr>
-		  		   	<tr><td>IDE Integration</td><td>0:24:17</td></tr>
-		  		   	<tr><td><strong>Setting up a Java Development Environment</strong></td><td>0:31:40</td></tr>
-		  		   	<tr><td>Course Overview</td><td>0:01:29</td></tr>	
-		  		   	<tr><td>Installing and Running Java</td><td>0:18:56</td></tr>	
-		  		   	<tr><td>Packaging Java Applications</td><td>0:11:15</td></tr>	
-		  		   	<tr><td><strong>Spring Framework: Spring Fundamentals</strong></td><td>0:26:23</td></tr>	
-		  		   	<tr><td>Architecture and Project Setup</td><td>0:26:23</td></tr>	
-		   		</table>
-
+		     <div class="column">
+    		   	<h2 id="conceptsFromSetup"> Concepts Expedited from Setup </h2>
+    		   		<table> 
+    		   			<tr><td><strong>Eclipse for Java Developers</strong></td><td>2:17:23</td></tr>
+    		  		   	<tr><td>Setting up a Java Maven Development Environment with Eclipse</td><td>0:41:17</td></tr>
+    		  		   	<tr><td>Setting up a Java SE Development Environment with Eclipse</td><td>0:52:46</td></tr>
+    		  		   	<tr><td>Using Git for a Java Project in Eclipse</td><td>0:43:20</td></tr>
+    		  		   	<tr><td><strong>Getting Started With Git</strong></td><td>0:42:22</td></tr>
+    		  		   	<tr><td>Course Overview</td><td>0:01:54</td></tr>
+    		  		   	<tr><td>Get Up and Running with Git</td><td>0:40:28</td></tr>
+    		  		   	<tr><td><strong>Java Fundamentals: The Java Language</strong></td><td>0:51:38</td></tr>
+    		  		   	<tr><td>Course Overview	</td><td>0:01:24</td></tr>
+    		  		   	<tr><td>Creating a Simple App</td><td>0:35:27</td></tr>
+    		  		   	<tr><td>Introduction and Setting up Your Environment</td><td>0:14:47</td></tr>
+    		  		   	<tr><td><strong>Lean Software Development Fundamentals</strong></td><td>0:23:54</td></tr>
+    		  		   	<tr><td>Waterfall and Agile</td><td>0:23:54</td></tr>
+    		  		   	<tr><td><strong>Maven Fundamentals</strong></td><td>0:24:17</td></tr>
+    		  		   	<tr><td>IDE Integration</td><td>0:24:17</td></tr>
+    		  		   	<tr><td><strong>Setting up a Java Development Environment</strong></td><td>0:31:40</td></tr>
+    		  		   	<tr><td>Course Overview</td><td>0:01:29</td></tr>	
+    		  		   	<tr><td>Installing and Running Java</td><td>0:18:56</td></tr>	
+    		  		   	<tr><td>Packaging Java Applications</td><td>0:11:15</td></tr>	
+    		  		   	<tr><td><strong>Spring Framework: Spring Fundamentals</strong></td><td>0:26:23</td></tr>	
+    		  		   	<tr><td>Architecture and Project Setup</td><td>0:26:23</td></tr>	
+    		   		</table>
+              </div>
 			</section>
 			
 			<section>
+			  <div class="column">
 				<h2 id="techStackRef">Technology Stack Reference</h2>
 				<p>Helful Links on Java, HTML, JavasScript, Spring MVC4, Maven, AngularJS</p>
 				<div>
@@ -211,17 +240,20 @@
 						 </td>
 					</tr>
 				</table>
+				</div>
 				
-				<h2 id="projectStructure">Project Structure - The "Stack"</h2>
-				<ol>
-					<li>*.jsp (html) - The view that contains the structured HTML markup for the UI. </li>
-					<li>*.module.js - The AngularJS App declaration</li>
-					<li>*.controller.js - An AngularJS controller, which provides two-way model binding for displaying and interacting with JavaScript models.</li>
-					<li>*.service.js -  An AngularJS, which “consumes” the Java Server endpoints for RESTful data.</li>
-					<li>*Controller.java - contains the entry-point definitions URLs serving RESTful Objects and/or java pages containing syncronous Java Model and View pages.</li>
-					<li>*Service.java - The business logic layer, communicates with other services, and prepares and processes objects to be persisted and returned</li>
-					<li>*DAO.java - An object that implements the persistence layer, handling access, and queries to the data.  
-				</ol>   	
+				<div class="column">
+    				<h2 id="projectStructure">Project Structure - The "Stack"</h2>
+    				<ol>
+    					<li>*.jsp (html) - The view that contains the structured HTML markup for the UI. </li>
+    					<li>*.module.js - The AngularJS App declaration</li>
+    					<li>*.controller.js - An AngularJS controller, which provides two-way model binding for displaying and interacting with JavaScript models.</li>
+    					<li>*.service.js -  An AngularJS, which “consumes” the Java Server endpoints for RESTful data.</li>
+    					<li>*Controller.java - contains the entry-point definitions URLs serving RESTful Objects and/or java pages containing syncronous Java Model and View pages.</li>
+    					<li>*Service.java - The business logic layer, communicates with other services, and prepares and processes objects to be persisted and returned</li>
+    					<li>*DAO.java - An object that implements the persistence layer, handling access, and queries to the data.  
+    				</ol> 
+    			</div>  	
 		   </section>
 	</div>	   
 </div>
