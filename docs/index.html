@@ -20,11 +20,11 @@
   		    border: 2px solid;
 	    }
 	    
-	    body, h2 {
+	    .padding-top {
 	        padding-top: 65px;
 	    }
 	    
-	    table {
+	    .solid-table-border {
 	        border: 2px solid;
 	    }
 	    
@@ -41,7 +41,7 @@
             clear: both;
         }
 
-        /* Responsive layout - makes the three columns stack on top of each other instead of next to each other on smaller screens (600px wide or less) */
+        /* Responsive layout - makes the two columns stack on top of each other instead of next to each other on smaller screens (600px wide or less) */
         @media screen and (max-width: 600px) {
             .column {
                 width: 100%;
@@ -51,8 +51,7 @@
     </style>
   </head>
   
-  <body>
-      
+  <body class="padding-top">
 	<nav class="navbar navbar-expand-lg navbar-light bg-light fixed" aria-label="Main">
 	   <ul  class="navbar-nav mr-auto">
 		<li class="nav-item active"><a class="nav-link" href="#intro">Introduction </a></li> 
@@ -68,7 +67,7 @@
 	  
 	  <section>  
 	    <div class="column">
-          <div><h2 id="intro">Introduction - Read Me</h2></div>
+          <div><h2 class="padding-top" id="intro">Introduction - Read Me</h2></div>
 		  <p>The bootcamp project is a basic java webapp, Using SpringMVC, AngularJS, managed by Maven, and run with a Jetty plugin. Persistence mocked by a static collection.</p>
 		  <p>A full introduction on standing up a project like this can be found here: <a href="http://websystique.com/springmvc/spring-mvc-4-restful-web-services-crud-example-resttemplate/">Spring MVC 4 RESTFul Web Services CRUD Example</a></p>
 		  <p>This architecture was chosen for its simplicity to introduce those new to Java web applications to a very simple web app and was built by someone completely new to Java.</p>
@@ -86,10 +85,10 @@
 		</div>
 		
 		<div class="column">  
-		  <h2 id="day1">Day 1 - Project Group Workspace Setup</h2>
+		  <h2 class="padding-top" id="day1">Day 1 - Project Group Workspace Setup</h2>
 		  <p>In order to help troubleshoot and collaborate as a team during the bootcamp, after our first meeting, we standup a common Java web application local developer environment together.  Walking through a common setup using the Eclipse IDE will allow us to expedite introductory modules common to many online Java courses, and introduce some common environment technologies like Maven.</p>
 		  <p>Wait To Install</p>
-		  <table>
+		  <table class="solid-table-border">
 		  	<tr>
 		  		<td>
 		  			<p><strong>Java JDK 8 (Wait to Install)</strong></p> 
@@ -111,9 +110,9 @@
 		 </div>
 	  </section>
 		 
-		  <section>
-		     <div class="column">
-    		   <h2 id="projectTasks">Project Tasks</h2>
+	  <section>
+		<div class="column">
+    		  <h2 class="padding-top" id="projectTasks">Project Tasks</h2>
     		  <p>With the Environment that we setup together on your local machine you are going to perform “Project Tasks” alongside select Pluralsight modules which provide opportunities to demonstrate your current skill and progression throughout of the bootcamp.</p>
     
     		  <h3 id="task1">Task 1.0 - Learning Naming Conventions</h3>
@@ -164,8 +163,8 @@
 			
 		   <section>
 		     <div class="column">
-    		   	<h2 id="conceptsFromSetup"> Concepts Expedited from Setup </h2>
-    		   		<table> 
+    		   	<h2 class="padding-top" id="conceptsFromSetup"> Concepts Expedited from Setup </h2>
+    		   		<table class="solid-table-border"> 
     		   			<tr><td><strong>Eclipse for Java Developers</strong></td><td>2:17:23</td></tr>
     		  		   	<tr><td>Setting up a Java Maven Development Environment with Eclipse</td><td>0:41:17</td></tr>
     		  		   	<tr><td>Setting up a Java SE Development Environment with Eclipse</td><td>0:52:46</td></tr>
@@ -193,14 +192,14 @@
 			
 			<section>
 			  <div class="column">
-				<h2 id="techStackRef">Technology Stack Reference</h2>
+				<h2 class="padding-top" id="techStackRef">Technology Stack Reference</h2>
 				<p>Helful Links on Java, HTML, JavasScript, Spring MVC4, Maven, AngularJS</p>
 				<div>
 					<h3>AngularJs App</h3>
 					<div>{{ctrl.controllerMessage}}</div>
 					<div>{{ctrl.serviceMessage}}</div>
 				</div>
-				<table>
+				<table class="solid-table-border">
 					<tr>
 						<th>Quick Info</th>
 						<th>Helpful Link</th>
@@ -243,7 +242,7 @@
 				</div>
 				
 				<div class="column">
-    				<h2 id="projectStructure">Project Structure - The "Stack"</h2>
+    				<h2 class="padding-top" id="projectStructure">Project Structure - The "Stack"</h2>
     				<ol>
     					<li>*.jsp (html) - The view that contains the structured HTML markup for the UI. </li>
     					<li>*.module.js - The AngularJS App declaration</li>
@@ -251,7 +250,7 @@
     					<li>*.service.js -  An AngularJS, which “consumes” the Java Server endpoints for RESTful data.</li>
     					<li>*Controller.java - contains the entry-point definitions URLs serving RESTful Objects and/or java pages containing syncronous Java Model and View pages.</li>
     					<li>*Service.java - The business logic layer, communicates with other services, and prepares and processes objects to be persisted and returned</li>
-    					<li>*DAO.java - An object that implements the persistence layer, handling access, and queries to the data.  
+    					<li>*DAO.java - An object that implements the persistence layer, handling access, and queries to the data.</li>
     				</ol> 
     			</div>  	
 		   </section>
