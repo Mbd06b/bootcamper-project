@@ -18,3 +18,18 @@
 		tr:nth-child(even) {
 		  background-color: #dddddd;
 		}
+
+	 .fixed {
+  		    position: fixed;
+  		    top: 0;
+  		    padding: 5px;
+  		    border: 2px solid;
+	    }
+	    
+	 .padding-top {
+	        padding-top: 65px;
+	    }
+	    
+	 .solid-table-border {
+	        border: 2px solid;
+	    }
