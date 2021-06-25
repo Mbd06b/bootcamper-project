@@ -13,41 +13,7 @@
       <link rel="stylesheet" href="styles/style.css">
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" crossorigin="anonymous">
     <style>
-	    .fixed {
-  		    position: fixed;
-  		    top: 0;
-  		    padding: 5px;
-  		    border: 2px solid;
-	    }
-	    
-	    .padding-top {
-	        padding-top: 65px;
-	    }
-	    
-	    .solid-table-border {
-	        border: 2px solid;
-	    }
-	    
-	    .column {
-            float: left;
-            width: 50%;
-            padding:10px;
-        }
-
-        /* Clear floats after the columns */
-        .row:after {
-            content: "";
-            display: table;
-            clear: both;
-        }
-
-        /* Responsive layout - makes the two columns stack on top of each other instead of next to each other on smaller screens (600px wide or less) */
-        @media screen and (max-width: 600px) {
-            .column {
-                width: 100%;
-            }
-        }
-	    
+	  
     </style>
   </head>
   
@@ -62,11 +28,11 @@
 		<li class="nav-item"><a class="nav-link" href="#projectStructure">Project Structure</a></li>  
        </ul>
   	</nav>
-  	<div class="content row">
+  	
+  	<div class="content">
 	  <div><h1>Java Bootcamp Companion Project </h1></div>
 	  
 	  <section>  
-	    <div class="column">
           <div><h2 class="padding-top" id="intro">Introduction - Read Me</h2></div>
 		  <p>The bootcamp project is a basic java webapp, Using SpringMVC, AngularJS, managed by Maven, and run with a Jetty plugin. Persistence mocked by a static collection.</p>
 		  <p>A full introduction on standing up a project like this can be found here: <a href="http://websystique.com/springmvc/spring-mvc-4-restful-web-services-crud-example-resttemplate/">Spring MVC 4 RESTFul Web Services CRUD Example</a></p>
@@ -82,9 +48,8 @@
 		  	</ul>	
 		  </div>
 		  <p>It's important to note that bootcampers are going to have wide experiences with the project. Those learning Java, HTML/CSS, and JavaScript from scratch should spend more time drilling the languages, and use this as an aspirational example to guide their learning, while experienced bootcampers could completely reform the project to demonstrate what they are ready to do.</p>
-		</div>
 		
-		<div class="column">  
+		
 		  <h2 class="padding-top" id="day1">Day 1 - Project Group Workspace Setup</h2>
 		  <p>In order to help troubleshoot and collaborate as a team during the bootcamp, after our first meeting, we standup a common Java web application local developer environment together.  Walking through a common setup using the Eclipse IDE will allow us to expedite introductory modules common to many online Java courses, and introduce some common environment technologies like Maven.</p>
 		  <p>Wait To Install</p>
@@ -107,11 +72,9 @@
 		  		</td>
 		  	</tr>
 		  </table>
-		 </div>
 	  </section>
 		 
 	  <section>
-		<div class="column">
     		  <h2 class="padding-top" id="projectTasks">Project Tasks</h2>
     		  <p>With the Environment that we setup together on your local machine you are going to perform “Project Tasks” alongside select Pluralsight modules which provide opportunities to demonstrate your current skill and progression throughout of the bootcamp.</p>
     
@@ -155,14 +118,12 @@
     		   <ul>
     		   		<li> Successfully demo the CRUD feature of the running application.</li>
     		   </ul>
-    		 </div>
 		   </section>
 		   
 <div data-ng-app="app">
 	<div data-ng-controller="DocsController as ctrl">
 			
 		   <section>
-		     <div class="column">
     		   	<h2 class="padding-top" id="conceptsFromSetup"> Concepts Expedited from Setup </h2>
     		   		<table class="solid-table-border"> 
     		   			<tr><td><strong>Eclipse for Java Developers</strong></td><td>2:17:23</td></tr>
@@ -187,11 +148,9 @@
     		  		   	<tr><td><strong>Spring Framework: Spring Fundamentals</strong></td><td>0:26:23</td></tr>	
     		  		   	<tr><td>Architecture and Project Setup</td><td>0:26:23</td></tr>	
     		   		</table>
-              </div>
 			</section>
 			
 			<section>
-			  <div class="column">
 				<h2 class="padding-top" id="techStackRef">Technology Stack Reference</h2>
 				<p>Helful Links on Java, HTML, JavasScript, Spring MVC4, Maven, AngularJS</p>
 				<div>
@@ -239,9 +198,7 @@
 						 </td>
 					</tr>
 				</table>
-				</div>
 				
-				<div class="column">
     				<h2 class="padding-top" id="projectStructure">Project Structure - The "Stack"</h2>
     				<ol>
     					<li>*.jsp (html) - The view that contains the structured HTML markup for the UI. </li>
@@ -252,7 +209,6 @@
     					<li>*Service.java - The business logic layer, communicates with other services, and prepares and processes objects to be persisted and returned</li>
     					<li>*DAO.java - An object that implements the persistence layer, handling access, and queries to the data.</li>
     				</ol> 
-    			</div>  	
 		   </section>
 	</div>	   
 </div>
