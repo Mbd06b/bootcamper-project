@@ -20,7 +20,7 @@
 		}
 
 	 .fixed {
-  		    position: sticky;
+  		    position: sticky !important;
   		    top: 0;
   		    padding: 5px;
   		    border: 2px solid;
