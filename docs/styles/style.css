@@ -33,3 +33,25 @@
 	 .solid-table-border {
 	        border: 2px solid;
 	    }
+	    	    
+	    
+	   /* INFOGRAPHIC OVERLAY */ 
+	   .infographic-overlay {
+	   	   background: url("../resources/InfographicPreview.png");
+	   	   background-repeat: no-repeat;
+	       width: 742px;
+   		   height: 331px;
+		 
+    	}
+    			 
+		 .overlay-link {
+		    display:inline-block;
+		    width:100%;
+		    height:100%;
+		}
+		 
+	   .infographic-overlay:hover {
+			box-shadow: inset 0px 0px 0 5000px rgba(0,0,0,0.5);
+		}
+	   
+ 
