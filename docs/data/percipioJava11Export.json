@@ -1,0 +1,632 @@
+[
+        {
+          "completionStatus": "STARTED",
+          "__typename": "Course",
+          "id": "27233f50-dead-11e8-876a-c330aa5d614f",
+          "title": "Java SE 11: Introduction to Java SE & the NetBeans IDE",
+          "type": "COURSE",
+          "description": "Discover how to get up and running with the Java Development Environment and with the NetBeans IDE to create Java programs. During this course you will discover the purpose of a computer program and the nature of platform-dependency. Learn about Java classes, Java&#39;s program structure, and key Java language features. Confirm your Java Development Environment. Install and verify the Java Development Kit (JDK) on Linux. Compile and run a Java program from the command line. Install and explore the Netbeans IDE. Employ NetBeans to create a Java project and class and add a package to it. Write a main method. Use System.out.println and System.err.println to write to the console. Finally, conclude by recognizing NetBeans syntax errors.",
+          "licensed": true,
+          "modality": "WATCH",
+          "languageCode": "en",
+          "locale": "en-US",
+          "assessmentTestId": "47154328-0725-4078-80e3-2ab8199d1b48",
+          "completionConfig": "ASSESSMENT_ONLY",
+          "duration": 3155,
+          "imageUrl": "https://cdn2.percipio.com/public/b/1306cb42-6cb4-46ef-933d-cd7665808c5f/image001.jpg",
+          "imageAltText": null,
+          "technologies": [
+            {
+              "version": "SE 11",
+              "title": "Java",
+              "__typename": "TechnologyType"
+            }
+          ],
+          "rating": {
+            "totalCount": 426,
+            "hasLiked": false,
+            "__typename": "Rating"
+          },
+          "pin": null
+        },
+        {
+          "completionStatus": "STARTED",
+          "__typename": "Course",
+          "id": "16dba020-e285-11e8-8b80-bf03d5c2cd93",
+          "title": "Java SE 11: Variables & Operators",
+          "type": "COURSE",
+          "description": "Explore the use of variables and operations using strings and numeric types in Java. During this course, you will declare, initialize, and concatenate Java string variables. See how to use the indexOf and substring functions. Declare and initialize Integer and floating-point variables. Learn to modify numeric variables via basic Java mathematical operators. Explore operator precedence rules. Set precedence through parentheses in a Java expression. Assign and concatenate integers and strings. Finally, as a review exercise, you will concatenate various Java variable types to create strings.",
+          "licensed": true,
+          "modality": "WATCH",
+          "languageCode": "en",
+          "locale": "en-US",
+          "assessmentTestId": "e87c0049-fc42-41b9-9c66-dbf018f04ef3",
+          "completionConfig": "ASSESSMENT_ONLY",
+          "duration": 3203,
+          "imageUrl": "https://cdn2.percipio.com/public/b/36263e46-7523-4865-b4d7-856759160b24/image001.jpg",
+          "imageAltText": null,
+          "technologies": [
+            {
+              "version": "SE 11",
+              "title": "Java",
+              "__typename": "TechnologyType"
+            }
+          ],
+          "rating": {
+            "totalCount": 239,
+            "hasLiked": false,
+            "__typename": "Rating"
+          },
+          "pin": null
+        },
+        {
+          "completionStatus": "NOT_STARTED",
+          "__typename": "Course",
+          "id": "9ca7e760-e431-11e8-a1d6-17e0846634bd",
+          "title": "Java SE 11: Expressions, Arrays, & Loops",
+          "type": "COURSE",
+          "description": "Discover how to work with branching and Boolean expressions using if/else statements in Java.During this course, you will examine what a Boolean expression is, and how create IF/ELSE statement branches. Topics include the following: how to employ Boolean Operators, identifying the results of various Boolean expressions, how to create simple and nested IF/ELSE statements, and study the characteristics of arrays. Other subjects covered include how to declare and initialize arrays, access array elements and set their values, loop array elements,  and create a FOR loop to print the elements of an array. Finally, you will learn how to use the BREAK and CONTINUE functions to control program flow in a loop.",
+          "licensed": true,
+          "modality": "WATCH",
+          "languageCode": "en",
+          "locale": "en-US",
+          "assessmentTestId": "c2be7048-414d-468f-a1fb-ffa0f40a3076",
+          "completionConfig": "ASSESSMENT_ONLY",
+          "duration": 2648,
+          "imageUrl": "https://cdn2.percipio.com/public/b/c0c4bbc4-f5fd-4f6d-8274-acfd0fa1d1e8/image001.jpg",
+          "imageAltText": null,
+          "technologies": [
+            {
+              "version": "SE 11",
+              "title": "Java",
+              "__typename": "TechnologyType"
+            }
+          ],
+          "rating": {
+            "totalCount": 180,
+            "hasLiked": false,
+            "__typename": "Rating"
+          },
+          "pin": null
+        },
+        {
+          "completionStatus": "NOT_STARTED",
+          "__typename": "Course",
+          "id": "a7302340-ecac-11e8-b1f7-79159b9cf7ad",
+          "title": "Java SE 11: Objects & Classes",
+          "type": "COURSE",
+          "description": "Explore the essential elements of Java objects, classes, references and methods. During this course, you will discover the characteristics of a Java object. Define Java object components and properties. Use object references. Work with two References for one object. Study how an array of objects is stored in memory. Describe the basic forms of a constructor and a method. Other topics include how to create a class that implements a constructor, how to define method parameters, employ method overloading, and implement methods that return values of a specified type. Finally, you will study how to distinguish between local and instance variables.",
+          "licensed": true,
+          "modality": "WATCH",
+          "languageCode": "en",
+          "locale": "en-US",
+          "assessmentTestId": "51c0cbc5-cd7c-4e95-847e-99cad724a68c",
+          "completionConfig": "ASSESSMENT_ONLY",
+          "duration": 3369,
+          "imageUrl": "https://cdn2.percipio.com/public/b/006f1d34-b111-4b4c-8d83-23d23d239e39/image001.jpg",
+          "imageAltText": null,
+          "technologies": [
+            {
+              "version": "SE 11",
+              "title": "Java",
+              "__typename": "TechnologyType"
+            }
+          ],
+          "rating": {
+            "totalCount": 243,
+            "hasLiked": false,
+            "__typename": "Rating"
+          },
+          "pin": null
+        },
+        {
+          "completionStatus": "NOT_STARTED",
+          "__typename": "Course",
+          "id": "b2d54be0-ef08-11e8-bd32-7758c3a3b2b2",
+          "title": "Java SE 11: Encapsulation",
+          "type": "COURSE",
+          "description": "Explore object-oriented programming concepts and techniques, in Java. During this course, you will discover various static methods and variables and explore a number of topics. These include the following: how to create and access static members, how to employ constants to represent unchangeable values, how to  change numeric variable types through promotion and casting, and convert data values. Other topics include how to convert strings to their primitive numeric types, ciscover access control, and how to distinguish between the public interface and the internal workings of a class. Next, you will learn how to use public and private access modifiers, study encapsulation with object-oriented design, and create class setter methods with value checking. As you progress, other key areas include how to add method parameters to overload a constructor, how to pass an Object Reference, and pass a value. Finally, you will learn how to reassign a reference value in a method.",
+          "licensed": true,
+          "modality": "WATCH",
+          "languageCode": "en",
+          "locale": "en-US",
+          "assessmentTestId": "e3744ad2-2183-46dd-80a4-a940e686db0e",
+          "completionConfig": "ASSESSMENT_ONLY",
+          "duration": 3196,
+          "imageUrl": "https://cdn2.percipio.com/public/b/b0ac9c13-f6d4-42e0-a518-b350f0bdcb85/image001.jpg",
+          "imageAltText": null,
+          "technologies": [
+            {
+              "version": "SE 11",
+              "title": "Java",
+              "__typename": "TechnologyType"
+            }
+          ],
+          "rating": {
+            "totalCount": 175,
+            "hasLiked": false,
+            "__typename": "Rating"
+          },
+          "pin": null
+        },
+        {
+          "completionStatus": "NOT_STARTED",
+          "__typename": "Course",
+          "id": "2e6cbdf0-ef0a-11e8-bd32-7758c3a3b2b2",
+          "title": "Java SE 11: Strings & Primitive Data Types",
+          "type": "COURSE",
+          "description": "Explore working with strings in Java, including the use of mutable strings through the StringBuilder class. In this course, you will discover the nature and use of strings and primitive data types, in Java. Observe how to compare and sequence strings, through equality tests and lexicography. Discover mutable strings, the advantages of string builder, and how to concatenate strings. Next, split a string via a regular expression, and learn how to split a paragraph of text into words in a string and iterate over individual words.Other topics include how to consider primitive data types, how to perform the standard modulus mathematical operation on an integer. Finally, you will use combined assignment operators to abbreviate common operations.",
+          "licensed": true,
+          "modality": "WATCH",
+          "languageCode": "en",
+          "locale": "en-US",
+          "assessmentTestId": "32b9fa62-9984-41b9-ae11-d578194c0722",
+          "completionConfig": "ASSESSMENT_ONLY",
+          "duration": 2967,
+          "imageUrl": "https://cdn2.percipio.com/public/b/54e26153-342a-4cb5-ba28-7f4f6d674f9e/image001.jpg",
+          "imageAltText": null,
+          "technologies": [
+            {
+              "version": "SE 11",
+              "title": "Java",
+              "__typename": "TechnologyType"
+            }
+          ],
+          "rating": {
+            "totalCount": 127,
+            "hasLiked": false,
+            "__typename": "Rating"
+          },
+          "pin": null
+        },
+        {
+          "completionStatus": "NOT_STARTED",
+          "__typename": "Course",
+          "id": "f7835ff0-e285-11e8-b3dd-91875b5e83a3",
+          "title": "Java SE 11: JDK Objects & Nested Loops",
+          "type": "COURSE",
+          "description": "Examine the nature and use of Java Development Kit (JDK) objects and nested loops. During this course, you will explore JDK API documentation to learn about Java class libraries. See how to display a date with the LocalDateTime object, with the Java DateTimeFormatter, or with  the calendar. Parse a localized date and convert it to ISO format. Parse the ARGS array, and use it in the main method, to accept command line arguments. Observe how to use a WHILE loop construct and nest a WHILE loop. Run a standard FOR loop and nest a FOR loop within the body of another loop.",
+          "licensed": true,
+          "modality": "WATCH",
+          "languageCode": "en",
+          "locale": "en-US",
+          "assessmentTestId": "b0242c87-c32d-4c0e-8602-dfb9aba305b1",
+          "completionConfig": "ASSESSMENT_ONLY",
+          "duration": 2649,
+          "imageUrl": "https://cdn2.percipio.com/public/b/2f0d7da7-1400-4d74-8211-92718c45b576/image001.jpg",
+          "imageAltText": null,
+          "technologies": [
+            {
+              "version": "SE 11",
+              "title": "Java",
+              "__typename": "TechnologyType"
+            }
+          ],
+          "rating": {
+            "totalCount": 94,
+            "hasLiked": false,
+            "__typename": "Rating"
+          },
+          "pin": null
+        },
+        {
+          "completionStatus": "NOT_STARTED",
+          "__typename": "Course",
+          "id": "84fae560-ecae-11e8-b1f7-79159b9cf7ad",
+          "title": "Java SE 11: Flow Control & Debugging",
+          "type": "COURSE",
+          "description": "Discover how to implement flow control using ternary, if/else, and switch statements in Java. During this course, you will  start by exploring the use of two dimensional arrays, enumerated types, and the debugging features of the NetBeans IDE. Next, see how to use a ternary conditional statement, and how to chain IF and ELSE constructs together. As you progress you will discover how to implement a SWITCH statement, and other key topics such as how to create a SWITCH statement based on an enumerated type. You will also learn how to employ the Eclipse debugger, set debugging breakpoints that halt program execution, and let you step through the code. Finally, you will inspect the value of variables to debug a program.",
+          "licensed": true,
+          "modality": "WATCH",
+          "languageCode": "en",
+          "locale": "en-US",
+          "assessmentTestId": "f6f26c47-0c0f-4c1a-bf52-0b4633e7b10e",
+          "completionConfig": "ASSESSMENT_ONLY",
+          "duration": 2564,
+          "imageUrl": "https://cdn2.percipio.com/public/b/056c3e4e-2609-4a67-9b5b-6b7457245fa9/image001.jpg",
+          "imageAltText": null,
+          "technologies": [
+            {
+              "version": "SE 11",
+              "title": "Java",
+              "__typename": "TechnologyType"
+            }
+          ],
+          "rating": {
+            "totalCount": 90,
+            "hasLiked": false,
+            "__typename": "Rating"
+          },
+          "pin": null
+        },
+        {
+          "completionStatus": "NOT_STARTED",
+          "__typename": "Course",
+          "id": "f5297140-037d-11e9-9a43-89170452ca16",
+          "title": "Java SE 11: Inheritance, Polymorphism, & Abstraction",
+          "type": "COURSE",
+          "description": "Examine the methods of polymorphism, inheritance and abstraction, in Java. During this course, you will discuss inheritance in the context of a Java class hierarchy. See how to create a subclass. Override a method in the superclass. Use the SUPER keyword, to reference the superclass. Discover Polymorphism. Cast a superclass reference to the subclass type. Test an object&#39;s type, with the INSTANCEOF operator. Contrast Abstract and Non-Abstract Classes. Finally, extend an abstract class and form a class hierarchy.",
+          "licensed": true,
+          "modality": "WATCH",
+          "languageCode": "en",
+          "locale": "en-US",
+          "assessmentTestId": "244334fc-58b3-4ef7-b60e-07f332979c6c",
+          "completionConfig": "ASSESSMENT_ONLY",
+          "duration": 2512,
+          "imageUrl": "https://cdn2.percipio.com/public/b/bccd850d-9d7f-4ec3-bf14-5777902f05db/image001.jpg",
+          "imageAltText": null,
+          "technologies": [
+            {
+              "version": "SE 11",
+              "title": "Java",
+              "__typename": "TechnologyType"
+            }
+          ],
+          "rating": {
+            "totalCount": 137,
+            "hasLiked": false,
+            "__typename": "Rating"
+          },
+          "pin": null
+        },
+        {
+          "completionStatus": "NOT_STARTED",
+          "__typename": "Course",
+          "id": "8d8ecd50-fc66-11e8-ab3c-99c1808d5fee",
+          "title": "Java SE 11: Inheritance, Lists, Inference, & Lambda Expressions",
+          "type": "COURSE",
+          "description": "Explore the use of inheritance through interfaces and interface casting. During this course, you will explore the functions of key Java elements. Key subject areas include the following: how to override the toString method, how to understand the Multiple Inheritance Dilemma, distinguish between interfaces and abstract classes and implement a Class Interface. Other topics include how to cast to an interface reference to allow object method access; how to study the array list class, and store objects with an array list. You&#39;ll also learn how to concatenate two arrays into a single ArrayList, convert an array to an ArrayList, and use the Stack collection, to push and pop objects. As you progress, you will observe how to employ the local variable type inference feature, to declare local variables, using var. Conclude by writing a simple lambda expression that consumes a predicate.",
+          "licensed": true,
+          "modality": "WATCH",
+          "languageCode": "en",
+          "locale": "en-US",
+          "assessmentTestId": "51bc38ec-329d-4f2f-9065-440ddbed5825",
+          "completionConfig": "ASSESSMENT_ONLY",
+          "duration": 3692,
+          "imageUrl": "https://cdn2.percipio.com/public/b/aecae2cd-e659-4931-8865-008be13373f9/image001.jpg",
+          "imageAltText": null,
+          "technologies": [
+            {
+              "version": "SE 11",
+              "title": "Java",
+              "__typename": "TechnologyType"
+            }
+          ],
+          "rating": {
+            "totalCount": 120,
+            "hasLiked": false,
+            "__typename": "Rating"
+          },
+          "pin": null
+        },
+        {
+          "completionStatus": "NOT_STARTED",
+          "__typename": "Course",
+          "id": "e1d2c8b0-fd62-11e8-97cd-d175b22f043d",
+          "title": "Java SE 11: Exception Handling",
+          "type": "COURSE",
+          "description": "During this course, you will explore the use of try/catch blocks for exception handling in Java, including the different types of throwable classes and some best practices examples. You will begin with learning about what conditions a Throwable class of type Error and RuntimeExceptions. Next, learn how to recognize uncaught exceptions and identify errors in the call stack.  From there you will move on to how to manage NetBeans flags to handle errors, and catch multiple exceptions that can be thrown from a block of code. Other topics include the following: how to determine which exceptions are thrown, based on an object&#39;s constructors, methods, or API documentation;  how to employ a Checked Exception; how to handle exceptions thrown by methods; rectify bad exception handling; propagate Exceptions; handle uncaught exceptions that are higher in the call stack. Finally, you will learn how to execute the finally block, when a try block exists.",
+          "licensed": true,
+          "modality": "WATCH",
+          "languageCode": "en",
+          "locale": "en-US",
+          "assessmentTestId": "6f3623f4-606b-46fc-b515-c52a6814fa98",
+          "completionConfig": "ASSESSMENT_ONLY",
+          "duration": 3860,
+          "imageUrl": "https://cdn2.percipio.com/public/b/9741cd89-ff73-4561-bade-1c183cf1f6ac/image001.jpg",
+          "imageAltText": null,
+          "technologies": [
+            {
+              "version": "SE 11",
+              "title": "Java",
+              "__typename": "TechnologyType"
+            }
+          ],
+          "rating": {
+            "totalCount": 113,
+            "hasLiked": false,
+            "__typename": "Rating"
+          },
+          "pin": null
+        },
+        {
+          "completionStatus": "NOT_STARTED",
+          "__typename": "Course",
+          "id": "88571c40-fd63-11e8-97cd-d175b22f043d",
+          "title": "Java SE 11: Modular Design",
+          "type": "COURSE",
+          "description": "Examine how to package Java applications through JAR files and explore modular development and distribution issues. During this course, you will start by learning how to deploy an application as a JAR file, to ease Java program management. Next, create a deployment JAR file in NetBeans. Run a JAR File from the Command Line. Discover client/server multitier architecture.  From there, you will study the principles of modular design and development in Java and JDK 9, before examining JAR file distribution and dependency issues. Consider JDK 9 modules and class accessibility. Conclude, as an exercise, by creating and running a modular application. ",
+          "licensed": true,
+          "modality": "WATCH",
+          "languageCode": "en",
+          "locale": "en-US",
+          "assessmentTestId": "83fd40b8-dcf1-4f47-9a78-458674ff66d4",
+          "completionConfig": "ASSESSMENT_ONLY",
+          "duration": 2605,
+          "imageUrl": "https://cdn2.percipio.com/public/b/6b28d1fe-e28d-4489-ac37-55e391dcf263/image001.jpg",
+          "imageAltText": null,
+          "technologies": [
+            {
+              "version": "SE 11",
+              "title": "Java",
+              "__typename": "TechnologyType"
+            }
+          ],
+          "rating": {
+            "totalCount": 66,
+            "hasLiked": false,
+            "__typename": "Rating"
+          },
+          "pin": null
+        },
+        {
+          "completionStatus": "NOT_STARTED",
+          "__typename": "Course",
+          "id": "0e7585a0-fd64-11e8-97cd-d175b22f043d",
+          "title": "Java SE 11: JShell",
+          "type": "COURSE",
+          "description": "Explore the features and functions of the JShell REPL, read–eval–print loop process. During this course, you will discover how it differs from coding in an IDE, Integrated Development Environment. See how to launch Java&#39;s JShell, Create JShell snippets, JShell scratch, and traditional variables. Employ the list, edit, and drop JShell commands. Use the save and open JShell commands. Examine vars, method, types, and imports JShell commands. Enhance the IDE with JShell. Incorporate JShell in the NetBeans IDE.",
+          "licensed": true,
+          "modality": "WATCH",
+          "languageCode": "en",
+          "locale": "en-US",
+          "assessmentTestId": "5c69e366-7662-40c2-a177-9078f4ac635a",
+          "completionConfig": "ASSESSMENT_ONLY",
+          "duration": 2716,
+          "imageUrl": "https://cdn2.percipio.com/public/b/bda3cf71-04d5-417f-b780-cfb84b585722/image001.jpg",
+          "imageAltText": null,
+          "technologies": [
+            {
+              "version": "SE 11",
+              "title": "Java",
+              "__typename": "TechnologyType"
+            }
+          ],
+          "rating": {
+            "totalCount": 54,
+            "hasLiked": false,
+            "__typename": "Rating"
+          },
+          "pin": null
+        },
+        {
+          "completionStatus": "NOT_STARTED",
+          "__typename": "Course",
+          "id": "d44f034b-5192-40d9-b065-695489c7a1f7",
+          "title": "Java OOP: Understanding Inheritance & Polymorphism in Java",
+          "type": "COURSE",
+          "description": "<p>In this course, you will explore the basics of inheritance and run-time polymorphism in Java, and how these concepts can be used to model Is-A relationships. Begin with an introduction to inheritance, and how to identify its advantages and applications. You will then apply inheritance to model real-world entities. Next, learn the concepts of polymorphism, its advantages and applications. Then move on to recognizing how the methods derived from java.lang.Object work, and also how all built-in Java classes possess the methods derived from java.lang.Object. You will examine how objects of derived classes have independent copies of member variables, even from the derived class. Following an introduction to the Is-A relationship, you will learn how to recognize, in single inheritance, that every object of the derived class is an object of the base class, but not every object of the base class is an object of the derived class. Explore how to upcast and downcast, and learn how downcasting can sometimes be dangerous. Finally, learn how one base class can be created with multiple derived classes.</p>",
+          "licensed": true,
+          "modality": "WATCH",
+          "languageCode": "en",
+          "locale": "en-US",
+          "assessmentTestId": "5e37791e-0517-4d94-9aa3-1875e7541c37",
+          "completionConfig": "ASSESSMENT_ONLY",
+          "duration": 5188,
+          "imageUrl": "https://cdn2.percipio.com/public/c/course/images/saved/d44f034b-5192-40d9-b065-695489c7a1f7/db44837d-5c34-4b53-9c4c-0c4370b65bfe.jpg",
+          "imageAltText": "Vitthal Srinivasan, Software Engineer and Big Data Expert",
+          "technologies": [
+            {
+              "version": "SE 13",
+              "title": "Java",
+              "__typename": "TechnologyType"
+            }
+          ],
+          "rating": {
+            "totalCount": 84,
+            "hasLiked": false,
+            "__typename": "Rating"
+          },
+          "pin": null
+        },
+        {
+          "completionStatus": "NOT_STARTED",
+          "__typename": "Course",
+          "id": "d2b96339-3290-4536-bf8e-3e590841c123",
+          "title": "Java OOP: The Role of Constructors in Inheritance",
+          "type": "COURSE",
+          "description": "<p>In this course, you will learn the role of constructors and how to use the super keyword in architecting inheritance hierarchies in Java. You will begin by identifying the role of access modifiers and recognizing the basics of superclass constructors. When you add your own constructor, you will see that Java takes away the default no-argument constructor it had provided. You will learn how to apply the two ways of initializing derived classes: implement an explicit no argument constructor in the base class or use the super keyword and have only parameterized constructors in both the base and derived classes. You will recognize that a base class&#39;s constructor is invoked when a derived class object is instantiated and identify what happens when there is a base and derived class that have many different constructors. You will be able to initialize member variables: add a member variable into a derived class and ensure it is correctly initialized, even in addition to any invocations of the base class constructor.</p>",
+          "licensed": true,
+          "modality": "WATCH",
+          "languageCode": "en",
+          "locale": "en-US",
+          "assessmentTestId": "56823086-ab42-406e-b497-ab7c103c5b28",
+          "completionConfig": "ASSESSMENT_ONLY",
+          "duration": 3499,
+          "imageUrl": "https://cdn2.percipio.com/public/c/course/images/saved/d2b96339-3290-4536-bf8e-3e590841c123/5e12b14e-6414-4b43-b9fb-897d80275617.jpg",
+          "imageAltText": "Vitthal Srinivasan, Software Engineer and Big Data Expert",
+          "technologies": [
+            {
+              "version": "SE 13",
+              "title": "Java",
+              "__typename": "TechnologyType"
+            }
+          ],
+          "rating": {
+            "totalCount": 56,
+            "hasLiked": false,
+            "__typename": "Rating"
+          },
+          "pin": null
+        },
+        {
+          "completionStatus": "NOT_STARTED",
+          "__typename": "Course",
+          "id": "de05153f-fb93-4ca0-a176-bbe19e262e96",
+          "title": "Java OOP: Multi-level Inheritance",
+          "type": "COURSE",
+          "description": "<p>In this course, learners will focus on creation of multilevel inheritance in Java and how such hierarchies include child and grand-child classes that all inherit from a common ancestor base class. Begin with an introduction to multilevel inheritance, and how you can access multiple derived classes by using a base class in multilevel inheritance. Explore use of the instanceof operator, where you can check that an object is an instance of every class in its inheritance hierarchy. Concerning the Is-A Relationship, you will learn how to apply multilevel inheritance when every object of the derived class is an object of the base class, but not every object of the base class is an object of the derived class. Examine downcasting; see how to upcast multiple levels; learn why downcasting is very dangerous; and perform various upcasting operations. After moving on to multilevel inheritance hierarchies, you will construct two parallel base classes and derived classes for each of those base classes. Finally, explore use of the extends keyword, recognizing situations where multiple inheritance is allowed.</p>",
+          "licensed": true,
+          "modality": "WATCH",
+          "languageCode": "en",
+          "locale": "en-US",
+          "assessmentTestId": "ff6fc227-a9a1-464d-a10a-03449a7e4d42",
+          "completionConfig": "ASSESSMENT_ONLY",
+          "duration": 3604,
+          "imageUrl": "https://cdn2.percipio.com/public/c/course/images/saved/de05153f-fb93-4ca0-a176-bbe19e262e96/452a51c1-8282-4350-b8cb-bba4ab4aa447.jpg",
+          "imageAltText": "Vitthal Srinivasan, Software Engineer and Big Data Expert",
+          "technologies": [
+            {
+              "version": "SE 13",
+              "title": "Java",
+              "__typename": "TechnologyType"
+            }
+          ],
+          "rating": {
+            "totalCount": 54,
+            "hasLiked": false,
+            "__typename": "Rating"
+          },
+          "pin": null
+        },
+        {
+          "completionStatus": "NOT_STARTED",
+          "__typename": "Course",
+          "id": "92a683b6-4e49-4a88-9543-69a3979a1333",
+          "title": "Java OOP: Run-time & Compile-time Polymorphism",
+          "type": "COURSE",
+          "description": "<p>In this 9-video course, you will learn about specific contrasts between run-time, compile-time polymorphism, and inheritance hierarchy in Java, including use of the Override annotation and type promotions in method overloading. Beginning with an introduction to polymorphism, you will examine run-time and compile-time polymorphism and recognize how run-time polymorphism works. In other tutorials, participants will look at the use of the &#64;Override annotation, then look at how polymorphism works in the presence of a multilevel inheritance hierarchy, which leads on to discovering how easy it is to add a class into an inheritance hierarchy. You will then be introduced to the use of compile-time polymorphism and method overriding. To understand type promotion, you will begin to use compile-time polymorphism, including type promotions. In addition, you will learn how to recognize that compile-time polymorphism does not include type demotions. As the course concludes, you will learn how to use a combination of run-time and compile-time polymorphism.</p>",
+          "licensed": true,
+          "modality": "WATCH",
+          "languageCode": "en",
+          "locale": "en-US",
+          "assessmentTestId": "77e37f36-fd2a-48f0-affd-4dcc61e200f2",
+          "completionConfig": "ASSESSMENT_ONLY",
+          "duration": 5141,
+          "imageUrl": "https://cdn2.percipio.com/public/c/course/images/saved/92a683b6-4e49-4a88-9543-69a3979a1333/d5067d24-c884-4a7b-bce2-30dd1f6a5aec.jpg",
+          "imageAltText": "Vitthal Srinivasan, Software Engineer and Big Data Expert",
+          "technologies": [
+            {
+              "version": "SE 13",
+              "title": "Java",
+              "__typename": "TechnologyType"
+            }
+          ],
+          "rating": {
+            "totalCount": 54,
+            "hasLiked": false,
+            "__typename": "Rating"
+          },
+          "pin": null
+        },
+        {
+          "completionStatus": "NOT_STARTED",
+          "__typename": "Course",
+          "id": "3f4e4ff9-0815-45b3-a40f-cb3ebdaac8f0",
+          "title": "Java OOP: Understanding Overriding & Hiding in Inheritance",
+          "type": "COURSE",
+          "description": "<p>In this course, you will learn about method overriding, including the use of the super keyword from contexts other than within constructions, and also examine the behavior of static methods. To start, participants learn how to apply method overriding and recognize the concept of hiding, and use the super keyword inside any method invocation in the derived class. This follows on to the use of advanced forms of overriding, combining method overriding with complex inheritance hierarchies. Study static methods and static binding, recognizing that static methods do not support run-time polymorphism. Examine pitfalls to avoid with static methods by learning to recognize how static methods are bound using compile-time rather than run-time binding. Learn how to correctly override the method .toString, which is inherited from java.lang.Object, and describe how the .equals method and the &#61;&#61; operator are related. Explore how to correctly override the .hashCode method and write the code to correctly override the .equals method, inherited from java.lang.Object. Finally, after studying the link between equals and hashCode, discover how to implement the .hashCode contract. </p>",
+          "licensed": true,
+          "modality": "WATCH",
+          "languageCode": "en",
+          "locale": "en-US",
+          "assessmentTestId": "23c57dfd-96a0-49a7-b493-2dd35c3a4fb1",
+          "completionConfig": "ASSESSMENT_ONLY",
+          "duration": 5270,
+          "imageUrl": "https://cdn2.percipio.com/public/c/course/images/saved/3f4e4ff9-0815-45b3-a40f-cb3ebdaac8f0/992ad9ea-dbc6-42db-999a-522258324cf6.jpg",
+          "imageAltText": "Vitthal Srinivasan, Software Engineer and Big Data Expert",
+          "technologies": [
+            {
+              "version": "SE 13",
+              "title": "Java",
+              "__typename": "TechnologyType"
+            }
+          ],
+          "rating": {
+            "totalCount": 55,
+            "hasLiked": false,
+            "__typename": "Rating"
+          },
+          "pin": null
+        },
+        {
+          "completionStatus": "NOT_STARTED",
+          "__typename": "Course",
+          "id": "a8379b43-4785-47a5-9194-97f0890ea6d0",
+          "title": "Java OOP: The Semantics of the final & abstract Keywords",
+          "type": "COURSE",
+          "description": "<p>In this course, participants learn about two specific and important aspects of Java—the final and abstract keywords. The final keyword can be used to mark member variables, member functions, and even entire classes, with different meanings in each context. You will discover how to mark variables as final, and the implications of doing so. Learn how to correctly instantiate final arrays. Remember that arrays are reference types, pointing to a block of memory, and remember that once an array has been marked as final, it can only be initialized once. Discover how to create and use final classes and final methods. Final classes cannot be extended. You will learn to recognize the implications of defining a class as abstract. Also, learn how to extend abstract classes and the implications of doing so. As the course concludes, you will discover that a class can only be instantiated if it has implemented all abstract methods.</p>",
+          "licensed": true,
+          "modality": "WATCH",
+          "languageCode": "en",
+          "locale": "en-US",
+          "assessmentTestId": "75b3c613-6f6b-4c3c-af94-641527480616",
+          "completionConfig": "ASSESSMENT_ONLY",
+          "duration": 3855,
+          "imageUrl": "https://cdn2.percipio.com/public/c/course/images/saved/a8379b43-4785-47a5-9194-97f0890ea6d0/fc588f22-8e32-4b86-83b8-dc437190435f.jpg",
+          "imageAltText": "Vitthal Srinivasan, Software Engineer and Big Data Expert",
+          "technologies": [
+            {
+              "version": "SE 13",
+              "title": "Java",
+              "__typename": "TechnologyType"
+            }
+          ],
+          "rating": {
+            "totalCount": 55,
+            "hasLiked": false,
+            "__typename": "Rating"
+          },
+          "pin": null
+        },
+        {
+          "completionStatus": "NOT_STARTED",
+          "__typename": "Course",
+          "id": "dd876b31-3079-494e-90f8-86c996c0cc4f",
+          "title": "Java OOP: Access Modifiers for Regulating Access",
+          "type": "COURSE",
+          "description": "<p>In this course, you will learn about access modifiers that can be used to tag member variables and member functions inside Java classes to regulate how these can be accessed from different contexts. Participants begin by examining the properties of public, private, and protected access modifiers. These properties govern how classes, member functions, and member variables can be accessed within the same class, outside the same class but within the same package, and in entirely different packages. This leads into an examination of cross-package access and how access works from one package into another. You will then learn about the semantics of protected members, and the use of the protected access modifier. Next, explore the cross-package access of protected members, which enables you to use the protected keyword across packages. As the course concludes, you will learn about the semantics of using default access modifiers both inside and outside the same package.</p>",
+          "licensed": true,
+          "modality": "WATCH",
+          "languageCode": "en",
+          "locale": "en-US",
+          "assessmentTestId": "461573f8-4b08-47fa-860f-fb4b161f35fc",
+          "completionConfig": "ASSESSMENT_ONLY",
+          "duration": 3502,
+          "imageUrl": "https://cdn2.percipio.com/public/c/course/images/saved/dd876b31-3079-494e-90f8-86c996c0cc4f/13a7e252-54cc-4632-b923-01a6d819d632.jpg",
+          "imageAltText": "Vitthal Srinivasan, Software Engineer and Big Data Expert",
+          "technologies": [
+            {
+              "version": "SE 13",
+              "title": "Java",
+              "__typename": "TechnologyType"
+            }
+          ],
+          "rating": {
+            "totalCount": 50,
+            "hasLiked": false,
+            "__typename": "Rating"
+          },
+          "pin": null
+        },
+        {
+          "completionStatus": "NOT_STARTED",
+          "__typename": "Course",
+          "id": "22a1f4f2-cbc1-49ed-a9a2-51ea515b266b",
+          "title": "Java OOP: Interfaces & Anonymous Classes",
+          "type": "COURSE",
+          "description": "<p>In this course, you will focus on one of the most important concepts in all object-oriented programming for Java, the interface. Learners explore how anonymous inner classes provide lightweight instantiations of interfaces, and how interfaces are pure abstract entities. Begin with an introduction into using interfaces and how all their methods are abstract by default. Examine how the instanceof operator works the same way with interfaces as with classes. This leads on to combining the extends and implements keywords: implementing a derived class that can extend a base class and implement an interface. Then learners learn to set up two inheritance hierarchies and combine these into a set of objects that implement both sets of interfaces. Advanced features of interfaces are also examined. Learn how interfaces can support default method implementations. You will set up a class that implements some of the methods of an interface and declares itself abstract. Finally, you will create and define anonymous inner class objects and access outer class variables from your anonymous inner class.</p>",
+          "licensed": true,
+          "modality": "WATCH",
+          "languageCode": "en",
+          "locale": "en-US",
+          "assessmentTestId": "60d5280d-fb8c-4beb-9f4f-6c7cc2bf1078",
+          "completionConfig": "ASSESSMENT_ONLY",
+          "duration": 4149,
+          "imageUrl": "https://cdn2.percipio.com/public/c/course/images/saved/22a1f4f2-cbc1-49ed-a9a2-51ea515b266b/fad2eec3-7235-48d0-85a3-1eb0b9b85ef2.jpg",
+          "imageAltText": "Vitthal Srinivasan, Software Engineer and Big Data Expert",
+          "technologies": [
+            {
+              "version": "SE 13",
+              "title": "Java",
+              "__typename": "TechnologyType"
+            }
+          ],
+          "rating": {
+            "totalCount": 58,
+            "hasLiked": false,
+            "__typename": "Rating"
+          },
+          "pin": null
+        }
+ ]
