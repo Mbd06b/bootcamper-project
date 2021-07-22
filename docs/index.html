@@ -109,6 +109,25 @@
     		   <h3 id="task2_1">Task 2.1 - Discover Interfaces as an introduction to APIs</h3>
     		   <p>Application Programming Interfaces, or API's are software intermediaries that allows two applications to talk to each other. Within Java itself, Interface objects, function similarly to an API by exploiting Object's inheritance of interface methods. For an example of this concept look at the GameService and GameServiceImpl files in your project.</p>
     		   <p>Create Interfaces for the Model, DAO, and Service objects in the Java Application.</p> 
+		  
+		   <ul>
+			<li>Create Interfaces for the Model, DAO, and Service objects in the Java Application.</p> 
+			<li>Make a new package for the DAO called <b>com.organization.bootcamp.mvcproject.dao</b></p>
+			<li>Make new packages for the DAO, model and service packages with the format:<b> com.organization.bootcamp.mvcproject.api.XYZ</b></p>
+		   </ul>
+		   <p>In these newly created .api packages, you will create interfaces for the Java classes in the corresponding packages</p>
+		   <h4>For example: </h4>
+		   <p><b>com.organization.bootcamp.mvcproject.api.dao</b></p>
+		   <p>	- contains the interface for MockDAO</p>
+		   <p><b>com.organization.mvcproject.dao</b></p>
+		   <p>	- contains the implementation of that interface and would be called MockDAOImpl</p>
+		   <p>The rest of the packages follow the same pattern.</p>
+		   <h4>What is the point of this?</h4>
+		   <p>The purpose of doing this is to decouple the implementation from the interfaces. If you call an interface, things only need to be changed in one place, the implentation pointing to the interface.
+			<a href = "https://objcsharp.wordpress.com/2013/07/22/what-is-a-business-logic-layer-anyway/" >This article goes into detail on why this kind of separation is necessary for enterprise development.</a> 
+		   </p>
+		   <p>The Pluralsight tutorial on the Spring framework also discusses the decoupling process and explains why it is important.</p>
+
     		   
     		   <h3 id="task3">Task 3.0 - Complete the Feature</h3>
     		   <p>Now that we have prepared the service and DAO with our CRUD methods, we need to complete the feature.</p>
