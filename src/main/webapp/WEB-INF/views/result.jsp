@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="mgl" %>
     <!DOCTYPE html>
     <html>
 
@@ -18,13 +19,7 @@
     </head>
 
     <body>
-        <nav id="MistLibrary-navbar" class="navbar navbar-expand-md navbar-dark bg-dark">
-            <a class="navbar-brand" href="${pageContext.request.contextPath}">
-			<img src="resources/static/images/MGLlogo.png" width="90" height="60" alt="">
-		</a>
-            <a class="nav-item nav-link" href="games">Games</a>
-            <a class="nav-item nav-link" href="review">Review</a>
-        </nav>
+       <mgl:myNav/>
         <br>
         <h2 class="text-light">Submitted Review Information</h2>
         <table class="table table-dark text-light">
