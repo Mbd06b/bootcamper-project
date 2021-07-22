@@ -27,9 +27,11 @@
     </head>
 
     <body ng-app="MGL_Task1_app" class="ng-cloak">
+
        
    		<game:mglnav/>
               
+
         <br>
         <div class="container" ng-controller="MGL_Task1_Controller as MGL_T1_ctrl">
             <div class="panel panel-default">

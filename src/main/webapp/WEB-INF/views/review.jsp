@@ -23,9 +23,11 @@
         </head>
 
         <body>
+
         
       	<game:mglnav/>
             
+
             <div id="ReviewFormDiv" class="container">
                 <br>
                 <form name="submitReviewForm" method="POST" action="addReview">
