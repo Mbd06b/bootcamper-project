@@ -47,7 +47,7 @@ public class MGL_Task1_Controller {
 		return new ModelAndView("games", "command", new Game());
 	}
 
-	@RequestMapping(value = "/getAll", method = RequestMethod.GET)
+	@RequestMapping(value = "/game/getAll", method = RequestMethod.GET)
 	public ResponseEntity<List<Game>> fetchAllGames() {
 		return new ResponseEntity<List<Game>>(javaGameService.retrieveAllGames(), HttpStatus.OK);
 	}
