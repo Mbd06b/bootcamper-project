@@ -2,7 +2,7 @@
 
 angular.module('MGL_Task1_app').factory('MGL_Task1_Service', ['$http', function($http) {
 
-		var REST_SERVICE_URI = 'http://localhost:8080/MGL_Task1/';
+		var REST_SERVICE_URI = 'game/';
 
 		var factory = {
 			fetchAllGames : fetchAllGames,
