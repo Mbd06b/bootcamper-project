@@ -1,4 +1,4 @@
-package com.organization.mvcproject.controller;
+package com.organization.mvcproject.MGL_Task1.controller;
 
 import java.util.List;
 
@@ -13,16 +13,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.organization.mvcproject.model.Game;
-import com.organization.mvcproject.model.Review;
-import com.organization.mvcproject.service.GameService;
+import com.organization.mvcproject.MGL_Task1.model.Game;
+import com.organization.mvcproject.MGL_Task1.model.Review;
+import com.organization.mvcproject.MGL_Task1.service.Game_Service;
 
 
 @Controller
-public class TaskController {
+public class MGL_Task1_Controller {
 
 	@Autowired
-	private GameService javaGameService;
+	private Game_Service javaGameService;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home() {
