@@ -1,4 +1,4 @@
-package com.organization.mvcproject.MGL_Task1.model;
+package com.organization.mvcproject.model;
 
 public class Review {
 	private String reviewBody;

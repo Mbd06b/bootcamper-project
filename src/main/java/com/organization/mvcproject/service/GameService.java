@@ -1,10 +1,10 @@
-package com.organization.mvcproject.MGL_Task1.service;
+package com.organization.mvcproject.service;
 
 import java.util.List;
 
-import com.organization.mvcproject.MGL_Task1.model.Game;
+import com.organization.mvcproject.model.Game;
 
-public interface Game_Service {
+public interface GameService {
 
 	List<Game> retrieveAllGames();
 
