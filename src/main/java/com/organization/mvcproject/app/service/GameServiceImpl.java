@@ -29,4 +29,10 @@ private MockGameDAO mockDAO;
 		return mockDAO.saveGame(game);
 	}
 
+	@Override
+	public Boolean deleteGame(Long id) {
+		
+		return null;
+	}
+
 }

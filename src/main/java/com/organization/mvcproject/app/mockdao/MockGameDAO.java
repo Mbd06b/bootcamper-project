@@ -57,23 +57,9 @@ public class MockGameDAO {
 		games.add((GameImpl)game);
 		return game;
 	}
-	/*public Game updateByName(String name,String genre) {
-		if(game.getName().equals(name)) {
-			game.setGenre(genre);
-			return game;
-		}
+
 		
-		public Game updateGame(String name,String genre) {
-			for(GameImpl game: games) {
-			if(game.getName().equals(name)) {
-			game.setName(name);
-			game.setGenre(genre);
-			return game;
-			}
-			}
-			return null;
-			}
-			*/
+			
 	}
 	
 	
@@ -82,4 +68,4 @@ public class MockGameDAO {
 
 
 
-}
+

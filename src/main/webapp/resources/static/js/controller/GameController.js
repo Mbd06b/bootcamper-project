@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('GameApp').controller('GameController',
-		[ 'GameService', function(GameService) {
+		[ 'GameService','$log', function(GameService , $log) {
 			var self = this;
 			self.game = {
 				id : '',
@@ -15,12 +15,31 @@ angular.module('GameApp').controller('GameController',
 					self.games = data;
 				});
 			}
-
+           
 			self.addGame = function(){
-				return GameService.createGame(self.game).then( function() {
+				GameService.createGame(self.game).then( function() {
 				self.fetchAllGames();
+				self.game={};
 				});
 			}
-
+			self.deleteGame = function(game){
+				GameService.deleteGame(game).then( function(response) {
+					$log.debug(response);
+					self.fetchAllGames();
+					self.game={};
+				});
+			}
+			self.updateGame = function(){
+				GameService.updateGame(self.game).then(function(data){
+					$log.debug(data);
+					self.fetchAllGames();	
+					self.game={};			
+				});
+				
+			}
+			self.loadGameToUpdate = function(game){
+				self.game = angular.copy(game);
+			}
+			
 			self.fetchAllGames();
 		} ]);

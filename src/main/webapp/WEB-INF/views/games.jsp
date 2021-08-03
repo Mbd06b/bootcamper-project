@@ -61,7 +61,9 @@
 
                         <div class="row">
                             <div class="form-actions floatRight">
-                                <input type="submit" value="Add" class="btn btn-primary btn-sm">
+                                <input data-ng-if="!ctrl.game.id" type="submit" value="Add" class="btn btn-primary btn-sm">
+                                <button data-ng-if="ctrl.game.id" data-ng-click="ctrl.updateGame()" class="btn btn-primary btn-sm" style= "background-color: blue">Submit Update</button>
+                                <button data-ng-if="ctrl.game"data-ng-click="ctrl.clearForm()" class="btn btn-secondary btn-sm" style ="background-color: blue">Clear</button>
                             </div>
                         </div>
                     </form>
@@ -83,7 +85,9 @@
                             <tr ng-repeat="currentGame in ctrl.games">
                                 <td><span ng-bind="currentGame.name"></span></td>
                                 <td><span ng-bind="currentGame.genre"></span></td>
-                                <td>
+                                <td></td>
+                                <td><button data-ng-click="ctrl.loadGameToUpdate(currentGame)" class="btn btn-secondary btn-sm" style ="background-color: blue">Update</button></td>
+                                <td><button data-ng-click="ctrl.deleteGame(currentGame)" class="btn btn-secondary btn-sm" style ="background-color: blue">Delete</button>
                                 </td>
                             </tr>
                         </tbody>

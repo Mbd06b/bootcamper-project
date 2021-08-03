@@ -1,7 +1,7 @@
 package com.organization.mvcproject.app.api.model;
 
 public interface Game {
-	Long getId() ;
+	 Long getId() ;
 
 	 void setId(Long gameId);
 
@@ -11,6 +11,6 @@ public interface Game {
 
 	 String getGenre() ;
 
-	void setGenre(String genre);
+	 void setGenre(String genre);
 
 }
