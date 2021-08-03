@@ -32,7 +32,12 @@ private MockGameDAO mockDAO;
 	@Override
 	public Boolean deleteGame(Long id) {
 		
-		return null;
+		return mockDAO.deleteGame(id);
+	}
+	@Override
+	public Game updateGame(Game game) {
+		
+		return mockDAO.updateGame(game);
 	}
 
 }

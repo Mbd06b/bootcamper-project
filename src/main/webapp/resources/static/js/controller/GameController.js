@@ -9,7 +9,10 @@ angular.module('GameApp').controller('GameController',
 				genre : ''
 			};
 			self.games = [];
-
+			
+			self.clearForm = function(){
+            self.game = {};
+			}
 			self.fetchAllGames = function(){
 				GameService.fetchAllGames().then(function(data) {
 					self.games = data;
@@ -17,7 +20,7 @@ angular.module('GameApp').controller('GameController',
 			}
            
 			self.addGame = function(){
-				GameService.createGame(self.game).then( function() {
+		   return GameService.createGame(self.game).then( function() {
 				self.fetchAllGames();
 				self.game={};
 				});
@@ -30,7 +33,7 @@ angular.module('GameApp').controller('GameController',
 				});
 			}
 			self.updateGame = function(){
-				GameService.updateGame(self.game).then(function(data){
+			return GameService.updateGame(self.game).then(function(data){
 					$log.debug(data);
 					self.fetchAllGames();	
 					self.game={};			

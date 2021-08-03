@@ -44,17 +44,17 @@ public class GameController {
 		return new ResponseEntity<List<Game>>(gameService.retrieveAllGames(), HttpStatus.OK);
 	}
 
-	@PostMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value = "games/createGame", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Void> createGame(@RequestBody GameImpl game) {
 		gameService.saveGame(game);
 		return new ResponseEntity<Void>(HttpStatus.CREATED);
 	}
-	@PutMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PutMapping(value = "games/updateGame", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Void> updateGame(@RequestBody GameImpl game) {
-		gameService.saveGame(game);
+		gameService.updateGame(game);
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
-	@DeleteMapping(value = "/{id}")
+	@DeleteMapping(value = "games/{id}")
 	public ResponseEntity<?> deleteGame(@PathVariable("id") Long id) {
 		Boolean isDeleted = gameService.deleteGame(id);
 		

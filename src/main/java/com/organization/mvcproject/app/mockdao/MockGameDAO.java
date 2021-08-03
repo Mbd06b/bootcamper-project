@@ -58,7 +58,29 @@ public class MockGameDAO {
 		return game;
 	}
 
+	public Game updateGame(Game game) {
+		if(game.getId() != null) {
+			Long currentId = game.getId();
+			for(int i =0; i<games.size();i++) {
+				if (currentId == games.get(i).getId()) {
+					games.set(i,(GameImpl)game);	
+					}	
+			 }
+		}
+			return game; 
 		
+		
+	
+	}
+	   public Boolean deleteGame( Long id) {
+		   for (GameImpl game : games) {
+			   if(game.getId().equals(id)) {
+				   games.remove(game);
+				   return true;
+			   }
+		   }
+				return false; 
+	}
 			
 	}
 	
