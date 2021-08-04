@@ -8,7 +8,7 @@ if(forgottenItemNum<12){
 //STEP 3:
 
 //In the true block write a switch statement that goes through 1-5 and prints out a grocery item. 
-//What is printed is up to you.
+//What is printed is up to you
 	switch(athleteFinalPosition){
 	  case 1:
 	    console.log('grapes');
