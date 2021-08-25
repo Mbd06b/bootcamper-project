@@ -1,6 +1,6 @@
-# bootcamper-project
+# java-companion-project
 
-The bootcamp project is a basic java webapp,  Using SpringMVC, AngularJS, managed by Maven, and run with a Jetty plugin. Persistence mocked by a static collection.
+The java bootcamp project is a basic java webapp,  Using SpringMVC, AngularJS, managed by Maven, and run with a Jetty plugin. Persistence mocked by a static collection.
 
 A full introduction on standing up a project like this can be found here Spring MVC 4 RESTFul Web Services CRUD Example:  http://websystique.com/springmvc/spring-mvc-4-restful-web-services-crud-example-resttemplate/
 
