@@ -3,17 +3,20 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.organization</groupId>
+		<artifactId>java-companion-project</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
 	<groupId>com.organization</groupId>
-	<artifactId>java-companion-project</artifactId>
+	<artifactId>activities</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Java Companion Project</name>
 	<packaging>pom</packaging>
-	<modules>
-		<module>activities</module>
-		<module>docs</module>
-		<module>mgl-webapp</module>
-	</modules>
+
+	<name>activites</name>
+	<url>http://maven.apache.org</url>
+
+	
 </project>
-
-
-
