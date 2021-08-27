@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+    <head th:include="../fragments/template :: head(~{::title})">
+    	<title>Home page</title>
+	</head>
+	<body>
+		<h1>Hello [[${name}]]</h1>
+		<p>This is an example page.</p>
+		<div th:replace="../fragments/template :: footer"></div>
+	</body>
+</html>
