@@ -91,9 +91,9 @@
     		  </ul>
     		  
     		   <h3 id="task2">Task 2.0 - Create a MockDAO, Separate Concerns, and Repair Web Components</h3>
-    		   <p>The Service layer of our application also contains our data, making our business-logic layer tightly coupled with our data. This isn't good as it reduces flexibility and creates unnessicary complications.</p>
+    		   <p>The Service layer of our application also contains our data, making our business-logic layer tightly coupled with our data. This isn't good as it reduces flexibility and creates complexity.</p>
     		   <p>The web application at the moment can only Read and Create games, but we want it to be able to update and delete as well.</p>
-    		   <p>Uh Oh! By refactoring the objects and variables in our Java application, we changed the key names of the properties of our Javascript objects (JSON).</p>
+    		   <p>Uh Oh! By refactoring the objects and variables in our Java application, we changed the key names of the properties of our JavaScript objects (JSON).</p>
     			
     		   <ol>
     			   <li>Create a new Class called MockDAO, and lift the static List declaration of our data from the Service(GameServiceImpl or Game_Service_Impl) into the MockDAO. The main functionality for our create, read, update, and delete (CRUD) methods should also be in the MockDAO.</li>	   
