@@ -18,7 +18,7 @@ import com.organization.mvcproject.app.model.GameImpl;
 
 public class GameServiceImplTest {
 	
-	public static final int STARTING_LIST = 3;
+	public static final int STARTING_LENGTH = 3;
 
 
 	@Autowired
@@ -76,7 +76,7 @@ public class GameServiceImplTest {
 	public void PopulateGamesEqualsThree()
 	{
 			
-		Assert.assertEquals(STARTING_LIST, getGameDaoLength());
+		Assert.assertEquals(STARTING_LENGTH, getGameDaoLength());
 	}
 	
 	@Test
@@ -86,7 +86,7 @@ public class GameServiceImplTest {
 		
 		int length = getGameDaoLength();
 		
-		Assert.assertEquals(STARTING_LIST + 1, length);
+		Assert.assertEquals(STARTING_LENGTH + 1, length);
 		
 	}
 
@@ -98,13 +98,13 @@ public class GameServiceImplTest {
 	{
 		int length = getGameDaoLength();
 		
-		Assert.assertEquals(STARTING_LIST, length);
+		Assert.assertEquals(STARTING_LENGTH, length);
 		
 		mockGameDaoImpl.deleteGame(DELETE_ID);
 		
 		length = getGameDaoLength();
 		
-		Assert.assertEquals(STARTING_LIST - 1, length);
+		Assert.assertEquals(STARTING_LENGTH - 1, length);
 		
 		
 	}
