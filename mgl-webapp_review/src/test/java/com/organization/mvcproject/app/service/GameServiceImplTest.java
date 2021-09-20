@@ -22,6 +22,7 @@ public class GameServiceImplTest {
 	
 	public static final int STARTING_LENGTH = 3;
 
+	public static final long FIRSTGAME_ID = 1;
 
 	@Autowired
 	@Qualifier("mockGameDaoImpl")
@@ -126,7 +127,20 @@ public class GameServiceImplTest {
 		Assert.assertEquals(GENRE_STRING, game.getGenre());
 		
 	}
-	
+
+	@Test
+	public void GetFirstGameById()
+	{
+		GameImpl game = (GameImpl) mockGameDaoImpl.findGameById(FIRSTGAME_ID);
+		
+		
+		Assert.assertEquals(game1.getId(), game.getId());
+		
+		Assert.assertEquals(game1.getName(), game.getName());
+		
+		Assert.assertEquals(game1.getGenre(), game.getGenre());
+		
+	}
 	
 	private int getGameDaoLength()
 	{
@@ -144,6 +158,8 @@ public class GameServiceImplTest {
 		return game;
 		
 	}
+	
+	
 	
 	
 }
