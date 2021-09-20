@@ -18,12 +18,18 @@ import com.organization.mvcproject.app.mockdao.GameDAOImpl;
 import com.organization.mvcproject.app.model.GameImpl;
 
 
-public class GameServiceImplTest {
+public class MockGameDaoImplTest {
 	
 	public static final int STARTING_LENGTH = 3;
 
 	public static final long FIRSTGAME_ID = 1;
 
+	
+	/* TODO: We need configuration to make this autowiring work.
+	 * 
+	 * 
+	 * 
+	 */
 	@Autowired
 	@Qualifier("mockGameDaoImpl")
 	private static MockGameDaoImpl mockGameDaoImpl = new MockGameDaoImpl();
@@ -141,6 +147,11 @@ public class GameServiceImplTest {
 		Assert.assertEquals(game1.getGenre(), game.getGenre());
 		
 	}
+	
+	
+	
+	//Methods for working with the GameDao
+	
 	
 	private int getGameDaoLength()
 	{
