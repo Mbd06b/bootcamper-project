@@ -86,14 +86,14 @@ public class MockGameDaoImplTest {
 	}
 	
 	@Test
-	public void StartingListEqualsThree()
+	public void startingListEqualsThree()
 	{
 			
 		Assert.assertEquals(STARTING_LENGTH, getGameDaoLength());
 	}
 	
 	@Test
-	public void AddGameToGameList()
+	public void addGameToGameList()
 	{
 		mockGameDaoImpl.saveGame(testGameAdd);
 		
@@ -105,7 +105,7 @@ public class MockGameDaoImplTest {
 
 
 	@Test
-	public void DeleteGameFromDAOById()
+	public void deleteGameFromDAOById()
 	{
 		int length = getGameDaoLength();
 		
@@ -121,7 +121,7 @@ public class MockGameDaoImplTest {
 	}
 	
 	@Test
-	public void GetSingleSportGameUsingGenreFilter()
+	public void getSingleSportGameUsingGenreFilter()
 	{
 		List<Game> genreFilter = mockGameDaoImpl.findGamesByGenre(GENRE_STRING);
 		
@@ -135,7 +135,7 @@ public class MockGameDaoImplTest {
 	}
 
 	@Test
-	public void GetFirstGameById()
+	public void getFirstGameById()
 	{
 		GameImpl game = (GameImpl) mockGameDaoImpl.findGameById(FIRSTGAME_ID);
 		
