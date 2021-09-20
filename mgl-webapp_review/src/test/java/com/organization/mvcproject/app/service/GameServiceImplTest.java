@@ -2,6 +2,8 @@ package com.organization.mvcproject.app.service;
 
 
 
+import java.util.List;
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -30,6 +32,12 @@ public class GameServiceImplTest {
 	private final long DELETE_ID = 1L;
 	
 	
+	private static final String GENRE_STRING = "Sport";
+	
+	private static Game game1 = createGameImpl(1,"Rocket League", "Sport");
+	private static Game game2 = createGameImpl(2,"Halo", "Shooter");
+	private static Game game3 = createGameImpl(3,"Runescape", "MMORPG");
+	
 	public static void deleteAllGamesFromDAO()
 	{
 		mockGameDaoImpl.resetGameList();
@@ -55,9 +63,7 @@ public class GameServiceImplTest {
 	{
 		mockGameDaoImpl = new MockGameDaoImpl();
 		
-		Game game1 = createGameImpl(1,"Rocket League", "Sport");
-		Game game2 = createGameImpl(2,"Halo", "Sport");
-		Game game3 = createGameImpl(3,"Runescape", "MMORPG");
+		
 		
 		mockGameDaoImpl.saveGame(game1);
 		mockGameDaoImpl.saveGame(game2);
@@ -73,7 +79,7 @@ public class GameServiceImplTest {
 	}
 	
 	@Test
-	public void PopulateGamesEqualsThree()
+	public void StartingListEqualsThree()
 	{
 			
 		Assert.assertEquals(STARTING_LENGTH, getGameDaoLength());
@@ -91,8 +97,6 @@ public class GameServiceImplTest {
 	}
 
 
-	
-	
 	@Test
 	public void DeleteGameFromDAOById()
 	{
@@ -109,7 +113,19 @@ public class GameServiceImplTest {
 		
 	}
 	
-	
+	@Test
+	public void GetSingleSportGameUsingGenreFilter()
+	{
+		List<Game> genreFilter = mockGameDaoImpl.findGamesByGenre(GENRE_STRING);
+		
+		Assert.assertEquals(genreFilter.size(), 1);
+		
+		GameImpl game = (GameImpl) genreFilter.get(0);
+		
+		
+		Assert.assertEquals(GENRE_STRING, game.getGenre());
+		
+	}
 	
 	
 	private int getGameDaoLength()
@@ -128,4 +144,6 @@ public class GameServiceImplTest {
 		return game;
 		
 	}
+	
+	
 }
