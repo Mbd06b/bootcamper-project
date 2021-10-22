@@ -16,6 +16,7 @@
 		<module>mgl-webapp_task2-0</module>
 		<module>mgl-webapp_task2-1</module>
 		<module>mgl-webapp_review</module>	
+		<module>web-automation-testing</module>
 	</modules>
 </project>
 
