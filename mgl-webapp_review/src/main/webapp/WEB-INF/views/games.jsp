@@ -1,6 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="mgl" %>
     <!DOCTYPE html>
-    <html>
+    <html lang="en">
 
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
@@ -26,13 +27,7 @@
     </head>
 
     <body ng-app="GameLibraryApp" class="ng-cloak">
-        <nav id="MistLibrary-navbar" class="navbar navbar-expand-md navbar-dark bg-dark">
-            <a class="navbar-brand" href="${pageContext.request.contextPath}">
-			<img src="resources/static/images/MGLlogo.png" width="90" height="60" alt="">
-		</a>
-            <a class="nav-item nav-link" href="games">Games</a>
-            <a class="nav-item nav-link" href="review">Review</a>
-        </nav>
+        <mgl:myNav/>
         <br>
         <div class="container" ng-controller="GameLibraryController as ctrl">
             <div class="panel panel-default">

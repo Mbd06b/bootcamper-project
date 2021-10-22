@@ -40,6 +40,4 @@ public class GameServiceImpl implements GameService {
 		return gameDAO.findGamesByGenre(genre);
 	}
 
-	
-
 }
