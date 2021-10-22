@@ -1,8 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="mgl" %>
     <!DOCTYPE html>
-    <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-        <html>
+        <html lang="en">
         <head>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
         <script src="resources/static/js/app.js" /></script>
@@ -23,13 +23,7 @@
         </head>
 
         <body>
-            <nav id="MistLibrary-navbar" class="navbar navbar-expand-md navbar-dark bg-dark">
-                <a class="navbar-brand" href="${pageContext.request.contextPath}">
-			<img src="resources/static/images/MGLlogo.png" width="90" height="60" alt="">
-		</a>
-                <a class="nav-item nav-link" href="games">Games</a>
-                <a class="nav-item nav-link" href="review">Review</a>
-            </nav>
+           <mgl:myNav />
             <div id="ReviewFormDiv" class="container">
                 <br>
                 <form name="submitReviewForm" method="POST" action="addReview">
