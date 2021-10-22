@@ -11,7 +11,7 @@ import com.organization.mvcproject.app.model.ReviewImpl;
 
 
 @Controller
-public class GamePageController {
+public class MGLPageController {
 
 	
 
