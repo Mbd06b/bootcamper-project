@@ -14,8 +14,9 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<name>mgl-webapp</name>
-	<url>http://maven.apache.org</url>
+	<name>mgl-webapp_task1-0</name>
+	<url>https://github.com/ATC-Custom-Bootcamp</url>
+
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
