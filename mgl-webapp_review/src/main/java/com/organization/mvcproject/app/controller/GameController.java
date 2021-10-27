@@ -58,7 +58,7 @@ public class GameController {
 	public ResponseEntity<?> createGame(@RequestBody GameImpl game) {
 		Game savedGame = gameService.saveGame(game);
 		logger.info("Game id created is: {}", savedGame.getId());
-		return new ResponseEntity<>(savedGame, HttpStatus.CREATED);
+		return new ResponseEntity<>((GameImpl) savedGame, HttpStatus.CREATED);
 	}
 	
 	@DeleteMapping(value="/{id}")

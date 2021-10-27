@@ -8,4 +8,5 @@ public interface Review {
     void setRating(Integer rating);
 	String getReviewBody();
 	void setReviewBody(String reviewBody);
+	
 }
