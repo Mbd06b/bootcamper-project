@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Repository;
 
-import com.google.common.collect.ImmutableList;
 import com.organization.mvcproject.model.Game;
 
 @Repository
@@ -53,7 +52,7 @@ public class GameStreamBasedDAO  {
 	
 	
 	public List<Game> findAllGames() {
-		return ImmutableList.copyOf(games);
+		return games;
 	}
 
 	
