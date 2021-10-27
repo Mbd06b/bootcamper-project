@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.google.common.collect.ImmutableList;
 import com.organization.mvcproject.model.Game;
 
 @Repository
@@ -50,7 +49,7 @@ public class GameLoopBasedDAO {
 		 */
 		
 		public List<Game> findAllGames() {
-			return ImmutableList.copyOf(games);
+			return games;
 		}
 
 		
