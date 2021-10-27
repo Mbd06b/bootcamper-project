@@ -38,7 +38,13 @@
             <scope>provided</scope>
         </dependency>
         
-		<!-- Spring core & mvc -->
+		<!-- Spring core & mvc TODO Maven Learning: Look at the Dependency Hierarchy and see what dependencies are being duplicated (spring-context or spring-webmvc?) -->
+	     <dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
@@ -75,7 +81,7 @@
 		</dependency>
 
 
-		<!-- Logging TODO:  -->
+		<!-- Logging TODO: upgrade logging to use log4j-slf4j-impl -->
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
