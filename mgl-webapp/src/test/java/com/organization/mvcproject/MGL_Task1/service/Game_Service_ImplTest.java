@@ -1,12 +1,18 @@
 package com.organization.mvcproject.MGL_Task1.service;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -50,7 +56,7 @@ class Game_Service_ImplTest {
 	void saveGameServiceSavesAndUpdatesGame() {
 		if(gamesToRemoveAfterTest.isEmpty()) {
 			Game game = gameServiceUnderTest.saveGame(testGame);
-			assertNotNull(game.getGame_id());
+			Assertions.assertNotNull(game.getGame_id());
 			
 			//updates 
 			game.setGame_name("Testing Game Name Updated" );
@@ -62,6 +68,17 @@ class Game_Service_ImplTest {
 		}
 	}
 	
+	@AfterAll
+	@Test
+	void deleteGameWorksAndCleanupServiceTest() {
+		fail("Not yet implemented.");
+	}
+	
+	
+	@Test
+	void findGameByIdReturnsTheGame() {
+		fail("Not yet implemented.");
+	}
 
 	
 	@Test
@@ -69,6 +86,12 @@ class Game_Service_ImplTest {
 		List<Game> games = gameServiceUnderTest.retrieveAllGames(); 
 		assertNotNull(games);
 		assertTrue(games.size() >= 2 );
+	}
+	
+	
+	@Test
+	void retrieveGamesByGenre() {
+		fail("Not yet implemented.");]
 	}
 	
 	

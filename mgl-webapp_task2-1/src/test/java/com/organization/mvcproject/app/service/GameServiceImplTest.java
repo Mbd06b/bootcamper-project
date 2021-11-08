@@ -3,6 +3,7 @@ package com.organization.mvcproject.app.service;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -90,6 +91,11 @@ class GameServiceImplTest {
 		List<Game> games = gameServiceUnderTest.retrieveAllGames(); 
 		assertNotNull(games);
 		assertTrue(games.size() >= 2 );
+	}
+	
+	@Test
+	void retrieveGamesByGenre() {
+		fail("Not yet implemented.");
 	}
 
 	
