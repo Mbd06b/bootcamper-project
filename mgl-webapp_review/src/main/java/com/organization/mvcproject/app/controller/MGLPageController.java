@@ -13,29 +13,28 @@ import com.organization.mvcproject.app.model.ReviewImpl;
 @Controller
 public class MGLPageController {
 
-	
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home() {
+	public String getIndexPage() {
 		return "index";
 	}
 
 	@RequestMapping(value = "/review")
-	public ModelAndView review() {
-		return new ModelAndView("review", "command", new ReviewImpl());
+	public ModelAndView getReviewPage() {
+		return new ModelAndView("reviewCreatePage", "command", new ReviewImpl());
 	}
 
 	@RequestMapping(value = "/addReview", method = RequestMethod.POST)
-	public ModelAndView addReview(ReviewImpl review, ModelMap model) {
+	public ModelAndView addReviewAndShowResultPage(ReviewImpl review, ModelMap model) {
 		if(review.getAuthor().equals("")) {
 			review.setAuthor("anonymous");
 		}
-		return new ModelAndView("result", "submittedReview", review);
+		return new ModelAndView("reviewDetailPage", "submittedReview", review);
 	}
 
 	@RequestMapping(value = "/games", method = RequestMethod.GET)
-	public ModelAndView game() {
-		return new ModelAndView("games", "command", new GameImpl());
+	public ModelAndView getGamesPage() {
+		return new ModelAndView("gamesPage", "command", new GameImpl());
 	}
 
 

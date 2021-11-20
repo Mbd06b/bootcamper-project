@@ -1,8 +1,10 @@
 package com.organization.mvcproject.app.config;
 
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartResolver;
@@ -36,6 +38,13 @@ public class MvcConfiguration implements WebMvcConfigurer {
 	@Bean
 	public MultipartResolver multipartResolver(){
 		return new CommonsMultipartResolver();
+	}
+	
+	@Bean
+    public MessageSource messageSource() {
+	    ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+	    messageSource.setBasename("messages");
+	    return messageSource;
 	}
 	
 
