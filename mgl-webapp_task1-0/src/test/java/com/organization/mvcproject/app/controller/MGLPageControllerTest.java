@@ -14,9 +14,9 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import com.organization.mvcproject.app.config.MGLWebApplicationInitializer;
+import com.organization.mvcproject.controller.HomeController;
 
-@SpringJUnitConfig(classes = MGLWebApplicationInitializer.class )
+@SpringJUnitConfig(classes = com.organization.mvcproject.config.MGLWebApplicationInitializer.class )
 @WebAppConfiguration
 @TestInstance(Lifecycle.PER_CLASS)
 class MGLPageControllerTest {
@@ -25,7 +25,7 @@ class MGLPageControllerTest {
 
 	@BeforeAll
 	public void setup() {
-        this.mockMvc = MockMvcBuilders.standaloneSetup(new MGLPageController()).build();
+        this.mockMvc = MockMvcBuilders.standaloneSetup(new HomeController()).build();
 	}
 	
 	
@@ -38,9 +38,8 @@ class MGLPageControllerTest {
 			
 	@Test
 	 void reviewCreatePagePathReportsOKStatus() throws Exception {
-		this.mockMvc.perform(get("/review"))
-		.andExpect(status().isOk())
-		.andExpect(view().name("reviewCreatePage"));
+		fail("Test not yet implemented.");
+
 	}
 	
 	@Test
@@ -50,8 +49,6 @@ class MGLPageControllerTest {
 	
 	@Test
 	 void gamesPagePathReportsOKStatus() throws Exception {
-		this.mockMvc.perform(get("/games"))
-		.andExpect(status().isOk())
-		.andExpect(view().name("gamesPage"));
+		fail("Test not yet implemented.");
 	}
 }

@@ -91,7 +91,7 @@ class Game_Service_ImplTest {
 	
 	@Test
 	void retrieveGamesByGenre() {
-		fail("Not yet implemented.");]
+		fail("Not yet implemented.");
 	}
 	
 	

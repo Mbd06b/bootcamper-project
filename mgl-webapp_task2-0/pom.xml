@@ -49,8 +49,6 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 			<version>${spring.version}</version>
-			<type>jar</type>
-			<scope>test</scope>
 		</dependency>
 
 		<!-- Servlet Specs enhance jsp and tag intellisense-->
@@ -67,14 +65,7 @@
 	       <version>2.3.3</version>
 	       <scope>provided</scope>
 	   </dependency>
-	   
-	   <dependency>
-		    <groupId>javax.servlet</groupId>
-		    <artifactId>jstl</artifactId>
-		    <version>1.2</version>
-		</dependency>
-		
-		<!-- Logging -->
+	   		
 		<dependency>
 		    <groupId>org.apache.logging.log4j</groupId>
 		    <artifactId>log4j-slf4j-impl</artifactId>
@@ -87,7 +78,8 @@
 			<artifactId>javax.inject</artifactId>
 			<version>1</version>
 		</dependency>
-
+		
+		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
 		<!-- Commons Upload for File upload -->
 		<dependency>
 			<groupId>commons-fileupload</groupId>
@@ -116,25 +108,12 @@
 	        <scope>test</scope>
 	    </dependency>
 	    
-	    <!-- JUnit Compatibility for IDE test tooling -->
-	    <dependency>
-		    <groupId>org.junit.platform</groupId>
-		    <artifactId>junit-platform-runner</artifactId>
-		    <version>1.2.0</version>
-		    <scope>test</scope>
-		</dependency>
+		<!-- hamcrest matchers for more expressive asserts  -->
 		<dependency>
-		     <groupId>org.junit.vintage</groupId>
-		     <artifactId>junit-vintage-engine</artifactId>
-	         <version>${junit5.version}</version>
-		     <scope>test</scope>
-		</dependency>
-	    
-        <dependency>
-		     <groupId>org.mockito</groupId>
-		     <artifactId>mockito-core</artifactId>
-		     <version>${mockito.version}</version>
-		     <scope>test</scope>
+		    <groupId>org.hamcrest</groupId>
+		    <artifactId>hamcrest</artifactId>
+		    <version>2.2</version>
+		    <scope>test</scope>
 		</dependency>
 		
 		<!--  mockito extensions for Junit5 -->
@@ -176,7 +155,7 @@
 						<scanTargetPattern>
 							<directory>src/main/webapp/WEB-INF</directory>
 							<includes>
-								<include>**/*.html</include>
+								<include>**/*.jsp</include>
 							</includes>
 							<excludes>
 								<include>**/*.properties</include>
@@ -205,9 +184,15 @@
 					</execution>
 				</executions>
 			</plugin>
+		       <plugin>
+	            <groupId>org.apache.maven.plugins</groupId>
+	            <artifactId>maven-surefire-plugin</artifactId>
+	            <version>2.22.2</version>
+	        </plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>2.22.2</version>
 				<executions>
 					<execution>
 						<id>perform-it</id>
