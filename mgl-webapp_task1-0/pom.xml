@@ -3,7 +3,6 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
 	<parent>
 		<groupId>com.organization</groupId>
 		<artifactId>java-companion-project</artifactId>
@@ -56,8 +55,6 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 			<version>${spring.version}</version>
-			<type>jar</type>
-			<scope>test</scope>
 		</dependency>
 
 		<!-- Servlet Specs enhance jsp and tag intellisense-->
@@ -124,25 +121,12 @@
 	        <scope>test</scope>
 	    </dependency>
 	    
-	    <!-- JUnit Compatibility for IDE test tooling -->
-	    <dependency>
-		    <groupId>org.junit.platform</groupId>
-		    <artifactId>junit-platform-runner</artifactId>
-		    <version>1.2.0</version>
-		    <scope>test</scope>
-		</dependency>
+		<!-- hamcrest matchers for more expressive asserts  -->
 		<dependency>
-		     <groupId>org.junit.vintage</groupId>
-		     <artifactId>junit-vintage-engine</artifactId>
-	         <version>${junit5.version}</version>
-		     <scope>test</scope>
-		</dependency>
-	    
-        <dependency>
-		     <groupId>org.mockito</groupId>
-		     <artifactId>mockito-core</artifactId>
-		     <version>${mockito.version}</version>
-		     <scope>test</scope>
+		    <groupId>org.hamcrest</groupId>
+		    <artifactId>hamcrest</artifactId>
+		    <version>2.2</version>
+		    <scope>test</scope>
 		</dependency>
 		
 		<!--  mockito extensions for Junit5 -->
@@ -184,7 +168,7 @@
 						<scanTargetPattern>
 							<directory>src/main/webapp/WEB-INF</directory>
 							<includes>
-								<include>**/*.html</include>
+								<include>**/*.jsp</include>
 							</includes>
 							<excludes>
 								<include>**/*.properties</include>
@@ -213,9 +197,15 @@
 					</execution>
 				</executions>
 			</plugin>
+		       <plugin>
+	            <groupId>org.apache.maven.plugins</groupId>
+	            <artifactId>maven-surefire-plugin</artifactId>
+	            <version>2.22.2</version>
+	        </plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>2.22.2</version>
 				<executions>
 					<execution>
 						<id>perform-it</id>

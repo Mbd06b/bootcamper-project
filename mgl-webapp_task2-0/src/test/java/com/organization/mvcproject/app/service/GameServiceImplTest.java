@@ -8,17 +8,13 @@ import static org.junit.jupiter.api.Assertions.fail;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Test;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.organization.mvcproject.config.MvcConfiguration;
@@ -26,9 +22,7 @@ import com.organization.mvcproject.model.Game;
 import com.organization.mvcproject.service.GameService;
 
 
-@RunWith(JUnitPlatform.class)
-@ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = MvcConfiguration.class)
+@SpringJUnitConfig(classes = MvcConfiguration.class )
 @WebAppConfiguration
 @TestInstance(Lifecycle.PER_CLASS)
 class GameServiceImplTest {
