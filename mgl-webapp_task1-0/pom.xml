@@ -3,6 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
 	<parent>
 		<groupId>com.organization</groupId>
 		<artifactId>java-companion-project</artifactId>
@@ -16,10 +17,9 @@
 	<name>mgl-webapp_task1-0</name>
 	<url>https://github.com/ATC-Custom-Bootcamp</url>
 
-
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>1.8</java.version>
+		<java.version>11</java.version>
 		<servlet.port>8081</servlet.port>
 		<jetty.stop.port>9000</jetty.stop.port>
 		<spring.version>5.1.3.RELEASE</spring.version>
@@ -41,12 +41,6 @@
 		<!-- Spring core & mvc -->
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
@@ -55,6 +49,8 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 			<version>${spring.version}</version>
+			<type>jar</type>
+			<scope>test</scope>
 		</dependency>
 
 		<!-- Servlet Specs enhance jsp and tag intellisense-->
