@@ -14,7 +14,7 @@ public class GameServiceImpl implements GameService {
 
 	@Autowired
 	private GameDAO gameDAO; 
-
+	
 	@Override
 	public List<Game> retrieveAllGames() {
 		return gameDAO.findAllGames();
