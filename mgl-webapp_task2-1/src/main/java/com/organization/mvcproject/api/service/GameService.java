@@ -8,6 +8,8 @@ public interface GameService {
 
 	List<Game> retrieveAllGames();
 	
+	List<Game> findGamesByGenre(String genre);
+	
 	Game saveGame(Game game);
 	
 	Game findGameById(Long id);
