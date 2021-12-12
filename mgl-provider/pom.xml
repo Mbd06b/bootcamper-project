@@ -17,16 +17,28 @@
 		<java.version>11</java.version>
 	</properties>
 	<dependencies>
+	     
+	    <!-- spring-boot-starter-data-jpa comes bundled with hibernate-core -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
-
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+		<dependency>
+		  <groupId>net.andreinc</groupId>
+		  <artifactId>mockneat</artifactId>
+		  <version>0.4.7</version>
+		</dependency>
+		
+		<!-- spring-boot-starter-test comes bundled with Junit Jupiter  -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
