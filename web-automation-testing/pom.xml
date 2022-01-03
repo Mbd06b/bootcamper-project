@@ -19,6 +19,8 @@
 	
 	<properties>
 		<java.version>11</java.version>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+  		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<testcontainers.version>1.16.0</testcontainers.version>
 		<spring.boot.version>2.6.0</spring.boot.version>
 		<cucumber.version>7.0.0</cucumber.version>
@@ -40,6 +42,20 @@
 <!-- 				<type>pom</type> -->
 <!-- 				<scope>import</scope> -->
 <!--             </dependency> -->
+			<dependency> 
+				<groupId>io.cucumber</groupId> 
+				<artifactId>cucumber-bom</artifactId> 
+				<version>7.0.0</version> 
+				<type>pom</type> 
+				<scope>import</scope> 
+			</dependency> 
+			<dependency> 
+				<groupId>org.junit</groupId> 
+				<artifactId>junit-bom</artifactId> 
+				<version>5.8.1</version> 
+				<type>pom</type> 
+				<scope>import</scope> 
+			</dependency> 
 			<dependency>
 				<groupId>org.testcontainers</groupId>
 				<artifactId>testcontainers-bom</artifactId>
@@ -59,49 +75,105 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
+			 <exclusions>
+			 	<!-- exclude junit 4 -->
+                <exclusion>
+                    <groupId>junit</groupId>
+                    <artifactId>junit</artifactId>
+                </exclusion>
+            </exclusions>
 		</dependency>	
-		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
-		<dependency>
-		    <groupId>io.cucumber</groupId>
-		    <artifactId>cucumber-java</artifactId>
-		    <version>${cucumber.version}</version>
+		
+
+		<dependency> 
+			<groupId>io.cucumber</groupId> 
+			<artifactId>cucumber-java</artifactId> 
+			<scope>test</scope> 
+		</dependency> 
+		
+		<dependency> 
+			<groupId>io.cucumber</groupId> 
+			<artifactId>cucumber-spring</artifactId> 
+		</dependency> 
+		
+		<dependency> 
+			<groupId>io.cucumber</groupId> 
+			<artifactId>cucumber-junit-platform-engine</artifactId> 
+			<scope>test</scope> 
+		</dependency> 
+		
+		<dependency> 
+			<groupId>org.junit.platform</groupId> 
+			<artifactId>junit-platform-suite</artifactId> 
+			<scope>test</scope> 
+		</dependency> 
+		
+		<dependency> 
+			<groupId>org.junit.jupiter</groupId> 
+			<artifactId>junit-jupiter-api</artifactId> 
+			<scope>test</scope> 
+		</dependency> 
+		
+		<dependency> 
+			<groupId>org.junit.platform</groupId> 
+			<artifactId>junit-platform-console</artifactId> 
 		</dependency>
-       <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
-		<dependency>
-		    <groupId>io.cucumber</groupId>
-		    <artifactId>cucumber-junit</artifactId>
-		    <version>${cucumber.version}</version>
-		    <scope>test</scope>
-		</dependency>
-			    <!-- junit 5 -->
-          <dependency>
-	        <groupId>org.junit.jupiter</groupId>
-	        <artifactId>junit-jupiter</artifactId>
-	        <scope>test</scope>
-	    </dependency>
-	    
+		
 	    <!-- hamcrest matchers for more expressive assertions  -->
 		<dependency>
 		    <groupId>org.hamcrest</groupId>
 		    <artifactId>hamcrest</artifactId>
-		    <version>2.2</version>
-		    <scope>test</scope>
 		</dependency>
 		
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.testcontainers</groupId> -->
-<!-- 			<artifactId>junit-jupiter</artifactId> -->
-<!-- 			<scope>test</scope> -->
-<!-- 		</dependency> -->
+		<!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
+		<dependency>
+		    <groupId>org.assertj</groupId>
+		    <artifactId>assertj-core</artifactId>
+		    </dependency>
+
+		
+		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+		<dependency>
+		    <groupId>org.seleniumhq.selenium</groupId>
+		    <artifactId>selenium-java</artifactId>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
+		<dependency>
+		    <groupId>io.github.bonigarcia</groupId>
+		    <artifactId>webdrivermanager</artifactId>
+		    <version>5.0.3</version>
+		</dependency>
+
+
 	</dependencies>
 	
+
 	<build>
+		<resources>
+		    <resource>
+		       <directory>src/test/resources</directory>
+		    </resource>
+		</resources>
+		
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			 <plugin>
+	            <groupId>org.apache.maven.plugins</groupId>
+	            <artifactId>maven-surefire-plugin</artifactId>
+	            <configuration>
+	                <properties>
+	                    <configurationParameters>
+	                        cucumber.plugin=pretty,html:target/site/cucumber-pretty.html
+	                        cucumber.publish.quiet=true
+	                        cucumber.publish.enabled=false
+	                    </configurationParameters>
+	                </properties>
+	            </configuration>
+	        </plugin>
 		</plugins>
 	</build>
 
