@@ -18,24 +18,29 @@ public class GameServiceImpl implements GameService {
 	@Qualifier("gameLoopBasedDAO")
 	private GameDao gameStreamBasedDAO; 
 
-	
+	@Override
 	public List<Game> retrieveAllGames() {
 		return gameStreamBasedDAO.findAllGames();
 	}
 
-	
+	@Override
 	public Game saveGame(Game game) {
 		return gameStreamBasedDAO.saveGame(game);
 	}
 	
-	
+	@Override
 	public Game findGameById(Long id) {
 		return gameStreamBasedDAO.findGameById(id);
 	}
 
-	
+	@Override
 	public boolean deleteGame(Long id) {
 		return gameStreamBasedDAO.deleteGame(id); 
+	}
+
+	@Override
+	public List<Game> findGamesByGenre(String genre) {
+		return gameStreamBasedDAO.findGamesByGenre(genre);
 	}
 }
 	

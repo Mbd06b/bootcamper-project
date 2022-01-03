@@ -1,12 +1,14 @@
 'use strict';
 
-angular.module('GameApp').service('GameService', ['$http', function($http) {
+angular.module('GameApp').service('GameService', ['$http','$log', function($http, $log) {
 
 		var REST_SERVICE_URI = 'game/';
 
 		var factory = {
 			fetchAllGames : fetchAllGames,
-			createGame : createGame
+			createGame : createGame,
+			deleteGame : deleteGame,
+			updateGame : updateGame
 		};
 
 		return factory;
@@ -24,5 +26,24 @@ angular.module('GameApp').service('GameService', ['$http', function($http) {
 				}
 			);
 		}
+		
+		//  localhost:8081/game/1  DELETE
+		function deleteGame(gameId) {
+			return $http.delete(REST_SERVICE_URI + gameId).then( function( response ){
+				if(response.data){
+				 $log.info("Successfully deleted game with id: " + gameId);  
+				} else {
+				 $log.debug("No Game Deleted with id: " + gameId);
+				}
+				return response.data; 
+			});
+		}
 
+		// localhost:8081/game  UPDATE
+		function updateGame(game) {
+		 	return $http.put(REST_SERVICE_URI, game).then(function(response) {
+					return response.data;
+				}
+			);
+		}
 }]);
