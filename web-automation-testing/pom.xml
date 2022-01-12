@@ -161,7 +161,8 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			 <plugin>
+			<plugin>
+			    <!-- unit tests (surefire) -->
 	            <groupId>org.apache.maven.plugins</groupId>
 	            <artifactId>maven-surefire-plugin</artifactId>
 	            <configuration>
@@ -174,6 +175,24 @@
 	                </properties>
 	            </configuration>
 	        </plugin>
+	        <plugin>
+	         	<!-- integration-tests (failsafe) -->
+	        	<groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-failsafe-plugin</artifactId>
+			    <executions>
+			        <execution>
+			            <goals>
+			                <goal>integration-test</goal>
+			                <goal>verify</goal>
+			            </goals>
+			            <configuration>
+		                    <dependenciesToScan>
+		                        <dependency>${project.groupId}:web-automation-tests:test-jar</dependency>
+		                    </dependenciesToScan>
+		                </configuration>
+			        </execution>
+			    </executions>>
+			</plugin>
 		</plugins>
 	</build>
 
