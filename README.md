@@ -8,9 +8,9 @@ A full introduction on standing up a project like this can be found here Spring 
 
 This architecture was chosen for it's simplicity to introduce those new to Java web applications to a very simple web app and was built by someone completely new to Java. 
 
-The 'main' branch is full of issues for the bootcamper to clean, fix, and upgrade. 
+The 'mgl-webapp' module is the starting module full of issues for the bootcamper to clean, fix, and upgrade. 
 
-The 'review' branch is a solution branch, which provides a more standards-compliant view of the same project. 
+The 'mgl-webapp_review' module is the completed solution module, which provides a more standards-compliant view of the same project, with a completed CRUD feature, and implemented unit tests. 
 
 As bootcampers progress through the bootcamp they:
 * Fork the Project
