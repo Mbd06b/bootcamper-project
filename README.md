@@ -6,7 +6,7 @@ The java bootcamp project is a basic java webapp,  Using SpringMVC, AngularJS, m
 A full introduction on standing up a tech-stack like this can be found here Spring MVC 4 RESTFul Web Services CRUD Example:  http://websystique.com/springmvc/spring-mvc-4-restful-web-services-crud-example-resttemplate/
 
 
-This architecture was chosen for it's simplicity to introduce those new to Java to a web app, explore REST concepts. 
+This architecture was chosen for it's simplicity to introduce those new to Java to a web app and explore basic REST concepts. 
 
 The 'mgl-webapp' module is the starting module full of issues for the bootcamper to clean, fix, and upgrade. The starting module was built by someone completely new to Java. 
 
