@@ -193,7 +193,7 @@
 		        <configuration>
 		            <forkCount>0</forkCount>
 		        	<testFailureIgnore>true</testFailureIgnore>
-		        </configuration>>
+		        </configuration>
 	        </plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
