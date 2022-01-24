@@ -9,7 +9,7 @@ pipeline{
             steps {
 
                 withMaven() {
-                    sh 'mvn clean install -fae'
+                    sh 'mvn clean compile -fae'
 
                 }
 
