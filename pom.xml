@@ -8,10 +8,18 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Java Companion Project</name>
 	<packaging>pom</packaging>
+	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 	<modules>
 		<module>activities</module>
 		<module>docs</module>
 		<module>mgl-webapp</module>
+		<module>mgl-webapp_task1-0</module>
+		<module>mgl-webapp_task2-0</module>
+		<module>mgl-webapp_task2-1</module>
+		<module>mgl-webapp_review</module>	
 	</modules>
 </project>
 
