@@ -5,6 +5,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class Game {
 
+	/**
+	 * TODO 1.0 java object member variable naming convention declared here are not object oriented,
+	 *  rename the variables, and their setter/getter methods to match convention. 
+	 */
 	private Long game_id;
 	private String game_name;
 	private String game_genre;
