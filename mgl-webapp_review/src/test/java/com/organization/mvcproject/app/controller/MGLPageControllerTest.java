@@ -44,11 +44,6 @@ class MGLPageControllerTest {
 	}
 	
 	@Test
-	void reviewDetailPagePathReportsOkStatus() throws Exception {
-		fail("Test not yet implemented.");
-	}
-	
-	@Test
 	 void gamesPagePathReportsOKStatus() throws Exception {
 		this.mockMvc.perform(get("/games"))
 		.andExpect(status().isOk())
