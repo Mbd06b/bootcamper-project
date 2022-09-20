@@ -11,7 +11,31 @@
 	
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<spring.boot.version>2.6.0</spring.boot.version>
 	</properties>
+	
+	<dependencyManagement>
+		<dependencies>
+			<!-- By specifying our own module in "dependencyManagement" in the parent pom         -->
+			<!-- this allows us to build a dependency, AND USE it as a dependency in child pom(s) -->
+			<!-- without every module inheriting, which is what happens when                      -->
+			<!-- a more typical dependency is specified in a parent pom.xml                       -->
+			<!-- this is a useful pom strategy for creating common modules,                       -->
+			<!-- and avoids a self-referenced recusive loop.                                      -->
+			<dependency> 
+				<groupId>com.organization.mvcproject</groupId>
+				<artifactId>mgl-automation-testing</artifactId>
+				<version>${project.version}</version>
+			</dependency> 
+			<dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+		</dependencies>
+	</dependencyManagement>
 	<modules>
 		<module>activities</module>
 		<module>docs</module>
@@ -20,6 +44,7 @@
 		<module>mgl-webapp_task2-0</module>
 		<module>mgl-webapp_task2-1</module>
 		<module>mgl-webapp_review</module>	
+		<module>web-automation-testing</module>
 	</modules>
 </project>
 
