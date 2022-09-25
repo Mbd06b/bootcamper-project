@@ -46,6 +46,13 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
+			<exclusions>
+				<!-- using SLF4J Simple Logger -->
+				<exclusion>
+			      <groupId>org.springframework.boot</groupId>
+			      <artifactId>spring-boot-starter-logging</artifactId>
+			    </exclusion>
+			</exclusions>
 		</dependency>
 
         <dependency>
@@ -79,7 +86,6 @@
 		<dependency>
 		    <groupId>org.slf4j</groupId>
 		    <artifactId>slf4j-simple</artifactId>
-		    <version>1.7.32</version>
 		</dependency>
 
 		
@@ -137,6 +143,19 @@
 		    <scope>test</scope>
 		</dependency>
 		
+		<!-- this dependency a testing framework (not tests) aka the infrastructure used to run web-automation integration tests -->
+		<!-- See: https://maven.apache.org/plugins/maven-jar-plugin/examples/create-test-jar.html#the-preferred-way -->
+		<dependency> 
+			<groupId>com.organization.mvcproject</groupId>
+			<artifactId>mgl-automation-testing</artifactId>
+			<version>${project.version}</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<!-- this test-jar dependency contains packaged web-automation tests which are being scanned to run by dependenciesToScan during the integration test phase -->
+		<!-- the test-jar itself is created via the "maven-jar-plugin" located in the dependency itself -->
+		<!-- the tests recieve the context they need to run via the corresponding texting-framework dependency  --> 
+		<!-- this enables web-automation tests to be developed and run independently of the project they are imported to -->
 		<dependency> 
 			<groupId>com.organization.mvcproject</groupId>
 			<artifactId>mgl-automation-testing</artifactId>
@@ -217,15 +236,10 @@
 					</execution>
 				</executions>
 			</plugin>
-		       <plugin>
+		    <plugin>
 	            <groupId>org.apache.maven.plugins</groupId>
 	            <artifactId>maven-surefire-plugin</artifactId>
 	            <version>${maven.plugin.version}</version>
-	            	<configuration>
-							<dependenciesToScan>
-					            <dependency>com.organization.mvcproject:mgl-automation-testing</dependency>
-					        </dependenciesToScan>
-	            	</configuration>
 	        </plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -236,7 +250,7 @@
 			            <include>**/*Test.java</include>
 			        </includes>
 					<dependenciesToScan>
-			            <dependency>com.organization.mvcproject:mgl-automation-testing</dependency>
+			            <dependency>com.organization.mvcproject:mgl-automation-testing:test-jar</dependency>
 			        </dependenciesToScan>
             	</configuration>
 				<executions>

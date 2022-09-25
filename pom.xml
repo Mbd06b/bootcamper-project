@@ -30,6 +30,7 @@
 		</dependencies>
 	</dependencyManagement>
 	<modules>
+		<module>web-automation-testing</module>
 		<module>activities</module>
 		<module>docs</module>
 		<module>mgl-webapp</module>
@@ -37,7 +38,6 @@
 		<module>mgl-webapp_task2-0</module>
 		<module>mgl-webapp_task2-1</module>
 		<module>mgl-webapp_review</module>	
-		<module>web-automation-testing</module>
 	</modules>
 </project>
 
