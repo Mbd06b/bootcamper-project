@@ -23,7 +23,6 @@
   		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<maven.plugin.version>3.0.0-M7</maven.plugin.version>
 		<cucumber.version>7.0.0</cucumber.version>
-		<spring.boot.version>2.6.0</spring.boot.version>
 	</properties>
 	
 	<dependencyManagement>
