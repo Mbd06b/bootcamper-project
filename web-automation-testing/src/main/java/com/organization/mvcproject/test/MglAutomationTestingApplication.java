@@ -1,13 +1,22 @@
 package com.organization.mvcproject.test;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import java.lang.invoke.MethodHandles;
 
-@SpringBootApplication
-public class MglAutomationTestingApplication {
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.test.context.SpringBootTest;
 
-	public static void main(String[] args) {
-		SpringApplication.run(MglAutomationTestingApplication.class, args);
+import io.cucumber.java.Before;
+
+@SpringBootTest
+class MglAutomationTestingApplication {
+	
+    private static Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+
+	@Before
+	void contextLoads() {
+		logger.debug("Context Loads");
+		logger.info("----------------- Spring Context Initialized for Executing Cucumber Tests ------------------");
 	}
 
 }
