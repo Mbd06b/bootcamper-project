@@ -3,6 +3,7 @@ package com.organization.mvcproject.app.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.organization.mvcproject.api.mockdao.GameDAO;
@@ -13,6 +14,7 @@ import com.organization.mvcproject.api.service.GameService;
 public class GameServiceImpl implements GameService {
 
 	@Autowired
+	@Qualifier("gameRemoteDAO")
 	private GameDAO gameDAO; 
 	
 	@Override
