@@ -1,4 +1,4 @@
-package com.organization.mvcproject.bdd;
+package com.organization.mvcproject.test.bdd;
 
 import org.junit.platform.suite.api.ConfigurationParameter;
 import org.junit.platform.suite.api.IncludeEngines;

@@ -1,4 +1,4 @@
-package com.organization.mvcproject.bdd.test.steps;
+package com.organization.mvcproject.test.bdd.steps;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
