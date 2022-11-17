@@ -20,8 +20,8 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>11</java.version>
-		<servlet.port>8081</servlet.port>
-		<jetty.stop.port>9000</jetty.stop.port>
+		<servlet.port>8080</servlet.port>
+		<jetty.stop.port>9100</jetty.stop.port>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.plugin.version>3.0.0-M7</maven.plugin.version>
