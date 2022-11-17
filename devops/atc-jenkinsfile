@@ -5,7 +5,7 @@ pipeline{
     }
     
         environment {
-        PIPELINE_HASH = sh(script: 'git rev-parse --short HEAD', returnStdout: true).trim()
+     //   PIPELINE_HASH = sh(script: 'git rev-parse --short HEAD', returnStdout: true).trim()
         HARBOR_REGISTRY = 'harbor.dev.afsmtddso.com'
         HARBOR_PROJECT = 'mdowell-harbor-project'
         APP_IMAGE_NAME = 'mgl-webapp'
