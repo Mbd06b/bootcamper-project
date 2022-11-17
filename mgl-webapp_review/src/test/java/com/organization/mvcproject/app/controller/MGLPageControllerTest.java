@@ -1,6 +1,5 @@
 package com.organization.mvcproject.app.controller;
 
-import static org.junit.jupiter.api.Assertions.fail;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
@@ -41,11 +40,6 @@ class MGLPageControllerTest {
 		this.mockMvc.perform(get("/review"))
 		.andExpect(status().isOk())
 		.andExpect(view().name("reviewCreatePage"));
-	}
-	
-	@Test
-	void reviewDetailPagePathReportsOkStatus() throws Exception {
-		fail("Test not yet implemented.");
 	}
 	
 	@Test
