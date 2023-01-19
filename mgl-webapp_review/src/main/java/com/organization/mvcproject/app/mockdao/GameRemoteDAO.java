@@ -52,6 +52,7 @@ public class GameRemoteDAO implements GameDAO{
 	@Override
 	public List<Game> findAllGames() {
 		String requestUri = serviceBaseUrl + RESOURCE_URI;
+		logger.debug("Requesting: GET[{}]", requestUri );
 		ResponseEntity<GameImpl[]> jobs = restTemplate.getForEntity(
 				requestUri,
 				GameImpl[].class);
