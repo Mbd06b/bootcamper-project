@@ -3,13 +3,20 @@ package com.organization.provider.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.stereotype.Component;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
-@Component
+@Entity
 public class Company {
-
+	
+	@Id
 	private Long id;
+	@Column(name="NAME")
 	private String name;
+	
+	@OneToMany
 	private List<GameImpl> gamesMade = new ArrayList<GameImpl>();
 
 	public Long getId() {

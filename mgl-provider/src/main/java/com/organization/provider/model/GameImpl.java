@@ -1,14 +1,23 @@
 package com.organization.provider.model;
 
-import org.springframework.stereotype.Component;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import com.organization.mvcproject.api.model.Game;
 
-@Component
+@Entity
+@Table(name = "GAME")
 public class GameImpl implements Game {
 
+	@Id
 	Long id;
+	
+	@Column(name="NAME")
 	String name;
+	
+	@Column(name="GENRE")
 	String genre;
 	
 	public Long getId() {
