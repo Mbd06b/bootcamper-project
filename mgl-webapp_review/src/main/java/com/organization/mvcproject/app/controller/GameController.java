@@ -52,8 +52,7 @@ public class GameController {
 		
 	}
 
-	@RequestMapping(value="/",
-			method={RequestMethod.POST,RequestMethod.PUT}, 
+	@RequestMapping(value="/",method={RequestMethod.POST}, 
 			consumes=MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<?> createGame(@RequestBody GameImpl game) {
 		Game savedGame = gameService.saveGame(game);

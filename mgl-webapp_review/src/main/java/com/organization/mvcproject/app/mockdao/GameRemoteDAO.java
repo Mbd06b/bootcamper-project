@@ -39,12 +39,12 @@ public class GameRemoteDAO implements GameDAO{
 	public Game saveGame(Game game) {
 		String requestUri = serviceBaseUrl + RESOURCE_URI;
 
-		ResponseEntity<Game> response = restTemplate.postForEntity(requestUri, game, Game.class);
+		ResponseEntity<GameImpl> response = restTemplate.postForEntity(requestUri, game, GameImpl.class);
 		if(response.getStatusCode() != HttpStatus.OK) {
 			logger.error("POST to "+ requestUri + " Unsuccessful, Saving Game: {}", game);
 			return null;
 		} else {
-			return response.getBody();
+			return (Game) response.getBody();
 		}
 		
 	}
@@ -67,22 +67,22 @@ public class GameRemoteDAO implements GameDAO{
 	@Override
 	public Game findGameById(Long id) {
 		String requestUri = serviceBaseUrl + RESOURCE_URI;
-		ResponseEntity<Game> response =  restTemplate.getForEntity(requestUri + "/{id}", Game.class, Long.toString(id));
+		ResponseEntity<GameImpl> response =  restTemplate.getForEntity(requestUri + "/{id}", GameImpl.class, Long.toString(id));
 		
-		return response.getBody();
+		return (Game) response.getBody();
 	}
 
 
 	public Game updateGame(Long id, Game game) {		
 		String requestUri = serviceBaseUrl + RESOURCE_URI;
 		
-		ResponseEntity<Game> response = restTemplate.exchange(requestUri + "/{id}", 
+		ResponseEntity<GameImpl> response = restTemplate.exchange(requestUri + "/{id}", 
 				HttpMethod.PUT,
 				new HttpEntity<>(game),
-				Game.class,
+				GameImpl.class,
 				Long.toString(id));
 		
-		return response.getBody(); 
+		return (Game) response.getBody(); 
 
 	}
 
@@ -90,9 +90,9 @@ public class GameRemoteDAO implements GameDAO{
 	@Override
 	public List<Game> findGamesByGenre(String genre) {
 		String requestUri = serviceBaseUrl + RESOURCE_URI;
-		ResponseEntity<Game[]> jobs = restTemplate.getForEntity(
+		ResponseEntity<GameImpl[]> jobs = restTemplate.getForEntity(
 				requestUri,
-				Game[].class);
+				GameImpl[].class);
 		
 
 		List<Game> games = Arrays.stream(jobs.getBody())

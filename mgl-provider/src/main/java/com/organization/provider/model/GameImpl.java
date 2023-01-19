@@ -2,6 +2,7 @@ package com.organization.provider.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -12,6 +13,7 @@ import com.organization.mvcproject.api.model.Game;
 public class GameImpl implements Game {
 
 	@Id
+	@GeneratedValue
 	Long id;
 	
 	@Column(name="NAME")

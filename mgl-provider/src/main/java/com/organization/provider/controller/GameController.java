@@ -52,13 +52,22 @@ public class GameController {
 		
 	}
 
-	@RequestMapping(value="/",
-			method={RequestMethod.POST,RequestMethod.PUT}, 
-			consumes=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@RequestMapping(value={"","/"},
+			method=RequestMethod.POST, 
+			consumes=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> createGame(@RequestBody GameImpl game) {
 		Game savedGame = gameService.saveGame(game);
 		logger.info("Game id created is: {}", savedGame.getId());
 		return new ResponseEntity<>((GameImpl) savedGame, HttpStatus.CREATED);
+	}
+	
+	@RequestMapping(value={"","/"},
+			method=RequestMethod.PUT, 
+			consumes=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<?> updateGame(@RequestBody GameImpl game) {
+		Game savedGame = gameService.saveGame(game);
+		logger.info("Updated Game is: {}", savedGame.getId());
+		return new ResponseEntity<>((GameImpl) savedGame, HttpStatus.OK);
 	}
 	
 	@DeleteMapping(value="/{id}")
