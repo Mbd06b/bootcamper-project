@@ -2,6 +2,7 @@ package com.organization.provider.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -12,6 +13,7 @@ import com.organization.mvcproject.api.model.Review;
 public class ReviewImpl implements Review {
 	
 	@Id
+	@GeneratedValue
 	private Long id;
 	
 	@Column(name="BODY")
