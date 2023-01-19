@@ -32,7 +32,7 @@ public class GameController {
 	@Autowired
 	private GameService gameService;
 	
-	@GetMapping(value = "/")
+	@GetMapping(value = {"","/"})
 	public ResponseEntity<?> fetchAllGames(@RequestParam(required = false) String genre) {
 		if(genre != null) {
 			return new ResponseEntity<>(gameService.retrieveGamesByGenre(genre), HttpStatus.OK);
