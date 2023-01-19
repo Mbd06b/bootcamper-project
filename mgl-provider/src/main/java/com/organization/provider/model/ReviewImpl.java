@@ -1,10 +1,24 @@
 package com.organization.provider.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import com.organization.mvcproject.api.model.Review;
 
+@Entity
+@Table(name="REVIEW")
 public class ReviewImpl implements Review {
+	
+	@Id
+	private Long id;
+	
+	@Column(name="BODY")
 	private String reviewBody;
+	@Column(name="AUTHOR")
 	private String author;
+	@Column(name="RATING")
 	private Integer rating;
 
 	public String getAuthor() {
