@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 import com.organization.mvcproject.api.model.Game;
 
-@Entity
+@Entity(name = "Game")
 @Table(name = "GAME")
 public class GameImpl implements Game {
 
