@@ -29,7 +29,7 @@ public class GameDAOImpl implements GameDAO  {
 
 	@Override
 	public List<Game> findGamesByGenre(String genre) {
-		String hql = "FROM Gmae g WHERE g.genere = :genre"; // HQL Query
+		String hql = "FROM GAME g WHERE g.genre = :genre"; // HQL Query
 		Query query = sessionFactory.openSession().createQuery(hql);
 		query.setParameter("genere", genre);
 		return  ImmutableList.copyOf(query.getResultList());
@@ -43,7 +43,7 @@ public class GameDAOImpl implements GameDAO  {
 
 	@Override
 	public boolean deleteGame(Long id) {
-		Query query = sessionFactory.openSession().createSQLQuery("DELETE FROM Game WHERE ID = :ID");
+		Query query = sessionFactory.openSession().createSQLQuery("DELETE FROM GAME WHERE ID = :ID");
 		query.setLong("ID", id);
 		return (0 > query.executeUpdate());
 	}
