@@ -11,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,7 +34,7 @@ public class GameController {
 	@Autowired
 	private GameService gameService;
 	
-	@GetMapping(value = {"","/"})
+	@GetMapping(value = {""})
 	public ResponseEntity<?> fetchAllGames(@RequestParam(required = false) String genre) {
 		if(genre != null) {
 			return new ResponseEntity<>(gameService.retrieveGamesByGenre(genre), HttpStatus.OK);
@@ -52,17 +54,15 @@ public class GameController {
 		
 	}
 
-	@RequestMapping(value={"","/"},
-			method=RequestMethod.POST, 
+	@PostMapping(value={""},
 			consumes=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> createGame(@RequestBody GameImpl game) {
 		Game savedGame = gameService.saveGame(game);
 		logger.info("Game id created is: {}", savedGame.getId());
 		return new ResponseEntity<>((GameImpl) savedGame, HttpStatus.CREATED);
 	}
-	
-	@RequestMapping(value={"","/"},
-			method=RequestMethod.PUT, 
+
+	@PutMapping(value={""},
 			consumes=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> updateGame(@RequestBody GameImpl game) {
 		Game savedGame = gameService.saveGame(game);
