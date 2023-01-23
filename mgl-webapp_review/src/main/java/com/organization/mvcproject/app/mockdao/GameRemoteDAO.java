@@ -40,7 +40,7 @@ public class GameRemoteDAO implements GameDAO{
 		String requestUri = serviceBaseUrl + RESOURCE_URI;
 
 		ResponseEntity<GameImpl> response = restTemplate.postForEntity(requestUri, game, GameImpl.class);
-		if(response.getStatusCode() != HttpStatus.OK) {
+		if(!response.getStatusCode().is2xxSuccessful()) {
 			logger.error("POST to "+ requestUri + " Unsuccessful, Saving Game: {}", game);
 			return null;
 		} else {
@@ -53,23 +53,31 @@ public class GameRemoteDAO implements GameDAO{
 	public List<Game> findAllGames() {
 		String requestUri = serviceBaseUrl + RESOURCE_URI;
 		logger.debug("Requesting: GET[{}]", requestUri );
-		ResponseEntity<GameImpl[]> jobs = restTemplate.getForEntity(
+		ResponseEntity<GameImpl[]> response = restTemplate.getForEntity(
 				requestUri,
 				GameImpl[].class);
-		
-
-		List<Game> games = Arrays.stream(jobs.getBody())
+		if(!response.getStatusCode().is2xxSuccessful()) {
+			logger.error("GET  "+ requestUri + " Unsuccessful, findAllGames: {}");
+			return null;
+		} else {
+		 
+		List<Game> games = Arrays.stream(response.getBody())
 				.collect(Collectors.toList());
 		
 		return games;
+		}
 	}
 
 	@Override
 	public Game findGameById(Long id) {
 		String requestUri = serviceBaseUrl + RESOURCE_URI;
 		ResponseEntity<GameImpl> response =  restTemplate.getForEntity(requestUri + "/{id}", GameImpl.class, Long.toString(id));
-		
+		if(!response.getStatusCode().is2xxSuccessful()) {
+			logger.error("GET  "+ requestUri + " Unsuccessful, findGameById: {}", id);
+			return null;
+		} else {
 		return (Game) response.getBody();
+		}
 	}
 
 
@@ -82,7 +90,14 @@ public class GameRemoteDAO implements GameDAO{
 				GameImpl.class,
 				Long.toString(id));
 		
+		if(!response.getStatusCode().is2xxSuccessful()) {
+			logger.error("PUT  "+ requestUri + " Unsuccessful, updateGame: {}", game);
+			return null;
+		} else {
+		
 		return (Game) response.getBody(); 
+		
+		}
 
 	}
 
@@ -90,15 +105,19 @@ public class GameRemoteDAO implements GameDAO{
 	@Override
 	public List<Game> findGamesByGenre(String genre) {
 		String requestUri = serviceBaseUrl + RESOURCE_URI;
-		ResponseEntity<GameImpl[]> jobs = restTemplate.getForEntity(
+		ResponseEntity<GameImpl[]> response = restTemplate.getForEntity(
 				requestUri,
 				GameImpl[].class);
 		
-
-		List<Game> games = Arrays.stream(jobs.getBody())
+		if(!response.getStatusCode().is2xxSuccessful()) {
+			logger.error("GET  "+ requestUri + " Unsuccessful, findGamesByGenre: {}", genre);
+			return null;
+		} else {
+		List<Game> games = Arrays.stream(response.getBody())
 				.collect(Collectors.toList());
 		
 		return games; 
+		}
 	}
 
 
@@ -111,6 +130,12 @@ public class GameRemoteDAO implements GameDAO{
 	      
 		ResponseEntity<Boolean> response =  restTemplate.exchange(
 				requestUri +id, HttpMethod.DELETE, entity,  Boolean.class);
+		
+		if(!response.getStatusCode().is2xxSuccessful()) {
+			logger.error("DELETE "+ requestUri + " Unsuccessful, deleteGame: {}", id);
+			return Boolean.FALSE;
+		} else {
 		return response.getBody();
+		}
 	}
 }
