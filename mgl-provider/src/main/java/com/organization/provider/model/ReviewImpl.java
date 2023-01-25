@@ -14,7 +14,7 @@ import com.organization.mvcproject.api.model.Review;
 public class ReviewImpl implements Review {
 	
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	@Column(name="BODY")

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.organization.provider.model.GameImpl;
 
+
 public interface GameRepository extends JpaRepository<GameImpl, Long>, GameRepositoryCustom {
 	
 }
