@@ -71,6 +71,7 @@ public class GameRemoteDAO implements GameDAO{
 	@Override
 	public Game findGameById(Long id) {
 		String requestUri = serviceBaseUrl + RESOURCE_URI;
+		logger.debug("Requesting: GET[{}]", requestUri );
 		ResponseEntity<GameImpl> response =  restTemplate.getForEntity(requestUri + "/{id}", GameImpl.class, Long.toString(id));
 		if(!response.getStatusCode().is2xxSuccessful()) {
 			logger.error("GET  "+ requestUri + " Unsuccessful, findGameById: {}", id);
@@ -83,7 +84,8 @@ public class GameRemoteDAO implements GameDAO{
 
 	public Game updateGame(Long id, Game game) {		
 		String requestUri = serviceBaseUrl + RESOURCE_URI;
-		
+		logger.debug("Requesting: PUT[{}]: {}", requestUri, game );
+
 		ResponseEntity<GameImpl> response = restTemplate.exchange(requestUri + "/{id}", 
 				HttpMethod.PUT,
 				new HttpEntity<>(game),
@@ -104,7 +106,7 @@ public class GameRemoteDAO implements GameDAO{
 
 	@Override
 	public List<Game> findGamesByGenre(String genre) {
-		String requestUri = serviceBaseUrl + RESOURCE_URI;
+		String requestUri = serviceBaseUrl + RESOURCE_URI ;
 		ResponseEntity<GameImpl[]> response = restTemplate.getForEntity(
 				requestUri,
 				GameImpl[].class);
@@ -123,13 +125,13 @@ public class GameRemoteDAO implements GameDAO{
 
 	@Override
 	public boolean deleteGame(Long id) {
-		String requestUri = serviceBaseUrl + RESOURCE_URI;
+		String requestUri = serviceBaseUrl + RESOURCE_URI  + "/" + id;
 		
 		  HttpHeaders headers = new HttpHeaders();
 	      HttpEntity<Boolean> entity = new HttpEntity<Boolean>(headers);
 	      
 		ResponseEntity<Boolean> response =  restTemplate.exchange(
-				requestUri +id, HttpMethod.DELETE, entity,  Boolean.class);
+				requestUri, HttpMethod.DELETE, entity,  Boolean.class);
 		
 		if(!response.getStatusCode().is2xxSuccessful()) {
 			logger.error("DELETE "+ requestUri + " Unsuccessful, deleteGame: {}", id);
