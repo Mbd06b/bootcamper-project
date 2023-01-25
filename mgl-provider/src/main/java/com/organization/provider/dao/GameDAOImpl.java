@@ -41,9 +41,9 @@ public class GameDAOImpl implements GameDAO  {
 
 	@Override
 	public List<Game> findGamesByGenre(String genre) {
-		String hql = "FROM GAME g WHERE g.genre = :genre"; // HQL Query
+		String hql = "FROM Game g WHERE g.genre = :genre"; // HQL Query
 		Query query = getCurrentSession().createQuery(hql);
-		query.setParameter("genere", genre);
+		query.setParameter("genre", genre);
 		return  ImmutableList.copyOf(query.getResultList());
 	}
 
