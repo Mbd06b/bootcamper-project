@@ -14,7 +14,7 @@ import javax.persistence.OneToMany;
 public class Company {
 	
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@Column(name="NAME")
 	private String name;
