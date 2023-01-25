@@ -1,7 +1,9 @@
 package com.organization.mvcproject.app.mockdao;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
@@ -11,10 +13,12 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import com.organization.mvcproject.api.mockdao.GameDAO;
 import com.organization.mvcproject.api.model.Game;
@@ -106,7 +110,15 @@ public class GameRemoteDAO implements GameDAO{
 
 	@Override
 	public List<Game> findGamesByGenre(String genre) {
-		String requestUri = serviceBaseUrl + RESOURCE_URI ;
+		
+		//there's a more scalable way add path params but this will work. 
+		String requestUri = serviceBaseUrl + RESOURCE_URI + "?genre=" + genre;
+		
+		
+		HttpHeaders headers = new HttpHeaders();
+		headers.set(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE);
+		HttpEntity<?> entity = new HttpEntity<>(headers);
+
 		ResponseEntity<GameImpl[]> response = restTemplate.getForEntity(
 				requestUri,
 				GameImpl[].class);
