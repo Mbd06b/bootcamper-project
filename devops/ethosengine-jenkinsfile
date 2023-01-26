@@ -1,0 +1,94 @@
+pipeline{
+
+    agent any
+
+    stages {
+
+        stage ('Compile Stage') {
+            
+            steps {
+                git url: 'https://github.com/Mbd06b/bootcamper-project.git',
+                branch: 'web-automation-testing',
+                credentialsId: 'Ethosengine_Jenkins_SSH'
+                
+                 withMaven() {
+                    sh 'mvn clean compile -fae'
+
+                }
+
+            }
+        }
+    stage ('Unit Test Stage') {
+			
+		parallel {
+
+		    stage ('jacoco start task') {
+
+		        steps {
+		            catchError( buildResult: 'SUCCESS', stageResult: 'SUCCESS') {
+		        
+                   // steps that will throw an error, but not fail the build if they do
+                		    dir("mgl-webapp"){
+            		            withMaven() {
+                                    sh 'mvn test -fae'
+                               }  
+    		               }
+    		     }
+		    }
+		    }
+		    
+		    stage ('jacoco task 2-1') {
+		        steps {
+		            dir("mgl-webapp_task2-1") {
+		                script{
+    		                withMaven() {
+    		                    try {
+    		                    sh 'mvn test -fae'
+    		                       currentBuild.result = "SUCCESS"
+    		                    } catch (Exception e){
+
+            		            }
+    		                }
+		                }
+		            }
+		       }
+		    }
+		}
+    }
+    		   
+        stage ('Integration Test Stage') {
+            steps {
+                echo "On Integration Test stage"
+                 dir("web-automation-testing") {
+		                withMaven() {
+		                    sh 'mvn integration-test -fae'
+		                }
+		            }
+            }
+        }
+    
+        stage ('Linting Stage') {
+            steps {
+                echo "On Listing Stage";
+            }
+        }
+        
+        stage ('Deploy Stage') {
+            steps {
+                echo "Deploy Stage"
+            }
+        }
+
+    }//stages
+    
+    post {
+	    always {
+	      junit(
+	        allowEmptyResults: true,
+	        testResults: '**/test-reports/*.xml'
+	      )
+          cucumber '**/*cucumber-report.json'
+	    }
+	 }
+
+}

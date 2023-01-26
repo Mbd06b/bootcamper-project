@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<head>
+		<title>Java Bootcamp Artifacts Setup</title>
+	</head>
+	<body>
+		<h1>Java Bootcamp Artifacts Setup Tutorials</h1>
+		<p> 
+			<ul>
+        <li><a href="#intro">Introduction to Curriculum and Learning Platforms</a></li>
+        <li><a href="#Java8">Java JDK 8 and 11</a></li>
+        <li><a href="#eclipse">Eclipse</a></li>
+        <li><a href="#ssh">SSH key setup (for Github/Eclipse)</a></li>
+        <li><a href="#github">Github - fork/checkout/feature-branching</a></li>
+        <li><a href="#demo">Demo mgl-webapp module</a></li>
+			</ul>	
+		</p>
+  	<h2 id="intro"><a href="https://afs365.sharepoint.com/:v:/r/sites/ATCJavaBootCamp20211-19-2-8/Shared%20Documents/General/videos/welcome_video_11_16_2021.webm?csf=1&web=1&e=O1IOtu">Introduction to Curriculum and Learning Platforms</a></h2>
+  	<div id="Java JDK 8 and 11">
+      <h2 id="Java8">Java JDK 8 and 11</h2>
+      <p>Video tutorial: <a href="https://afs365.sharepoint.com/:v:/r/sites/ATCJavaBootCamp20211-19-2-8/Shared%20Documents/General/videos/Task0_Java%20JDK%208%20and%2011%20Setup_11_11-22-2021.webm?csf=1&web=1&e=Q7e0d0">Setting Up Java JDK 8 and 11</a>
+        <ol>
+          <li>Open file explorer and navigate to C: drive</li>
+          <li>Add folder: "jba". This will be where you save java library artifacts.</li>
+          <li>inside folder: "jba", add folder named "java"</li>
+          <li>Navigate to: <a href="https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html">Oracle</a></li>
+          <li>Select "Java 8 tab"</li>
+          <li>Select operating system (Windows for AFS Laptops)</li>
+          <li>Download latest Java 8 JDK for x64</li>
+          <li>Save to the "java" folder as "java_8_VERSION"</li>
+          <li>Java 11: follow steps 4-7</li>
+          <li>*follow video tutorial for installation preferences</li>
+        </ol>
+  	</div>
+  	<div id ="Eclipse">
+      <h2 id="eclipse">Eclipse</h2>
+        <ol>
+          <li>Navigate to: <a href="https://www.eclipse.org/downloads/">Download Eclipse IDE form eclipse.org/downloads</a></li>
+          <li>Once you download Eclipse run the eclispe installer exe File.</li>
+  <center style="padding:10px">
+  <img src="https://i.ibb.co/XWWfqz9/eclipse-installer-exe.png" alt="eclipse-installer-exe" border="0">
+          </center>
+          <li>The Eclipse Installer window will pop up.</li>
+          <center style="padding:10px">
+          <img src="https://i.ibb.co/7n9BXGZ/eclipse-installer.png" alt="eclipse-installer" border="0" width="500" 
+       height="500">
+          </center>
+          <li>Select The Eclipse IDE for Enterprise Java and Web Developers to download.</li>
+          <li>Next it will take you to a window to install the IDE. Eclipse IDE is only compatible with java 11+. Click the install button.</li>
+          <center style="padding:10px">
+          <img src="https://i.ibb.co/Lv22BRS/eclipse-install.png" alt="eclipse-install" border="0" width="500" 
+       height="500">
+            </center>
+          <li>Once it's done installing click the green launch botton.</li>
+          <li>Next it will ask you to select a workspace for your projects.</li>
+        </ol>
+    </div>
+		<h2 id="ssh">SSH key setup (for Github/Eclipse)</h2>
+  		<p>Video Tutorial (1:45-5:12) 
+    		<a href="https://afs365.sharepoint.com/:v:/r/sites/ATCJavaBootCamp20211-19-2-8/Shared%20Documents/General/videos/Task01_Eclipse_Git_Setup_Workflow_Intro.webm?csf=1&web=1&e=dFojBH"> SSH key and Github Setup for Companion Project</a>
+  		</p>		
+  		<ol>
+				<li>Sign into your github account</li>
+				<li>Navigate to your settings by clicking on your profile picture in the top right and selecting settings</li>
+				<li>Under "Access" select "SSH and GPG keys</li>
+        <li>Select "New SSH key" green button</li>
+        <li>Under "Title" describe the machine. ex. "AFS Laptop"</li>
+        <li>Navigate to Eclipse</li>
+        <li>On the Window tab slect "Preferences"</li>
+        <li>in the search bar on the left type in "SSH" and under General -> Network Connections, select " SSH2"</li>
+        <li>Select "Key Management" Tab</li>
+        <li>Click "Generate RSA Key" button</li>
+        <li>Copy the SSH key from the text field under "You can paste this public key into the remote authorized_key file:</li>
+        <li>Navigate back to Github page and paste the SSH key</li>
+        <li>Navigate back to Eclipse and select "Save Private Key..."</li>
+        <li>You do not have to password protect the Key</li>
+        <li>Create the default file path for the SSH folder and save key to that folder</li>
+        <li>Message should displace successful completion</li>
+			</ol>
+		<h2 id="github">Github - fork/checkout/feature-branching</h2>
+  		<p>Video tutorial (0:00-1:45, 5:12-9:26)
+  		<a href="https://afs365.sharepoint.com/:v:/r/sites/ATCJavaBootCamp20211-19-2-8/Shared%20Documents/General/videos/Task01_Eclipse_Git_Setup_Workflow_Intro.webm?csf=1&web=1&e=dFojBH"> fork Repository and checkout</a>
+  		</p>
+  		<ol>
+				<li>Log into or create Github account</li>
+				<li>Navigate to ATC-Custom-Bootcamp 
+          	<a href="github.com/ATC-Custom-Bootcamp/java-companion-project" target="_blank">Java Companion Project</a></li>
+				<li>Select Fork button in the upper right corner</li>
+        <li>Click green "Code" button above the files</li>
+        <li>Select SSH tab and copy the Git link</li>
+        <li>Navigate to Eclipse</li>
+        <li>Open File -> import</li>
+        <li>In the file directory select Git -> Projects from Git (with smart import)</li>
+        <li>Select "Clone URI"</li>
+        <li>Your coppied link from Github should appear in the URI field, if not past the URI there</li>
+        <li>after selecting next, eclipse will start grabbing the code from Github</li>
+        <li>deselect branches other than main and click next twice</li>
+        <li></li>
+        <li></li>
+			</ol>
+		<h2 id="demo">Demo mgl-webapp module</h2>
+			<ol>
+				<li><a href="https://afs365.sharepoint.com/:v:/r/sites/ATCJavaBootCamp20211-19-2-8/Shared%20Documents/General/videos/Task1_RefactorJavaAndClean_VideoTutorial.webm?csf=1&web=1&e=rIm0W0">Task 1, part 1</a></li>
+				<li><a href="https://afs365.sharepoint.com/:v:/r/sites/ATCJavaBootCamp20211-19-2-8/Shared%20Documents/General/videos/Task1_RefactorJavaAndClean_VideoTutorial.webm?csf=1&web=1&e=rIm0W0">Task 1, part 2</a></li>
+				<li>three</li>
+			</ol>
+		
+	</body>
+
+</html>
