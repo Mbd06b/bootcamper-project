@@ -1,9 +1,10 @@
-package com.organization.mvcproject.app.service;
+package com.organization.provider.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.organization.mvcproject.api.mockdao.GameDAO;
@@ -14,33 +15,34 @@ import com.organization.mvcproject.api.service.GameService;
 public class GameServiceImpl implements GameService {
 
 	@Autowired
-	
-	//TODO what is the best way to dynamically configure this bean for differnet running contexts? run arg?,  maven/spring profiles?, or Dynamically w/ Bean Factory?
-//	@Qualifier("gameRemoteDAO")
-	@Qualifier("gameDAOImpl")
 	private GameDAO gameDAO; 
 	
 	@Override
+	@Transactional
 	public List<Game> retrieveAllGames() {
 		return gameDAO.findAllGames();
 	}
 
 	@Override
+	@Transactional
 	public Game saveGame(Game game) {
 		return gameDAO.saveGame(game);
 	}
 	
 	@Override
+	@Transactional
 	public Game findGameById(Long id) {
 		return gameDAO.findGameById(id);
 	}
 
 	@Override
+	@Transactional
 	public boolean deleteGame(Long id) {
 		return gameDAO.deleteGame(id); 
 	}
 
 	@Override
+	@Transactional
 	public List<Game> retrieveGamesByGenre(String genre) {
 		return gameDAO.findGamesByGenre(genre);
 	}
