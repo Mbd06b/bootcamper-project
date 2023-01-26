@@ -10,8 +10,4 @@ public interface GameService {
 
 	Game saveGame(Game game);
 	
-	Boolean deleteGame(Long gameId);
-	
-	Game updateGame(Game game);
-
 }
