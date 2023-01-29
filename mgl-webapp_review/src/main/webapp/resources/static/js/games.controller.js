@@ -46,6 +46,7 @@ angular.module('GameLibraryApp').controller('GameLibraryController',
 
 			self.addGame = function(){
 				return GameLibraryService.createGame(self.game).then( function() {
+					self.game = {};
 					self.fetchAllGames();
 				});
 			}
