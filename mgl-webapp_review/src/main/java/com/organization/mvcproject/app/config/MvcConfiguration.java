@@ -20,7 +20,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Configuration
 @ComponentScan(basePackages="com.organization.mvcproject")
-@PropertySource("classpath:application.properties")
+//@PropertySource("classpath:application.properties")
 @EnableWebMvc
 public class MvcConfiguration implements WebMvcConfigurer {
 	
