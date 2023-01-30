@@ -4,6 +4,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
@@ -19,6 +20,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Configuration
 @ComponentScan(basePackages="com.organization.mvcproject")
+@PropertySource(value= {"classpath:application.properties"})
 @EnableWebMvc
 public class MvcConfiguration implements WebMvcConfigurer {
 	
