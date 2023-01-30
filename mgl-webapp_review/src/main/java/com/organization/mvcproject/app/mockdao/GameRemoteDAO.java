@@ -25,7 +25,7 @@ import com.organization.mvcproject.api.model.Game;
 import com.organization.mvcproject.app.model.GameImpl;
 
 @Repository("gameRemoteDAO")
-public class GameRemoteDAO implements GameDAO{
+public class GameRemoteDAO implements GameDAO {
 
 
 	
