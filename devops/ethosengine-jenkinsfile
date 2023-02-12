@@ -13,11 +13,33 @@ pipeline{
                 
                  withMaven() {
                     sh 'mvn clean compile -fae'
-
-                }
-
+                 }
             }
         }
+        
+    stage ('Deploy Shared Artifacts') {
+        when {
+            anyOf {
+                changeset "pom.xml"
+                changeset "web-automatation-testing/*"
+            }
+          }
+        steps {
+              echo "Deploy parent pom"
+              withMaven(mavenSettingsConfig: '59f1c14a-2dc0-4bbd-8a9d-80b901007e0d') {
+                //skipping tests because we don't want to run the tests that we are packaging
+                sh 'mvn deploy --non-recursive'
+              }
+              dir("web-automation-testing") {
+                  echo "Building Common Tests Jar"
+                  withMaven(mavenSettingsConfig: '59f1c14a-2dc0-4bbd-8a9d-80b901007e0d') {
+                    //skipping tests because we don't want to run the tests that we are packaging
+                    sh 'mvn deploy -DskipTests'
+                  }
+               }
+        }
+                
+    }
     stage ('Unit Test Stage') {
 			
 		parallel {
@@ -58,12 +80,12 @@ pipeline{
     		   
         stage ('Integration Test Stage') {
             steps {
-                echo "On Integration Test stage"
-                 dir("web-automation-testing") {
-		                withMaven() {
-		                    sh 'mvn integration-test -fae'
-		                }
-		            }
+                dir("mgl-webapp_review") {
+                    echo "On Integration Test stage"
+                    withMaven(mavenSettingsConfig: '59f1c14a-2dc0-4bbd-8a9d-80b901007e0d') {
+                        sh 'mvn integration-test -fae'
+                    }
+                }
             }
         }
     
