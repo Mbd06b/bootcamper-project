@@ -147,7 +147,6 @@
 		<dependency> 
 			<groupId>com.organization.mvcproject</groupId>
 			<artifactId>mgl-automation-testing</artifactId>
-			<version>${project.version}</version>
 			<scope>test</scope>
 		</dependency>
 		
@@ -250,17 +249,24 @@
 					<dependenciesToScan>
 			            <dependency>com.organization.mvcproject:mgl-automation-testing:test-jar</dependency>
 			        </dependenciesToScan>
+		        	 <properties>
+		                    <configurationParameters>
+		                        cucumber.glue=com.organization.mvcproject.test.bdd
+								cucumber.publish.enabled=true
+								cucumber.junit-platform.naming-strategy=long
+								cucumber.plugin=pretty, json:target/cucumber/cucumber-report.json
+								cucumber.ansi-colors.disabled=true
+		                    </configurationParameters>
+		                </properties>
             	</configuration>
 				<executions>
 					<execution>
 						<id>perform-it</id>
 						<goals>
 							<goal>integration-test</goal>
+			                <goal>verify</goal>    
 						</goals>
 						<configuration>
-							<dependenciesToScan>
-					            <dependency>${project.groupId}:mgl-automation-testing:test-jar</dependency>
-					        </dependenciesToScan>
 							<systemProperties>
 								<property>
 									<name>servlet.port</name>
