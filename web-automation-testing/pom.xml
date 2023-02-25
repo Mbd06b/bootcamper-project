@@ -126,6 +126,7 @@
 		
 		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
 		<!-- Selenium versions > 4.6.0 contain a native driver manager https://www.selenium.dev/documentation/webdriver/getting_started/install_drivers/#1-selenium-manager-beta --> 
+		<!-- Selenium versions > 4.6.0 contain a native driver manager https://www.selenium.dev/documentation/webdriver/getting_started/install_drivers/#1-selenium-manager-beta --> 
 		<dependency>
 		    <groupId>org.seleniumhq.selenium</groupId>
 		    <artifactId>selenium-java</artifactId>
