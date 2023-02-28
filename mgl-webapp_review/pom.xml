@@ -165,11 +165,6 @@
 
 	<repositories>
 		<repository>
-			<id>github</id>
-			<name>GitHub Mbd06b Apache Maven Packages</name>
-			<url>https://maven.pkg.github.com/Mbd06b/bootcamper-project</url>
-		</repository>
-		<repository>
 			<id>springsource-milestones</id>
 			<name>SpringSource Milestones Proxy</name>
 			<url>https://oss.sonatype.org/content/repositories/springsource-milestones</url>
