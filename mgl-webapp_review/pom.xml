@@ -15,7 +15,7 @@
 	<packaging>war</packaging>
 
 	<name>mgl-webapp_review</name>
-	<url>https://github.com/ATC-Custom-Bootcamp</url>
+	<url>https://github.com/Mbd06b/bootcamper-project</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -164,6 +164,11 @@
 	</dependencies>
 
 	<repositories>
+		<repository>
+			<id>github</id>
+			<name>GitHub Mbd06b Apache Maven Packages</name>
+			<url>https://maven.pkg.github.com/Mbd06b/bootcamper-project</url>
+		</repository>
 		<repository>
 			<id>springsource-milestones</id>
 			<name>SpringSource Milestones Proxy</name>
