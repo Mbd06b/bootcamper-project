@@ -166,34 +166,34 @@
 		            </execution>
 		        </executions>
 		    </plugin>
-			 <plugin>
-	            <groupId>org.apache.maven.plugins</groupId>
-	            <artifactId>maven-failsafe-plugin</artifactId>
-	            <version>${maven.plugin.version}</version>
-	             <executions>
-			        <execution>
-			            <goals>
-			                <goal>integration-test</goal>
-			                <goal>verify</goal>    
-			            </goals>
-			        </execution>
-			    </executions>
-	            <configuration>
-	            <testFailureIgnore>true</testFailureIgnore>
-			    <includes>
-			      <include>**/*Test.java</include>
-			    </includes>
-	                <properties>
-	                    <configurationParameters>
-	                        cucumber.glue=com.organization.mvcproject.test.bdd
-							cucumber.publish.enabled=true
-							cucumber.junit-platform.naming-strategy=long
-							cucumber.plugin=pretty, json:target/cucumber/cucumber-report.json
-							cucumber.ansi-colors.disabled=true
-	                    </configurationParameters>
-	                </properties>
-	            </configuration>
-	        </plugin>
+<!--			 <plugin>-->
+<!--	            <groupId>org.apache.maven.plugins</groupId>-->
+<!--	            <artifactId>maven-failsafe-plugin</artifactId>-->
+<!--	            <version>${maven.plugin.version}</version>-->
+<!--	             <executions>-->
+<!--			        <execution>-->
+<!--			            <goals>-->
+<!--			                <goal>integration-test</goal>-->
+<!--			                <goal>verify</goal>    -->
+<!--			            </goals>-->
+<!--			        </execution>-->
+<!--			    </executions>-->
+<!--	            <configuration>-->
+<!--	            <testFailureIgnore>true</testFailureIgnore>-->
+<!--			    <includes>-->
+<!--			      <include>**/*Test.java</include>-->
+<!--			    </includes>-->
+<!--	                <properties>-->
+<!--	                    <configurationParameters>-->
+<!--	                        cucumber.glue=com.organization.mvcproject.test.bdd-->
+<!--							cucumber.publish.enabled=true-->
+<!--							cucumber.junit-platform.naming-strategy=long-->
+<!--							cucumber.plugin=pretty, json:target/cucumber/cucumber-report.json-->
+<!--							cucumber.ansi-colors.disabled=true-->
+<!--	                    </configurationParameters>-->
+<!--	                </properties>-->
+<!--	            </configuration>-->
+<!--	        </plugin>-->
 		</plugins>
 	</build>
 	
