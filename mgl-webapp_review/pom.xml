@@ -15,13 +15,13 @@
 	<packaging>war</packaging>
 
 	<name>mgl-webapp_review</name>
-	<url>https://github.com/ATC-Custom-Bootcamp</url>
+	<url>https://github.com/Mbd06b/bootcamper-project</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>11</java.version>
 		<servlet.port>8800</servlet.port>
-		<jetty.stop.port>9100</jetty.stop.port>
+		<jetty.stop.port>9800</jetty.stop.port>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.plugin.version>3.0.0-M7</maven.plugin.version>
