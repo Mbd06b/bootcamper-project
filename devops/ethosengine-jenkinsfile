@@ -1,14 +1,40 @@
+/**
+*  Helpful Learning links:
+*  - https://devopscube.com/jenkins-multibranch-pipeline-tutorial/
+*
+*/
+
 pipeline{
 
     agent any
+    
+   // TODO 'any' is fine for development purposes
+   //agent {
+   //   node {
+   //     label 'master'
+   //   }
+   // }
+
+    options {
+        buildDiscarder logRotator( 
+            daysToKeepStr: '90', 
+            numToKeepStr: '10'
+        )
+    }
 
     stages {
 
-        stage ('Compile Stage') {
+        stage ('Setup') {
             
             steps {
+               
+                cleanWs()
+                sh """
+                echo "Cleaned Up Workspace For Project"
+                """ 
+                
                 git url: 'https://github.com/Mbd06b/bootcamper-project.git',
-                branch: 'web-automation-testing',
+                branch: 'feature-mgl-crud',
                 credentialsId: 'Ethosengine_Jenkins_SSH'
                 
                  withMaven() {
