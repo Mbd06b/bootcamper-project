@@ -15,13 +15,13 @@
 	<packaging>war</packaging>
 
 	<name>mgl-webapp_review</name>
-	<url>https://github.com/ATC-Custom-Bootcamp</url>
+	<url>https://github.com/Mbd06b/bootcamper-project</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>11</java.version>
 		<servlet.port>8800</servlet.port>
-		<jetty.stop.port>9100</jetty.stop.port>
+		<jetty.stop.port>9800</jetty.stop.port>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.plugin.version>3.0.0-M7</maven.plugin.version>
@@ -188,6 +188,26 @@
 			    </configuration>
 			</plugin>
 			<plugin>
+	            <groupId>org.codehaus.mojo</groupId>
+	            <artifactId>build-helper-maven-plugin</artifactId>
+	            <version>3.3.0</version>
+	            <configuration>
+	                <portNames>
+	                    <portName>jetty.port</portName>
+	                    <portName>jetty.port.stop</portName>
+	                </portNames>
+	            </configuration>
+	            <executions>
+	                <execution>
+	                    <id>reserve-port</id>
+	                    <phase>pre-integration-test</phase>
+	                    <goals>
+	                        <goal>reserve-network-port</goal>
+	                    </goals>
+	                </execution>
+	            </executions>
+	        </plugin>
+			<plugin>
 				<groupId>org.eclipse.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
 				<version>9.4.14.v20181114</version>
@@ -216,11 +236,17 @@
 				<executions>
 					<execution>
 						<id>start-it</id>
-						<phase>pre-integration-test</phase>
+						<phase>integration-test</phase>
 						<goals>
 							<goal>start</goal>
 						</goals>
 						<configuration>
+						<!-- assign random portnumber from build-helper-maven-plugin< --> 
+						<!-- during integration testing to avoid port conflicts during parallel tests of this module-->
+						<httpConnector>
+							<port>${jetty.port}</port>
+						</httpConnector>
+						<stopPort>${jetty.port.stop}</stopPort>
 							<scanIntervalSeconds>0</scanIntervalSeconds>
 							<daemon>true</daemon>
 						</configuration>
