@@ -94,7 +94,7 @@
                                 <th width="20%"></th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="tableBody_ofGames">
                             <tr ng-repeat="currentGame in ctrl.games">
                                 <td><span ng-bind="currentGame.name"></span></td>
                                 <td><span ng-bind="currentGame.genre"></span></td>
