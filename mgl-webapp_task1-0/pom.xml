@@ -152,6 +152,26 @@
 			    <version>3.3.2</version>
 			</plugin>
 			<plugin>
+	            <groupId>org.codehaus.mojo</groupId>
+	            <artifactId>build-helper-maven-plugin</artifactId>
+	            <version>3.3.0</version>
+	            <configuration>
+	                <portNames>
+	                    <portName>jetty.port</portName>
+	                    <portName>jetty.port.stop</portName>
+	                </portNames>
+	            </configuration>
+	            <executions>
+	                <execution>
+	                    <id>reserve-port</id>
+	                    <phase>pre-integration-test</phase>
+	                    <goals>
+	                        <goal>reserve-network-port</goal>
+	                    </goals>
+	                </execution>
+	            </executions>
+	        </plugin>
+			<plugin>
 				<groupId>org.eclipse.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
 				<version>9.4.14.v20181114</version>
@@ -180,11 +200,17 @@
 				<executions>
 					<execution>
 						<id>start-it</id>
-						<phase>pre-integration-test</phase>
+						<phase>integration-test</phase>
 						<goals>
 							<goal>start</goal>
 						</goals>
 						<configuration>
+						<!-- assign random portnumber from build-helper-maven-plugin< --> 
+						<!-- during integration testing to avoid port conflicts during parallel tests of this module-->
+						<httpConnector>
+							<port>${jetty.port}</port>
+						</httpConnector>
+						<stopPort>${jetty.port.stop}</stopPort>
 							<scanIntervalSeconds>0</scanIntervalSeconds>
 							<daemon>true</daemon>
 						</configuration>
