@@ -13,7 +13,6 @@ angular.module('GameApp').controller('GameController',
 			self.fetchAllGames = function(){
 				GameService.fetchAllGames().then(function(data) {
 					self.games = data;
-					self.resetForm(); 
 				});
 			}
 
@@ -21,28 +20,6 @@ angular.module('GameApp').controller('GameController',
 				return GameService.createGame(self.game).then( function() {
 				self.fetchAllGames();
 				});
-			}
-			
-			
-			self.deleteGame = function(gameToDelete){
-				return GameService.deleteGame(gameToDelete.id).then( function() {
-				 self.fetchAllGames(); 
-				});	
-			}
-			
-			self.selectGame = function(gameToUpdate){
-				self.game = angular.copy(gameToUpdate); 
-			}
-			
-			self.resetForm = function(){
-			  self.game = {};
-
-			}
-			
-			self.updateGame = function(){
-			  return GameService.updateGame(self.game).then( function() {
-				 self.fetchAllGames(); 
-				});	
 			}
 
 			self.fetchAllGames();
