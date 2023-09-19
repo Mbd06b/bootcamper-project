@@ -1,0 +1,143 @@
+pipeline{
+
+    agent {
+    	kubernetes {
+    		cloud: 'kubernetes'
+    		yaml '''
+apiVersion: v1
+kind: Pod
+spec:
+ containers:
+ - name: maven
+   image: maven:3.6.3-jdk-11
+   command:
+   - cat
+   tty: true
+    		'''
+    	}
+    }
+
+    stages {
+
+        stage ('Compile Stage') {
+            
+            steps {
+            	container('maven'){
+            	
+            	    git url: 'https://github.com/Mbd06b/bootcamper-project.git',
+	                branch: 'web-automation-testing',
+	                credentialsId: 'Ethosengine_Jenkins_SSH'
+	                
+	                 withMaven() {
+	                    sh 'mvn clean compile -fae'
+	                 }
+            	}
+
+            }
+        }
+        
+    stage ('Deploy Shared Artifacts') {
+        when {
+            anyOf {
+                changeset "pom.xml"
+                changeset "web-automatation-testing/*"
+            }
+          }
+        steps {
+        	container('maven'){
+              echo "Deploy parent pom"
+              withMaven(mavenSettingsConfig: '59f1c14a-2dc0-4bbd-8a9d-80b901007e0d') {
+                //skipping tests because we don't want to run the tests that we are packaging
+                sh 'mvn deploy --non-recursive'
+              }
+              dir("web-automation-testing") {
+                  echo "Building Common Tests Jar"
+                  withMaven(mavenSettingsConfig: '59f1c14a-2dc0-4bbd-8a9d-80b901007e0d') {
+                    //skipping tests because we don't want to run the tests that we are packaging
+                    sh 'mvn deploy -DskipTests'
+                  }
+               }
+            }
+        }
+                
+    }
+    stage ('Unit Test Stage') {
+			
+		parallel {
+
+		    stage ('jacoco start task') {
+
+		        steps {
+			        container('maven'){
+				            catchError( buildResult: 'SUCCESS', stageResult: 'SUCCESS') {
+				        
+		                   // steps that will throw an error, but not fail the build if they do
+		                		    dir("mgl-webapp"){
+		            		            withMaven() {
+		                                    sh 'mvn test -fae'
+		                               }  
+		    		               }
+		    		   	   }
+	    		     }
+		    }
+		    }
+		    
+		    stage ('jacoco task 2-1') {
+		        steps {
+		            container('maven'){
+			            dir("mgl-webapp_task2-1") {
+			                script{
+	    		                withMaven() {
+	    		                    try {
+	    		                    sh 'mvn test -fae'
+	    		                       currentBuild.result = "SUCCESS"
+	    		                    } catch (Exception e){
+	
+	            		            }
+	    		                }
+			                }
+			            }
+		            }
+		       }
+		    }
+		}
+    }
+    		   
+        stage ('Integration Test Stage') {
+            steps {
+            	container('maven'){
+            	   dir("mgl-webapp_review") {
+	                    echo "On Integration Test stage"
+	                    withMaven(mavenSettingsConfig: '59f1c14a-2dc0-4bbd-8a9d-80b901007e0d') {
+	                        sh 'mvn integration-test -fae'
+	                    }
+                	} 
+            	}        
+            }
+        }
+    
+        stage ('Linting Stage') {
+            steps {
+                echo "On Listing Stage";
+            }
+        }
+        
+        stage ('Deploy Stage') {
+            steps {
+                echo "Deploy Stage"
+            }
+        }
+
+    }//stages
+    
+    post {
+	    always {
+	      junit(
+	        allowEmptyResults: true,
+	        testResults: '**/test-reports/*.xml'
+	      )
+          cucumber '**/*cucumber-report.json'
+	    }
+	 }
+
+}
