@@ -40,3 +40,6 @@ components:
         - name: m2
           path: /home/user/.m2
     name: tools
+  - name: m2
+    volume:
+      size: 1G
