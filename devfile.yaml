@@ -1,4 +1,4 @@
-apiVersion: 2.2.0
+schemaVersion: 2.2.0
 metadata:
   name: java-companion-project
 projects:
@@ -43,29 +43,3 @@ components:
   - name: m2
     volume:
       size: 1G
-
-commands:
-  - id: mvn-compile
-    label: Compile
-    exec:
-      component: maven
-      commandLine: "mvn clean install -f ${CHE_PROJECTS_ROOT}/bootcamper-project/pom.xml"
-      group:
-        kind: build
-        isDefault: true
-
-  - id: mvn-spring-boot-run
-    label: Run Spring Boot Provider
-    exec:
-      component: maven
-      commandLine: "mvn spring-boot:run -f ${CHE_PROJECTS_ROOT}/bootcamper-project/mgl-provider"
-      group:
-        kind: run
-
-  - id: mvn-jetty-run
-    label: Run Jetty Server
-    exec:
-      component: maven
-      commandLine: "mvn jetty:run -f ${CHE_PROJECTS_ROOT}/bootcamper-project/mgl-webapp_review"
-      group:
-        kind: run
