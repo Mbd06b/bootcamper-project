@@ -47,7 +47,7 @@ commands:
     label: Run Spring Boot Provider
     exec:
       component: maven
-      commandLine: "mvn spring-boot:run -f ${CHE_PROJECTS_ROOT}/bootcamper-project/mgl-provider
+      commandLine: "mvn spring-boot:run -f ${CHE_PROJECTS_ROOT}/bootcamper-project/mgl-provider"
       group:
         kind: run
 
