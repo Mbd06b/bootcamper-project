@@ -14,21 +14,36 @@ attributes:
   controller.devfile.io/storage-type: per-user
   
 components:
-  - name: maven
-    container:
-      image: "maven:3.8.1-jdk-11"
-      memoryLimit: 512Mi
-      mountSources: true
-      volumes:
-        - name: maven-repo
-          containerPath: /root/.m2
+  - container:
       endpoints:
-        - name: 'http-8080'
+        - exposure: none
+          name: debug
+          protocol: tcp
+          targetPort: 5005
+        - exposure: public
+          name: 8080-tcp
+          protocol: http
           targetPort: 8080
       env:
-        - name: MAVEN_OPTS
-          value: "-Xmx200m -XX:MaxPermSize=128m"
-          
+        - name: CHE_DASHBOARD_URL
+          value: https://code.ethosengine.com
+        - name: CHE_PLUGIN_REGISTRY_URL
+          value: https://code.ethosengine.com/plugin-registry/v3
+        - name: CHE_PLUGIN_REGISTRY_INTERNAL_URL
+          value: http://plugin-registry.eclipse-che.svc:8080/v3
+        - name: OPENVSX_REGISTRY_URL
+          value: https://open-vsx.org
+      image: quay.io/devfile/universal-developer-image@sha256:6e4095cd243be852970fc7aec20935a0e3c334c5541aa82903fb803b61970ca0
+      memoryLimit: 3Gi
+      sourceMapping: /projects
+      volumeMounts:
+        - name: m2
+          path: /home/user/.m2
+    name: tools
+  - name: m2
+    volume:
+      size: 1G
+
 commands:
   - id: mvn-compile
     label: Compile
