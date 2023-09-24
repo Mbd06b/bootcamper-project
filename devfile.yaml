@@ -28,11 +28,7 @@ components:
       env:
         - name: MAVEN_OPTS
           value: "-Xmx200m -XX:MaxPermSize=128m"
-
-  - name: ide
-    plugin:
-      id: che-incubator/che-idea/next
-
+          
 commands:
   - id: mvn-compile
     label: Compile
