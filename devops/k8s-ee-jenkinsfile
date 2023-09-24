@@ -1,0 +1,167 @@
+pipeline {
+    agent {
+    	kubernetes {
+            cloud 'kubernetes'
+            yaml '''
+    apiVersion: v1
+    kind: Pod
+    spec:
+     containers:
+     - name: maven
+       image: maven:3.6.3-jdk-11
+       command:
+       - cat
+       tty: true
+       volumeMounts:
+       - name: maven-settings-volume
+         mountPath: /usr/share/maven/ref/settings.xml
+     volumes:
+      - name: maven-settings-volume
+        configMap:
+         # Provide the name of the ConfigMap containing the files you want
+         # to add to the container
+         name: ghmbd06b-maven-settings
+    '''
+        }
+    }
+    
+    stages {
+    
+        stage ('Chekout and Compile') {
+                
+            steps {
+             	container('maven'){
+        	       script {
+                        checkout([
+                            $class: 'GitSCM', 
+                            branches: [[name: 'web-automation-testing']], 
+                            doGenerateSubmoduleConfigurations: false, 
+                            extensions: [], 
+                            submoduleCfg: [], 
+                            userRemoteConfigs: [[
+                              //  credentialsId: 'Ethosengine_Jenkins_SSH', 
+                                url: 'https://github.com/Mbd06b/bootcamper-project.git'
+                            ]]
+                        ])
+                        withMaven() {
+                            sh 'mvn clean compile -fae'
+                        }
+                    }
+                 }
+            }
+        }
+        
+        stage ('Deploy Shared Artifacts') {
+            when {
+                anyOf {
+                    changeset "pom.xml"
+                    changeset "web-automatation-testing/*"
+                }
+            }
+            steps {
+                container('maven'){
+        	        script {
+                          echo "Deploy parent pom"
+                          withMaven(mavenSettingsConfig: 'github') {
+                            //skipping tests because we don't want to run the tests that we are packaging
+                            sh 'mvn deploy --non-recursive'
+                          }
+                          dir("web-automation-testing") {
+                              echo "Building Common Tests Jar"
+                              withMaven(mavenSettingsConfig: 'github') {
+                                //skipping tests because we don't want to run the tests that we are packaging
+                                sh 'mvn deploy -DskipTests'
+                              }
+                           }
+        	       }
+                }
+            }
+                    
+        }
+ 
+        stage ('Unit Test') {
+    		parallel {
+    		    stage ('jacoco start task') {
+    		        steps {
+    		            container('maven'){
+        	                script {
+            		            catchError( buildResult: 'SUCCESS', stageResult: 'SUCCESS') {
+            		        
+                               // steps that will throw an error, but not fail the build if they do
+                            		    dir("mgl-webapp"){
+                        		            withMaven() {
+                                                sh 'mvn test -fae'
+                                           }  
+                		               }
+                		        }
+        	                }        
+        	            }        
+    		         }
+    		    }
+    		    
+    		    stage ('jacoco task 2-1') {
+    		        steps {
+    		            container('maven'){
+        	                script {
+            		            dir("mgl-webapp_task2-1") {
+            		                script{
+                		                withMaven() {
+                		                    try {
+                		                    sh 'mvn test -fae'
+                		                       currentBuild.result = "SUCCESS"
+                		                    } catch (Exception e){
+            
+                        		            }
+                		                }
+            		                }
+            		            }
+        	                }
+    		            }
+    		       }
+    		    }
+    		}
+        }
+        
+        stage ('Integration Test') {
+            steps {
+                container('maven'){
+        	       script {
+                        dir("mgl-webapp_review") {
+                            
+                            echo "On Integration Test stage"
+                            withMaven(mavenSettingsConfig: 'github') {
+                                sh 'mvn integration-test -fae'
+                            }
+                        }
+        	       }
+                }
+            }
+        }
+    
+        stage ('Lint') {
+            steps {
+                echo "On Linting Stage";
+            }
+        }
+        
+        stage ('Deploy') {
+            steps {
+                echo "Deploy Stage"
+            }
+        }
+        
+        
+    }
+    
+    post {
+        always {
+            container('maven') {
+                junit(
+                    allowEmptyResults: true,
+                    testResults: '**/test-reports/*.xml'
+                )
+                cucumber '**/*cucumber-report.json'
+            }
+        }
+    }
+}
