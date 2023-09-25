@@ -43,3 +43,20 @@ components:
   - name: m2
     volume:
       size: 1G
+  - container:
+      name: provider
+      endpoints:
+        - exposure: public
+          name: 8900-tcp
+          protocol: http
+          targetPort: 8900
+      image: quay.io/devfile/universal-developer-image@sha256:6e4095cd243be852970fc7aec20935a0e3c334c5541aa82903fb803b61970ca0
+      memoryLimit: 300Mi
+      sourceMapping: /projects
+      volumeMounts:
+        - name: provider-data
+          path: /home/user/.m2
+  - name: provider-data
+    volume:
+      size: 256Mi
+
