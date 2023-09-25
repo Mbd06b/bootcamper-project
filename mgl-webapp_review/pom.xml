@@ -20,7 +20,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>11</java.version>
-		<servlet.port>8800</servlet.port>
+		<servlet.port>8080</servlet.port>
 		<jetty.stop.port>9100</jetty.stop.port>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
@@ -223,7 +223,6 @@
 						</goals>
 						<configuration>
 							<scanIntervalSeconds>0</scanIntervalSeconds>
-							<daemon>true</daemon>
 						</configuration>
 					</execution>
 					<execution>
