@@ -39,10 +39,6 @@ components:
       volumeMounts:
         - name: m2
           path: /home/user/.m2
-    name: tools
-  - name: m2
-    volume:
-      size: 1G
   - container:
       name: provider
       endpoints:
@@ -56,6 +52,10 @@ components:
       volumeMounts:
         - name: provider-data
           path: /home/user/.m2
+    name: tools
+  - name: m2
+    volume:
+      size: 1G
   - name: provider-data
     volume:
       size: 256Mi
