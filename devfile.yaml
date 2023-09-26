@@ -24,6 +24,10 @@ components:
           name: 8080-tcp
           protocol: http
           targetPort: 8080
+        - exposure: public
+          name: 8900-h2
+          targetPort: 8900
+          protocol: http
       env:
         - name: CHE_DASHBOARD_URL
           value: https://code.ethosengine.com
@@ -39,24 +43,7 @@ components:
       volumeMounts:
         - name: m2
           path: /home/user/.m2
-  - container:
-      name: provider
-      endpoints:
-        - exposure: public
-          name: 8900-tcp
-          protocol: http
-          targetPort: 8900
-      image: quay.io/devfile/universal-developer-image@sha256:6e4095cd243be852970fc7aec20935a0e3c334c5541aa82903fb803b61970ca0
-      memoryLimit: 300Mi
-      sourceMapping: /projects
-      volumeMounts:
-        - name: provider-data
-          path: /home/user/.m2
     name: tools
   - name: m2
     volume:
       size: 1G
-  - name: provider-data
-    volume:
-      size: 256Mi
-
