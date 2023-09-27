@@ -6,6 +6,8 @@ pipeline {
     apiVersion: v1
     kind: Pod
     spec:
+     nodeSelector:
+        node-type: edge
      containers:
      - name: maven
        image: maven:3.6.3-jdk-11
