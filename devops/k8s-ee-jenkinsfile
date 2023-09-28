@@ -81,9 +81,45 @@ pipeline {
                     
         }
  
-        stage ('Unit Test') {
+        stage ('Learning Module Verification') {
+            options {
+                description('This stage checks the ratio of passing vs failing tests assigned in each learning module ' +
+                            'validating the assignment of tutorial progression. A failure could indicate that ' +
+                            'solution code was inappropritely committed, or the test framework is failing. ')
+            }
     		parallel {
-    		    stage ('jacoco start task') {
+    		    stage ('Verify Start Task') {
+    		        steps {
+    		            container('maven'){
+        	                script {
+            		            catchError( buildResult: 'SUCCESS', stageResult: 'SUCCESS') {
+                                    
+                               // steps that will throw an error, but not fail the build if they do
+                            		    dir("mgl-webapp"){
+                                            try {
+                                                 withMaven() {
+                                                     sh 'mvn test -fae'
+                                                 }  
+                                            } finally {
+                                                def testResults = readXML file: 'target/test-*.xml'
+                                                def failures = testResults.'**'.find { it.name() == 'testSuite' }.@failures.test() as int
+                                                def totalTests = testResults.'**'.find { it.name() == 'testSuite' }.@tests.test() as int
+
+                                                if (totalTests > 0){
+                                                   def passingTests = totalTests - failures
+                                                   def passPercentage = (passingTests / totalTests) * 100
+                                                    echo "Passed [${passPercentage}%], ${passingTests} of ${totalTests} tests."
+
+                                                }
+                                            }
+                        		           
+                		               }
+                		        }
+        	                }        
+        	            }        
+    		         }
+    		    }
+    		    stage ('Verify Task 1.0') {
     		        steps {
     		            container('maven'){
         	                script {
@@ -101,7 +137,47 @@ pipeline {
     		         }
     		    }
     		    
-    		    stage ('jacoco task 2-1') {
+    		    stage ('Verify Task 2.0') {
+    		        steps {
+    		            container('maven'){
+        	                script {
+            		            dir("mgl-webapp_task2-0") {
+            		                script{
+                		                withMaven() {
+                		                    try {
+                		                    sh 'mvn test -fae'
+                		                       currentBuild.result = "SUCCESS"
+                		                    } catch (Exception e){
+            
+                        		            }
+                		                }
+            		                }
+            		            }
+        	                }
+    		            }
+    		       }
+    		    }
+                stage ('Verify Task 2.1') {
+    		        steps {
+    		            container('maven'){
+        	                script {
+            		            dir("mgl-webapp_task2-1") {
+            		                script{
+                		                withMaven() {
+                		                    try {
+                		                    sh 'mvn test -fae'
+                		                       currentBuild.result = "SUCCESS"
+                		                    } catch (Exception e){
+            
+                        		            }
+                		                }
+            		                }
+            		            }
+        	                }
+    		            }
+    		       }
+    		    }
+                stage ('Verify Review') {
     		        steps {
     		            container('maven'){
         	                script {
