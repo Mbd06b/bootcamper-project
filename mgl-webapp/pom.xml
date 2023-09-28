@@ -258,7 +258,6 @@
 	            <artifactId>maven-surefire-plugin</artifactId>
 	            <version>${maven.plugin.version}</version>
 	            <configuration>
-					<result>plain</result>
 			        <testFailureIgnore>true</testFailureIgnore>
 			    </configuration>
 	        </plugin>
