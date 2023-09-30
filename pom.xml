@@ -8,10 +8,11 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Java Companion Project</name>
 	<packaging>pom</packaging>
-	
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring.boot.version>2.6.14</spring.boot.version>
+		<test.property>testing</test.property>
 	</properties>
 	<repositories>
 		<repository>
