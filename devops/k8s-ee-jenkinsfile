@@ -32,7 +32,8 @@ pipeline {
         stage ('Compile') {
                 
             steps {
-             	container('maven'){  	
+             	container('maven'){ 
+                     script {
                         withMaven() {
                             sh 'mvn clean compile -fae'
                         }
