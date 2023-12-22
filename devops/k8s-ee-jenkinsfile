@@ -1,3 +1,31 @@
+def testPassingTestsAreBelowThresholdPercent(threshold){
+    def totalTests = 0
+    def totalFailures = 0
+    
+    //Find all XML files in the target/surefire-reports directory
+    def testFiles = findFiles(glob: 'target/surefire-reports/TEST-*.xml')
+    
+    testFiles.each { file ->
+        def xmlContent = readFile file.path
+        def testResults = new XmlSlurper().parseText(xmlContent)
+        totalTests += testResults.attributes().get("tests") as int
+        totalFailures += testResults.attributes().get("failures") as int
+    }
+    if(totalTests > 0){
+        def passingTests = totalTests - totalFailures
+        def passPercentage = (passingTests / totalTests) * 100
+        
+        if (passPercentage > threshold) {
+            error "Pass percentage ${passPercentage} is greater than ${threshold}%. Failing the build. Run: totalTests: ${totalTests} totalFailures: ${totalFailures} "
+        } else {
+            echo  "Pass percentage ${passPercentage} is below ${threshold}%.  Run: totalTests: ${totalTests} totalFailures: ${totalFailures}"
+        }
+    } else {
+        echo "No tests were executed."
+    }
+}
+
+
 pipeline {
     agent {
     	kubernetes {
@@ -32,8 +60,8 @@ pipeline {
         stage ('Compile') {
                 
             steps {
-             	container('maven'){ 
-                     script {
+             	container('maven'){
+        	       script {
                         withMaven() {
                             sh 'mvn clean compile -fae'
                         }
@@ -53,13 +81,13 @@ pipeline {
                 container('maven'){
         	        script {
                           echo "Deploy parent pom"
-                          withMaven(mavenSettingsConfig: 'github') {
+                          withMaven(mavenSettingsConfig: '213cd337-844e-4a32-8a6a-868768f6664f') {
                             //skipping tests because we don't want to run the tests that we are packaging
                             sh 'mvn deploy --non-recursive'
                           }
                           dir("web-automation-testing") {
                               echo "Building Common Tests Jar"
-                              withMaven(mavenSettingsConfig: 'github') {
+                              withMaven(mavenSettingsConfig: '213cd337-844e-4a32-8a6a-868768f6664f') {
                                 //skipping tests because we don't want to run the tests that we are packaging
                                 sh 'mvn deploy -DskipTests'
                               }
@@ -72,19 +100,22 @@ pipeline {
  
         stage ('Unit Test') {
     		parallel {
-    		    stage ('jacoco start task') {
+    		    stage ('Verify Start Task') {
     		        steps {
     		            container('maven'){
         	                script {
-            		            catchError( buildResult: 'SUCCESS', stageResult: 'SUCCESS') {
-            		        
-                               // steps that will throw an error, but not fail the build if they do
-                            		    dir("mgl-webapp"){
-                        		            withMaven() {
-                                                sh 'mvn test -fae'
-                                           }  
-                		               }
-                		        }
+                              // steps that will throw an error, but not fail the build if they do
+                    		    dir("mgl-webapp"){
+                                    try {
+                                         withMaven() {
+                                             sh 'mvn test --fail-never'
+                                         } 
+                                    } catch (Exception e){
+                                        //do nothing with failed tests we're checking learning module setup, not the module itself
+                                    } finally {
+                                        testPassingTestsAreBelowThresholdPercent(45);
+                                    }
+        		               }
         	                }        
         	            }        
     		         }
@@ -95,16 +126,15 @@ pipeline {
     		            container('maven'){
         	                script {
             		            dir("mgl-webapp_task2-1") {
-            		                script{
-                		                withMaven() {
-                		                    try {
-                		                    sh 'mvn test -fae'
-                		                       currentBuild.result = "SUCCESS"
-                		                    } catch (Exception e){
-            
-                        		            }
-                		                }
-            		                }
+                                    try {
+                                         withMaven() {
+                                             sh 'mvn test --fail-never'
+                                         } 
+                                    } catch (Exception e){
+                                        //do nothing with failed tests we're checking learning module setup, not the module itself
+                                    } finally {
+                                        testPassingTestsAreBelowThresholdPercent(55);
+                                    }
             		            }
         	                }
     		            }
@@ -120,8 +150,8 @@ pipeline {
                         dir("mgl-webapp_review") {
                             
                             echo "On Integration Test stage"
-                            withMaven(mavenSettingsConfig: 'github') {
-                                sh 'mvn integration-test -fae'
+                            withMaven(mavenSettingsConfig: '213cd337-844e-4a32-8a6a-868768f6664f') {
+                                sh 'mvn integration-test --fail-never'
                             }
                         }
         	       }
@@ -129,9 +159,19 @@ pipeline {
             }
         }
     
-        stage ('Lint') {
+        stage ('QA Scan') {
             steps {
                 echo "On Linting Stage";
+                 container('maven'){
+        	       script {
+                        dir("mgl-webapp_review") {
+                            
+                            withSonarQubeEnv('ee-sonarqube') {
+                                // Your build and analysis steps
+                                sh 'mvn clean verify sonar:sonar -Dmaven.test.failure.ignore=true'
+                            }
+                        }
+        	    }  }
             }
         }
         
