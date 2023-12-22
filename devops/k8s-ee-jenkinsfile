@@ -29,22 +29,10 @@ pipeline {
     
     stages {
     
-        stage ('Chekout and Compile') {
+        stage ('Compile') {
                 
             steps {
-             	container('maven'){
-        	       script {
-                        checkout([
-                            $class: 'GitSCM', 
-                            branches: [[name: 'web-automation-testing']], 
-                            doGenerateSubmoduleConfigurations: false, 
-                            extensions: [], 
-                            submoduleCfg: [], 
-                            userRemoteConfigs: [[
-                              //  credentialsId: 'Ethosengine_Jenkins_SSH', 
-                                url: 'https://github.com/Mbd06b/bootcamper-project.git'
-                            ]]
-                        ])
+             	container('maven'){  	
                         withMaven() {
                             sh 'mvn clean compile -fae'
                         }
