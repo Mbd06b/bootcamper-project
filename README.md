@@ -1,4 +1,4 @@
-[![Contribute](https://www.eclipse.org/che/contribute.svg)](https://code.ethosengine.com/#https://github.com/Mbd06b/bootcamper-project)
+[![Contribute](https://www.eclipse.org/che/contribute.svg)](https://code.ethosengine.com/#https://github.com/Mbd06b/bootcamper-project?che-editor=che-incubator/che-idea/next)
 
 # java-companion-project
 
