@@ -21,5 +21,5 @@ As bootcampers progress through the bootcamp they:
 
 It's important to note that bootcampers are going to have wide experiences with the project. Those learning Java, HTML/CSS, and JavaScript from scratch should spend more time drilling the languages, and use this as an aspirational example to guide their learning, while experienced bootcampers could completely reform the project, or create new task modules to demonstrate what they are ready to do.  
 
-Visit the Bootcamp Companion Project Documentation Page - https://atc-custom-bootcamp.github.io/java-companion-project/
+Visit the Bootcamp Companion Project Documentation Page - https://mbd06b.github.io/bootcamper-project/
 Documentation written in HTML is hosted in this repository in the "docs" module. This is a great place for bootcampers who are new at HTML,CSS, and JS to apply foundational web concepts. 
