@@ -34,5 +34,6 @@ public class GameServiceImpl implements GameService {
 	public boolean deleteGame(Long id) {
 		return gameDAO.deleteGame(id); 
 	}
+
 }
 	

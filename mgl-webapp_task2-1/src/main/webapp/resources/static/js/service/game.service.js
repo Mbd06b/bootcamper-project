@@ -8,7 +8,6 @@ angular.module('GameApp').service('GameService', ['$http','$log', function($http
 			fetchAllGames : fetchAllGames,
 			createGame : createGame,
 			deleteGame : deleteGame,
-			updateGame : updateGame
 		};
 
 		return factory;
