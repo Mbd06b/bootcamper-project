@@ -2,6 +2,7 @@ package com.organization.mvcproject.controller;
 
 import java.util.List;
 
+import com.organization.mvcproject.service.GameServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -22,7 +23,7 @@ import com.organization.mvcproject.service.GameService;
 public class GameController {
 
 	@Autowired
-	private GameService gameService;
+	private GameServiceImpl gameService;
 
 
 

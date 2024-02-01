@@ -11,7 +11,7 @@
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+        <link rel="stylesheet" href="src/main/webapp/resources/style.css">
         <title>Mist Library Task 1-Games</title>
         <style type="text/css">
             body {
@@ -68,6 +68,7 @@
                         <div class="row">
                             <div class="form-actions floatRight">
                                 <input type="submit" value="Add" class="btn btn-primary btn-sm">
+                                <button type="submit" class="btn btn-warning btn-sm">Clear</button>
                             </div>
                         </div>
                     </form>
@@ -89,8 +90,8 @@
                             <tr ng-repeat="currentGame in ctrl.games">
                                 <td><span ng-bind="currentGame.name"></span></td>
                                 <td><span ng-bind="currentGame.genre"></span></td>
-                                <td>
-                                </td>
+                                <td><button type="submit" class="btn btn-success btn-sm">Edit</button></td>
+                                <td><button type="submit" class="btn btn-danger btn-sm">Delete</button></td>
                             </tr>
                         </tbody>
                     </table>
