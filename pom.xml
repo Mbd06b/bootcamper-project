@@ -13,7 +13,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring.boot.version>2.6.0</spring.boot.version>
 	</properties>
-	<repositories>
+<!--	<repositories>
 		<repository>
 			<id>github</id>
 			<name>GitHub Mbd06b Apache Maven Packages</name>
@@ -35,19 +35,19 @@
   	
 	<dependencyManagement>
 		<dependencies>
-			<!-- By specifying our own module in "dependencyManagement" in the parent pom         -->
-			<!-- this allows us to build a dependency, AND USE it as a dependency in child pom(s) -->
-			<!-- without every module inheriting, which is what happens when                      -->
-			<!-- a more typical dependency is specified in a parent pom.xml                       -->
-			<!-- this is a useful pom strategy for creating common modules,                       -->
-			<!-- and avoids a self-referenced recusive loop.                                      -->
+			&lt;!&ndash; By specifying our own module in "dependencyManagement" in the parent pom         &ndash;&gt;
+			&lt;!&ndash; this allows us to build a dependency, AND USE it as a dependency in child pom(s) &ndash;&gt;
+			&lt;!&ndash; without every module inheriting, which is what happens when                      &ndash;&gt;
+			&lt;!&ndash; a more typical dependency is specified in a parent pom.xml                       &ndash;&gt;
+			&lt;!&ndash; this is a useful pom strategy for creating common modules,                       &ndash;&gt;
+			&lt;!&ndash; and avoids a self-referenced recusive loop.                                      &ndash;&gt;
 			<dependency> 
 				<groupId>com.organization.mvcproject</groupId>
 				<artifactId>mgl-automation-testing</artifactId>
 				<version>${project.version}</version>
 			</dependency> 
 		</dependencies>
-	</dependencyManagement>
+	</dependencyManagement>-->
 	<modules>
 		<module>web-automation-testing</module>
 		<module>activities</module>
