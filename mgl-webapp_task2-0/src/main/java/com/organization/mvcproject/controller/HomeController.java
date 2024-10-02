@@ -19,7 +19,7 @@ public class HomeController {
 
 	@RequestMapping(value = "/review", method = RequestMethod.GET)
 	public ModelAndView review() {
-		return new ModelAndView("review", "command", new Review());
+		return new ModelAndView("reviewCreatePage", "command", new Review());
 	}
 
 	@RequestMapping(value = "/addReview", method = RequestMethod.POST)
@@ -27,12 +27,12 @@ public class HomeController {
 		if(review.getAuthor().equals("")) {
 			review.setAuthor("anonymous");
 		}
-		return new ModelAndView("result", "submittedReview", review);
+		return new ModelAndView("reviewDetailPage", "submittedReview", review);
 	}
 
 	@RequestMapping(value = "/games", method = RequestMethod.GET)
 	public ModelAndView game() {
-		return new ModelAndView("games", "command", new Game());
+		return new ModelAndView("gamesPage", "command", new Game());
 	}
    
 	@RequestMapping(value="/hello")
