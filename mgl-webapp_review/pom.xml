@@ -155,13 +155,13 @@
 		<!-- the test-jar itself is created via the "maven-jar-plugin" located in the dependency itself -->
 		<!-- the tests recieve the context they need to run via the corresponding texting-framework dependency  --> 
 		<!-- this enables web-automation tests to be developed and run independently of the project they are imported to -->
-		<dependency> 
-			<groupId>com.organization.mvcproject</groupId>
-			<artifactId>mgl-automation-testing</artifactId>
-			<version>${project.version}</version>
-			<type>test-jar</type>
-			<scope>test</scope>
-		</dependency>
+<!--		<dependency> -->
+<!--			<groupId>com.organization.mvcproject</groupId>-->
+<!--			<artifactId>mgl-automation-testing</artifactId>-->
+<!--			<version>${project.version}</version>-->
+<!--			<type>test-jar</type>-->
+<!--			<scope>test</scope>-->
+<!--		</dependency>-->
 	</dependencies>
 
 	<repositories>
