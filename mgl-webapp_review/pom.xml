@@ -15,13 +15,13 @@
 	<packaging>war</packaging>
 
 	<name>mgl-webapp_review</name>
-	<url>https://github.com/ATC-Custom-Bootcamp</url>
+	<url>https://github.com/Mbd06b/bootcamper-project</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>11</java.version>
 		<servlet.port>8080</servlet.port>
-		<jetty.stop.port>9100</jetty.stop.port>
+		<jetty.stop.port>9001</jetty.stop.port>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.plugin.version>3.0.0-M7</maven.plugin.version>
@@ -147,7 +147,6 @@
 		<dependency> 
 			<groupId>com.organization.mvcproject</groupId>
 			<artifactId>mgl-automation-testing</artifactId>
-			<version>${project.version}</version>
 			<scope>test</scope>
 		</dependency>
 		
@@ -188,6 +187,26 @@
 			        <release>${java.version}</release>
 			    </configuration>
 			</plugin>
+		    <plugin>
+	            <groupId>org.codehaus.mojo</groupId>
+	            <artifactId>build-helper-maven-plugin</artifactId>
+	            <version>3.3.0</version>
+				<executions>
+					<execution>
+						<id>reserve-network-port</id>
+						<goals>
+							<goal>reserve-network-port</goal>
+						</goals>
+						<phase>process-resources</phase>
+						<configuration>
+							<portNames>
+								<portName>random.servlet.port</portName>
+								<portName>random.stop.port</portName>
+							</portNames>
+						</configuration>
+					</execution>
+				</executions>
+	        </plugin>
 			<plugin>
 				<groupId>org.eclipse.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
@@ -215,22 +234,31 @@
 					</scanTargetPatterns>
 				</configuration>
 				<executions>
+					<!-- assign random portnumber from build-helper-maven-plugin< --> 
+					<!-- during other build phases to avoid port conflicts during parallel local integration tests of this module-->
 					<execution>
-						<id>start-it</id>
+						<id>start-jetty</id>
 						<phase>pre-integration-test</phase>
 						<goals>
 							<goal>start</goal>
 						</goals>
 						<configuration>
+							<httpConnector>
+								<port>${random.servlet.port}</port>
+							</httpConnector>
+							<stopPort>${random.stop.port}</stopPort>
 							<scanIntervalSeconds>0</scanIntervalSeconds>
 						</configuration>
 					</execution>
 					<execution>
-						<id>stop-it</id>
+						<id>stop-jetty</id>
 						<phase>post-integration-test</phase>
 						<goals>
 							<goal>stop</goal>
 						</goals>
+						<configuration>
+						<stopPort>${random.stop.port}</stopPort>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>
@@ -250,17 +278,24 @@
 					<dependenciesToScan>
 			            <dependency>com.organization.mvcproject:mgl-automation-testing:test-jar</dependency>
 			        </dependenciesToScan>
+		        	 <properties>
+		                    <configurationParameters>
+		                        cucumber.glue=com.organization.mvcproject.test.bdd
+								cucumber.publish.enabled=true
+								cucumber.junit-platform.naming-strategy=long
+								cucumber.plugin=pretty, json:target/cucumber/cucumber-report.json
+								cucumber.ansi-colors.disabled=true
+		                    </configurationParameters>
+		                </properties>
             	</configuration>
 				<executions>
 					<execution>
 						<id>perform-it</id>
 						<goals>
 							<goal>integration-test</goal>
+			                <goal>verify</goal>    
 						</goals>
 						<configuration>
-							<dependenciesToScan>
-					            <dependency>${project.groupId}:mgl-automation-testing:test-jar</dependency>
-					        </dependenciesToScan>
 							<systemProperties>
 								<property>
 									<name>servlet.port</name>
@@ -281,6 +316,41 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.10</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report</id>
+						<phase>test</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
+				</plugin>
 		</plugins>
 	</build>
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<!-- select non-aggregate reports -->
+							<report>report</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+		</plugins>
+	</reporting>
 </project>
