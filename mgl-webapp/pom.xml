@@ -169,6 +169,39 @@
 		<finalName>${project.name}</finalName>
 		<plugins>
 			<plugin>
+	            <groupId>org.apache.maven.plugins</groupId>
+	            <artifactId>maven-compiler-plugin</artifactId>
+	            <configuration>
+	                <source>${java.version}</source>
+	                <target>${java.version}</target>
+	            </configuration>
+	        </plugin>
+	        <plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-war-plugin</artifactId>
+			    <version>3.3.2</version>
+			</plugin>
+		    <plugin>
+	            <groupId>org.codehaus.mojo</groupId>
+	            <artifactId>build-helper-maven-plugin</artifactId>
+	            <version>3.3.0</version>
+				<executions>
+					<execution>
+						<id>reserve-network-port</id>
+						<goals>
+							<goal>reserve-network-port</goal>
+						</goals>
+						<phase>process-resources</phase>
+						<configuration>
+							<portNames>
+								<portName>random.servlet.port</portName>
+								<portName>random.stop.port</portName>
+							</portNames>
+						</configuration>
+					</execution>
+				</executions>
+	        </plugin>
+			<plugin>
 				<groupId>org.eclipse.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
 				<version>9.4.14.v20181114</version>
@@ -195,22 +228,31 @@
 					</scanTargetPatterns>
 				</configuration>
 				<executions>
+					<!-- assign random portnumber from build-helper-maven-plugin< --> 
+					<!-- during other build phases to avoid port conflicts during parallel local integration tests of this module-->
 					<execution>
-						<id>start-it</id>
+						<id>start-jetty</id>
 						<phase>pre-integration-test</phase>
 						<goals>
 							<goal>start</goal>
 						</goals>
 						<configuration>
+							<httpConnector>
+								<port>${random.servlet.port}</port>
+							</httpConnector>
+							<stopPort>${random.stop.port}</stopPort>
 							<scanIntervalSeconds>0</scanIntervalSeconds>
 						</configuration>
 					</execution>
 					<execution>
-						<id>stop-it</id>
+						<id>stop-jetty</id>
 						<phase>post-integration-test</phase>
 						<goals>
 							<goal>stop</goal>
 						</goals>
+						<configuration>
+						<stopPort>${random.stop.port}</stopPort>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>
@@ -249,6 +291,25 @@
 						<id>verify-it</id>
 						<goals>
 							<goal>verify</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.10</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report</id>
+						<phase>test</phase>
+						<goals>
+							<goal>report</goal>
 						</goals>
 					</execution>
 				</executions>

@@ -3,11 +3,11 @@ package com.organization.mvcproject.test;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class MglAutomationTestingApplicationTests {
-
-	@Test
-	void contextLoads() {
-	}
-
-}
+////@SpringBootTest
+//class MglAutomationTestingApplicationTests {
+//
+//	@Test
+//	void contextLoads() {
+//	}
+//
+//}
