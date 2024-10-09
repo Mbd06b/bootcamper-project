@@ -14,6 +14,7 @@ import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import org.springframework.test.context.web.WebAppConfiguration;
 
@@ -30,6 +31,7 @@ import com.organization.mvcproject.app.model.GameImpl;
 class GameServiceImplTest {
 	
 	@Mock
+	@Qualifier("gameDAOImpl")
 	private GameDAO gameDAO; 
 	
 	@Autowired

@@ -15,8 +15,8 @@ public class GameServiceImpl implements GameService {
 
 	@Autowired
 	//TODO what is the best way to dynamically configure this bean for differnet running contexts? run arg?,  maven/spring profiles?, or Dynamically w/ Bean Factory?
-	@Qualifier("gameRemoteDAO")
-	//@Qualifier("gameDAOImpl")
+	//@Qualifier("gameRemoteDAO")
+	@Qualifier("gameDAOImpl")
 	private GameDAO gameDAO; 
 	
 	@Override

@@ -21,7 +21,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>11</java.version>
 		<servlet.port>8080</servlet.port>
-		<jetty.stop.port>9100</jetty.stop.port>
+		<jetty.stop.port>9001</jetty.stop.port>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.plugin.version>3.0.0-M7</maven.plugin.version>
@@ -187,25 +187,25 @@
 			        <release>${java.version}</release>
 			    </configuration>
 			</plugin>
-			<plugin>
+		    <plugin>
 	            <groupId>org.codehaus.mojo</groupId>
 	            <artifactId>build-helper-maven-plugin</artifactId>
 	            <version>3.3.0</version>
-	            <configuration>
-	                <portNames>
-	                    <portName>jetty.port</portName>
-	                    <portName>jetty.port.stop</portName>
-	                </portNames>
-	            </configuration>
-	            <executions>
-	                <execution>
-	                    <id>reserve-port</id>
-	                    <phase>pre-integration-test</phase>
-	                    <goals>
-	                        <goal>reserve-network-port</goal>
-	                    </goals>
-	                </execution>
-	            </executions>
+				<executions>
+					<execution>
+						<id>reserve-network-port</id>
+						<goals>
+							<goal>reserve-network-port</goal>
+						</goals>
+						<phase>process-resources</phase>
+						<configuration>
+							<portNames>
+								<portName>random.servlet.port</portName>
+								<portName>random.stop.port</portName>
+							</portNames>
+						</configuration>
+					</execution>
+				</executions>
 	        </plugin>
 			<plugin>
 				<groupId>org.eclipse.jetty</groupId>
@@ -234,28 +234,31 @@
 					</scanTargetPatterns>
 				</configuration>
 				<executions>
+					<!-- assign random portnumber from build-helper-maven-plugin< --> 
+					<!-- during other build phases to avoid port conflicts during parallel local integration tests of this module-->
 					<execution>
-						<id>start-it</id>
-						<phase>integration-test</phase>
+						<id>start-jetty</id>
+						<phase>pre-integration-test</phase>
 						<goals>
 							<goal>start</goal>
 						</goals>
 						<configuration>
-						<!-- assign random portnumber from build-helper-maven-plugin< --> 
-						<!-- during integration testing to avoid port conflicts during parallel tests of this module-->
-						<httpConnector>
-							<port>${jetty.port}</port>
-						</httpConnector>
-						<stopPort>${jetty.port.stop}</stopPort>
+							<httpConnector>
+								<port>${random.servlet.port}</port>
+							</httpConnector>
+							<stopPort>${random.stop.port}</stopPort>
 							<scanIntervalSeconds>0</scanIntervalSeconds>
 						</configuration>
 					</execution>
 					<execution>
-						<id>stop-it</id>
+						<id>stop-jetty</id>
 						<phase>post-integration-test</phase>
 						<goals>
 							<goal>stop</goal>
 						</goals>
+						<configuration>
+						<stopPort>${random.stop.port}</stopPort>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>
