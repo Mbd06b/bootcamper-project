@@ -45,11 +45,5 @@ public class GameController {
 		return new ResponseEntity<>(gameService.saveGame(game), HttpStatus.OK);
 	}
 	
-	// URL localhost:8081/game/1  (DELETE)  
-	@DeleteMapping(value = "/{id}" )
-	public ResponseEntity<?> deleteGame(@PathVariable("id") Long gameId ){
-		return new ResponseEntity<>(gameService.deleteGame(gameId), HttpStatus.OK);
-	}
-	
 	
 }
