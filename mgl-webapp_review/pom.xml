@@ -144,9 +144,10 @@
 		
 		<!-- this dependency a testing framework (not tests) aka the infrastructure used to run web-automation integration tests -->
 		<!-- See: https://maven.apache.org/plugins/maven-jar-plugin/examples/create-test-jar.html#the-preferred-way -->
-		<dependency> 
+		<dependency>
 			<groupId>com.organization.mvcproject</groupId>
 			<artifactId>mgl-automation-testing</artifactId>
+			<version>${project.version}</version>
 			<scope>test</scope>
 		</dependency>
 		

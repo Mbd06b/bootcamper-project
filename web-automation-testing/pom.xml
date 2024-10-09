@@ -125,8 +125,6 @@
 
 		
 		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
-		<!-- Selenium versions > 4.6.0 contain a native driver manager https://www.selenium.dev/documentation/webdriver/getting_started/install_drivers/#1-selenium-manager-beta --> 
-		<!-- Selenium versions > 4.6.0 contain a native driver manager https://www.selenium.dev/documentation/webdriver/getting_started/install_drivers/#1-selenium-manager-beta --> 
 		<dependency>
 		    <groupId>org.seleniumhq.selenium</groupId>
 		    <artifactId>selenium-java</artifactId>
@@ -138,6 +136,8 @@
 		    <artifactId>webdrivermanager</artifactId>
 		    <version>5.0.3</version>
 		</dependency>
+
+
 	</dependencies>
 	
 
@@ -166,34 +166,34 @@
 		            </execution>
 		        </executions>
 		    </plugin>
-<!--			 <plugin>-->
-<!--	            <groupId>org.apache.maven.plugins</groupId>-->
-<!--	            <artifactId>maven-failsafe-plugin</artifactId>-->
-<!--	            <version>${maven.plugin.version}</version>-->
-<!--	             <executions>-->
-<!--			        <execution>-->
-<!--			            <goals>-->
-<!--			                <goal>integration-test</goal>-->
-<!--			                <goal>verify</goal>    -->
-<!--			            </goals>-->
-<!--			        </execution>-->
-<!--			    </executions>-->
-<!--	            <configuration>-->
-<!--	            <testFailureIgnore>true</testFailureIgnore>-->
-<!--			    <includes>-->
-<!--			      <include>**/*Test.java</include>-->
-<!--			    </includes>-->
-<!--	                <properties>-->
-<!--	                    <configurationParameters>-->
-<!--	                        cucumber.glue=com.organization.mvcproject.test.bdd-->
-<!--							cucumber.publish.enabled=true-->
-<!--							cucumber.junit-platform.naming-strategy=long-->
-<!--							cucumber.plugin=pretty, json:target/cucumber/cucumber-report.json-->
-<!--							cucumber.ansi-colors.disabled=true-->
-<!--	                    </configurationParameters>-->
-<!--	                </properties>-->
-<!--	            </configuration>-->
-<!--	        </plugin>-->
+			 <plugin>
+	            <groupId>org.apache.maven.plugins</groupId>
+	            <artifactId>maven-failsafe-plugin</artifactId>
+	            <version>${maven.plugin.version}</version>
+	             <executions>
+			        <execution>
+			            <goals>
+			                <goal>integration-test</goal>
+			                <goal>verify</goal>    
+			            </goals>
+			        </execution>
+			    </executions>
+	            <configuration>
+	            <testFailureIgnore>true</testFailureIgnore>
+			    <includes>
+			      <include>**/*Test.java</include>
+			    </includes>
+	                <properties>
+	                    <configurationParameters>
+	                        cucumber.glue=com.organization.mvcproject.test.bdd
+							cucumber.publish.enabled=true
+							cucumber.junit-platform.naming-strategy=long
+							cucumber.plugin=pretty, json:target/cucumber/cucumber-report.json
+							cucumber.ansi-colors.disabled=true
+	                    </configurationParameters>
+	                </properties>
+	            </configuration>
+	        </plugin>
 		</plugins>
 	</build>
 	
