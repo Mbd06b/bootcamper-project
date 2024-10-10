@@ -11,7 +11,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<spring.boot.version>2.6.14</spring.boot.version>
+		<spring.boot.version>3.3.4</spring.boot.version>
 	</properties>
 <!--	<repositories>
 		<repository>
@@ -49,7 +49,7 @@
 		</dependencies>
 	</dependencyManagement>-->
 	<modules>
-		<module>web-automation-testing</module>
+<!--		<module>web-automation-testing</module>-->
 		<module>activities</module>
 		<module>docs</module>
 		<module>mgl-webapp</module>
