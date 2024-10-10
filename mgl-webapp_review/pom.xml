@@ -19,14 +19,15 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>11</java.version>
+		<java.version>21</java.version>
 		<servlet.port>8080</servlet.port>
 		<jetty.stop.port>9001</jetty.stop.port>
+		<spring.version>6.1.13</spring.version>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
-		<maven.plugin.version>3.0.0-M7</maven.plugin.version>
-		<junit5.version>5.8.1</junit5.version>
-		<mockito.version>4.8.0</mockito.version>
+		<maven.plugin.version>3.1.2</maven.plugin.version>
+		<junit5.version>5.10.0</junit5.version>
+		<mockito.version>5.5.0</mockito.version>
 	</properties>
 	
 	<dependencyManagement>
@@ -69,16 +70,19 @@
 
 		<!-- Servlet Specs enhance jsp and tag intellisense-->
 		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<scope>provided</scope>
+		    <groupId>jakarta.servlet</groupId>
+		    <artifactId>jakarta.servlet-api</artifactId>
+		    <scope>provided</scope>
 		</dependency>
-		
-	    <dependency> 
-	       <groupId>javax.servlet.jsp</groupId>
-	       <artifactId>javax.servlet.jsp-api</artifactId>
-	       <version>2.3.3</version>
-	       <scope>provided</scope>
+		<dependency>
+		    <groupId>jakarta.servlet.jsp</groupId>
+		    <artifactId>jakarta.servlet.jsp-api</artifactId>
+		    <version>4.0.0</version>
+		    <scope>provided</scope>
+		</dependency>
+		<dependency>
+		    <groupId>jakarta.servlet.jsp.jstl</groupId>
+		    <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
 	   </dependency>
 	   		
 		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
@@ -93,20 +97,6 @@
 		    <groupId>com.google.guava</groupId>
 		    <artifactId>guava</artifactId>
 		    <version>30.1.1-jre</version>
-		</dependency>
-		
-		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
-		<!-- Commons Upload for File upload -->
-		<dependency>
-			<groupId>commons-fileupload</groupId>
-			<artifactId>commons-fileupload</artifactId>
-			<version>1.4</version>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-		    <groupId>commons-io</groupId>
-		    <artifactId>commons-io</artifactId>
-		    <version>2.8.0</version>
 		</dependency>
 		
 		<!-- Jackson JSON Mapper -->
@@ -211,7 +201,7 @@
 			<plugin>
 				<groupId>org.eclipse.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
-				<version>9.4.14.v20181114</version>
+				<version>11.0.15</version>
 				<configuration>
 					<httpConnector>
 						<port>${servlet.port}</port>

@@ -87,21 +87,12 @@
 		    <version>2.24.1</version>
 		</dependency>
 
-		<!-- JSR-330 for @Inject -->
-		<dependency>
-			<groupId>javax.inject</groupId>
-			<artifactId>javax.inject</artifactId>
-			<version>1</version>
-		</dependency>
-
-
 		<!-- Jackson JSON Mapper -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
 			<version>2.15.2</version>
 		</dependency>
-
 
 			<!-- junit 5 -->
           <dependency>
@@ -123,6 +114,14 @@
 		     <artifactId>junit-vintage-engine</artifactId>
 	         <version>${junit5.version}</version>
 		     <scope>test</scope>
+		</dependency>
+		
+	    <!-- hamcrest matchers for more expressive asserts  -->
+		<dependency>
+		    <groupId>org.hamcrest</groupId>
+		    <artifactId>hamcrest</artifactId>
+		    <version>2.2</version>
+		    <scope>test</scope>
 		</dependency>
 	    
         <dependency>
