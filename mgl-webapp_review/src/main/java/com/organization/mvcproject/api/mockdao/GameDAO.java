@@ -3,6 +3,7 @@ package com.organization.mvcproject.api.mockdao;
 import java.util.List;
 
 import com.organization.mvcproject.api.model.Game;
+import com.organization.mvcproject.app.model.view.GameDetailView;
 
 public interface GameDAO {
 	
@@ -10,10 +11,12 @@ public interface GameDAO {
 
 	Game saveGame(Game game);
 
-	Game findGameById(Long id);
+	GameDetailView findGameDetailById(Long id);
 	
 	List<Game> findGamesByGenre(String genre);
 	
 	boolean deleteGame(Long id);
+
+	Game findGameById(Long id);
 	
 }

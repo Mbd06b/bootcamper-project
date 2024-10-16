@@ -1,6 +1,8 @@
 package com.organization.provider.controller;
 
 import java.lang.invoke.MethodHandles;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,7 +22,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.organization.mvcproject.api.model.Game;
 import com.organization.mvcproject.api.service.GameService;
-import com.organization.provider.model.GameImpl;
+import com.organization.provider.model.persistent.GameImpl;
+import com.organization.provider.model.remote.GameDetailView;
+import com.organization.provider.model.remote.GameRemote;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
 
 @RestController
@@ -33,15 +43,40 @@ public class GameController {
 	@Autowired
 	private GameService gameService;
 	
+	@Operation(summary = "Fetch all games", description = "Retrieves all game entries from the database, optionally filtered by genre")
+	@ApiResponses(value = {
+	    @ApiResponse(responseCode = "200", description = "Games found",
+	        content = @Content(mediaType = "application/json",
+	            schema = @Schema(implementation = GameRemote.class))),
+	    @ApiResponse(responseCode = "204", description = "No games found"),
+	    @ApiResponse(responseCode = "500", description = "Internal server error")
+	})
 	@GetMapping(value = {""})
 	public ResponseEntity<?> fetchAllGames(@RequestParam(required = false) String genre) {
+		List<Game> gamesRetrieved; 
 		if(genre != null) {
-			return new ResponseEntity<>(gameService.retrieveGamesByGenre(genre), HttpStatus.OK);
+			gamesRetrieved = gameService.retrieveGamesByGenre(genre);
+		} else {
+			gamesRetrieved = gameService.retrieveAllGames();
 		}
-		
-		return new ResponseEntity<>(gameService.retrieveAllGames(), HttpStatus.OK);
+		if(gamesRetrieved == null || gamesRetrieved.isEmpty()) {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		} else {
+			List<GameRemote> gamesToReturn = gamesRetrieved.stream()
+					.map(GameRemote::convert)
+					.collect(Collectors.toList());
+		    return new ResponseEntity<>(gamesToReturn, HttpStatus.OK);
+		}
 	}
 	
+	@Operation(summary = "Fetch a game by ID", description = "Retrieves a game entry from the database by its ID")
+	@ApiResponses(value = {
+	    @ApiResponse(responseCode = "200", description = "Game found",
+	            content = @Content(mediaType = "application/json",
+	                    schema = @Schema(implementation = GameDetailView.class))),
+	    @ApiResponse(responseCode = "404", description = "Game not found"),
+	    @ApiResponse(responseCode = "500", description = "Internal server error")
+	})
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<?> fetchGameById(@PathVariable String id){
 		Game game = gameService.findGameById(Long.valueOf(id));
@@ -49,26 +84,49 @@ public class GameController {
 			logger.info("Game with id: {}, not found", id);
 			return new ResponseEntity<>("Not Found", HttpStatus.OK);
 		}
-		return new ResponseEntity<>(game, HttpStatus.OK);
+		return new ResponseEntity<>(GameDetailView.convert(game), HttpStatus.OK);
 		
 	}
 
+    @Operation(summary = "Create a new game", description = "Creates a new game entry in the database")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "201", description = "Game created successfully",
+                     content = @Content(mediaType = "application/json", 
+                     schema = @Schema(implementation = GameRemote.class))),
+        @ApiResponse(responseCode = "400", description = "Invalid input"),
+        @ApiResponse(responseCode = "500", description = "Internal server error")
+    })
 	@PostMapping(value={""},
 			consumes=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> createGame(@RequestBody GameImpl game) {
 		Game savedGame = gameService.saveGame(game);
 		logger.info("Game id created is: {}", savedGame.getId());
-		return new ResponseEntity<>((GameImpl) savedGame, HttpStatus.CREATED);
+		return new ResponseEntity<>(GameRemote.convert(savedGame), HttpStatus.CREATED);
 	}
 
+    @Operation(summary = "Update a game", description = "Updates an existing game entry in the database")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Game updated successfully",
+            content = @Content(mediaType = "application/json",
+                schema = @Schema(implementation = GameImpl.class))),
+        @ApiResponse(responseCode = "400", description = "Invalid input"),
+        @ApiResponse(responseCode = "404", description = "Game not found"),
+        @ApiResponse(responseCode = "500", description = "Internal server error")
+    })
 	@PutMapping(value={""},
 			consumes=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> updateGame(@RequestBody GameImpl game) {
 		Game savedGame = gameService.saveGame(game);
 		logger.info("Updated Game is: {}", savedGame.getId());
-		return new ResponseEntity<>((GameImpl) savedGame, HttpStatus.OK);
+		return new ResponseEntity<>(GameRemote.convert(savedGame), HttpStatus.OK);
 	}
 	
+    @Operation(summary = "Delete a game", description = "Deletes a game entry from the database by its ID")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Game deleted successfully"),
+        @ApiResponse(responseCode = "404", description = "Game not found"),
+        @ApiResponse(responseCode = "500", description = "Internal server error")
+    })
 	@DeleteMapping(value="/{id}")
 	public ResponseEntity<?> deleteGame(@PathVariable String id){
 		return new ResponseEntity<>(gameService.deleteGame(Long.valueOf(id)), HttpStatus.OK);

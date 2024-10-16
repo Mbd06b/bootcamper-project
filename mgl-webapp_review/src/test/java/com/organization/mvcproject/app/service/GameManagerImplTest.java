@@ -20,7 +20,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.organization.mvcproject.api.mockdao.GameDAO;
 import com.organization.mvcproject.api.model.Game;
-import com.organization.mvcproject.api.service.GameService;
+import com.organization.mvcproject.api.service.GameMananger;
 import com.organization.mvcproject.app.config.MvcConfiguration;
 import com.organization.mvcproject.app.model.GameImpl;
 
@@ -28,14 +28,14 @@ import com.organization.mvcproject.app.model.GameImpl;
 @SpringJUnitConfig(classes = MvcConfiguration.class )
 @WebAppConfiguration
 @TestInstance(Lifecycle.PER_CLASS)
-class GameServiceImplTest {
+class GameManagerImplTest {
 	
 	@Mock
 	@Qualifier("gameDAOImpl")
 	private GameDAO gameDAO; 
 	
 	@Autowired
-	private GameService gameServiceUnderTest;
+	private GameMananger gameServiceUnderTest;
 	
 	private static Game testGame = createGame(1);
 	

@@ -9,6 +9,6 @@ public interface Company {
 	void setId(Long id);
 	String getName();
 	void setName(String name);
-	List<Game> getGamesMade();
-	void setGamesMade(List<Game> gamesMade);
+	List<Game> getGames();
+	void setGames(List<Game> games);
 }

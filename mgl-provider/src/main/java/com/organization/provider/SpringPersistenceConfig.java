@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @Configuration
 @EnableTransactionManagement
-@EntityScan("com.organization.provider.model")
+@EntityScan("com.organization.provider.model.persistent")
 @EnableJpaRepositories(basePackages = "com.organization.provider.repository") 
 public class SpringPersistenceConfig {
 	

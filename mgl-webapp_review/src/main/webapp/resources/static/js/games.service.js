@@ -8,7 +8,8 @@ angular.module('GameLibraryApp').factory('GameLibraryService', ['$http', '$log',
 			fetchAllGames : fetchAllGames,
 			createGame : createGame,
 			deleteGame : deleteGame,
-			filterByGenre : filterByGenre
+			filterByGenre : filterByGenre,
+			getGameById : getGameById
 		};
 
 		return factory;
@@ -39,6 +40,13 @@ angular.module('GameLibraryApp').factory('GameLibraryService', ['$http', '$log',
 			return $http.get(REST_SERVICE_URI, {params: {genre: genreName}}).then(function(response){
 				return response.data;
 			})
+		}
+		
+	    function getGameById(id) {
+			return $http.get(REST_SERVICE_URI + id).then(function(response) {
+					return response.data;
+				}
+			);
 		}
 
 }]);

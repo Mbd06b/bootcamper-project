@@ -6,7 +6,9 @@ public interface Review {
 	void setAuthor(String author);
 	Integer getRating();
     void setRating(Integer rating);
-	String getReviewBody();
-	void setReviewBody(String reviewBody);
+	String getBody();
+	void setBody(String reviewBody);
+	Game getGame();
+	void setGame(Game game);
 	
 }
