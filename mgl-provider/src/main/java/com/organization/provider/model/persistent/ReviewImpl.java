@@ -1,5 +1,6 @@
-package com.organization.provider.model;
+package com.organization.provider.model.persistent;
 
+import com.organization.mvcproject.api.model.Game;
 import com.organization.mvcproject.api.model.Review;
 
 import jakarta.persistence.Column;
@@ -7,6 +8,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -18,11 +21,15 @@ public class ReviewImpl implements Review {
 	private Long id;
 	
 	@Column(name="BODY")
-	private String reviewBody;
+	private String body;
 	@Column(name="AUTHOR")
 	private String author;
 	@Column(name="RATING")
 	private Integer rating;
+	    
+	@ManyToOne(targetEntity=GameImpl.class)
+    @JoinColumn(name = "GAME_ID")
+    private Game game;
 
 	public String getAuthor() {
 		return author;
@@ -40,11 +47,29 @@ public class ReviewImpl implements Review {
 		this.rating = rating;
 	}
 
-	public String getReviewBody() {
-		return reviewBody;
+	public String getBody() {
+		return body;
 	}
 
-	public void setReviewBody(String reviewBody) {
-		this.reviewBody = reviewBody;
+	public void setBody(String reviewBody) {
+		this.body = reviewBody;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	@Override
+	public Game getGame() {
+		return game;
+	}
+
+	@Override
+	public void setGame(Game game) {
+		this.game = game;
 	}
 }

@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @ComponentScan({"com.organization.provider"})
-@EntityScan({"com.organization.provider.model"})
+@EntityScan({"com.organization.provider.model.persistent"})
 public class MglProviderApplication {
 
 	public static void main(String[] args) {

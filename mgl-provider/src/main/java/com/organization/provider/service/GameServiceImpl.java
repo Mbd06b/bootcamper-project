@@ -16,6 +16,8 @@ public class GameServiceImpl implements GameService {
 	@Autowired
 	private GameDAO gameDAO; 
 	
+	// more services that are here
+	
 	@Override
 	@Transactional
 	public List<Game> retrieveAllGames() {
@@ -31,7 +33,10 @@ public class GameServiceImpl implements GameService {
 	@Override
 	@Transactional
 	public Game findGameById(Long id) {
-		return gameDAO.findGameById(id);
+		Game game = gameDAO.findGameById(id);
+		game.getReviews();
+		game.getCompany();
+		return game;
 	}
 
 	@Override

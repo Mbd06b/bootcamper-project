@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import com.google.common.collect.ImmutableList;
 import com.organization.mvcproject.api.mockdao.GameDAO;
 import com.organization.mvcproject.api.model.Game;
+import com.organization.provider.model.persistent.GameImpl;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -20,13 +21,13 @@ public class GameDAOImpl implements GameDAO {
 
     @Override
     public Game findGameById(Long id) {
-        return entityManager.find(Game.class, id);
+        return entityManager.find(GameImpl.class, id);
     }
 
     @Override
     public List<Game> findGamesByGenre(String genre) {
         String jpql = "SELECT g FROM Game g WHERE g.genre = :genre";
-        TypedQuery<Game> query = entityManager.createQuery(jpql, Game.class);
+        TypedQuery<GameImpl> query = entityManager.createQuery(jpql, GameImpl.class);
         query.setParameter("genre", genre);
         return ImmutableList.copyOf(query.getResultList());
     }
@@ -37,13 +38,16 @@ public class GameDAOImpl implements GameDAO {
             entityManager.persist(game);
             return game;
         } else {
+        	Game foundGame = findGameById(game.getId());
+        	game.setReviews(foundGame.getReviews());
+        	game.setCompany(foundGame.getCompany());
             return entityManager.merge(game);
         }
     }
 
     @Override
     public boolean deleteGame(Long id) {
-        Game game = entityManager.find(Game.class, id);
+        Game game = entityManager.find(GameImpl.class, id);
         if (game != null) {
             entityManager.remove(game);
             return true;
@@ -53,7 +57,7 @@ public class GameDAOImpl implements GameDAO {
 
     @Override
     public List<Game> findAllGames() {
-        TypedQuery<Game> query = entityManager.createQuery("SELECT g FROM Game g", Game.class);
+        TypedQuery<GameImpl> query = entityManager.createQuery("SELECT g FROM Game g", GameImpl.class);
         return ImmutableList.copyOf(query.getResultList());
     }
 }
