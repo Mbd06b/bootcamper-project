@@ -3,10 +3,10 @@ INSERT INTO company (id, name) VALUES (2, 'Bungie');
 INSERT INTO company (id, name) VALUES (3, 'Jagex');
 ALTER TABLE COMPANY ALTER COLUMN ID RESTART WITH 4;
 
-
-INSERT INTO game (id, name, genre, company_id) VALUES (1, 'Rocket League', 'Sport', 1);
-INSERT INTO game (id, name, genre, company_id) VALUES (2, 'Halo 3', 'Shooter', 2);
-INSERT INTO game (id, name, genre, company_id) VALUES (3, 'Runescape', 'MMORPG', 3);
+--Manual datetime insert. 
+INSERT INTO game (id, name, genre, company_id, CREATE_DTM) VALUES (1, 'Rocket League', 'Sport', 1, '2024-10-17 12:29:51.451973');
+INSERT INTO game (id, name, genre, company_id, CREATE_DTM) VALUES (2, 'Halo 3', 'Shooter', 2, CURRENT_TIMESTAMP());
+INSERT INTO game (id, name, genre, company_id, CREATE_DTM) VALUES (3, 'Runescape', 'MMORPG', 3, CURRENT_TIMESTAMP());
 ALTER TABLE GAME ALTER COLUMN ID RESTART WITH 4;
 
 
