@@ -1,7 +1,9 @@
 package com.organization.provider.model.persistent;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.beans.BeanUtils;
 
 import com.organization.mvcproject.api.model.Company;
@@ -32,6 +34,10 @@ public class GameImpl implements Game {
 	
 	@Column(name="GENRE")
 	String genre;
+	
+    @CreationTimestamp
+	@Column(name = "CREATE_DTM")
+	LocalDateTime createdDateTime;
 	
     @ManyToOne(targetEntity=CompanyImpl.class)
     @JoinColumn(name="COMPANY_ID")
