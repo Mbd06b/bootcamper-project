@@ -7,7 +7,7 @@ import com.organization.provider.endpoint.GameEndpoint;
 
 
 @Component
-@FeignClient(name="game-endpoint-client", configuration= FeignClientConfiguration.class)
+@FeignClient(name="game-endpoint-client",url="${mgl.game.feignclient.url}",  configuration= FeignClientConfiguration.class)
 public interface GameEndpointClient extends GameEndpoint {
 
 }

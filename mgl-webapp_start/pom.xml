@@ -20,7 +20,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>17</java.version>
-		<serlet.port>8080</serlet.port>
+		<servlet.port>8080</servlet.port>
 		<jetty.stop.port>9001</jetty.stop.port>
 		<spring.version>6.1.4</spring.version>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
