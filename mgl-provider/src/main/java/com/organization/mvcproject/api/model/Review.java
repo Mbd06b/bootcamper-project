@@ -2,6 +2,8 @@ package com.organization.mvcproject.api.model;
 
 public interface Review {
 
+	Long getId();
+	void setId(Long id); 
 	String getAuthor();
 	void setAuthor(String author);
 	Integer getRating();

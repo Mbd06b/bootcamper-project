@@ -23,7 +23,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.organization.mvcproject.api.model.Game;
 import com.organization.mvcproject.api.service.GameService;
 import com.organization.provider.model.persistent.GameImpl;
-import com.organization.provider.model.remote.GameDetailView;
 import com.organization.provider.model.remote.GameRemote;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -62,10 +61,10 @@ public class GameController {
 		if(gamesRetrieved == null || gamesRetrieved.isEmpty()) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		} else {
-			List<GameRemote> gamesToReturn = gamesRetrieved.stream()
-					.map(GameRemote::convert)
-					.collect(Collectors.toList());
-		    return new ResponseEntity<>(gamesToReturn, HttpStatus.OK);
+//			List<GameRemote> gamesToReturn = gamesRetrieved.stream()
+//					.map(GameRemote::convert)
+//					.collect(Collectors.toList());
+		    return new ResponseEntity<>(gamesRetrieved, HttpStatus.OK);
 		}
 	}
 	
@@ -73,7 +72,7 @@ public class GameController {
 	@ApiResponses(value = {
 	    @ApiResponse(responseCode = "200", description = "Game found",
 	            content = @Content(mediaType = "application/json",
-	                    schema = @Schema(implementation = GameDetailView.class))),
+	                    schema = @Schema(implementation = GameRemote.class))),
 	    @ApiResponse(responseCode = "404", description = "Game not found"),
 	    @ApiResponse(responseCode = "500", description = "Internal server error")
 	})
@@ -84,7 +83,7 @@ public class GameController {
 			logger.info("Game with id: {}, not found", id);
 			return new ResponseEntity<>("Not Found", HttpStatus.OK);
 		}
-		return new ResponseEntity<>(GameDetailView.convert(game), HttpStatus.OK);
+		return new ResponseEntity<>(GameRemote.convert(game), HttpStatus.OK);
 		
 	}
 
@@ -98,8 +97,8 @@ public class GameController {
     })
 	@PostMapping(value={""},
 			consumes=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> createGame(@RequestBody GameImpl game) {
-		Game savedGame = gameService.saveGame(game);
+	public ResponseEntity<?> createGame(@RequestBody GameRemote game) {
+		Game savedGame = gameService.saveGame(GameImpl.convert(game));
 		logger.info("Game id created is: {}", savedGame.getId());
 		return new ResponseEntity<>(GameRemote.convert(savedGame), HttpStatus.CREATED);
 	}
@@ -115,7 +114,7 @@ public class GameController {
     })
 	@PutMapping(value={""},
 			consumes=MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> updateGame(@RequestBody GameImpl game) {
+	public ResponseEntity<?> updateGame(@RequestBody GameRemote game) {
 		Game savedGame = gameService.saveGame(game);
 		logger.info("Updated Game is: {}", savedGame.getId());
 		return new ResponseEntity<>(GameRemote.convert(savedGame), HttpStatus.OK);

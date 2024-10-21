@@ -10,11 +10,11 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>mgl-webapp</artifactId>
+	<artifactId>mgl-webapp_start</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<name>mgl-webapp</name>
+	<name>mgl-webapp_start</name>
 	<url>https://github.com/ATC-Custom-Bootcamp</url>
 
 	<properties>
