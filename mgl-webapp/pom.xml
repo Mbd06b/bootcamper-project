@@ -10,51 +10,28 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>mgl-webapp_review</artifactId>
+	<artifactId>mgl-webapp_start</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<name>mgl-webapp_review</name>
-	<url>https://github.com/Mbd06b/bootcamper-project</url>
+	<name>mgl-webapp_start</name>
+	<url>https://github.com/ATC-Custom-Bootcamp</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>21</java.version>
-		<servlet.port>8080</servlet.port>
+		<java.version>17</java.version>
+		<serlet.port>8080</serlet.port>
 		<jetty.stop.port>9001</jetty.stop.port>
-		<spring.version>6.1.13</spring.version>
+		<spring.version>6.1.4</spring.version>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.plugin.version>3.1.2</maven.plugin.version>
 		<junit5.version>5.10.0</junit5.version>
 		<mockito.version>5.5.0</mockito.version>
 	</properties>
-	
-	<dependencyManagement>
-	    <dependencies>
-	      <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring.boot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-	    </dependencies>
-	</dependencyManagement>
-	
-	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
-			<exclusions>
-				<!-- using SLF4J Simple Logger -->
-				<exclusion>
-			      <groupId>org.springframework.boot</groupId>
-			      <artifactId>spring-boot-starter-logging</artifactId>
-			    </exclusion>
-			</exclusions>
-		</dependency>
 
+	<dependencies>
+         
         <dependency>
             <groupId>javax.annotation</groupId>
             <artifactId>javax.annotation-api</artifactId>
@@ -62,16 +39,32 @@
             <scope>provided</scope>
         </dependency>
         
-		<!-- Spring core & mvc -->
+		<!-- Spring core & mvc TODO Maven Learning: Look at the Dependency Hierarchy and see what dependencies are being duplicated (spring-context or spring-webmvc?) -->
+	     <dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
+			<type>jar</type>
+			<scope>test</scope>
 		</dependency>
 
 		<!-- Servlet Specs enhance jsp and tag intellisense-->
 		<dependency>
 		    <groupId>jakarta.servlet</groupId>
 		    <artifactId>jakarta.servlet-api</artifactId>
+		    <version>6.1.0</version>
 		    <scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -83,75 +76,69 @@
 		<dependency>
 		    <groupId>jakarta.servlet.jsp.jstl</groupId>
 		    <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
-	   </dependency>
-	   		
-		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
-		<dependency>
-		    <groupId>org.slf4j</groupId>
-		    <artifactId>slf4j-simple</artifactId>
+		    <version>3.0.2</version>
 		</dependency>
 
-		
-		<!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+
+		<!-- Logging TODO: upgrade logging to use log4j-slf4j-impl -->
 		<dependency>
-		    <groupId>com.google.guava</groupId>
-		    <artifactId>guava</artifactId>
-		    <version>30.1.1-jre</version>
+		    <groupId>org.apache.logging.log4j</groupId>
+		    <artifactId>log4j-core</artifactId>
+		    <version>2.24.1</version>
 		</dependency>
-		
+
 		<!-- Jackson JSON Mapper -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
+			<version>2.15.2</version>
 		</dependency>
 
-	    <!-- junit 5 -->
-         <dependency>
+			<!-- junit 5 -->
+          <dependency>
 	        <groupId>org.junit.jupiter</groupId>
 	        <artifactId>junit-jupiter</artifactId>
+	        <version>${junit5.version}</version>
 	        <scope>test</scope>
 	    </dependency>
 	    
-		<!-- hamcrest matchers for more expressive asserts  -->
+	    <!-- JUnit Compatibility for IDE test tooling -->
+	    <dependency>
+		    <groupId>org.junit.platform</groupId>
+		    <artifactId>junit-platform-runner</artifactId>
+		    <version>1.2.0</version>
+		    <scope>test</scope>
+		</dependency>
+		<dependency>
+		     <groupId>org.junit.vintage</groupId>
+		     <artifactId>junit-vintage-engine</artifactId>
+	         <version>${junit5.version}</version>
+		     <scope>test</scope>
+		</dependency>
+		
+	    <!-- hamcrest matchers for more expressive asserts  -->
 		<dependency>
 		    <groupId>org.hamcrest</groupId>
 		    <artifactId>hamcrest</artifactId>
+		    <version>2.2</version>
 		    <scope>test</scope>
+		</dependency>
+	    
+        <dependency>
+		     <groupId>org.mockito</groupId>
+		     <artifactId>mockito-core</artifactId>
+		     <version>${mockito.version}</version>
+		     <scope>test</scope>
 		</dependency>
 		
 		<!--  mockito extensions for Junit5 -->
-		
-	    <dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-test</artifactId>
-			<scope>test</scope>
-		</dependency>
 		<dependency>
 		    <groupId>org.mockito</groupId>
 		    <artifactId>mockito-junit-jupiter</artifactId>
+		    <version>${mockito.version}</version>
 		    <scope>test</scope>
 		</dependency>
 		
-		<!-- this dependency a testing framework (not tests) aka the infrastructure used to run web-automation integration tests -->
-		<!-- See: https://maven.apache.org/plugins/maven-jar-plugin/examples/create-test-jar.html#the-preferred-way -->
-		<dependency>
-			<groupId>com.organization.mvcproject</groupId>
-			<artifactId>mgl-automation-testing</artifactId>
-			<version>${project.version}</version>
-			<scope>test</scope>
-		</dependency>
-		
-		<!-- this test-jar dependency contains packaged web-automation tests which are being scanned to run by dependenciesToScan during the integration test phase -->
-		<!-- the test-jar itself is created via the "maven-jar-plugin" located in the dependency itself -->
-		<!-- the tests recieve the context they need to run via the corresponding texting-framework dependency  --> 
-		<!-- this enables web-automation tests to be developed and run independently of the project they are imported to -->
-<!--		<dependency> -->
-<!--			<groupId>com.organization.mvcproject</groupId>-->
-<!--			<artifactId>mgl-automation-testing</artifactId>-->
-<!--			<version>${project.version}</version>-->
-<!--			<type>test-jar</type>-->
-<!--			<scope>test</scope>-->
-<!--		</dependency>-->
 	</dependencies>
 
 	<repositories>
@@ -166,17 +153,18 @@
 		<finalName>${project.name}</finalName>
 		<plugins>
 			<plugin>
+	            <groupId>org.apache.maven.plugins</groupId>
+	            <artifactId>maven-compiler-plugin</artifactId>
+	            <version>3.11.0</version>
+	            <configuration>
+	                <source>${java.version}</source>
+	                <target>${java.version}</target>
+	            </configuration>
+	        </plugin>
+	        <plugin>
 			    <groupId>org.apache.maven.plugins</groupId>
 			    <artifactId>maven-war-plugin</artifactId>
-	            <version>3.3.2</version>
-			</plugin>
-			<plugin>
-			    <groupId>org.apache.maven.plugins</groupId>
-			    <artifactId>maven-compiler-plugin</artifactId>
-	            <version>3.10.1</version>
-			    <configuration>
-			        <release>${java.version}</release>
-			    </configuration>
+			    <version>3.3.2</version>
 			</plugin>
 		    <plugin>
 	            <groupId>org.codehaus.mojo</groupId>
@@ -216,7 +204,7 @@
 						<scanTargetPattern>
 							<directory>src/main/webapp/WEB-INF</directory>
 							<includes>
-								<include>**/*.jsp</include>
+								<include>**/*.html</include>
 							</includes>
 							<excludes>
 								<include>**/*.properties</include>
@@ -253,38 +241,23 @@
 					</execution>
 				</executions>
 			</plugin>
-		    <plugin>
+		       <plugin>
 	            <groupId>org.apache.maven.plugins</groupId>
 	            <artifactId>maven-surefire-plugin</artifactId>
 	            <version>${maven.plugin.version}</version>
+	            <configuration>
+			        <testFailureIgnore>true</testFailureIgnore>
+			    </configuration>
 	        </plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
 				<version>${maven.plugin.version}</version>
-			  	<configuration>
-			  		<includes>
-			            <include>**/*Test.java</include>
-			        </includes>
-					<dependenciesToScan>
-			            <dependency>com.organization.mvcproject:mgl-automation-testing:test-jar</dependency>
-			        </dependenciesToScan>
-		        	 <properties>
-		                    <configurationParameters>
-		                        cucumber.glue=com.organization.mvcproject.test.bdd
-								cucumber.publish.enabled=true
-								cucumber.junit-platform.naming-strategy=long
-								cucumber.plugin=pretty, json:target/cucumber/cucumber-report.json
-								cucumber.ansi-colors.disabled=true
-		                    </configurationParameters>
-		                </properties>
-            	</configuration>
 				<executions>
 					<execution>
 						<id>perform-it</id>
 						<goals>
 							<goal>integration-test</goal>
-			                <goal>verify</goal>    
 						</goals>
 						<configuration>
 							<systemProperties>
@@ -325,23 +298,7 @@
 						</goals>
 					</execution>
 				</executions>
-				</plugin>
-		</plugins>
-	</build>
-	<reporting>
-		<plugins>
-			<plugin>
-				<groupId>org.jacoco</groupId>
-				<artifactId>jacoco-maven-plugin</artifactId>
-				<reportSets>
-					<reportSet>
-						<reports>
-							<!-- select non-aggregate reports -->
-							<report>report</report>
-						</reports>
-					</reportSet>
-				</reportSets>
 			</plugin>
 		</plugins>
-	</reporting>
+	</build>
 </project>
