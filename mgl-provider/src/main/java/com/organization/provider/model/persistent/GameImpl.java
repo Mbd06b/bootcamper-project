@@ -6,6 +6,7 @@ import java.util.List;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.beans.BeanUtils;
 
+import com.google.common.collect.ImmutableList;
 import com.organization.mvcproject.api.model.Company;
 import com.organization.mvcproject.api.model.Game;
 import com.organization.mvcproject.api.model.Review;
@@ -95,7 +96,7 @@ public class GameImpl implements Game {
     
 	@Override
     public List<Review> getReviews() {
-        return reviews;
+        return ImmutableList.copyOf(reviews);
     }
     
 	@Override
