@@ -23,6 +23,13 @@ public class GameDAOImpl extends BaseHibernateDAO implements GameDAO {
     public GameImpl findGameById(Long id) {
         return getEntityManager().find(GameImpl.class, id);
     }
+   
+    
+    @Override
+    public List<GameImpl> findAllGames() {
+        TypedQuery<GameImpl> query = entityManager.createQuery("SELECT g FROM Game g", GameImpl.class);
+        return  query.getResultList();
+    }
     
     @Override
     // 1. HQL (Hibernate Query Language)
@@ -66,8 +73,8 @@ public class GameDAOImpl extends BaseHibernateDAO implements GameDAO {
     
 
     
-    // Regular JPA Query approach (Not type-safe)
-    public List<?> findGamesByGenreUntyped(String genre) {
+    // AVOID Regular JPA Query approach (Not type-safe)
+    public List<GameImpl> findGamesByGenreUntyped(String genre) {
         String jpql = "SELECT g FROM Game g WHERE g.genre = :genre";
         Query query = entityManager.createQuery(jpql);  // No type information
         query.setParameter("genre", genre);
@@ -75,7 +82,7 @@ public class GameDAOImpl extends BaseHibernateDAO implements GameDAO {
     }
     
 
-    // 6. Native SQL Query
+    // 6. AVOID Native SQL Query
     @SuppressWarnings("unchecked")
     public List<GameImpl> findGamesByGenreNativeSQL(String genre) {
         return getCurrentSession()
@@ -88,7 +95,7 @@ public class GameDAOImpl extends BaseHibernateDAO implements GameDAO {
     
     
 
-    
+    // Prefer persist and merge methods 
     @Override
     public GameImpl saveGame(GameImpl game) {
         if (game.getId() == null) {
@@ -148,7 +155,7 @@ public class GameDAOImpl extends BaseHibernateDAO implements GameDAO {
         return false;
     }
 
-    // 2. JPA Approach (Original implementation, for reference)
+    // 2. JPA Approach
     public boolean deleteGameJPA(Long id) {
         Game game = entityManager.find(GameImpl.class, id);
         if (game != null) {
@@ -187,9 +194,5 @@ public class GameDAOImpl extends BaseHibernateDAO implements GameDAO {
         return false;
     }
 
-    @Override
-    public List<GameImpl> findAllGames() {
-        TypedQuery<GameImpl> query = entityManager.createQuery("SELECT g FROM Game g", GameImpl.class);
-        return  query.getResultList();
-    }
+
 }
