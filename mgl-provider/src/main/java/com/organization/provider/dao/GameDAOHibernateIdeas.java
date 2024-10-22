@@ -67,6 +67,8 @@ public class GameDAOHibernateIdeas extends BaseHibernateDAO {
         .having(cb.ge(cb.avg(reviews.get("rating")), minRating))
         .orderBy(cb.desc(cb.avg(reviews.get("rating"))));
         
+        // transformer "transform" 
+        
         return session.createQuery(query)
             .getResultList();
     }
