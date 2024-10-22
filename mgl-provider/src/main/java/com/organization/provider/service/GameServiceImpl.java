@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.google.common.collect.ImmutableList;
 import com.organization.mvcproject.api.mockdao.GameDAO;
 import com.organization.mvcproject.api.model.Game;
 import com.organization.mvcproject.api.service.GameService;
+import com.organization.provider.model.persistent.GameImpl;
 
 @Service
 public class GameServiceImpl implements GameService {
@@ -21,13 +23,13 @@ public class GameServiceImpl implements GameService {
 	@Override
 	@Transactional
 	public List<Game> retrieveAllGames() {
-		return gameDAO.findAllGames();
+		return ImmutableList.copyOf(gameDAO.findAllGames());
 	}
 
 	@Override
 	@Transactional
 	public Game saveGame(Game game) {
-		return gameDAO.saveGame(game);
+		return (Game) gameDAO.saveGame((GameImpl) game);
 	}
 	
 	@Override
@@ -48,7 +50,7 @@ public class GameServiceImpl implements GameService {
 	@Override
 	@Transactional
 	public List<Game> retrieveGamesByGenre(String genre) {
-		return gameDAO.findGamesByGenre(genre);
+		return ImmutableList.copyOf(gameDAO.findGamesByGenre(genre));
 	}
 
 }
