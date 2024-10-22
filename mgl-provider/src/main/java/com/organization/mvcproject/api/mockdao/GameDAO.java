@@ -2,17 +2,17 @@ package com.organization.mvcproject.api.mockdao;
 
 import java.util.List;
 
-import com.organization.mvcproject.api.model.Game;
+import com.organization.provider.model.persistent.GameImpl;
 
 public interface GameDAO {
 	
-	List<Game> findAllGames();
+	List<GameImpl> findAllGames();
 
-	Game saveGame(Game game);
+	GameImpl saveGame(GameImpl game);
 
-	Game findGameById(Long id);
+	GameImpl findGameById(Long id);
 	
-	List<Game> findGamesByGenre(String genre);
+	List<GameImpl> findGamesByGenre(String genre);
 	
 	boolean deleteGame(Long id);
 	
