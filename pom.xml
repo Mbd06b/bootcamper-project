@@ -56,6 +56,7 @@
 		<module>mgl-webapp_task1-0</module>
 		<module>mgl-webapp_task2-0</module>
 		<module>mgl-webapp_task2-1</module>
+		<module>mgl-provider_start</module>
 		<module>mgl-provider</module>
 		<module>mgl-module</module>
 		<module>mgl-webapp_review</module>	
