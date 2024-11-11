@@ -2,50 +2,56 @@ package com.organization.mvcproject.test.bdd.steps;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
 
+import com.organization.mvcproject.pom.common.MGLMainNavMenu;
 import com.organization.mvcproject.pom.games.GamesPage;
+import com.organization.mvcproject.test.WebDriverConfig;
 
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.github.bonigarcia.wdm.WebDriverManager;
 
+@ContextConfiguration(classes = WebDriverConfig.class)
 public class GameLibraryStepDefinitions {
+	
+	@Autowired
+	private WebDriver driver;
 
-	WebDriver driver;
+	@Autowired
+    private GamesPage gamesPage;
+	
+	@Autowired
+    private MGLMainNavMenu mainNav;
 
-	GamesPage gamesPage;
-
-	@BeforeAll
-	static void setupClass() {
-		WebDriverManager.chromedriver().setup();
-	}
-
-	@BeforeEach
-	void setupTest() {
-		driver = new ChromeDriver();
-	}
-
-	@AfterEach
-	void teardown() {
-		driver.quit();
-	}
-
-	@When("Matthew lands on {string}")
-	public void matthew_lands_on(String string) {
-		 gamesPage = new GamesPage(driver);
-		 gamesPage.mainNavMenu.clickGames();
-	}
-
-	@Then("I should have {int} starter games.")
-	public void i_should_have_starter_games(Integer int1) {
-		assertThat(gamesPage.getGames().size()).isEqualTo(int1); 
-	}
+    @Before("@web")
+    public void setup() {
+        mainNav = new MGLMainNavMenu(driver);
+    }
+    
+    @After("@web")
+    public void cleanup() {
+        if (driver != null) {
+            driver.quit();
+        }
+    }
+    
+    @When("Matthew lands on {string}")
+    public void matthew_lands_on(String pageName) {
+        if (pageName.equalsIgnoreCase("gamesPage")) {
+            mainNav.clickGames();
+            gamesPage = new GamesPage(driver);
+        }
+    }
+    
+    @Then("I should have {int} starter games.")
+    public void i_should_have_starter_games(Integer expectedCount) {
+        assertThat(gamesPage.getGamesCount()).isEqualTo(expectedCount);
+    }
 
 	@When("Matthew wants to add {string}")
 	public void matthew_wants_to_add(String string) {
