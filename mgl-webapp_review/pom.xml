@@ -44,30 +44,22 @@
 	
 	<dependencies>
 		
-		<dependency>
-		    <groupId>${project.groupId}</groupId>
-		    <artifactId>mgl-rest-client</artifactId>
-		    <version>${project.version}</version>
-		</dependency>
+<!--		<dependency>-->
+<!--		    <groupId>${project.groupId}</groupId>-->
+<!--		    <artifactId>mgl-rest-client</artifactId>-->
+<!--		    <version>${project.version}</version>-->
+<!--		</dependency>-->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
-			<exclusions>
-				<!-- using SLF4J Simple Logger -->
-				<exclusion>
-			      <groupId>org.springframework.boot</groupId>
-			      <artifactId>spring-boot-starter-logging</artifactId>
-			    </exclusion>
-			</exclusions>
 		</dependency>
 
-        <dependency>
-            <groupId>javax.annotation</groupId>
-            <artifactId>javax.annotation-api</artifactId>
-            <version>1.3.2</version>
-            <scope>provided</scope>
-        </dependency>
+		<dependency>
+		    <groupId>jakarta.annotation</groupId>
+		    <artifactId>jakarta.annotation-api</artifactId>
+		    <scope>provided</scope>
+		</dependency>
         
 		<!-- Spring core & mvc -->
 		<dependency>
@@ -145,18 +137,18 @@
 		<!-- the test-jar itself is created via the "maven-jar-plugin" located in the dependency itself -->
 		<!-- the tests recieve the context they need to run via the corresponding texting-framework dependency  --> 
 		<!-- this enables web-automation tests to be developed and run independently of the project they are imported to -->
-<!--		<dependency> -->
-<!--			<groupId>com.organization.mvcproject</groupId>-->
-<!--			<artifactId>mgl-automation-testing</artifactId>-->
-<!--			<version>${project.version}</version>-->
-<!--			<type>test-jar</type>-->
-<!--			<scope>test</scope>-->
-<!--		</dependency>-->
-		<dependency>
-			<groupId>${project.groupId}</groupId>
-			<artifactId>mgl-rest-client</artifactId>
+		<dependency> 
+			<groupId>com.organization.mvcproject</groupId>
+			<artifactId>mgl-automation-testing</artifactId>
 			<version>${project.version}</version>
+			<type>test-jar</type>
+			<scope>test</scope>
 		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>${project.groupId}</groupId>-->
+<!--			<artifactId>mgl-rest-client</artifactId>-->
+<!--			<version>${project.version}</version>-->
+<!--		</dependency>-->
 	</dependencies>
 
 	<repositories>
@@ -216,7 +208,6 @@
 					<webApp>
 						<contextPath>/</contextPath>
 					</webApp>
-					<scanIntervalSeconds>5</scanIntervalSeconds>
 					<scanTargetPatterns>
 						<scanTargetPattern>
 							<directory>src/main/webapp/WEB-INF</directory>
@@ -244,7 +235,6 @@
 			                    <port>${random.servlet.port}</port>
 			                </httpConnector>
 			                <stopPort>${random.stop.port}</stopPort>
-			                <scanIntervalSeconds>0</scanIntervalSeconds>
 			            </configuration>
 					</execution>
 					<execution>

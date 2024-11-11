@@ -1,45 +1,25 @@
 package com.organization.mvcproject.test;
 
-
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+@SpringJUnitConfig(WebDriverConfig.class)
+class BrowserSetupTest {
 
+	@Autowired
+	private WebDriver driver;
 
-public class BrowserSetupTest{
+	@Test
+	void browserDriverIsFunctioning() {
+		// Exercise
+		driver.get("https://www.selenium.dev");
+		String title = driver.getTitle();
 
-	
-	  WebDriver driver;
-
-	    @BeforeAll
-	    static void setupClass() {
-	        WebDriverManager.chromedriver().setup();
-	    }
-
-	    @BeforeEach
-	    void setupTest() {
-	        driver = new ChromeDriver();
-	    }
-
-	    @AfterEach
-	    void teardown() {
-	        driver.quit();
-	    }
-
-	    @Test
-	    void browserDriverIsFunctioning() {
-	        // Exercise
-	        driver.get("https://bonigarcia.dev/selenium-webdriver-java/");
-	        String title = driver.getTitle();
-	        
-	        // Verify
-	        assertTrue(title.contains("Selenium WebDriver"));
-	    }
+		// Verify
+		assertTrue(title.contains("Selenium"));
+	}
 }

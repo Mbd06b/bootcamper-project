@@ -32,12 +32,11 @@
 
 	<dependencies>
          
-        <dependency>
-            <groupId>javax.annotation</groupId>
-            <artifactId>javax.annotation-api</artifactId>
-            <version>1.3.2</version>
-            <scope>provided</scope>
-        </dependency>
+		<dependency>
+		    <groupId>jakarta.annotation</groupId>
+		    <artifactId>jakarta.annotation-api</artifactId>
+		    <scope>provided</scope>
+		</dependency>
         
 		<!-- Spring core & mvc -->
 		<dependency>

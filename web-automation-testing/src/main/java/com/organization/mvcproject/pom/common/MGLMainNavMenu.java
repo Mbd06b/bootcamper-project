@@ -1,29 +1,31 @@
 package com.organization.mvcproject.pom.common;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import org.springframework.stereotype.Component;
 
-public class MGLMainNavMenu {
+@Component
+public class MGLMainNavMenu extends BasePage {
 	
-	WebDriver driver;
-	
-	//Constructor that will be automatically called as soon as the object of the class is created
-	public MGLMainNavMenu(WebDriver driver) {
-		this.driver=driver;
-	}
-	
-	//Locator for GamesLnk
-	By GamesNavLink = By.linkText("Games");
-	By ReviewNavLink = By.linkText("Review");
-	
-	//Method to click gamesLink
-	public void clickGames() {
-		driver.findElement(GamesNavLink).click();
-	}
-	
-	
-	public void clickReview() {
-		driver.findElement(ReviewNavLink).click();
-	}
+    @FindBy(linkText = "Games")  // Using exact link text instead of ID
+    private WebElement gamesLink;
+    
+    @FindBy(linkText = "Review")  // Using exact link text instead of ID
+    private WebElement reviewLink;
+    
+    public MGLMainNavMenu(WebDriver driver) {
+        super(driver);
+        PageFactory.initElements(driver, this);
+    }
+    
+    public void clickGames() {
+        waitForElementToBeClickable(gamesLink).click();
+    }
+    
+    public void clickReview() {
+        waitForElementToBeClickable(reviewLink).click();
+    }
 
 }
