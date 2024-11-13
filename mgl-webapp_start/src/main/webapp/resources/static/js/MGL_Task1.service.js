@@ -8,7 +8,6 @@ angular.module('MGL_Task1_app').factory('MGL_Task1_Service', ['$http', function(
 			fetchAllGames : fetchAllGames,
 			createGame : createGame
 		};
-
 		return factory;
 
 		function fetchAllGames() {
