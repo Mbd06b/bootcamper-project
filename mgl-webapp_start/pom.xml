@@ -31,12 +31,6 @@
 	</properties>
 
 	<dependencies>
-         
-		<dependency>
-		    <groupId>jakarta.annotation</groupId>
-		    <artifactId>jakarta.annotation-api</artifactId>
-		    <scope>provided</scope>
-		</dependency>
         
 		<!-- Spring core & mvc TODO Maven Learning: Look at the Dependency Hierarchy and see what dependencies are being duplicated (spring-context or spring-webmvc?) -->
 	     <dependency>
@@ -66,18 +60,6 @@
 		    <version>6.1.0</version>
 		    <scope>provided</scope>
 		</dependency>
-		<dependency>
-		    <groupId>jakarta.servlet.jsp</groupId>
-		    <artifactId>jakarta.servlet.jsp-api</artifactId>
-		    <version>4.0.0</version>
-		    <scope>provided</scope>
-		</dependency>
-		<dependency>
-		    <groupId>jakarta.servlet.jsp.jstl</groupId>
-		    <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
-		    <version>3.0.2</version>
-		</dependency>
-
 
 		<!-- Logging TODO: upgrade logging to use log4j-slf4j-impl -->
 		<dependency>
@@ -198,18 +180,6 @@
 					<webApp>
 						<contextPath>/</contextPath>
 					</webApp>
-					<scanIntervalSeconds>5</scanIntervalSeconds>
-					<scanTargetPatterns>
-						<scanTargetPattern>
-							<directory>src/main/webapp/WEB-INF</directory>
-							<includes>
-								<include>**/*.html</include>
-							</includes>
-							<excludes>
-								<include>**/*.properties</include>
-							</excludes>
-						</scanTargetPattern>
-					</scanTargetPatterns>
 				</configuration>
 				<executions>
 					<!-- assign random portnumber from build-helper-maven-plugin< --> 
@@ -225,7 +195,6 @@
 								<port>${random.servlet.port}</port>
 							</httpConnector>
 							<stopPort>${random.stop.port}</stopPort>
-							<scanIntervalSeconds>0</scanIntervalSeconds>
 						</configuration>
 					</execution>
 					<execution>
