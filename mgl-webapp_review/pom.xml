@@ -20,7 +20,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>21</java.version>
-		<servlet.port>8080</servlet.port>
+		<app.server.port>8080</app.server.port>
 		<jetty.stop.port>9001</jetty.stop.port>
 		<spring.version>6.1.13</spring.version>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
@@ -54,12 +54,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
-
-		<dependency>
-		    <groupId>jakarta.annotation</groupId>
-		    <artifactId>jakarta.annotation-api</artifactId>
-		    <scope>provided</scope>
-		</dependency>
         
 		<!-- Spring core & mvc -->
 		<dependency>
@@ -67,23 +61,12 @@
 			<artifactId>spring-webmvc</artifactId>
 		</dependency>
 
-		<!-- Servlet Specs enhance jsp and tag intellisense-->
 		<dependency>
 		    <groupId>jakarta.servlet</groupId>
 		    <artifactId>jakarta.servlet-api</artifactId>
 		    <scope>provided</scope>
 		</dependency>
-		<dependency>
-		    <groupId>jakarta.servlet.jsp</groupId>
-		    <artifactId>jakarta.servlet.jsp-api</artifactId>
-		    <version>4.0.0</version>
-		    <scope>provided</scope>
-		</dependency>
-		<dependency>
-		    <groupId>jakarta.servlet.jsp.jstl</groupId>
-		    <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
-	   </dependency>
-		
+
 		<!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
 		<dependency>
 		    <groupId>com.google.guava</groupId>
@@ -126,12 +109,12 @@
 		
 		<!-- this dependency a testing framework (not tests) aka the infrastructure used to run web-automation integration tests -->
 		<!-- See: https://maven.apache.org/plugins/maven-jar-plugin/examples/create-test-jar.html#the-preferred-way -->
-		<dependency>
-			<groupId>com.organization.mvcproject</groupId>
-			<artifactId>mgl-automation-testing</artifactId>
-			<version>${project.version}</version>
-			<scope>test</scope>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>com.organization.mvcproject</groupId>-->
+<!--			<artifactId>mgl-automation-testing</artifactId>-->
+<!--			<version>${project.version}</version>-->
+<!--			<scope>test</scope>-->
+<!--		</dependency>-->
 		
 		<!-- this test-jar dependency contains packaged web-automation tests which are being scanned to run by dependenciesToScan during the integration test phase -->
 		<!-- the test-jar itself is created via the "maven-jar-plugin" located in the dependency itself -->
@@ -139,7 +122,7 @@
 		<!-- this enables web-automation tests to be developed and run independently of the project they are imported to -->
 		<dependency> 
 			<groupId>com.organization.mvcproject</groupId>
-			<artifactId>mgl-automation-testing</artifactId>
+			<artifactId>e2e-mgl-webapp</artifactId>
 			<version>${project.version}</version>
 			<type>test-jar</type>
 			<scope>test</scope>
@@ -188,7 +171,7 @@
 						<phase>process-resources</phase>
 						<configuration>
 							<portNames>
-			                    <portName>random.servlet.port</portName>
+			                    <portName>random.server.port</portName>
 			                    <portName>random.stop.port</portName>
 							</portNames>
 						</configuration>
@@ -201,7 +184,7 @@
 				<version>11.0.15</version>
 				<configuration>
 			        <httpConnector>
-			            <port>${servlet.port}</port>
+			            <port>${app.server.port}</port>
 			        </httpConnector>
 			        <stopKey>quit</stopKey>
 			        <stopPort>${jetty.stop.port}</stopPort>
@@ -262,9 +245,13 @@
 			  		<includes>
 			            <include>**/*Test.java</include>
 			        </includes>
-					<dependenciesToScan>
-			            <dependency>com.organization.mvcproject:mgl-automation-testing:test-jar</dependency>
+			        <dependenciesToScan>
+			            <dependency>com.organization.mvcproject:e2e-mgl-webapp:test-jar</dependency>
 			        </dependenciesToScan>
+	                <systemPropertyVariables>
+	                    <app.server.port>${random.server.port}</app.server.port>
+	                    <name>${project.name}</name>
+	                </systemPropertyVariables>
 		        	 <properties>
 		                    <configurationParameters>
 		                        cucumber.glue=com.organization.mvcproject.test.bdd
@@ -283,16 +270,10 @@
 			                <goal>verify</goal>    
 						</goals>
 						<configuration>
-							<systemProperties>
-								<property>
-									<name>servlet.port</name>
-									<value>${servlet.port}</value>
-								</property>
-								<property>
-									<name>name</name>
-									<value>${project.name}</value>
-								</property>
-							</systemProperties>
+			                <systemPropertyVariables>
+			                    <app.server.port>${random.server.port}</app.server.port>
+			                    <name>${project.name}</name>
+			                </systemPropertyVariables>
 						</configuration>
 					</execution>
 					<execution>

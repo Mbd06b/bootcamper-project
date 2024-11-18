@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	
+	<parent>
+		<groupId>com.organization</groupId>
+		<artifactId>mgl-webapp-testing</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	
+	<groupId>com.organization.mvcproject</groupId>
+	<artifactId>e2e-mgl-webapp</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>e2e-mgl-webapp</name>
+	<description>Web Automation Testing for MGL Webapp</description>
+		
+	<dependencies>	
+		       <!-- Dependency on the model module -->
+        <dependency>
+            <groupId>com.organization.mvcproject</groupId>
+            <artifactId>model-mgl-webapp</artifactId>
+            <version>${project.version}</version>
+            <type>test-jar</type>
+			<scope>test</scope>
+        </dependency>
+
+        <!-- Cucumber dependencies -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-spring</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+		
+		<dependency> 
+			<groupId>io.cucumber</groupId> 
+			<artifactId>cucumber-junit-platform-engine</artifactId> 
+		</dependency> 
+		
+		<dependency> 
+			<groupId>org.junit.platform</groupId> 
+			<artifactId>junit-platform-console</artifactId> 
+		</dependency>
+		
+		        <!-- Test dependencies -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <scope>test</scope>
+        </dependency>
+        
+        <!-- JUnit Platform Suite dependencies -->
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-suite</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-suite-api</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-suite-engine</artifactId>
+            <scope>test</scope>
+        </dependency>
+		
+	    <!-- hamcrest matchers for more expressive assertions  -->
+		<dependency>
+		    <groupId>org.hamcrest</groupId>
+		    <artifactId>hamcrest</artifactId>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
+		<dependency>
+		    <groupId>org.assertj</groupId>
+		    <artifactId>assertj-core</artifactId>
+		</dependency>
+
+		
+		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+		<dependency>
+		    <groupId>org.seleniumhq.selenium</groupId>
+		    <artifactId>selenium-java</artifactId>
+		</dependency>
+		
+	</dependencies>
+	
+
+	<build>
+		<resources>
+		    <resource>
+		       <directory>src/test/resources</directory>
+		    </resource>
+		</resources>
+		
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${spring.boot.version}</version>
+			</plugin>
+			<plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-jar-plugin</artifactId>
+		        <version>${maven-jar-plugin.version}</version>
+		        <executions>
+		            <execution>
+		                <goals>
+		                    <goal>test-jar</goal>
+		                </goals>
+		            </execution>
+		        </executions>
+		    </plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+				    <!-- Only test what we're verifying for building a test-jar
+					for import everything else will be run from the importing module-->
+                <includes>
+                    <include>com/organization/mvcproject/test/BrowserSetupTest.java</include>
+                </includes>
+                
+                
+				</configuration>
+			</plugin>
+			<!-- Failsafe for storing Cucumber configuration -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>${maven-common-test.plugin.version}</version>
+				<configuration>
+					<!-- Skip actual execution in this module -->
+					<skipTests>true</skipTests>
+					<properties>
+						<configurationParameters>
+							cucumber.glue=com.organization.mvcproject.test.bdd
+							cucumber.publish.enabled=true
+							cucumber.junit-platform.naming-strategy=long
+							cucumber.plugin=pretty,
+							json:target/cucumber/cucumber-report.json
+							cucumber.ansi-colors.disabled=true
+						</configurationParameters>
+					</properties>
+				</configuration>
+        </plugin>
+		</plugins>
+	</build>
+	
+</project>

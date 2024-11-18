@@ -177,18 +177,6 @@
 					<webApp>
 						<contextPath>/</contextPath>
 					</webApp>
-					<scanIntervalSeconds>5</scanIntervalSeconds>
-					<scanTargetPatterns>
-						<scanTargetPattern>
-							<directory>src/main/webapp/WEB-INF</directory>
-							<includes>
-								<include>**/*.jsp</include>
-							</includes>
-							<excludes>
-								<include>**/*.properties</include>
-							</excludes>
-						</scanTargetPattern>
-					</scanTargetPatterns>
 				</configuration>
 				<executions>
 					<!-- assign random portnumbers from build-helper-maven-plugin --> 
@@ -204,7 +192,6 @@
 								<port>${random.servlet.port}</port>
 							</httpConnector>
 							<stopPort>${random.stop.port}</stopPort>
-							<scanIntervalSeconds>0</scanIntervalSeconds>
 						</configuration>
 					</execution>
 					<execution>
