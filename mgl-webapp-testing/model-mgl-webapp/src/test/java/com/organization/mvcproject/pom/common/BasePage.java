@@ -7,16 +7,19 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.organization.mvcproject.pom.annotation.PageObjectModel;
+
 
 @PageObjectModel
 public abstract class BasePage {
 	
-    protected final WebDriver driver;
-    protected final WebDriverWait wait;
+    protected WebDriver driver;
+    protected WebDriverWait wait;
     private static final Duration TIMEOUT = Duration.ofSeconds(10);
 
+	@Autowired
     protected BasePage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, TIMEOUT);

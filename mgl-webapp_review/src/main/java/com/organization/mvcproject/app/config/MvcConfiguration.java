@@ -17,7 +17,10 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Configuration
-@ComponentScan(basePackages="com.organization.mvcproject")
+@ComponentScan(basePackages={
+		"com.organization.mvcproject.api",
+		"com.organization.mvcproject.app"
+})
 @PropertySource(value= {"classpath:application.properties"})
 @EnableWebMvc
 public class MvcConfiguration implements WebMvcConfigurer {
