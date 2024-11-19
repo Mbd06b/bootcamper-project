@@ -14,99 +14,112 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>e2e-mgl-webapp</name>
 	<description>Web Automation Testing for MGL Webapp</description>
-		
-	<dependencies>	
-		       <!-- Dependency on the model module -->
-        <dependency>
-            <groupId>com.organization.mvcproject</groupId>
-            <artifactId>model-mgl-webapp</artifactId>
-            <version>${project.version}</version>
-            <type>test-jar</type>
-			<scope>test</scope>
-        </dependency>
 
-        <!-- Cucumber dependencies -->
-        <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-java</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-junit</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-spring</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-		
-		<dependency> 
-			<groupId>io.cucumber</groupId> 
-			<artifactId>cucumber-junit-platform-engine</artifactId> 
-		</dependency> 
-		
-		<dependency> 
-			<groupId>org.junit.platform</groupId> 
-			<artifactId>junit-platform-console</artifactId> 
-		</dependency>
-		
-		        <!-- Test dependencies -->
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <scope>test</scope>
-        </dependency>
-        
-        <!-- JUnit Platform Suite dependencies -->
-        <dependency>
-            <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-suite</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-suite-api</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-suite-engine</artifactId>
-            <scope>test</scope>
-        </dependency>
-		
-	    <!-- hamcrest matchers for more expressive assertions  -->
+	<dependencies>
+		<!-- Dependency on the model module -->
 		<dependency>
-		    <groupId>org.hamcrest</groupId>
-		    <artifactId>hamcrest</artifactId>
+			<groupId>com.organization.mvcproject</groupId>
+			<artifactId>model-mgl-webapp</artifactId>
+			<version>${project.version}</version>
+			<type>test-jar</type>
+			<scope>test</scope>
 		</dependency>
-		
+
+		<!-- Cucumber dependencies -->
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-java</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-spring</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-junit-platform-engine</artifactId>
+			<scope>test</scope>
+
+		</dependency>
+
+		<dependency>
+			<groupId>org.junit.platform</groupId>
+			<artifactId>junit-platform-console</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Test dependencies -->
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- JUnit Platform Suite dependencies -->
+		<dependency>
+			<groupId>org.junit.platform</groupId>
+			<artifactId>junit-platform-suite</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.platform</groupId>
+			<artifactId>junit-platform-suite-api</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.platform</groupId>
+			<artifactId>junit-platform-suite-engine</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- hamcrest matchers for more expressive assertions  -->
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest</artifactId>
+			<scope>test</scope>
+
+		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
 		<dependency>
-		    <groupId>org.assertj</groupId>
-		    <artifactId>assertj-core</artifactId>
+			<groupId>org.assertj</groupId>
+			<artifactId>assertj-core</artifactId>
+			<scope>test</scope>
+
 		</dependency>
 
-		
-		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+
+		<!--
+		https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
 		<dependency>
-		    <groupId>org.seleniumhq.selenium</groupId>
-		    <artifactId>selenium-java</artifactId>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<scope>test</scope>
+
 		</dependency>
 		
 	</dependencies>
 	
 
 	<build>
-		<resources>
-		    <resource>
+		<testResources>
+		    <testResource>
 		       <directory>src/test/resources</directory>
-		    </resource>
-		</resources>
+		    </testResource>
+		</testResources>
 		
 		<plugins>
 			<plugin>
@@ -130,12 +143,13 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<configuration>
-				    <!-- Only test what we're verifying for building a test-jar
+					<!-- Only test what we're verifying for building a test-jar
 					for import everything else will be run from the importing module-->
-                <includes>
-                    <include>com/organization/mvcproject/test/BrowserSetupTest.java</include>
-                </includes>
-                
+					<!--                <includes>-->
+					<!--                    <include>com/organization/mvcproject/test/BrowserSetupTest.java</include>-->
+					<!--                </includes>-->
+                 	<testFailureIgnore>true</testFailureIgnore>
+
                 
 				</configuration>
 			</plugin>
@@ -146,10 +160,16 @@
 				<version>${maven-common-test.plugin.version}</version>
 				<configuration>
 					<!-- Skip actual execution in this module -->
-					<skipTests>true</skipTests>
+					<!--					<skipTests>true</skipTests>-->
+					<testFailureIgnore>true</testFailureIgnore>
+					<includes>
+						<include>**/*IT.java</include>
+						<include>**/*IntegrationTest.java</include>
+						<include>**/*AcceptanceTest.java</include>
+					</includes>
 					<properties>
 						<configurationParameters>
-							cucumber.glue=com.organization.mvcproject.test.bdd
+							cucumber.glue=com.organization.mvcproject.test.bdd.steps
 							cucumber.publish.enabled=true
 							cucumber.junit-platform.naming-strategy=long
 							cucumber.plugin=pretty,

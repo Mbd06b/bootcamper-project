@@ -127,6 +127,21 @@
 			<type>test-jar</type>
 			<scope>test</scope>
 		</dependency>
+		    <dependency>
+			    <groupId>io.cucumber</groupId>
+			    <artifactId>cucumber-java</artifactId>
+			    <scope>test</scope>
+			</dependency>
+			<dependency>
+			    <groupId>io.cucumber</groupId>
+			    <artifactId>cucumber-spring</artifactId>
+			    <scope>test</scope>
+			</dependency>
+			<dependency>
+			    <groupId>org.seleniumhq.selenium</groupId>
+			    <artifactId>selenium-java</artifactId>
+			    <scope>test</scope>
+			</dependency>
 <!--		<dependency>-->
 <!--			<groupId>${project.groupId}</groupId>-->
 <!--			<artifactId>mgl-rest-client</artifactId>-->
@@ -242,11 +257,13 @@
 				<artifactId>maven-failsafe-plugin</artifactId>
 				<version>${maven.plugin.version}</version>
 			  	<configuration>
-			  		<includes>
-			            <include>**/*Test.java</include>
-			        </includes>
+					<includes>
+						<include>**/*IT.java</include>
+						<include>**/*IntegrationTest.java</include>
+						<include>**/*AcceptanceTest.java</include>
+					</includes>			            
 			        <dependenciesToScan>
-			            <dependency>com.organization.mvcproject:e2e-mgl-webapp:test-jar</dependency>
+   						 <dependency>com.organization.mvcproject:e2e-mgl-webapp:${project.version}:test-jar</dependency>
 			        </dependenciesToScan>
 	                <systemPropertyVariables>
 	                    <app.server.port>${random.server.port}</app.server.port>

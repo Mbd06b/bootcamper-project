@@ -12,6 +12,9 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring.boot.version>3.3.4</spring.boot.version>
+		<selenium.version>4.16.1</selenium.version>
+        <cucumber.version>7.20.1</cucumber.version>
+        <junit.version>5.10.3</junit.version>
 	</properties>
 
 	<modules>
@@ -65,6 +68,32 @@
 			</dependency> 
 		</dependencies>
 	</dependencyManagement>-->
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${spring.boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>io.cucumber</groupId>
+				<artifactId>cucumber-bom</artifactId>
+				<version>${cucumber.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.junit</groupId>
+				<artifactId>junit-bom</artifactId> 
+			<version>${junit.version}</version> 
+			<type>pom</type> 
+			<scope>import</scope> 
+		</dependency> 
+	</dependencies>	
+	</dependencyManagement>
 </project>
 
 

@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.organization.mvcproject.pom.annotation.PageObjectModel;
 import com.organization.mvcproject.pom.common.BasePage;
@@ -15,7 +16,14 @@ import com.organization.mvcproject.pom.common.MGLMainNavMenu;
 @PageObjectModel
 public class GamesPage extends BasePage {
     
-    private final MGLMainNavMenu mainNavMenu;
+	@Autowired
+    private MGLMainNavMenu mainNavMenu;
+    
+    @Autowired
+    public GamesPage(WebDriver driver) {
+        super(driver);
+        PageFactory.initElements(driver, this);
+    }
 
     // Form Elements
     @FindBy(id = "game_name")
@@ -44,13 +52,6 @@ public class GamesPage extends BasePage {
 
     @FindBy(xpath = "//tbody[@id='tableBody_ofGames']/tr")
     private List<WebElement> gameRows;
-
-    // Constructor
-    public GamesPage(WebDriver driver) {
-        super(driver);
-        this.mainNavMenu = new MGLMainNavMenu(driver);
-        PageFactory.initElements(driver, this);
-    }
 
     // Form Actions
     public void enterGameName(String name) {

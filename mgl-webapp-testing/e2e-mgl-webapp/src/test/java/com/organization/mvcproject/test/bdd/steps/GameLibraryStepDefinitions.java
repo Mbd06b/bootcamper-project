@@ -8,11 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.organization.mvcproject.pom.common.MGLMainNavMenu;
 import com.organization.mvcproject.pom.games.GamesPage;
 
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.cucumber.spring.CucumberContextConfiguration;
 
 //No Spring context configuration here - let the importing application handle that
 public class GameLibraryStepDefinitions {
@@ -26,23 +25,22 @@ public class GameLibraryStepDefinitions {
 	@Autowired
     private MGLMainNavMenu mainNav;
 
-    @Before("@web")
-    public void setup() {
-        mainNav = new MGLMainNavMenu(driver);
-    }
-    
-    @After("@web")
-    public void cleanup() {
-        if (driver != null) {
-            driver.quit();
-        }
-    }
+//    @Before("@web")
+//    public void setup() {
+//        mainNav = new MGLMainNavMenu(driver);
+//    }
+//    
+//    @After("@web")
+//    public void cleanup() {
+//        if (driver != null) {
+//            driver.quit();
+//        }
+//    }
     
     @When("Matthew lands on {string}")
     public void matthew_lands_on(String pageName) {
         if (pageName.equalsIgnoreCase("gamesPage")) {
             mainNav.clickGames();
-            gamesPage = new GamesPage(driver);
         }
     }
     

@@ -24,38 +24,10 @@
     	<java.version>21</java.version>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
   		<maven.compiler.target>${java.version}</maven.compiler.target>
-        <selenium.version>4.16.1</selenium.version>
-        <cucumber.version>7.20.1</cucumber.version>
-        <junit.version>5.10.3</junit.version>
         <maven-jar-plugin.version>3.4.2</maven-jar-plugin.version>
 		<maven-common-test.plugin.version>3.5.2</maven-common-test.plugin.version>
     </properties>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring.boot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-			<dependency>
-				<groupId>io.cucumber</groupId> 
-				<artifactId>cucumber-bom</artifactId> 
-				<version>${cucumber.version}</version> 
-				<type>pom</type> 
-				<scope>import</scope> 
-			</dependency> 
-			<dependency> 
-				<groupId>org.junit</groupId> 
-				<artifactId>junit-bom</artifactId> 
-				<version>${junit.version}</version> 
-				<type>pom</type> 
-				<scope>import</scope> 
-			</dependency> 
-        </dependencies>
-    </dependencyManagement>
 
     <build>
         <pluginManagement>
