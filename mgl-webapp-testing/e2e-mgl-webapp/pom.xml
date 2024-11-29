@@ -136,6 +136,15 @@
 		                <goals>
 		                    <goal>test-jar</goal>
 		                </goals>
+		                <configuration>
+                <testClassesDirectory>${project.build.testOutputDirectory}</testClassesDirectory>
+                <includes>
+                    <include>**/*.class</include>
+                    <include>**/*.feature</include>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+		            </configuration>
 		            </execution>
 		        </executions>
 		    </plugin>
@@ -175,6 +184,7 @@
 							cucumber.plugin=pretty,
 							json:target/cucumber/cucumber-report.json
 							cucumber.ansi-colors.disabled=true
+							cucumber.features=classpath:com/organization/mvcproject/test/bdd
 						</configurationParameters>
 					</properties>
 				</configuration>
