@@ -253,53 +253,44 @@
 	            <version>${maven.plugin.version}</version>
 	        </plugin>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-failsafe-plugin</artifactId>
-				<version>${maven.plugin.version}</version>
-			  	<configuration>
-					<includes>
-						<include>**/*IT.java</include>
-						<include>**/*IntegrationTest.java</include>
-						<include>**/*AcceptanceTest.java</include>
-					</includes>			            
-			        <dependenciesToScan>
-   						 <dependency>com.organization.mvcproject:e2e-mgl-webapp:${project.version}:test-jar</dependency>
-			        </dependenciesToScan>
-	                <systemPropertyVariables>
-	                    <app.server.port>${random.server.port}</app.server.port>
-	                    <name>${project.name}</name>
-	                </systemPropertyVariables>
-		        	 <properties>
-		                    <configurationParameters>
-		                        cucumber.glue=com.organization.mvcproject.test.bdd
-								cucumber.publish.enabled=true
-								cucumber.junit-platform.naming-strategy=long
-								cucumber.plugin=pretty, json:target/cucumber/cucumber-report.json
-								cucumber.ansi-colors.disabled=true
-		                    </configurationParameters>
-		                </properties>
-            	</configuration>
-				<executions>
-					<execution>
-						<id>perform-it</id>
-						<goals>
-							<goal>integration-test</goal>
-			                <goal>verify</goal>    
-						</goals>
-						<configuration>
+			    <groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-failsafe-plugin</artifactId>
+			    <version>${maven.plugin.version}</version>
+			    <executions>
+			        <execution>
+			            <id>integration-tests</id>
+			            <goals>
+			                <goal>integration-test</goal>
+			                <goal>verify</goal>
+			            </goals>
+			            <configuration>
+			                <skipTests>false</skipTests>
+			                <includes>
+			                    <include>**/*AcceptanceTest.java</include>
+			                </includes>
+			                <dependenciesToScan>
+			                    <dependency>com.organization.mvcproject:e2e-mgl-webapp:${project.version}:test-jar</dependency>
+			                </dependenciesToScan>
+			                <classesDirectory>${project.build.testOutputDirectory}</classesDirectory>
+			                <additionalClasspathElements>
+			                    <additionalClasspathElement>${project.build.testOutputDirectory}</additionalClasspathElement>
+			                </additionalClasspathElements>
 			                <systemPropertyVariables>
 			                    <app.server.port>${random.server.port}</app.server.port>
 			                    <name>${project.name}</name>
 			                </systemPropertyVariables>
-						</configuration>
-					</execution>
-					<execution>
-						<id>verify-it</id>
-						<goals>
-							<goal>verify</goal>
-						</goals>
-					</execution>
-				</executions>
+			                <properties>
+			                    <configurationParameters>
+			                        cucumber.glue=com.organization.mvcproject.test.bdd.steps
+			                        cucumber.features=classpath:com/organization/mvcproject/test/bdd
+			                        cucumber.plugin=pretty, json:target/cucumber/cucumber-report.json
+			                    </configurationParameters>
+			                </properties>
+			                <forkCount>1</forkCount>
+			                <reuseForks>true</reuseForks>
+			            </configuration>
+			        </execution>
+			    </executions>
 			</plugin>
 			<plugin>
 				<groupId>org.jacoco</groupId>
