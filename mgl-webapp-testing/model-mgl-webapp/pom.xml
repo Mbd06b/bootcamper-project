@@ -13,8 +13,8 @@
 	<groupId>com.organization.mvcproject</groupId>
     <artifactId>model-mgl-webapp</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-	<name>mgl-automation-testing</name>
-	<description>Page Object Models of MGL Webapp</description>
+	<name>model-mgl-webapp</name>
+	<description>Page Object Model of MGL Webapp</description>
 		
     <dependencies>
         <!-- Selenium dependencies only -->
