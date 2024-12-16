@@ -25,7 +25,6 @@
 		<maven.compiler.source>${java.version}</maven.compiler.source>
   		<maven.compiler.target>${java.version}</maven.compiler.target>
         <maven-jar-plugin.version>3.4.2</maven-jar-plugin.version>
-		<maven-common-test.plugin.version>3.5.2</maven-common-test.plugin.version>
     </properties>
 
 

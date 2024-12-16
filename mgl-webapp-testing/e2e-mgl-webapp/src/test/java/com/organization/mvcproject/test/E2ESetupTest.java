@@ -10,14 +10,12 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import com.organization.mvcproject.pom.games.GamesPage;
-import com.organization.mvcproject.test.bdd.CucumberSpringConfig;
 
-@SpringJUnitConfig(classes = {WebDriverConfig.class, CucumberSpringConfig.class})
-class BrowserSetupTest {
+@SpringJUnitConfig(classes = {WebDriverConfig.class, E2ETestContext.class})
+class E2ESetupTest {
 
 	@Autowired
 	private WebDriver driver;
-	
 	
     @Autowired
     private GamesPage gamesPage;
@@ -26,7 +24,7 @@ class BrowserSetupTest {
     private ApplicationContext context;
 
 	@Test
-	void browserDriverIsFunctioning() {
+	void e2eBrowserDriverIsFunctioning() {
 		// Exercise
 		driver.get("https://www.selenium.dev");
 		String title = driver.getTitle();
@@ -36,12 +34,12 @@ class BrowserSetupTest {
 	}
 
     @Test
-    public void testGamesPageInitialization() {
+    public void testGamesPageInitializesInE2E() {
         assertNotNull(gamesPage, "GamesPage bean should be initialized by Spring");
     }
 
-    @Test
-    public void testGamesPageBeanExists() {
-        assertNotNull(context.getBean(GamesPage.class), "GamesPage bean should exist in the context");
-    }
+//    @Test
+//    public void testGamesPageBeanExistsInE2E() {
+//        assertNotNull(context.getBean(GamesPage.class), "GamesPage bean should exist in the context");
+//    }
 }

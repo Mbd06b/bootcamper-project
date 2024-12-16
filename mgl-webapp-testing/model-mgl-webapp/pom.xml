@@ -17,6 +17,11 @@
 	<description>Page Object Model of MGL Webapp</description>
 		
     <dependencies>
+    	<dependency>
+    		<groupId>org.slf4j</groupId>
+    		<artifactId>slf4j-api</artifactId>
+    	</dependency>
+    
         <!-- Selenium dependencies only -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
@@ -31,14 +36,12 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <scope>test</scope>
         </dependency>
 
         <!-- Test dependencies -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 

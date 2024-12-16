@@ -1,4 +1,4 @@
-package com.organization.mvcproject.test.bdd.steps;
+package com.organization.mvcproject.test.bdd.glue.steps;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -11,9 +11,8 @@ import com.organization.mvcproject.pom.games.GamesPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.cucumber.spring.CucumberContextConfiguration;
 
-//No Spring context configuration here - let the importing application handle that
+//managed by cucumber
 public class GameLibraryStepDefinitions {
 	
 	@Autowired

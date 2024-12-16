@@ -13,10 +13,12 @@ import com.organization.mvcproject.pom.annotation.PageObjectModel;
 
 
 @PageObjectModel
-public abstract class BasePage {
+public class BasePage {
 	
     protected WebDriver driver;
+    
     protected WebDriverWait wait;
+    
     private static final Duration TIMEOUT = Duration.ofSeconds(10);
 
 	@Autowired

@@ -15,6 +15,7 @@
 		<selenium.version>4.16.1</selenium.version>
         <cucumber.version>7.20.1</cucumber.version>
         <junit.version>5.10.3</junit.version>
+        <maven-common-test.plugin.version>3.5.2</maven-common-test.plugin.version>
 	</properties>
 
 	<modules>

@@ -16,7 +16,14 @@
 	<description>Web Automation Testing for MGL Webapp</description>
 
 	<dependencies>
-		<!-- Dependency on the model module -->
+		<!-- Test utility dependencies (ie. junit, selenium) on the model module -->
+		<dependency>
+			<groupId>com.organization.mvcproject</groupId>
+			<artifactId>model-mgl-webapp</artifactId>
+			<version>${project.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<!-- Import src/test resources from the test jar -->
 		<dependency>
 			<groupId>com.organization.mvcproject</groupId>
 			<artifactId>model-mgl-webapp</artifactId>
@@ -29,17 +36,14 @@
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-java</artifactId>
-			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-junit</artifactId>
-			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-spring</artifactId>
-			<scope>test</scope>
 		</dependency>
 
 		<dependency>
@@ -51,8 +55,6 @@
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-junit-platform-engine</artifactId>
-			<scope>test</scope>
-
 		</dependency>
 
 		<dependency>
@@ -72,24 +74,20 @@
 		<dependency>
 			<groupId>org.junit.platform</groupId>
 			<artifactId>junit-platform-suite</artifactId>
-			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.junit.platform</groupId>
 			<artifactId>junit-platform-suite-api</artifactId>
-			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.junit.platform</groupId>
 			<artifactId>junit-platform-suite-engine</artifactId>
-			<scope>test</scope>
 		</dependency>
 
 		<!-- hamcrest matchers for more expressive assertions  -->
 		<dependency>
 			<groupId>org.hamcrest</groupId>
 			<artifactId>hamcrest</artifactId>
-			<scope>test</scope>
 
 		</dependency>
 
@@ -97,8 +95,6 @@
 		<dependency>
 			<groupId>org.assertj</groupId>
 			<artifactId>assertj-core</artifactId>
-			<scope>test</scope>
-
 		</dependency>
 
 
@@ -107,8 +103,6 @@
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
-			<scope>test</scope>
-
 		</dependency>
 		
 	</dependencies>
@@ -136,15 +130,6 @@
 		                <goals>
 		                    <goal>test-jar</goal>
 		                </goals>
-		                <configuration>
-                <testClassesDirectory>${project.build.testOutputDirectory}</testClassesDirectory>
-                <includes>
-                    <include>**/*.class</include>
-                    <include>**/*.feature</include>
-                    <include>**/*.properties</include>
-                    <include>**/*.xml</include>
-                </includes>
-		            </configuration>
 		            </execution>
 		        </executions>
 		    </plugin>
@@ -158,15 +143,27 @@
 					<!--                    <include>com/organization/mvcproject/test/BrowserSetupTest.java</include>-->
 					<!--                </includes>-->
                  	<testFailureIgnore>true</testFailureIgnore>
-
+					<excludes>
+						<exclude>**/*IT.java</exclude>
+						<exclude>**/*IntegrationTest.java</exclude>
+						<exclude>**/*AcceptanceTest.java</exclude>
+						<exclude>**/*AcceptanceTestRunner.java</exclude>
+					</excludes>
                 
 				</configuration>
 			</plugin>
-			<!-- Failsafe for storing Cucumber configuration -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
 				<version>${maven-common-test.plugin.version}</version>
+				<executions>
+			        <execution>
+			            <goals>
+			                <goal>integration-test</goal>
+			                <goal>verify</goal>
+			            </goals>
+			        </execution>
+			    </executions>
 				<configuration>
 					<!-- Skip actual execution in this module -->
 					<!--					<skipTests>true</skipTests>-->
@@ -175,21 +172,26 @@
 						<include>**/*IT.java</include>
 						<include>**/*IntegrationTest.java</include>
 						<include>**/*AcceptanceTest.java</include>
+						<include>**/*AcceptanceTestRunner.java</include>
 					</includes>
 					<properties>
 						<configurationParameters>
-							cucumber.glue=com.organization.mvcproject.test.bdd.steps
+							cucumber.glue=com.organization.mvcproject.test.bdd.glue
 							cucumber.publish.enabled=true
 							cucumber.junit-platform.naming-strategy=long
 							cucumber.plugin=pretty,
 							json:target/cucumber/cucumber-report.json
 							cucumber.ansi-colors.disabled=true
+							<!-- WARNING: Discovering tests using the cucumber.features property. Other discovery selectors are ignored!
+								This is a work around for the limited JUnit 5 support in Maven and Gradle. Please request/upvote/sponsor/ect better support for JUnit 5 discovery selectors. For details see: https://github.com/cucumber/cucumber-jvm/pull/2498
+								If you are using the JUnit 5 Suite Engine, Platform Launcher API or Console Launcher you should not use this property. Please consult the JUnit 5 documentation on test selection.
 							cucumber.features=classpath:com/organization/mvcproject/test/bdd
+							-->
 						</configurationParameters>
 					</properties>
 				</configuration>
         </plugin>
-		</plugins>
+	 </plugins>
 	</build>
 	
 </project>

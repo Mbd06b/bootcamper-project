@@ -1,4 +1,4 @@
-package com.organization.mvcproject.test.example.bdd.steps;
+package com.organization.mvcproject.test.bdd.glue.steps;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
