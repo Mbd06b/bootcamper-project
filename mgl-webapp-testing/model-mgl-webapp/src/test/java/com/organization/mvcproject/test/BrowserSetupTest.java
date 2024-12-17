@@ -30,11 +30,8 @@ class BrowserSetupTest {
     
 	@Test
 	void browserDriverIsFunctioning() {
-		// Exercise
 		driver.get("https://www.selenium.dev");
 		String title = driver.getTitle();
-
-		// Verify
 		assertTrue(title.contains("Selenium"));
 	}
 	

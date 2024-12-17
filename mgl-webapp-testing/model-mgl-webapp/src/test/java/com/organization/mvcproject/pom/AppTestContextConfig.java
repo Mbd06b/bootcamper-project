@@ -1,4 +1,4 @@
-package com.organization.mvcproject.app.config;
+package com.organization.mvcproject.pom;
 
 import java.lang.invoke.MethodHandles;
 
@@ -8,21 +8,19 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import jakarta.annotation.PostConstruct;
-
 @Configuration
-public class ServerContextConfig {
+public class AppTestContextConfig {
 	
 	  private static Logger logger = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 	    
-	    @Value("${app.server.protocol:http}")
+	    @Value("${test.server.protocol:http}")
 	    private String serverProtocol;
 	    
 	    
-	    @Value("${app.server.host:localhost}")
+	    @Value("${test.server.host:localhost}")
 	    private String serverHost;
 
-	    @Value("${app.server.port:8080}")  // Default to 8080 if not specified
+	    @Value("${test.server.port:8080}")  // Default to 8080 if not specified
 	    private int serverPort;
 
 
@@ -32,10 +30,4 @@ public class ServerContextConfig {
 	        logger.info("Configured base URL: {}", url);
 	        return url;
 	    }
-
-	    @PostConstruct
-	    void logConfiguration() {
-	        logger.info("Server Configuration - Host: {}, Port: {}", serverHost, serverPort);
-	    }
-
 }

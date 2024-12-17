@@ -18,7 +18,7 @@ public class WebDriverConfig {
 	
 	private static final Logger logger = LoggerFactory.getLogger(WebDriverConfig.class);
     
-    @Value("${selenium.headless:false}")  // defaults to false if not specified
+    @Value("${selenium.headless:false}") 
     private boolean headless;
     
     @Bean

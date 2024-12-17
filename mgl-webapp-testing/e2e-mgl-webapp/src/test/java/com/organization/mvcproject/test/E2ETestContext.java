@@ -20,10 +20,6 @@ import com.organization.mvcproject.pom.annotation.PageObjectModel;
 )
 public class E2ETestContext extends POMContextConfig {
 	
-//    @Bean
-//    @DependsOn("webDriver") 
-//    public MGLMainNavMenu mainNavMenu(WebDriver driver) {
-//        return new MGLMainNavMenu(driver);
-//    }
+
 	
 }

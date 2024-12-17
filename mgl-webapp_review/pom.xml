@@ -115,6 +115,13 @@
 			<version>${project.version}</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency> 
+			<groupId>com.organization.mvcproject</groupId>
+			<artifactId>model-mgl-webapp</artifactId>
+			<version>${project.version}</version>
+			<scope>test</scope>
+			<type>test-jar</type>
+		</dependency>
 		<!-- this test-jar dependency contains packaged web-automation tests which are being scanned to run by dependenciesToScan during the integration test phase -->
 		<!-- the test-jar itself is created via the "maven-jar-plugin" located in the dependency itself -->
 		<!-- the tests recieve the context they need to run via the corresponding texting-framework dependency  --> 
@@ -229,7 +236,7 @@
 			            <configuration>
 			                <httpConnector>
 			                    <!-- For integration tests -->
-			                    <port>${random.servlet.port}</port>
+			                    <port>${random.server.port}</port>
 			                </httpConnector>
 			                <stopPort>${random.stop.port}</stopPort>
 			            </configuration>
@@ -264,6 +271,9 @@
 			        </execution>
 			    </executions>
 				<configuration>
+					<systemPropertyVariables>
+      				  <random.server.port>${random.server.port}</random.server.port>
+				    </systemPropertyVariables>
 					<!-- Skip actual execution in this module -->
 					<!--					<skipTests>true</skipTests>-->
 					<testFailureIgnore>true</testFailureIgnore>

@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 
 import com.organization.mvcproject.pom.annotation.PageObjectModel;
 
@@ -19,6 +20,9 @@ public class BasePage {
     
     protected WebDriverWait wait;
     
+    @Autowired
+    protected String baseUrl; 
+    
     private static final Duration TIMEOUT = Duration.ofSeconds(10);
 
 	@Autowired
@@ -26,7 +30,7 @@ public class BasePage {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, TIMEOUT);
     }
-
+	
     protected WebElement waitForElementToBeClickable(WebElement element) {
         return wait.until(ExpectedConditions.elementToBeClickable(element));
     }
