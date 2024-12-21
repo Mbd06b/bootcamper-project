@@ -3,7 +3,10 @@ package com.organization.mvcproject.test;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestInstance.Lifecycle;
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -14,6 +17,7 @@ import com.organization.mvcproject.pom.common.BasePage;
 import com.organization.mvcproject.pom.games.GamesPage;
 
 @SpringJUnitConfig(classes = {POMContextConfig.class, WebDriverConfig.class})
+@TestInstance(Lifecycle.PER_CLASS)
 class BrowserSetupTest {
 
 	@Autowired
@@ -27,6 +31,13 @@ class BrowserSetupTest {
 
     @Autowired
     private ApplicationContext context;
+    
+    @AfterAll
+    public  void cleanup() {
+        if (driver != null) {
+            driver.quit();
+        }
+    }
     
 	@Test
 	void browserDriverIsFunctioning() {

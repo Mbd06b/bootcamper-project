@@ -2,12 +2,17 @@ package com.organization.mvcproject.test.bdd.glue.steps;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.time.Duration;
+
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.organization.mvcproject.pom.common.MGLMainNavMenu;
 import com.organization.mvcproject.pom.games.GamesPage;
 
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -17,34 +22,37 @@ public class GameLibraryStepDefinitions {
 	
 	@Autowired
 	private WebDriver driver;
-
+	
+	@Autowired
+	private String baseUrl;
+	  
 	@Autowired
     private GamesPage gamesPage;
 	
 	@Autowired
     private MGLMainNavMenu mainNav;
 
-//    @Before("@web")
-//    public void setup() {
-//        mainNav = new MGLMainNavMenu(driver);
-//    }
-//    
-//    @After("@web")
-//    public void cleanup() {
-//        if (driver != null) {
-//            driver.quit();
-//        }
-//    }
+    @Before("@web")
+    public void setup() {
+        driver.get(baseUrl);  // Handle navigation setup in @Before
+    }
     
-    @When("Matthew lands on {string}")
-    public void matthew_lands_on(String pageName) {
-        if (pageName.equalsIgnoreCase("gamesPage")) {
-            mainNav.clickGames();
+    @After("@web")
+    public void cleanup() {
+        if (driver != null) {
+            driver.quit();
         }
+    }
+    
+    @When("Matthew opens his game library")
+    public void matthew_opens_game_library() {
+        mainNav.clickGames();
     }
     
     @Then("I should have {int} starter games.")
     public void i_should_have_starter_games(Integer expectedCount) {
+        new WebDriverWait(driver, Duration.ofSeconds(3))
+        .until(webDriver -> gamesPage.getGamesCount() > 0);
         assertThat(gamesPage.getGamesCount()).isEqualTo(expectedCount);
     }
 

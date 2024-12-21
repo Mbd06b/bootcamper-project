@@ -3,6 +3,7 @@ package com.organization.mvcproject.pom.common;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.organization.mvcproject.pom.annotation.PageObjectModel;
@@ -20,7 +21,7 @@ public class MGLMainNavMenu extends BasePage {
     @Autowired
     public MGLMainNavMenu( WebDriver driver) {
         super(driver);
-     //   PageFactory.initElements(driver, this);
+        PageFactory.initElements(driver, this);
     }
     
     public void clickGames() {

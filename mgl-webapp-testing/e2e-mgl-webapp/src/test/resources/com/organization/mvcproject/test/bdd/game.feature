@@ -16,17 +16,16 @@
 #""
 ## (Comments)
 #Sample Feature Definition Template
-@tag
+@web @tag
 Feature: Managing My Game Library
   In order to make my library meaningful
   As a gamer registering with MyGameLibrary
   I want to be able to add, modify, and remove games in my library
   
-  
-  @tag1
-  Scenario: Initializing My Game library
-   When Matthew lands on "gamesPage" 
-   Then I should have 3 starter games.
+	@tag1
+	Scenario: Initializing My Game library
+	  When Matthew opens his game library
+	  Then I should have 3 starter games.
   
   @tag2
   Scenario: Create a new game

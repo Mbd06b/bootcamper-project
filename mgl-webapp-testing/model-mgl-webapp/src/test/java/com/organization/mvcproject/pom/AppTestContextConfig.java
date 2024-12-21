@@ -16,8 +16,7 @@ public class AppTestContextConfig {
 	    @Value("${test.server.protocol:http}")
 	    private String serverProtocol;
 	    
-	    
-	    @Value("${test.server.host:localhost}")
+		@Value("${test.server.host:localhost}")
 	    private String serverHost;
 
 	    @Value("${test.server.port:8080}")  // Default to 8080 if not specified
@@ -30,4 +29,5 @@ public class AppTestContextConfig {
 	        logger.info("Configured base URL: {}", url);
 	        return url;
 	    }
+	   
 }

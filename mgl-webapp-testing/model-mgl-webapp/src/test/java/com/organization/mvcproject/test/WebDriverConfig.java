@@ -23,7 +23,7 @@ public class WebDriverConfig {
     
     @Bean
     public ChromeOptions chromeOptions() {
-        logger.debug("Creating chromeOptions Bean from model module.");
+        logger.info("Creating chromeOptions Bean from model module.");
         ChromeOptions options = new ChromeOptions();
         if (headless) {
             options.addArguments("--headless");
@@ -35,14 +35,14 @@ public class WebDriverConfig {
     
     @Bean(destroyMethod = "quit")
     public WebDriver webDriver(ChromeOptions options) {
-    	logger.debug("Creating WebDriver Bean from model module w/ options: {}", options);
+    	logger.info("Creating WebDriver Bean from model module w/ options: {}", options);
         return new ChromeDriver(options);
     }
     
 	@Bean
 	ApplicationListener<ContextRefreshedEvent> init() {
 	    return event -> {
-	        logger.debug("Beans in context in e2e module:");
+	        logger.info("Beans in context in e2e module:");
 	        Arrays.stream(event.getApplicationContext()
 	        	  .getBeanDefinitionNames())
 	              .forEach(logger::debug);
