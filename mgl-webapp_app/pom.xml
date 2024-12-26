@@ -25,11 +25,10 @@
 
     <modules>
 <!--        <module>mgl-webapp_start</module>-->
-<!--        <module>mgl-webapp_task1-0</module>-->
-<!--        <module>mgl-webapp_task2-0</module>-->
-<!--        <module>mgl-webapp_task2-1</module>-->
-<!--        <module>mgl-webapp_review</module>-->
-        
+        <module>mgl-webapp_task1-0</module>
+        <module>mgl-webapp_task2-0</module>
+        <module>mgl-webapp_task2-1</module>
+        <module>mgl-webapp_review</module>
     </modules>
     
 

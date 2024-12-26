@@ -19,17 +19,13 @@
 	</properties>
 
 	<modules>
-		<module>mgl-webapp-testing</module>
 		<module>activities</module>
 		<module>docs</module>
-		<module>mgl-webapp_start</module>
-		<module>mgl-webapp_task1-0</module>
-		<module>mgl-webapp_task2-0</module>
-		<module>mgl-webapp_task2-1</module>
+		<module>mgl-webapp-testing</module>
 		<module>mgl-provider_start</module>
 		<module>mgl-provider</module>
 		<module>mgl-module</module>
-		<module>mgl-webapp_review</module>	
+		<module>mgl-webapp_app</module>
 		
 	</modules>
 	
