@@ -15,7 +15,7 @@ import org.junit.platform.suite.api.Suite;
 @ConfigurationParameter(key = GLUE_PROPERTY_NAME, 
 	value ="com.organization.mvcproject.test.bdd,"
 	    +  "com.organization.mvcproject.test.bdd.glue")
-@ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "pretty")
+//@ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "pretty")
 /*
  * WARNING: Discovering tests using the cucumber.features property. Other discovery selectors are ignored!
    This is a work around for the limited JUnit 5 support in Maven and Gradle. Please request/upvote/sponsor/ect better support for JUnit 5 discovery selectors. For details see: https://github.com/cucumber/cucumber-jvm/pull/2498

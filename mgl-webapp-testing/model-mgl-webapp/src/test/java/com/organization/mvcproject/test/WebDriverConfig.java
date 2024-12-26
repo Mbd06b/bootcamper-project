@@ -1,5 +1,6 @@
 package com.organization.mvcproject.test;
 
+import java.time.Duration;
 import java.util.Arrays;
 
 import org.openqa.selenium.WebDriver;
@@ -36,8 +37,12 @@ public class WebDriverConfig {
     @Bean(destroyMethod = "quit")
     public WebDriver webDriver(ChromeOptions options) {
     	logger.info("Creating WebDriver Bean from model module w/ options: {}", options);
-        return new ChromeDriver(options);
-    }
+       ChromeDriver driver = new ChromeDriver(options);
+        
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));        
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
+        
+        return driver;    }
     
 	@Bean
 	ApplicationListener<ContextRefreshedEvent> init() {

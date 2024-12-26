@@ -176,11 +176,10 @@
 					</includes>
 					<properties>
 						<configurationParameters>
-							cucumber.glue=com.organization.mvcproject.test.bdd.glue
+							cucumber.glue=com.organization.mvcproject.test.bdd.steps
 							cucumber.publish.enabled=true
 							cucumber.junit-platform.naming-strategy=long
-							cucumber.plugin=pretty,
-							json:target/cucumber/cucumber-report.json
+							cucumber.plugin=pretty, json:target/cucumber/cucumber-report.json, html:target/cucumber/report.html
 							cucumber.ansi-colors.disabled=true
 							<!-- WARNING: Discovering tests using the cucumber.features property. Other discovery selectors are ignored!
 								This is a work around for the limited JUnit 5 support in Maven and Gradle. Please request/upvote/sponsor/ect better support for JUnit 5 discovery selectors. For details see: https://github.com/cucumber/cucumber-jvm/pull/2498

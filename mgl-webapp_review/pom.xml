@@ -285,13 +285,13 @@
 					</includes>
 					<properties>
 						<configurationParameters>
+							<!--
 							cucumber.glue=com.organization.mvcproject.test.bdd,com.organization.mvcproject.test.bdd.glue
 							cucumber.publish.enabled=true
 							cucumber.junit-platform.naming-strategy=long
-							cucumber.plugin=pretty,
-							json:target/cucumber/cucumber-report.json
+							cucumber.plugin=pretty,json:target/cucumber/cucumber-report.json,html:target/cucumber/report.html
 							cucumber.ansi-colors.disabled=true
-							<!-- WARNING: Discovering tests using the cucumber.features property. Other discovery selectors are ignored!
+						 WARNING: Discovering tests using the cucumber.features property. Other discovery selectors are ignored!
 								This is a work around for the limited JUnit 5 support in Maven and Gradle. Please request/upvote/sponsor/ect better support for JUnit 5 discovery selectors. For details see: https://github.com/cucumber/cucumber-jvm/pull/2498
 								If you are using the JUnit 5 Suite Engine, Platform Launcher API or Console Launcher you should not use this property. Please consult the JUnit 5 documentation on test selection.
 							cucumber.features=classpath:com/organization/mvcproject/test/bdd
@@ -300,46 +300,6 @@
 					</properties>
 				</configuration>
         </plugin>
-<!--			<plugin>-->
-<!--			    <groupId>org.apache.maven.plugins</groupId>-->
-<!--			    <artifactId>maven-failsafe-plugin</artifactId>-->
-<!--			    <version>${maven.plugin.version}</version>-->
-<!--			    <executions>-->
-<!--			        <execution>-->
-<!--			            <id>integration-tests</id>-->
-<!--			            <goals>-->
-<!--			                <goal>integration-test</goal>-->
-<!--			                <goal>verify</goal>-->
-<!--			            </goals>-->
-<!--			            <configuration>-->
-<!--			                <skipTests>false</skipTests>-->
-<!--			                <includes>-->
-<!--			                    <include>**/*AcceptanceTest.java</include>-->
-<!--			                </includes>-->
-<!--			                <dependenciesToScan>-->
-<!--			                    <dependency>com.organization.mvcproject:e2e-mgl-webapp:${project.version}:test-jar</dependency>-->
-<!--			                </dependenciesToScan>-->
-<!--			                <classesDirectory>${project.build.testOutputDirectory}</classesDirectory>-->
-<!--			                <additionalClasspathElements>-->
-<!--			                    <additionalClasspathElement>${project.build.testOutputDirectory}</additionalClasspathElement>-->
-<!--			                </additionalClasspathElements>-->
-<!--			                <systemPropertyVariables>-->
-<!--			                    <app.server.port>${random.server.port}</app.server.port>-->
-<!--			                    <name>${project.name}</name>-->
-<!--			                </systemPropertyVariables>-->
-<!--			                <properties>-->
-<!--			                    <configurationParameters>-->
-<!--			                        cucumber.glue=com.organization.mvcproject.test.bdd.steps-->
-<!--			                        cucumber.features=classpath:com/organization/mvcproject/test/bdd-->
-<!--			                        cucumber.plugin=pretty, json:target/cucumber/cucumber-report.json-->
-<!--			                    </configurationParameters>-->
-<!--			                </properties>-->
-<!--			                <forkCount>1</forkCount>-->
-<!--			                <reuseForks>true</reuseForks>-->
-<!--			            </configuration>-->
-<!--			        </execution>-->
-<!--			    </executions>-->
-<!--			</plugin>-->
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>

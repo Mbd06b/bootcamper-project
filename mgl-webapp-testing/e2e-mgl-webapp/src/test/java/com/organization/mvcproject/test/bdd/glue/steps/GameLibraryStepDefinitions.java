@@ -11,17 +11,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.organization.mvcproject.pom.common.MGLMainNavMenu;
 import com.organization.mvcproject.pom.games.GamesPage;
 
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
+import io.cucumber.java.AfterAll;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import jakarta.annotation.PostConstruct;
 
 //managed by cucumber
 public class GameLibraryStepDefinitions {
 	
-	@Autowired
 	private WebDriver driver;
+    private static WebDriver staticDriver;
 	
 	@Autowired
 	private String baseUrl;
@@ -32,15 +32,21 @@ public class GameLibraryStepDefinitions {
 	@Autowired
     private MGLMainNavMenu mainNav;
 
-    @Before("@web")
-    public void setup() {
-        driver.get(baseUrl);  // Handle navigation setup in @Before
+    @Autowired
+    public GameLibraryStepDefinitions(WebDriver driver) {
+        this.driver = driver;
+        staticDriver = driver; 
+    }
+    @PostConstruct
+    public void init() {
+        driver.get(baseUrl);
     }
     
-    @After("@web")
-    public void cleanup() {
-        if (driver != null) {
-            driver.quit();
+    @AfterAll
+    public static void cleanup() {
+        if (staticDriver != null) {
+            staticDriver.quit();
+            staticDriver = null;
         }
     }
     
