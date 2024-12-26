@@ -1,13 +1,16 @@
 package com.organization.provider.model.remote;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.BeanUtils;
 
+import com.organization.mvcproject.api.model.Company;
 import com.organization.mvcproject.api.model.Game;
+import com.organization.mvcproject.api.model.Review;
 
-public class GameDetailView {
+public class GameDetailView implements Game {
 
 	private Long id;
 	private String name;
@@ -43,44 +46,88 @@ public class GameDetailView {
     	}
     }
 
-	public Long getId() {
-		return id;
-	}
+    @Override
+    public Long getId() {
+        return id;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @Override
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public String getName() {
-		return name;
-	}
+    @Override
+    public String getName() {
+        return name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    @Override
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public String getGenre() {
-		return genre;
-	}
+    @Override
+    public String getGenre() {
+        return genre;
+    }
 
-	public void setGenre(String genre) {
-		this.genre = genre;
-	}
+    @Override
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
 
-	public CompanyRemote getCompany() {
-		return company;
-	}
+    @Override
+    public Company getCompany() {
+        return this.company; // Assuming CompanyRemote implements Company
+    }
 
-	public void setCompany(CompanyRemote company) {
-		this.company = company;
-	}
+    @Override
+    public void setCompany(Company company) {
+        if (company == null) {
+            this.company = null;
+        } else if (company instanceof CompanyRemote) {
+            this.company = (CompanyRemote) company;
+        } else {
+            this.company = CompanyRemote.convert(company);
+        }
+    }
 
-	public List<ReviewRemote> getReviews() {
-		return reviews;
-	}
+    @Override
+    public List<Review> getReviews() {
+        if (this.reviews == null) {
+            return null;
+        }
+        // Assuming ReviewRemote implements Review, create an unmodifiable view
+        return new ArrayList<>(this.reviews);
+    }
 
-	public void setReviews(List<ReviewRemote> reviews) {
-		this.reviews = reviews;
-	}
+    @Override
+    public void setReviews(List<Review> reviews) {
+        if (reviews == null) {
+            this.reviews = new ArrayList<>();
+        } else {
+            this.reviews = reviews.stream()
+                .filter(review -> review != null)
+                .map(ReviewRemote::convert)
+                .collect(Collectors.toList());
+        }
+    }
+
+    // Convenience methods for direct access to remote types
+    public CompanyRemote getCompanyRemote() {
+        return this.company;
+    }
+
+    public List<ReviewRemote> getReviewsRemote() {
+        return reviews != null ? new ArrayList<>(reviews) : new ArrayList<>();
+    }
+
+    public void setCompanyRemote(CompanyRemote company) {
+        this.company = company;
+    }
+
+    public void setReviewsRemote(List<ReviewRemote> reviews) {
+        this.reviews = reviews != null ? new ArrayList<>(reviews) : new ArrayList<>();
+    }
 	
 }

@@ -1,10 +1,14 @@
 package com.organization.provider.model.remote;
 
+import java.util.List;
+
 import org.springframework.beans.BeanUtils;
 
+import com.organization.mvcproject.api.model.Company;
 import com.organization.mvcproject.api.model.Game;
+import com.organization.mvcproject.api.model.Review;
 
-public class GameRemote {
+public class GameRemote implements Game {
 
 	private Long id;
 	private String name;
@@ -62,6 +66,30 @@ public class GameRemote {
 
 	public void setCompanyId(Long companyId) {
 		this.companyId = companyId;
+	}
+
+	@Override
+	public Company getCompany() {
+		 // We only store companyId in this simplified view
+		return null;
+	}
+
+	@Override
+	public void setCompany(Company company) {
+        if (company != null) {
+            this.companyId = company.getId();
+        }
+		
+	}
+
+	@Override
+	public List<Review> getReviews() {
+        return null; // Reviews are not included in this simplified view
+    }
+
+	@Override
+	public void setReviews(List<Review> reviews) {
+	     // No-op as we don't store reviews in this simplified view
 	}
     
 }

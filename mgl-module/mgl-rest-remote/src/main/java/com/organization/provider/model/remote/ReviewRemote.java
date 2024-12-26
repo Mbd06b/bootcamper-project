@@ -2,15 +2,22 @@ package com.organization.provider.model.remote;
 
 import org.springframework.beans.BeanUtils;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.organization.mvcproject.api.model.Game;
 import com.organization.mvcproject.api.model.Review;
 
-public class ReviewRemote {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class ReviewRemote implements Review {
 	
 	private Long id;
 	private Long gameId;
 	private String body;
 	private String author;
 	private Integer rating;
+	
+	@JsonIgnore
+	private Game game;
 	
     public ReviewRemote() {}
     
@@ -70,6 +77,18 @@ public class ReviewRemote {
 
 	public void setRating(Integer rating) {
 		this.rating = rating;
+	}
+
+	@Override
+	public Game getGame() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setGame(Game game) {
+		// TODO Auto-generated method stub
+		
 	}
 
 

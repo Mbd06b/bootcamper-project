@@ -2,12 +2,11 @@ package com.organization.provider.dao;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.google.common.collect.ImmutableList;
-import com.organization.mvcproject.api.mockdao.GameDAO;
 import com.organization.mvcproject.api.model.Game;
+import com.organization.mvcproject.api.repository.GameDAO;
 import com.organization.provider.model.persistent.GameImpl;
 
 import jakarta.persistence.TypedQuery;

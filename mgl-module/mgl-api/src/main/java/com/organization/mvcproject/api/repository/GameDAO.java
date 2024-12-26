@@ -1,4 +1,4 @@
-package com.organization.mvcproject.api.mockdao;
+package com.organization.mvcproject.api.repository;
 
 import java.util.List;
 
