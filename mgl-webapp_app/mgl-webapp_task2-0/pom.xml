@@ -8,15 +8,16 @@
 		<groupId>com.organization</groupId>
 		<artifactId>mgl-webapp_app</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>/</relativePath>
 	</parent>
 	
-	<artifactId>mgl-webapp_task1-0</artifactId>
+
+	<artifactId>mgl-webapp_task2-0</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<name>mgl-webapp_task1-0</name>
+	<name>mgl-webapp_task2-0</name>
 	<url>https://github.com/ATC-Custom-Bootcamp</url>
+
 
 	<dependencies>
          

@@ -8,7 +8,6 @@
 		<groupId>com.organization</groupId>
 		<artifactId>mgl-webapp_app</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>/</relativePath>
 	</parent>
 
 	<artifactId>mgl-webapp_review</artifactId>

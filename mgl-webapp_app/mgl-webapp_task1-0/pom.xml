@@ -8,28 +8,14 @@
 		<groupId>com.organization</groupId>
 		<artifactId>mgl-webapp_app</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>/</relativePath>
 	</parent>
-
-	<artifactId>mgl-webapp_task2-1</artifactId>
+	
+	<artifactId>mgl-webapp_task1-0</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<name>mgl-webapp_task2-1</name>
+	<name>mgl-webapp_task1-0</name>
 	<url>https://github.com/ATC-Custom-Bootcamp</url>
-
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>21</java.version>
-		<servlet.port>8080</servlet.port>
-		<jetty.stop.port>9001</jetty.stop.port>
-		<spring.version>6.1.13</spring.version>
-		<maven.compiler.target>${java.version}</maven.compiler.target>
-		<maven.compiler.source>${java.version}</maven.compiler.source>
-		<maven.plugin.version>3.1.2</maven.plugin.version>
-		<junit5.version>5.10.0</junit5.version>
-		<mockito.version>5.5.0</mockito.version>
-	</properties>
 
 	<dependencies>
          
@@ -54,13 +40,6 @@
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-		</dependency>
-		
-		<!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>30.1.1-jre</version>
 		</dependency>
 
 	    <!-- junit 5 -->
