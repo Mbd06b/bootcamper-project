@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.organization</groupId>
+		<artifactId>java-companion-project</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	
+
+    <artifactId>mgl-webapp_app</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    
+    <repositories>
+		<repository>
+			<id>springsource-milestones</id>
+			<name>SpringSource Milestones Proxy</name>
+			<url>https://oss.sonatype.org/content/repositories/springsource-milestones</url>
+		</repository>
+	</repositories>
+
+    <modules>
+<!--        <module>mgl-webapp_start</module>-->
+<!--        <module>mgl-webapp_task1-0</module>-->
+<!--        <module>mgl-webapp_task2-0</module>-->
+<!--        <module>mgl-webapp_task2-1</module>-->
+<!--        <module>mgl-webapp_review</module>-->
+        
+    </modules>
+    
+
+
+    <properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>21</java.version>
+		<app.server.port>8080</app.server.port>
+		<jetty.stop.port>9001</jetty.stop.port>
+		<spring.version>6.1.13</spring.version>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.plugin.version>3.1.2</maven.plugin.version>
+		<junit5.version>5.10.0</junit5.version>
+		<mockito.version>5.5.0</mockito.version>
+    </properties>
+    
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.11.0</version>
+					<configuration>
+						<release>${java.version}</release>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>3.3.2</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>build-helper-maven-plugin</artifactId>
+					<version>3.3.0</version>
+					<executions>
+						<execution>
+							<id>reserve-network-port</id>
+							<goals>
+								<goal>reserve-network-port</goal>
+							</goals>
+							<phase>process-resources</phase>
+							<configuration>
+								<portNames>
+									<portName>random.server.port</portName>
+									<portName>random.stop.port</portName>
+								</portNames>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.jetty</groupId>
+					<artifactId>jetty-maven-plugin</artifactId>
+					<version>11.0.15</version>
+					<configuration>
+						<httpConnector>
+							<port>${app.server.port}</port>
+						</httpConnector>
+						<stopKey>quit</stopKey>
+						<stopPort>${jetty.stop.port}</stopPort>
+						<webApp>
+							<contextPath>/</contextPath>
+						</webApp>
+						<scanTargetPatterns>
+							<scanTargetPattern>
+								<directory>src/main/webapp/WEB-INF</directory>
+								<includes>
+									<include>**/*.jsp</include>
+								</includes>
+								<excludes>
+									<include>**/*.properties</include>
+								</excludes>
+							</scanTargetPattern>
+						</scanTargetPatterns>
+					</configuration>
+					<executions>
+						<!-- assign random portnumber from
+						build-helper-maven-plugin< -->
+						<!-- during other build phases to avoid port conflicts
+						during parallel local integration tests of this
+						module-->
+						<execution>
+							<id>start-jetty</id>
+							<phase>pre-integration-test</phase>
+							<goals>
+								<goal>start</goal>
+							</goals>
+							<configuration>
+								<httpConnector>
+									<!-- For integration tests -->
+									<port>${random.server.port}</port>
+								</httpConnector>
+								<stopPort>${random.stop.port}</stopPort>
+							</configuration>
+						</execution>
+						<execution>
+							<id>stop-jetty</id>
+							<phase>post-integration-test</phase>
+							<goals>
+								<goal>stop</goal>
+							</goals>
+							<configuration>
+								<stopPort>${random.stop.port}</stopPort>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>${maven-common-test.plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-failsafe-plugin</artifactId>
+					<version>${maven-common-test.plugin.version}</version>
+					<executions>
+						<execution>
+							<goals>
+								<goal>integration-test</goal>
+								<goal>verify</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<systemPropertyVariables>
+							<random.server.port>${random.server.port}</random.server.port>
+						</systemPropertyVariables>
+						<!-- Skip actual execution in this module -->
+						<!--					<skipTests>true</skipTests>-->
+						<testFailureIgnore>true</testFailureIgnore>
+						<includes>
+							<include>**/*IT.java</include>
+							<include>**/*IntegrationTest.java</include>
+							<include>**/*AcceptanceTest.java</include>
+							<include>**/*AcceptanceTestRunner.java</include>
+						</includes>
+						<properties>
+							<configurationParameters>
+								<!--
+								cucumber.glue=com.organization.mvcproject.test.bdd,com.organization.mvcproject.test.bdd.glue
+							cucumber.publish.enabled=true
+							cucumber.junit-platform.naming-strategy=long
+								cucumber.plugin=pretty,json:target/cucumber/cucumber-report.json,html:target/cucumber/report.html
+							cucumber.ansi-colors.disabled=true
+						 WARNING: Discovering tests using the cucumber.features property. Other
+								discovery selectors are ignored!
+								This is a work around for the limited JUnit 5 support in Maven and Gradle.
+								Please request/upvote/sponsor/ect better support
+								for JUnit 5 discovery selectors. For details
+								see:
+								https://github.com/cucumber/cucumber-jvm/pull/2498
+								If you are using the JUnit 5 Suite Engine, Platform Launcher API or Console
+								Launcher you should not use this property.
+								Please consult the JUnit 5 documentation on test
+								selection.
+							cucumber.features=classpath:com/organization/mvcproject/test/bdd
+							-->
+							</configurationParameters>
+						</properties>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.jacoco</groupId>
+					<artifactId>jacoco-maven-plugin</artifactId>
+					<version>0.8.10</version>
+					<executions>
+						<execution>
+							<goals>
+								<goal>prepare-agent</goal>
+							</goals>
+						</execution>
+						<execution>
+							<id>report</id>
+							<phase>test</phase>
+							<goals>
+								<goal>report</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+	<reporting>
+			<plugins>
+				<plugin>
+					<groupId>org.jacoco</groupId>
+					<artifactId>jacoco-maven-plugin</artifactId>
+					<reportSets>
+						<reportSet>
+							<reports>
+								<!-- select non-aggregate reports -->
+								<report>report</report>
+							</reports>
+						</reportSet>
+					</reportSets>
+				</plugin>
+			</plugins>
+	</reporting>
+</project>

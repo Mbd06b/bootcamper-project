@@ -6,9 +6,11 @@
 
 	<parent>
 		<groupId>com.organization</groupId>
-		<artifactId>java-companion-project</artifactId>
+		<artifactId>mgl-webapp_app</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>/</relativePath>
 	</parent>
+	
 
 	<artifactId>mgl-webapp_task2-0</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
@@ -17,233 +19,151 @@
 	<name>mgl-webapp_task2-0</name>
 	<url>https://github.com/ATC-Custom-Bootcamp</url>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>21</java.version>
-		<servlet.port>8080</servlet.port>
-		<jetty.stop.port>9001</jetty.stop.port>
-		<spring.version>6.1.13</spring.version>
-		<maven.compiler.target>${java.version}</maven.compiler.target>
-		<maven.compiler.source>${java.version}</maven.compiler.source>
-		<maven.plugin.version>3.1.2</maven.plugin.version>
-		<junit5.version>5.10.0</junit5.version>
-		<mockito.version>5.5.0</mockito.version>
-	</properties>
 
 	<dependencies>
+         
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
         
 		<!-- Spring core & mvc -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
-			<version>${spring.version}</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-test</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-
-		<!-- Servlet Specs enhance jsp and tag intellisense-->
 		<dependency>
 		    <groupId>jakarta.servlet</groupId>
 		    <artifactId>jakarta.servlet-api</artifactId>
-		    <version>6.1.0</version>
 		    <scope>provided</scope>
 		</dependency>
-	   		
-		<!-- Logging -->
-		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
-		<dependency>
-		    <groupId>org.slf4j</groupId>
-		    <artifactId>slf4j-simple</artifactId>
-		    <version>2.0.16</version>
-		</dependency>
-
+		
 		<!-- Jackson JSON Mapper -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-			<version>2.15.2</version>
 		</dependency>
 
 	    <!-- junit 5 -->
-          <dependency>
+         <dependency>
 	        <groupId>org.junit.jupiter</groupId>
 	        <artifactId>junit-jupiter</artifactId>
-	        <version>${junit5.version}</version>
 	        <scope>test</scope>
 	    </dependency>
-	    
-	     <!-- JUnit Compatibility for IDE test tooling -->
-	    <dependency>
-		    <groupId>org.junit.platform</groupId>
-		    <artifactId>junit-platform-runner</artifactId>
-		    <version>1.2.0</version>
-		    <scope>test</scope>
-		</dependency>
-		<dependency>
-		     <groupId>org.junit.vintage</groupId>
-		     <artifactId>junit-vintage-engine</artifactId>
-	         <version>${junit5.version}</version>
-		     <scope>test</scope>
-		</dependency>
 	    
 		<!-- hamcrest matchers for more expressive asserts  -->
 		<dependency>
 		    <groupId>org.hamcrest</groupId>
 		    <artifactId>hamcrest</artifactId>
-		    <version>2.2</version>
 		    <scope>test</scope>
 		</dependency>
 		
 		<!--  mockito extensions for Junit5 -->
+	    <dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<scope>test</scope>
+		</dependency>
 		<dependency>
 		    <groupId>org.mockito</groupId>
 		    <artifactId>mockito-junit-jupiter</artifactId>
-		    <version>${mockito.version}</version>
 		    <scope>test</scope>
 		</dependency>
 		
+		<!-- this dependency a testing framework (not tests) aka the infrastructure used to run web-automation integration tests -->
+		<!-- See: https://maven.apache.org/plugins/maven-jar-plugin/examples/create-test-jar.html#the-preferred-way -->
+		<dependency> 
+			<groupId>com.organization.mvcproject</groupId>
+			<artifactId>e2e-mgl-webapp</artifactId>
+			<version>${project.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency> 
+			<groupId>com.organization.mvcproject</groupId>
+			<artifactId>model-mgl-webapp</artifactId>
+			<version>${project.version}</version>
+			<scope>test</scope>
+			<type>test-jar</type>
+		</dependency>
+		<!-- this test-jar dependency contains packaged web-automation tests which are being scanned to run by dependenciesToScan during the integration test phase -->
+		<!-- the test-jar itself is created via the "maven-jar-plugin" located in the dependency itself -->
+		<!-- the tests recieve the context they need to run via the corresponding texting-framework dependency  --> 
+		<!-- this enables web-automation tests to be developed and run independently of the project they are imported to -->
+		<dependency> 
+			<groupId>com.organization.mvcproject</groupId>
+			<artifactId>e2e-mgl-webapp</artifactId>
+			<version>${project.version}</version>
+			<type>test-jar</type>
+			<scope>test</scope>
+		</dependency>
+		    <dependency>
+			    <groupId>io.cucumber</groupId>
+			    <artifactId>cucumber-java</artifactId>
+			    <scope>test</scope>
+			</dependency>
+			<dependency>
+			    <groupId>io.cucumber</groupId>
+			    <artifactId>cucumber-spring</artifactId>
+			    <scope>test</scope>
+			</dependency>
+			<dependency>
+			    <groupId>org.seleniumhq.selenium</groupId>
+			    <artifactId>selenium-java</artifactId>
+			    <scope>test</scope>
+			</dependency>
+<!--		<dependency>-->
+<!--			<groupId>${project.groupId}</groupId>-->
+<!--			<artifactId>mgl-rest-client</artifactId>-->
+<!--			<version>${project.version}</version>-->
+<!--		</dependency>-->
 	</dependencies>
-
-	<repositories>
-		<repository>
-			<id>springsource-milestones</id>
-			<name>SpringSource Milestones Proxy</name>
-			<url>https://oss.sonatype.org/content/repositories/springsource-milestones</url>
-		</repository>
-	</repositories>
 
 	<build>
 		<finalName>${project.name}</finalName>
 		<plugins>
-		    <plugin>
+			<plugin>
 			    <groupId>org.apache.maven.plugins</groupId>
 			    <artifactId>maven-war-plugin</artifactId>
-			    <version>3.3.2</version>
 			</plugin>
 			<plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-compiler-plugin</artifactId>
+			</plugin>
+		    <plugin>
 	            <groupId>org.codehaus.mojo</groupId>
 	            <artifactId>build-helper-maven-plugin</artifactId>
-	            <version>3.3.0</version>
-				<executions>
-					<execution>
-						<id>reserve-network-port</id>
-						<goals>
-							<goal>reserve-network-port</goal>
-						</goals>
-						<phase>process-resources</phase>
-						<configuration>
-							<portNames>
-								<portName>random.servlet.port</portName>
-								<portName>random.stop.port</portName>
-							</portNames>
-						</configuration>
-					</execution>
-				</executions>
 	        </plugin>
 			<plugin>
 				<groupId>org.eclipse.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
-				<version>11.0.15</version>
-				<configuration>
-					<httpConnector>
-						<port>${servlet.port}</port>
-					</httpConnector>
-					<stopKey>quit</stopKey>
-					<stopPort>${jetty.stop.port}</stopPort>
-					<webApp>
-						<contextPath>/</contextPath>
-					</webApp>
-				</configuration>
-				<executions>
-					<!-- assign random portnumbers from build-helper-maven-plugin --> 
-					<!-- during other build phases to avoid port conflicts during parallel local integration tests of this module-->
-					<execution>
-						<id>start-jetty</id>
-						<phase>pre-integration-test</phase>
-						<goals>
-							<goal>start</goal>
-						</goals>
-						<configuration>
-							<httpConnector>
-								<port>${random.servlet.port}</port>
-							</httpConnector>
-							<stopPort>${random.stop.port}</stopPort>
-						</configuration>
-					</execution>
-					<execution>
-						<id>stop-jetty</id>
-						<phase>post-integration-test</phase>
-						<goals>
-							<goal>stop</goal>
-						</goals>
-						<configuration>
-						<stopPort>${random.stop.port}</stopPort>
-						</configuration>
-					</execution>
-				</executions>
 			</plugin>
-		       <plugin>
-	            <groupId>org.apache.maven.plugins</groupId>
-	            <artifactId>maven-surefire-plugin</artifactId>
-	            <version>${maven.plugin.version}</version>
-	            <configuration>
-			        <testFailureIgnore>true</testFailureIgnore>
-			    </configuration>
-	        </plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<testFailureIgnore>true</testFailureIgnore>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
-				<version>${maven.plugin.version}</version>
-				<executions>
-					<execution>
-						<id>perform-it</id>
-						<goals>
-							<goal>integration-test</goal>
-						</goals>
-						<configuration>
-							<systemProperties>
-								<property>
-									<name>servlet.port</name>
-									<value>${servlet.port}</value>
-								</property>
-								<property>
-									<name>name</name>
-									<value>${project.name}</value>
-								</property>
-							</systemProperties>
-						</configuration>
-					</execution>
-					<execution>
-						<id>verify-it</id>
-						<goals>
-							<goal>verify</goal>
-						</goals>
-					</execution>
-				</executions>
+				<configuration>
+					<testFailureIgnore>true</testFailureIgnore>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>0.8.10</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>prepare-agent</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>report</id>
-						<phase>test</phase>
-						<goals>
-							<goal>report</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 		</plugins>
 	</build>
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</reporting>
 </project>

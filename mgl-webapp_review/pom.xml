@@ -6,8 +6,9 @@
 
 	<parent>
 		<groupId>com.organization</groupId>
-		<artifactId>java-companion-project</artifactId>
+		<artifactId>mgl-webapp_app</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>/</relativePath>
 	</parent>
 
 	<artifactId>mgl-webapp_review</artifactId>
@@ -17,44 +18,33 @@
 	<name>mgl-webapp_review</name>
 	<url>https://github.com/Mbd06b/bootcamper-project</url>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>21</java.version>
-		<app.server.port>8080</app.server.port>
-		<jetty.stop.port>9001</jetty.stop.port>
-		<spring.version>6.1.13</spring.version>
-		<maven.compiler.target>${java.version}</maven.compiler.target>
-		<maven.compiler.source>${java.version}</maven.compiler.source>
-		<maven.plugin.version>3.1.2</maven.plugin.version>
-		<junit5.version>5.10.0</junit5.version>
-		<mockito.version>5.5.0</mockito.version>
-	</properties>
-	
+
 	<dependencyManagement>
-	    <dependencies>
-	      <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring.boot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-	    </dependencies>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${spring.boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
 	</dependencyManagement>
-	
+
+
 	<dependencies>
-		
-<!--		<dependency>-->
-<!--		    <groupId>${project.groupId}</groupId>-->
-<!--		    <artifactId>mgl-rest-client</artifactId>-->
-<!--		    <version>${project.version}</version>-->
-<!--		</dependency>-->
+
+		<!--		<dependency>-->
+		<!--		    <groupId>${project.groupId}</groupId>-->
+		<!--		    <artifactId>mgl-rest-client</artifactId>-->
+		<!--		    <version>${project.version}</version>-->
+		<!--		</dependency>-->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
-        
+
 		<!-- Spring core & mvc -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -62,263 +52,136 @@
 		</dependency>
 
 		<dependency>
-		    <groupId>jakarta.servlet</groupId>
-		    <artifactId>jakarta.servlet-api</artifactId>
-		    <scope>provided</scope>
+			<groupId>jakarta.servlet</groupId>
+			<artifactId>jakarta.servlet-api</artifactId>
+			<scope>provided</scope>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
-		<dependency>
-		    <groupId>com.google.guava</groupId>
-		    <artifactId>guava</artifactId>
-		    <version>30.1.1-jre</version>
-		</dependency>
-		
 		<!-- Jackson JSON Mapper -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>30.1.1-jre</version>
+		</dependency>
 
-	    <!-- junit 5 -->
-         <dependency>
-	        <groupId>org.junit.jupiter</groupId>
-	        <artifactId>junit-jupiter</artifactId>
-	        <scope>test</scope>
-	    </dependency>
-	    
+		<!-- junit 5 -->
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter</artifactId>
+			<scope>test</scope>
+		</dependency>
+
 		<!-- hamcrest matchers for more expressive asserts  -->
 		<dependency>
-		    <groupId>org.hamcrest</groupId>
-		    <artifactId>hamcrest</artifactId>
-		    <scope>test</scope>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest</artifactId>
+			<scope>test</scope>
 		</dependency>
-		
+
 		<!--  mockito extensions for Junit5 -->
-		
-	    <dependency>
+		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-		    <groupId>org.mockito</groupId>
-		    <artifactId>mockito-junit-jupiter</artifactId>
-		    <scope>test</scope>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-junit-jupiter</artifactId>
+			<scope>test</scope>
 		</dependency>
-		
-		<!-- this dependency a testing framework (not tests) aka the infrastructure used to run web-automation integration tests -->
-		<!-- See: https://maven.apache.org/plugins/maven-jar-plugin/examples/create-test-jar.html#the-preferred-way -->
-		<dependency> 
+
+		<!-- this dependency a testing framework (not tests) aka the
+		infrastructure used to run web-automation integration tests -->
+		<!-- See:
+		https://maven.apache.org/plugins/maven-jar-plugin/examples/create-test-jar.html#the-preferred-way -->
+		<dependency>
 			<groupId>com.organization.mvcproject</groupId>
 			<artifactId>e2e-mgl-webapp</artifactId>
 			<version>${project.version}</version>
 			<scope>test</scope>
 		</dependency>
-		<dependency> 
+		<dependency>
 			<groupId>com.organization.mvcproject</groupId>
 			<artifactId>model-mgl-webapp</artifactId>
 			<version>${project.version}</version>
 			<scope>test</scope>
 			<type>test-jar</type>
 		</dependency>
-		<!-- this test-jar dependency contains packaged web-automation tests which are being scanned to run by dependenciesToScan during the integration test phase -->
-		<!-- the test-jar itself is created via the "maven-jar-plugin" located in the dependency itself -->
-		<!-- the tests recieve the context they need to run via the corresponding texting-framework dependency  --> 
-		<!-- this enables web-automation tests to be developed and run independently of the project they are imported to -->
-		<dependency> 
+		<!-- this test-jar dependency contains packaged web-automation tests
+		which are being scanned to run by dependenciesToScan during the
+		integration test phase -->
+		<!-- the test-jar itself is created via the "maven-jar-plugin" located
+		in the dependency itself -->
+		<!-- the tests recieve the context they need to run via the
+		corresponding texting-framework dependency  -->
+		<!-- this enables web-automation tests to be developed and run
+		independently of the project they are imported to -->
+		<dependency>
 			<groupId>com.organization.mvcproject</groupId>
 			<artifactId>e2e-mgl-webapp</artifactId>
 			<version>${project.version}</version>
 			<type>test-jar</type>
 			<scope>test</scope>
 		</dependency>
-		    <dependency>
-			    <groupId>io.cucumber</groupId>
-			    <artifactId>cucumber-java</artifactId>
-			    <scope>test</scope>
-			</dependency>
-			<dependency>
-			    <groupId>io.cucumber</groupId>
-			    <artifactId>cucumber-spring</artifactId>
-			    <scope>test</scope>
-			</dependency>
-			<dependency>
-			    <groupId>org.seleniumhq.selenium</groupId>
-			    <artifactId>selenium-java</artifactId>
-			    <scope>test</scope>
-			</dependency>
-<!--		<dependency>-->
-<!--			<groupId>${project.groupId}</groupId>-->
-<!--			<artifactId>mgl-rest-client</artifactId>-->
-<!--			<version>${project.version}</version>-->
-<!--		</dependency>-->
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-java</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-spring</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!--		<dependency>-->
+		<!--			<groupId>${project.groupId}</groupId>-->
+		<!--			<artifactId>mgl-rest-client</artifactId>-->
+		<!--			<version>${project.version}</version>-->
+		<!--		</dependency>-->
 	</dependencies>
-
-	<repositories>
-		<repository>
-			<id>springsource-milestones</id>
-			<name>SpringSource Milestones Proxy</name>
-			<url>https://oss.sonatype.org/content/repositories/springsource-milestones</url>
-		</repository>
-	</repositories>
 
 	<build>
 		<finalName>${project.name}</finalName>
 		<plugins>
 			<plugin>
-			    <groupId>org.apache.maven.plugins</groupId>
-			    <artifactId>maven-war-plugin</artifactId>
-	            <version>3.3.2</version>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
 			</plugin>
 			<plugin>
-			    <groupId>org.apache.maven.plugins</groupId>
-			    <artifactId>maven-compiler-plugin</artifactId>
-	            <version>3.10.1</version>
-			    <configuration>
-			        <release>${java.version}</release>
-			    </configuration>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
 			</plugin>
-		    <plugin>
-	            <groupId>org.codehaus.mojo</groupId>
-	            <artifactId>build-helper-maven-plugin</artifactId>
-	            <version>3.3.0</version>
-				<executions>
-					<execution>
-						<id>reserve-network-port</id>
-						<goals>
-							<goal>reserve-network-port</goal>
-						</goals>
-						<phase>process-resources</phase>
-						<configuration>
-							<portNames>
-			                    <portName>random.server.port</portName>
-			                    <portName>random.stop.port</portName>
-							</portNames>
-						</configuration>
-					</execution>
-				</executions>
-	        </plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+			</plugin>
 			<plugin>
 				<groupId>org.eclipse.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
-				<version>11.0.15</version>
-				<configuration>
-			        <httpConnector>
-			            <port>${app.server.port}</port>
-			        </httpConnector>
-			        <stopKey>quit</stopKey>
-			        <stopPort>${jetty.stop.port}</stopPort>
-					<webApp>
-						<contextPath>/</contextPath>
-					</webApp>
-					<scanTargetPatterns>
-						<scanTargetPattern>
-							<directory>src/main/webapp/WEB-INF</directory>
-							<includes>
-								<include>**/*.jsp</include>
-							</includes>
-							<excludes>
-								<include>**/*.properties</include>
-							</excludes>
-						</scanTargetPattern>
-					</scanTargetPatterns>
-				</configuration>
-				<executions>
-					<!-- assign random portnumber from build-helper-maven-plugin< --> 
-					<!-- during other build phases to avoid port conflicts during parallel local integration tests of this module-->
-					<execution>
-						<id>start-jetty</id>
-						<phase>pre-integration-test</phase>
-						<goals>
-							<goal>start</goal>
-						</goals>
-			            <configuration>
-			                <httpConnector>
-			                    <!-- For integration tests -->
-			                    <port>${random.server.port}</port>
-			                </httpConnector>
-			                <stopPort>${random.stop.port}</stopPort>
-			            </configuration>
-					</execution>
-					<execution>
-						<id>stop-jetty</id>
-						<phase>post-integration-test</phase>
-						<goals>
-							<goal>stop</goal>
-						</goals>
-						<configuration>
-						<stopPort>${random.stop.port}</stopPort>
-						</configuration>
-					</execution>
-				</executions>
 			</plugin>
-		    <plugin>
-	            <groupId>org.apache.maven.plugins</groupId>
-	            <artifactId>maven-surefire-plugin</artifactId>
-	            <version>${maven.plugin.version}</version>
-	        </plugin>
-	        			<plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+			</plugin>
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
-				<version>${maven-common-test.plugin.version}</version>
-				<executions>
-			        <execution>
-			            <goals>
-			                <goal>integration-test</goal>
-			                <goal>verify</goal>
-			            </goals>
-			        </execution>
-			    </executions>
-				<configuration>
-					<systemPropertyVariables>
-      				  <random.server.port>${random.server.port}</random.server.port>
-				    </systemPropertyVariables>
-					<!-- Skip actual execution in this module -->
-					<!--					<skipTests>true</skipTests>-->
-					<testFailureIgnore>true</testFailureIgnore>
-					<includes>
-						<include>**/*IT.java</include>
-						<include>**/*IntegrationTest.java</include>
-						<include>**/*AcceptanceTest.java</include>
-						<include>**/*AcceptanceTestRunner.java</include>
-					</includes>
-					<properties>
-						<configurationParameters>
-							<!--
-							cucumber.glue=com.organization.mvcproject.test.bdd,com.organization.mvcproject.test.bdd.glue
-							cucumber.publish.enabled=true
-							cucumber.junit-platform.naming-strategy=long
-							cucumber.plugin=pretty,json:target/cucumber/cucumber-report.json,html:target/cucumber/report.html
-							cucumber.ansi-colors.disabled=true
-						 WARNING: Discovering tests using the cucumber.features property. Other discovery selectors are ignored!
-								This is a work around for the limited JUnit 5 support in Maven and Gradle. Please request/upvote/sponsor/ect better support for JUnit 5 discovery selectors. For details see: https://github.com/cucumber/cucumber-jvm/pull/2498
-								If you are using the JUnit 5 Suite Engine, Platform Launcher API or Console Launcher you should not use this property. Please consult the JUnit 5 documentation on test selection.
-							cucumber.features=classpath:com/organization/mvcproject/test/bdd
-							-->
-						</configurationParameters>
-					</properties>
-				</configuration>
-        </plugin>
+			</plugin>
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>0.8.10</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>prepare-agent</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>report</id>
-						<phase>test</phase>
-						<goals>
-							<goal>report</goal>
-						</goals>
-					</execution>
-				</executions>
-				</plugin>
+			</plugin>
 		</plugins>
 	</build>
 	<reporting>
@@ -326,14 +189,6 @@
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
-				<reportSets>
-					<reportSet>
-						<reports>
-							<!-- select non-aggregate reports -->
-							<report>report</report>
-						</reports>
-					</reportSet>
-				</reportSets>
 			</plugin>
 		</plugins>
 	</reporting>
