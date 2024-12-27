@@ -29,7 +29,7 @@ public class ReviewImpl implements Review {
 	@Column(name="RATING")
 	private Integer rating;
 	    
-	@ManyToOne(targetEntity=ReviewImpl.class)
+	@ManyToOne(targetEntity = GameImpl.class)
     @JoinColumn(name = "GAME_ID")
     private Game game;
 	

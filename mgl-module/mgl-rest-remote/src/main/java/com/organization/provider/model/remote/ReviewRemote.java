@@ -81,13 +81,13 @@ public class ReviewRemote implements Review {
 
 	@Override
 	public Game getGame() {
-		// TODO Auto-generated method stub
+		// intentionally null, so it's not used.
 		return null;
 	}
 
 	@Override
 	public void setGame(Game game) {
-		// TODO Auto-generated method stub
+		//no ops, because we don't want to set game with remote
 		
 	}
 
