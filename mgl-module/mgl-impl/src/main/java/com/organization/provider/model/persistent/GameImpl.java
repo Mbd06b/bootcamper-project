@@ -57,8 +57,8 @@ public class GameImpl implements Game {
     	if(game ==null) {
     		return new GameImpl();
     	}
-    	if(game instanceof GameImpl) {
-    		return (GameImpl) game;
+    	if(game instanceof GameImpl gameImpl) {
+    		return gameImpl;
     	} else {
     		return new GameImpl(game); 
     	}

@@ -22,8 +22,8 @@ public class CompanyRemote implements Company {
     	if(company ==null) {
     		return new CompanyRemote();
     	}
-    	if(company instanceof CompanyRemote) {
-    		return (CompanyRemote) company;
+    	if(company instanceof CompanyRemote companyRemote) {
+    		return companyRemote;
     	} else {
     		return new CompanyRemote(company); 
     	}

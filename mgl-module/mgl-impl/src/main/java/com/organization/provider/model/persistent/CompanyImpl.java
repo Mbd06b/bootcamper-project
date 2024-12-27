@@ -39,25 +39,29 @@ public class CompanyImpl implements Company {
     	if(game ==null) {
     		return new CompanyImpl();
     	}
-    	if(game instanceof CompanyImpl) {
-    		return (CompanyImpl) game;
+    	if(game instanceof CompanyImpl companyImpl) {
+    		return companyImpl;
     	} else {
     		return new CompanyImpl(game); 
     	}
     }
     
+    @Override
 	public Long getId() {
 		return id;
 	}
 
+	@Override
 	public void setId(Long id) {
 		this.id = id;
 	}
 
+	@Override
 	public String getName() {
 		return name;
 	}
 
+	@Override
 	public void setName(String name) {
 		this.name = name;
 	}

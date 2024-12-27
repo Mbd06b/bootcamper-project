@@ -29,8 +29,8 @@ public class GameRemote implements Game {
     	if(game ==null) {
     		return new GameRemote();
     	}
-    	if(game instanceof GameRemote) {
-    		return (GameRemote) game;
+    	if(game instanceof GameRemote gameRemote) {
+    		return gameRemote;
     	} else {
     		return new GameRemote(game); 
     	}

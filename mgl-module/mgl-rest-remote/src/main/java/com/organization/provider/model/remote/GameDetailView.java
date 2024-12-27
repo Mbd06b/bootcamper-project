@@ -31,7 +31,7 @@ public class GameDetailView implements Game {
         if (game.getReviews() != null) {
             this.reviews = game.getReviews().stream()
                 .map(ReviewRemote::convert)
-                .collect(Collectors.toList());
+                .toList();
         }
      }
     
@@ -39,8 +39,8 @@ public class GameDetailView implements Game {
     	if(game ==null) {
     		return new GameDetailView();
     	}
-    	if(game instanceof GameDetailView) {
-    		return (GameDetailView) game;
+    	if(game instanceof GameDetailView gameDtlView) {
+    		return gameDtlView;
     	} else {
     		return new GameDetailView(game); 
     	}

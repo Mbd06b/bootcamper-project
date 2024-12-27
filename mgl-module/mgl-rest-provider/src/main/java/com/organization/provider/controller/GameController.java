@@ -41,7 +41,7 @@ public class GameController implements GameEndpoint {
 		}
 		List<GameRemote> gamesToReturn = gamesRetrieved.stream()
 				.map(GameRemote::convert)
-				.collect(Collectors.toList());
+				.toList();
 	    return gamesToReturn;
 	}
 	

@@ -1,5 +1,7 @@
 package com.organization.provider.model.persistent;
 
+import org.springframework.beans.BeanUtils;
+
 import com.organization.mvcproject.api.model.Game;
 import com.organization.mvcproject.api.model.Review;
 
@@ -27,9 +29,28 @@ public class ReviewImpl implements Review {
 	@Column(name="RATING")
 	private Integer rating;
 	    
-	@ManyToOne(targetEntity=GameImpl.class)
+	@ManyToOne(targetEntity=ReviewImpl.class)
     @JoinColumn(name = "GAME_ID")
     private Game game;
+	
+    //spring requires null constructor
+    public ReviewImpl() {}
+    
+    public ReviewImpl(Review review) {
+    	BeanUtils.copyProperties(review, this);
+    }
+    
+    public static ReviewImpl convert(Review review) {
+    	if(review == null) {
+    		return new ReviewImpl();
+    	}
+    	if(review instanceof ReviewImpl reviewImpl) {
+    		return reviewImpl;
+    	} else {
+    		return new ReviewImpl(review); 
+    	}
+    }
+	
 
 	public String getAuthor() {
 		return author;

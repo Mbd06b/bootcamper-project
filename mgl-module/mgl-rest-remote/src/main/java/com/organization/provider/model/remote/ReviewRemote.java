@@ -32,8 +32,8 @@ public class ReviewRemote implements Review {
     	if(review ==null) {
     		return new ReviewRemote();
     	}
-    	if(review instanceof ReviewRemote) {
-    		return (ReviewRemote) review;
+    	if(review instanceof ReviewRemote reviewRemote) {
+    		return reviewRemote;
     	} else {
     		return new ReviewRemote(review); 
     	}
