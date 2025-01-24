@@ -28,15 +28,18 @@
 		<module>mgl-webapp_app</module>
 		
 	</modules>
+
+<repositories>
+	<repository>
+		<id>github</id>
+		<name>GitHub Mbd06b Apache Maven Packages</name>
+		<url>https://maven.pkg.github.com/Mbd06b/bootcamper-project</url>
+	</repository>
+</repositories>
 	
-	
-	<!--	<repositories>
-		<repository>
-			<id>github</id>
-			<name>GitHub Mbd06b Apache Maven Packages</name>
-			<url>https://maven.pkg.github.com/Mbd06b/bootcamper-project</url>
-		</repository>
-	</repositories>
+<profiles>
+    <profile>	
+        <id>ci-deployment</id>
 	<distributionManagement>
 		<repository>
 			<id>github</id>
@@ -49,22 +52,17 @@
 			<url>https://maven.pkg.github.com/Mbd06b/bootcamper-project</url>
 		</snapshotRepository>
 	</distributionManagement>
-  	
-	<dependencyManagement>
-		<dependencies>
-			&lt;!&ndash; By specifying our own module in "dependencyManagement" in the parent pom         &ndash;&gt;
-			&lt;!&ndash; this allows us to build a dependency, AND USE it as a dependency in child pom(s) &ndash;&gt;
-			&lt;!&ndash; without every module inheriting, which is what happens when                      &ndash;&gt;
-			&lt;!&ndash; a more typical dependency is specified in a parent pom.xml                       &ndash;&gt;
-			&lt;!&ndash; this is a useful pom strategy for creating common modules,                       &ndash;&gt;
-			&lt;!&ndash; and avoids a self-referenced recusive loop.                                      &ndash;&gt;
-			<dependency> 
-				<groupId>com.organization.mvcproject</groupId>
-				<artifactId>mgl-automation-testing</artifactId>
-				<version>${project.version}</version>
-			</dependency> 
-		</dependencies>
-	</dependencyManagement>-->
+    </profile>
+    <profile>
+        <id>sonar</id>
+        <activation>
+            <activeByDefault>true</activeByDefault>
+        </activation>
+        <properties>
+            <sonar.host.url>https://sonarqube.ethosengine.com</sonar.host.url>
+        </properties>
+    </profile>
+</profiles>
 
 	<dependencyManagement>
 		<dependencies>
