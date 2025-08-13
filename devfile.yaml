@@ -37,8 +37,10 @@ components:
           value: http://plugin-registry.eclipse-che.svc:8080/v3
         - name: OPENVSX_REGISTRY_URL
           value: https://open-vsx.org
-      image: quay.io/devfile/universal-developer-image@sha256:6e4095cd243be852970fc7aec20935a0e3c334c5541aa82903fb803b61970ca0
-      memoryLimit: 3Gi
+        - name: CLAUDE_CONFIG_DIR
+          value: /tmp/claude-config
+      image: harbor.ethosengine.com/devspaces/udi-plus:ubi9-plus-latest
+      memoryLimit: 4Gi
       sourceMapping: /projects
       volumeMounts:
         - name: m2
