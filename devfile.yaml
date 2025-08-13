@@ -31,10 +31,6 @@ components:
       env:
         - name: CHE_DASHBOARD_URL
           value: https://code.ethosengine.com
-        - name: CHE_PLUGIN_REGISTRY_URL
-          value: https://code.ethosengine.com/plugin-registry/v3
-        - name: CHE_PLUGIN_REGISTRY_INTERNAL_URL
-          value: http://plugin-registry.eclipse-che.svc:8080/v3
         - name: OPENVSX_REGISTRY_URL
           value: https://open-vsx.org
         - name: CLAUDE_CONFIG_DIR
